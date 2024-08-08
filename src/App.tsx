@@ -4,9 +4,7 @@ import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Animation from "./components/Animation";
 import AllCategory from "./pages/AllCategory"
-import data from "../src/data.json"
 
 const Context = createContext<TcontextType>({
   test: false,
@@ -22,9 +20,15 @@ function App() {
         <Header />
         
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/all-categories-products" element={<AllCategory />} />
-          {/* <Route path="/" element={<Animation />} /> */}
+          <Route path="/" 
+                 element={<Home />
+                } 
+              />
+
+          <Route path="/all-categories-products" 
+                 element={<AllCategory />
+                } 
+              />
         </Routes>
         <Footer />
       </BrowserRouter>

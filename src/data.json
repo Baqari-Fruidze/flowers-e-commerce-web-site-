@@ -2,11 +2,11 @@
   "datas": [
     {
       "categories": [
-        { "id": 1, "name": "Fresh Flowers", "img": "freshFlowers"},
-        { "id": 2, "name": "Dried Flowers" },
-        { "id": 3, "name": "Live Plants" },
-        { "id": 4, "name": "Aroma Candles" },
-        { "id": 5, "name": "Fresheners" }
+        { "id": 1, "name": "Fresh Flowers", "img": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"},
+        { "id": 2, "name": "Dried Flowers", "img": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp" },
+        { "id": 3, "name": "Live Plants", "img": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp" },
+        { "id": 4, "name": "Aroma Candles", "img": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp" },
+        { "id": 5, "name": "Fresheners", "img": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f2f1d0047afe1dfaeff_640a0dd1910159199045fee7_point-du-jour%25202%2520copy%25202.webp" }
       ]
     },
     {

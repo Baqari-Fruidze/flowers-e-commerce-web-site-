@@ -2,6 +2,7 @@ import Reacte from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
 import data from "../data.json"
+import { Link } from "react-router-dom";
 
 export default function AllCategory(){
     useEffect(() => {
@@ -22,6 +23,8 @@ export default function AllCategory(){
     
     <Categories>
         {data.datas[0].categories.map((item, index)=>( index%2 == 0 ?
+        
+                
         <Category key={index}>
             <TitleCategory>
                 <span>{item.name}</span>
@@ -30,11 +33,14 @@ export default function AllCategory(){
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.64 6 14.18 7.504 17.5 11h-14v2h14l-3.298 3.503L15.667 18l5.833-6.014L15.64 6z" fill="#000"/></svg>
                     </div>
             </TitleCategory>
-            <ImageCategory></ImageCategory>
+            <ImageCategory><img src={item.img} alt="" /></ImageCategory>
         </Category>
-        : 
+        
+       
+        
+        :
         <Category key={index}>
-        <ImageCategory></ImageCategory>
+        <ImageCategory><img src={item.img} alt="" /></ImageCategory>
         <TitleCategory>
             <span>{item.name}</span>
             <div>
@@ -44,9 +50,8 @@ export default function AllCategory(){
            
         </TitleCategory>
     </Category>
-        ))}
+        ))} 
     </Categories>
-       
     </MainCont>
 </>
     )
@@ -86,9 +91,7 @@ const Choose=styled.h1`
 
 const Category=styled.div`
     display: flex;
-    height: 200px;
-
-   
+    height: 200px; 
 `
 const TitleCategory=styled.p`
     border: solid 1px #121212;
@@ -99,19 +102,21 @@ const TitleCategory=styled.p`
     justify-content: space-between;
     align-items: center;
     padding: 80px 0 10px 0;
+    
+        
     & > div{
         display: flex;
         align-items: center;
         justify-content: center;
         & > span{
         font-size: 26px;
+            
         }
     & > p{
         font-size: 14px;
         margin-right: 10px;
+        cursor: pointer;
         }
-    }
-   
 `
 
 const ImageCategory=styled.div`

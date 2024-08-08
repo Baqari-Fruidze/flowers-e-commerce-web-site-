@@ -85,32 +85,32 @@ export default function Footer() {
             <FooterBox>
                 <span className="title">Shop</span>
                 <div className="shop">
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">All Product</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Fresh Flowers</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Dried Flowers</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Live Plants</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Designer Vases</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Aroma Candles</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Freshener Diffuser</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">All Product</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Fresh Flowers</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Dried Flowers</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Live Plants</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Designer Vases</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Aroma Candles</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Freshener Diffuser</p></AnimDiv></Link>
                 </div>
                 <span className="title">Service</span>
                 <div className="shop">
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Flower Subscription</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Wedding & Event Decor</p></AnimDiv></Link>
-                    </div>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Flower Subscription</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Wedding & Event Decor</p></AnimDiv></Link>
+                </div>
             </FooterBox>
 
             <FooterBox>
-            <span className="title">About Us</span>
+                <span className="title">About Us</span>
                 <div className="shop">
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Our story</p></AnimDiv></Link>
-                <Link id="link" to={"/Home"}><AnimDiv><p className="anim">Blog</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Our story</p></AnimDiv></Link>
+                    <Link id="link" to={"/"}><AnimDiv><p className="anim">Blog</p></AnimDiv></Link>
                 </div>
                 
                 <div className="shop">
-                <AnimDiv><p className="anim">Shipping & returns</p></AnimDiv>
-                <AnimDiv><p className="anim">Term & conditions</p></AnimDiv>
-                <AnimDiv><p className="anim">Privacy policy</p></AnimDiv>
+                    <AnimDiv><p className="anim">Shipping & returns</p></AnimDiv>
+                    <AnimDiv><p className="anim">Term & conditions</p></AnimDiv>
+                    <AnimDiv><p className="anim">Privacy policy</p></AnimDiv>
                     </div>
             </FooterBox>
     </FooterDiv>
@@ -143,7 +143,12 @@ const FooterBox = styled.div`
     letter-spacing: 0.4px;
     gap: 24px;
     border: solid 1px #121212;
-  
+    #link{
+        text-decoration: none;
+    }
+    & > .link{
+        text-decoration: none;
+    }
 
     & > .inpbut{
         display: flex;
@@ -238,7 +243,6 @@ const spinWordsUp = keyframes`
     transform: translateY(150%);
   }
 `;
-
 const spinWords = keyframes`
   20% {
     transform: translateY(0%);
@@ -248,15 +252,12 @@ const spinWords = keyframes`
   }
 `;
 
-
-
 const AnimDiv = styled.div`
 overflow-y: hidden;
 cursor: pointer;
   & > .anim {
     cursor: pointer;
     animation: ${spinWords} 2s normal;
-    
     font-size: 16px;
     color: #121212;
     opacity: 1;
@@ -266,7 +267,6 @@ cursor: pointer;
     animation: ${spinWordsUp} 2s normal;
     opacity: 0.5;
   }
-
 `;
 //Animation end
 
