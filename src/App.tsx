@@ -3,19 +3,23 @@ import Home from "./pages/Home";
 import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
-const Context = createContext<TcontextType>({
-  test: false,
-  setTest: () => {},
+import { useMediaQuery } from "@uidotdev/usehooks";
+import LargeHeader from "./components/LargeHeader";
+export const Context = createContext<TcontextType>({
+  burgerToShow: false,
+  setBurgerToShow: () => {},
 });
 
 function App() {
-  const [test, setTest] = useState<boolean>(false);
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [burgerToShow, setBurgerToShow] = useState(false);
+
   return (
-    <Context.Provider value={{ test, setTest }}>
+    <Context.Provider value={{ burgerToShow, setBurgerToShow }}>
       <BrowserRouter>
-        <Header />
+        {isSmallDevice ? <Header /> : <LargeHeader />}
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </Context.Provider>

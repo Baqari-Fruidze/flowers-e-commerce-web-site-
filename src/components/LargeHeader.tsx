@@ -1,29 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
-import { Context } from "../App";
-import Burger from "./Burger";
-export default function Header() {
-  const { setBurgerToShow, burgerToShow } = useContext(Context);
 
+export default function LargeHeader() {
   return (
     <Parent>
-      <BurgerSvgCon>
-        <svg
-          width="16"
-          height="15"
-          xmlns="http://www.w3.org/2000/svg"
-          onClick={() => setBurgerToShow(!burgerToShow)}
-        >
-          <g fill="#000" fill-rule="evenodd">
-            <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
-          </g>
-        </svg>
-      </BurgerSvgCon>
-
+      <HomeCon>
+        <Link>Home</Link>
+      </HomeCon>
+      <ContactCon>
+        <Link>Contact</Link>
+      </ContactCon>
       <InputCon>
-        <Input type="text" placeholder="what are you loocking for ?" />
+        <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
+      <SignInCon>
+        <Link>Sign In</Link>
+      </SignInCon>
       <CartCon>
         <svg
           width="24"
@@ -38,64 +32,81 @@ export default function Header() {
           />
         </svg>
       </CartCon>
-      {burgerToShow ? <Burger /> : null}
     </Parent>
   );
 }
+
 const Parent = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr;
-  align-items: center;
-  border-top: 1px solid #121212;
-  border-bottom: 1px solid #121212;
+  & a {
+    color: #121212;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    @media (min-width: 1440px) {
+      font-size: 22px;
+    }
+  }
 `;
-const BurgerSvgCon = styled.div`
-  height: 100%;
+const HomeCon = styled.div`
+  border: 1px solid #121212;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-column: 1/2;
-  align-self: center;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.5;
-  }
+`;
+const ContactCon = styled.div`
+  border: 1px solid #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2/3;
 `;
 const InputCon = styled.div`
-  grid-column: 2/6;
-  width: 100%;
-  height: 100%;
-  border-right: 1px solid #121212;
-  border-left: 1px solid #121212;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-`;
-const Input = styled.input`
-  font-size: 15px;
-  font-weight: 400;
-  width: 100%;
-  height: 3.2rem;
-  outline: none;
-  border: none;
-  background-image: url(${searchIcon});
-  background-repeat: no-repeat;
-  background-position: left 5% top 3px;
-  padding-left: 20%;
-  &::placeholder {
-    color: #121212;
-    font-size: 14px;
-    opacity: 0.5;
+  border: 1px solid #121212;
+  grid-column: 3/5;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  @media (min-width: 1440px) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  & > input {
+    font-weight: 500;
+    padding-left: 20%;
+    font-size: 18px;
+    height: 4rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-image: url(${searchIcon});
+    background-repeat: no-repeat;
+    background-position: left 7% top 0.5rem;
+    @media (min-width: 1440px) {
+      font-size: 22px;
+    }
+    &::placeholder {
+      color: #121212;
+      font-size: 17px;
+      opacity: 0.5;
+      @media (min-width: 1440px) {
+        font-size: 22px;
+      }
+    }
   }
 `;
+const SignInCon = styled.div`
+  border: 1px solid #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 5/6;
+`;
 const CartCon = styled.div`
+  border: 1px solid #121212;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-column: 6/7;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.5;
-  }
 `;

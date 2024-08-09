@@ -1,5 +1,14 @@
 [
   {
+    "categories": [
+      { "id": 1, "name": "Fresh Flowers" },
+      { "id": 2, "name": "Dried Flowers" },
+      { "id": 3, "name": "Live Plants" },
+      { "id": 4, "name": "Aroma Candles" },
+      { "id": 5, "name": "Fresheners" }
+    ]
+  },
+  {
     "flowers": [
       {
         "name": "Blue Harmony",
