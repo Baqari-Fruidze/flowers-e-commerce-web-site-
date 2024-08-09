@@ -18,7 +18,7 @@ export default function AboutUs(){
 const MainCont=styled.div`
    display: flex;
    flex-direction: column;
-   border: 1px solid #121212;
+   border-bottom: 1px solid #121212;
     @media (min-width: 1440px) {
       display: grid;
        grid-template-columns: 1fr 1fr;
@@ -43,7 +43,7 @@ const Description=styled.div`
     padding: 40px 16px;
     font-weight: 500;
     color: #121212;
-    border-left: 1px solid #121212;
+    /* border-left: 1px solid #121212; */
     @media (min-width: 768px){
         padding: 80px;
     }
