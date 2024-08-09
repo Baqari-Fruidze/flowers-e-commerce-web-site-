@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
 import AllCategoryforHome from "../units/AllCategoriesForHome"
@@ -18,6 +19,7 @@ export default function AllCategory(){
     </HomeDiv>
 </>
     )
+
 }
 
 const HomeDiv=styled.div`
