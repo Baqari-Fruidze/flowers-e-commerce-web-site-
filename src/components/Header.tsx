@@ -1,10 +1,15 @@
 
 import React from "react";
+import styled from "styled-components";
 
 export default function Header() {
   return (
     <div>
-      <h1>header</h1>
+      <Hgg>header</Hgg>
     </div>
   );
 }
+
+const Hgg = styled.h1`
+  padding-top: 50px;
+`
