@@ -7,16 +7,16 @@ export const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Gilroy, sans-serif;
 }
 html{
     font-size: 62.5%;
 }
 body{
-
-  
-    background-color: #fff;
+ background-color: #fff;
 
     font-family: "Gilroy", sans-serif;
+  }
 
     .slide-up-text {
   opacity: 0; /* Start with the text invisible */
@@ -28,6 +28,3 @@ body{
   opacity: 1; /* Make the text visible */
   transform: translateY(0); /* Move the text to its final position */
 }
-
-}
-`;

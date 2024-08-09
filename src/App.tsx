@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AllCategory from "./pages/AllCategory"
+import Home from "./pages/Home";
+
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 import LargeHeader from "./components/LargeHeader";
@@ -34,7 +35,7 @@ function App() {
           <Route path="/" 
                  element={<Home />
                 } 
-              />
+              />all-categories-products
 
           <Route path="/all-categories-products" 
                  element={<AllCategory />
