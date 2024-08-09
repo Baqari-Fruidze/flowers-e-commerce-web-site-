@@ -27,7 +27,7 @@ const BlackBackground = styled.div`
   width: 100%;
   min-height: 100vh;
   top: 5.5rem;
-  z-index: 10;
+  z-index: 11;
 `;
 
 const Parent = styled.div`
