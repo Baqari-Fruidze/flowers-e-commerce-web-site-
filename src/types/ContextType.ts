@@ -1,4 +1,4 @@
 export interface TcontextType {
-  test: boolean;
-  setTest: React.Dispatch<React.SetStateAction<boolean>>;
+  burgerToShow: boolean;
+  setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
 }

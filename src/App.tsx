@@ -6,16 +6,27 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AllCategory from "./pages/AllCategory"
 
-const Context = createContext<TcontextType>({
-  test: false,
-  setTest: () => {},
-});
+import { useMediaQuery } from "@uidotdev/usehooks";
+import LargeHeader from "./components/LargeHeader";
+export const Context = createContext<TcontextType>({
+  burgerToShow: false,
+  setBurgerToShow: () => {},
+test: false,
+  setTest: () => {}})
+
 
 function App() {
-  const [test, setTest] = useState<boolean>(false);
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [burgerToShow, setBurgerToShow] = useState(false);
+
   return (
-    <Context.Provider value={{ test, setTest }}>
+    <Context.Provider value={{ burgerToShow, setBurgerToShow }}>
       <BrowserRouter>
+
+        {isSmallDevice ? <Header /> : <LargeHeader />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+
      
         <Header />
         
@@ -29,6 +40,7 @@ function App() {
                  element={<AllCategory />
                 } 
               />
+
         </Routes>
         <Footer />
       </BrowserRouter>

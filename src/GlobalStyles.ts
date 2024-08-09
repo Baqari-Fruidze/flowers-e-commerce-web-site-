@@ -1,10 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 export const Global = createGlobalStyle`
-/* @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');*/
+
 @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
-/* #root {
-  width: 100%;
-} */
+
 *{
     padding: 0;
     margin: 0;
@@ -14,6 +12,10 @@ html{
     font-size: 62.5%;
 }
 body{
+
+  
+    background-color: #fff;
+
     font-family: "Gilroy", sans-serif;
 
     .slide-up-text {
@@ -26,5 +28,6 @@ body{
   opacity: 1; /* Make the text visible */
   transform: translateY(0); /* Move the text to its final position */
 }
+
 }
 `;
