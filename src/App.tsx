@@ -12,8 +12,7 @@ import LargeHeader from "./components/LargeHeader";
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
-test: false,
-  setTest: () => {}})
+  })
 
 
 function App() {
@@ -26,22 +25,10 @@ function App() {
 
         {isSmallDevice ? <Header /> : <LargeHeader />}
         <Routes>
-          <Route path="/" element={<Home />} />
-
-     
-        <Header />
-        
-        <Routes>
           <Route path="/" 
-                 element={<Home />
-                } 
-              />all-categories-products
-
+                 element={<Home />} />
           <Route path="/all-categories-products" 
-                 element={<AllCategory />
-                } 
-              />
-
+                 element={<AllCategory />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
-import data from "../data.json"
+import data from "../../data.json"
 import Categories from "./Categories"
 
 export default function AllCategory(){
@@ -31,19 +31,26 @@ export default function AllCategory(){
 const MainCont=styled.div`
    display: flex;
    flex-direction: column;
+   border-bottom: 1px solid #121212;
     @media (min-width: 1440px) {
       display: grid;
        grid-template-columns: 1fr 1fr;
-       height: 900px;
+       height: 764px;
    }
 `
 const Greating = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding-left: 16px;
   gap: 16px;
+  border-top: solid 1px #121212;
     @media (min-width: 768px) {
-        height: 900px;
+        height: 764px;
+   }
+   @media (min-width: 1440px) {
+    border-right: solid 1px #121212;
+    height: 764px;
    }
 `
 const ShopName=styled.div`
@@ -52,7 +59,7 @@ const ShopName=styled.div`
     padding: 40px 16px 0 16px;
     gap: 16px;
       @media (min-width: 768px) {
-          padding: 80px 80px 50px 80px ;
+          padding: 80px 80px 16px 80px ;
       }
 
       .shopName {
@@ -88,11 +95,14 @@ const Suggest=styled.div`
   align-items: last baseline;
   gap: 16px;
   @media (min-width: 768px) {
-          padding: 80px 80px 50px 80px ;
+          padding: 0 80px 0 80px ;
       }
   & > div{
     border-right: 1px solid rgba(18, 18, 18, 0.9);
     padding-right: 16px;
+    @media (min-width: 768px) {
+      padding-right: 40px;
+      }
     & > img{
     width: 100%;
     height: 100%;
@@ -101,5 +111,9 @@ const Suggest=styled.div`
  .suggestText {
   font-size: 11px;
   color: rgba(18, 18, 18, 0.9);
+  @media (min-width: 768px) {
+      padding-left: 50px;
+      font-size: 14px;
+      }
 }
 `

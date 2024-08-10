@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
-import Categories from "../units/Categories"
+import Categories from "../components/forHome/Categories"
 
 export default function AllCategory(){
    return(
