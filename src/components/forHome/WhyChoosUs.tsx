@@ -49,7 +49,6 @@ position: relative;
     padding: 40px 16px;
     font-size: 34px;
     font-weight: 600;
-    border-bottom: 1px solid #121212;
     border-right: 1px solid #121212;
     
     @media (min-width: 768px){
@@ -57,7 +56,7 @@ position: relative;
         font-size: 50px;
     }
     @media (min-width: 1440px){
-        padding: 230px;
+        padding: 100px;
         font-size: 57px;
     }
    }

@@ -9,9 +9,11 @@ export const Global = createGlobalStyle`
     box-sizing: border-box;
     font-family: Gilroy, sans-serif;
 }
+
 html{
     font-size: 62.5%;
 }
+
 body{
  background-color: #fff;
 
@@ -28,3 +30,4 @@ body{
   opacity: 1; /* Make the text visible */
   transform: translateY(0); /* Move the text to its final position */
 }
+`

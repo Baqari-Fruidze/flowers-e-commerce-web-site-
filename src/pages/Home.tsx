@@ -1,9 +1,11 @@
 
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
-import AllCategoryforHome from "../units/AllCategoriesForHome"
-import AboutUs from "../units/AboutUs"
-import WhyChooseUs from "../units/WhyChoosUs"
+import AllCategoryforHome from "../components/forHome/AllCategoriesForHome"
+import AboutUs from "../components/forHome/AboutUs"
+import WhyChooseUs from "../components/forHome/WhyChoosUs"
+import LetTalk from "../components/forHome/LetTalk"
+import OurService from "../components/forHome/OurService";
  
 export default function AllCategory(){
    return(
@@ -12,13 +14,13 @@ export default function AllCategory(){
     <AllCategoryforHome />
     <AboutUs />
     <WhyChooseUs />
-    {/* <LetTalk /> */}
-    {/* <OurService /> */}
+    <LetTalk />
+    <OurService />
     {/* <FlowerSubcriptions /> */}
     {/* <OurClientsSay /> */}
     </HomeDiv>
 </>
-    )
+   )
 
 }
 
