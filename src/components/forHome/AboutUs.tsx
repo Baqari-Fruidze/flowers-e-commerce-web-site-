@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function AboutUs(){
+    AOS.init({
+        duration: 1200,
+      })
    return(
-    <MainCont>
-        <p>About us</p>
+    <MainCont >
+        <p data-aos="zoom-in">About us</p>
         <Description>
-            <p className = "ourStory">OUR STORY</p>
+            <p className = "ourStory" data-aos="zoom-in">OUR STORY</p>
             <p className = "shopName">Flowers Luxurious Bouquets</p>
-            <p className="description">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
+            <p className="description" data-aos="fade-up">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
             <p className="learnMore">LEARN MORE</p>
         </Description>
     </MainCont>

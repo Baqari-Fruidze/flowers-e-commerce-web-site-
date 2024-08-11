@@ -1,8 +1,10 @@
 import Reacte from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useEffect } from "react";
 import data from "../../data.json"
 import { Link, useNavigate } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function AllCategory(){
     useEffect(() => {
@@ -17,6 +19,10 @@ export default function AllCategory(){
 
       const navigate = useNavigate() 
 
+      AOS.init({
+        duration: 1200,
+      })
+
     return(
 <>
 
@@ -26,21 +32,30 @@ export default function AllCategory(){
         <Category key={index}>
             <TitleCategory style={{borderRight: "solid 1px #121212"}}>
                 <span>{item.name}</span>
-                <div>
+                <div >
                     <Link className="shopNow" to={`/${item.name}`}>Shop now</Link>
-                    <svg width="24" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.64 6 14.18 7.504 17.5 11h-14v2h14l-3.298 3.503L15.667 18l5.833-6.014L15.64 6z" fill="#000"/></svg>
+                    <svg 
+                    className="arrowLeft"
+                    width="24" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.64 6 14.18 7.504 17.5 11h-14v2h14l-3.298 3.503L15.667 18l5.833-6.014L15.64 6z" fill="#000"/></svg>
                 </div>
             </TitleCategory>
-            <ImageCategory onClick={()=>navigate(`/${item.name}`)}><img src={item.image} alt="" /></ImageCategory>
+            <ImageCategory  onClick={()=>navigate(`/${item.name}`)}><img src={item.image} alt="" /></ImageCategory>
         </Category>
         :
         <Category key={index}>
-        <ImageCategory onClick={()=>navigate(`/${item.name}`)} style={{borderRight: "solid 1px #121212"}}><img src={item.image} alt="" /></ImageCategory>
+            <ImageCategory 
+            onClick={()=>navigate(`/${item.name}`)} 
+            style={{borderRight: "solid 1px #121212"}}>
+            <img src={item.image} alt="" />
+            </ImageCategory>
         <TitleCategory>
             <span>{item.name}</span>
             <div>
-            <Link className="shopNow" to={`/${item.name}`}>Shop now</Link>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11v2H7l3.641 3.5L9.113 18 3 12l6.113-6 1.528 1.5L7 11h14z" fill="#000"/></svg>
+                <svg 
+                className="arrowRight"
+                style={{marginLeft: "10px"}}
+                width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11v2H7l3.641 3.5L9.113 18 3 12l6.113-6 1.528 1.5L7 11h14z" fill="#000"/></svg>
+                <Link className="shopNow" to={`/${item.name}`}>Shop now</Link>
             </div>
            
         </TitleCategory>
@@ -51,6 +66,26 @@ export default function AllCategory(){
 </>
     )
 }
+
+
+
+const arrowMove = keyframes`
+  20% {
+    transform: translateX(50%);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+`
+
+const imgZoom = keyframes`
+20% {
+  transform: scale(1.05);
+}
+30% {
+    transform: scale(1);
+}
+`
 
 const Categories=styled.div`
     display: grid;
@@ -68,7 +103,8 @@ const Categories=styled.div`
 `
 const Category=styled.div`
     display: flex;
-    height: 200px; 
+    height: 200px;
+    
 `
 const TitleCategory=styled.p`
     border-top: solid 1px #121212;
@@ -80,33 +116,47 @@ const TitleCategory=styled.p`
     align-items: center;
     padding: 25% 0 10px 0;
     
-        
     & > div{
         display: flex;
         align-items: center;
         justify-content: center;
+        
         & > span{
         font-size: 26px;
-        
         }
-        & > .shopNow{
+        .arrowRight {
+            margin-right: 10px;
+        }
+        &:hover {
+            text-decoration: underline;
+            animation: ${arrowMove} 10s infinite;
+        } 
+    
+        & > .shopNow {
         font-size: 14px;
         margin-right: 10px;
         cursor: pointer;
         text-decoration: none;
         color: #121212;
         text-align: center;
+        letter-spacing: 1.04px;
+        font-weight: 600;
         }
-    
     }
+    
 `
 const ImageCategory=styled.div`
-   border-top: solid 1px #121212;
-   
+    border-top: solid 1px #121212;
     width: 50%;
     font-size: 30px;
+    cursor: pointer;
+    overflow: hidden; //for img animation
     & > img{
         width: 100%;
-        height: 100%
-    }
+        height: 100%;
+        transition: 0.3s; //for img animation
+    }   
+    :hover {
+  transform: scale(1.1); //for img animation
+}
 `
