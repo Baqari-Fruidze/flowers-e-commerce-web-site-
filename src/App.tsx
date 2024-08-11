@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
@@ -11,6 +10,7 @@ import LargeHeader from "./components/LargeHeader";
 import SingleCategory from "./pages/SingleCategory";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -27,9 +27,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all-categories-products" element={<AllCategory />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="/singleCategory" element={<SingleCategory />} />
-          <Route path="signUp" element={<SignUp />} />
-          <Route path="Login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

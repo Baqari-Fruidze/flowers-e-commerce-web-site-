@@ -7,27 +7,25 @@ export const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Gilroy, sans-serif;
 }
 html{
     font-size: 62.5%;
 }
 body{
-
-  
-    background-color: #fff;
+ background-color: #fff;
 
     font-family: "Gilroy", sans-serif;
+  }
 
     .slide-up-text {
-  opacity: 0; /* Start with the text invisible */
-  transform: translateY(20px); /* Start with the text positioned below */
+  opacity: 0; 
+  transform: translateY(20px); 
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .slide-up-text.slide-up {
-  opacity: 1; /* Make the text visible */
-  transform: translateY(0); /* Move the text to its final position */
-}
-
+  opacity: 1; 
+  transform: translateY(0); 
 }
 `;

@@ -1,14 +1,17 @@
 
+
 import React, { useContext } from "react";
 import styled from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import { Context } from "../App";
 import Burger from "./Burger";
 
+
 export default function Header() {
   const { setBurgerToShow, burgerToShow } = useContext(Context);
 
   return (
+
     <Parent>
       <BurgerSvgCon>
         <svg
@@ -102,6 +105,7 @@ const CartCon = styled.div`
     opacity: 0.5;
   }
 `;
+
 
 
 
