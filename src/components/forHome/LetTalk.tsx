@@ -141,6 +141,8 @@ const Contact=styled.div`
     }
     @media (min-width: 1440px){
         padding: 40px 0;
+        border-top: none;
+    border-bottom: none;
     }
     & > .contactUsTitle{
         font-size: 34px;
@@ -220,7 +222,6 @@ const PhoneAdress=styled.div`
             font-size: 16px;
             font-weight: 600;
             
-            
             .open{
                 font-size: 14px;
                 font-weight: 500;
@@ -237,7 +238,6 @@ const PhoneAdress=styled.div`
             display: flex;
             gap: 16px;
             align-items: center;
-            
         }
         span {
             display: flex;
@@ -255,8 +255,12 @@ const PhoneAdress=styled.div`
         font-size: 26px;
         font-weight: 500;
         border-bottom: 1px solid #121212;
+        @media (min-width: 768px){
+            border-left: 1px solid #121212;
+        }
         
     }
+   
    
     
 

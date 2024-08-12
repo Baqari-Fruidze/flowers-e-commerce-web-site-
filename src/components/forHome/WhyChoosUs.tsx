@@ -54,7 +54,7 @@ position: relative;
     padding: 40px 16px;
     font-size: 34px;
     font-weight: 600;
-    border-right: 1px solid #121212;
+    
     
     @media (min-width: 768px){
         padding: 80px 112px;
@@ -73,6 +73,7 @@ const ReasonWhy = styled.div`
   
      @media (min-width: 1440px) {
        overflow-y: auto;
+        border-left: 1px solid #121212;
    }
 
    & > div{

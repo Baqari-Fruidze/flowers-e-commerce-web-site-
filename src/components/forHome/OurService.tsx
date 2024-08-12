@@ -37,7 +37,6 @@ const OurServ=styled.div`
     font-size: 34px;
     padding: 40px 16px;
     text-align: left;
-    border-bottom: 1px solid #121212;
     @media (min-width: 768px){
         text-align: center;
     }
@@ -50,7 +49,7 @@ const OurServ=styled.div`
 const Services=styled.div`
     display: flex;
     flex-direction: column;
-
+    border-top: 1px solid #121212;
     .serviceImg{
         background-image: url("serviceImage");
     
