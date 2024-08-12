@@ -6,22 +6,20 @@ import AllCategoryforHome from "../components/forHome/AllCategoriesForHome"
 import AboutUs from "../components/forHome/AboutUs"
 import WhyChooseUs from "../components/forHome/WhyChoosUs"
 import LetTalk from "../components/forHome/LetTalk"
-import OurService from "../components/forHome/OurService";
+import OurService from "../components/forHome/OurService"
+import Wedding from "../components/forHome/Wedding"
 
  
 export default function AllCategory(){
    return(
 <>
     <HomeDiv>
-    <AllCategoryforHome />
-    <AboutUs />
-    <WhyChooseUs />
-
-    <LetTalk />
-    <OurService />
-
-    {/* <FlowerSubcriptions /> */}
-    {/* <OurClientsSay /> */}
+        <AllCategoryforHome />
+        <AboutUs />
+        <WhyChooseUs />
+        <LetTalk />
+        <OurService />
+        <Wedding />
     </HomeDiv>
 </>
 
