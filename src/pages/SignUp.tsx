@@ -31,7 +31,7 @@ const Btn = styled.button`
   margin-top: 2.4rem;
   &:hover {
     cursor: pointer;
-    color: purple;
+    color: orange;
   }
 `;
 const InputStyles = styled.input`

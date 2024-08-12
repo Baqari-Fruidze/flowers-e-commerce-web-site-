@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
 import { Tlogin } from "../types/Login";
 
-
 export default function Login() {
   const {
     register,
