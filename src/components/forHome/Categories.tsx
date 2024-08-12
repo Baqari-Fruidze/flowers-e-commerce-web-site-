@@ -106,10 +106,10 @@ const Category=styled.div`
     height: 200px;
     
 `
-const TitleCategory=styled.p`
+const TitleCategory=styled.div`
     border-top: solid 1px #121212;
     width: 50%;
-    font-size: 30px;
+    font-size: 26px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -121,9 +121,11 @@ const TitleCategory=styled.p`
         align-items: center;
         justify-content: center;
         
-        & > span{
-        font-size: 26px;
-        }
+        /* & > span{
+        font-size: 10px;
+        text-align: center;
+        color: red;
+        } */
         .arrowRight {
             margin-right: 10px;
         }

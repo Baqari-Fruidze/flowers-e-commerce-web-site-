@@ -28,7 +28,7 @@ export default function LetTalk(){
 
         <Contact>
            
-            <p className="contactUsTitle" data-aos="zoom-in">To Contact Us</p>
+            <p className="contactUsTitle" data-aos="fade-up">To Contact Us</p>
             <p  className="contactUsDescr">We will call you back</p>
             <div className="bookACall">
                 <input 
