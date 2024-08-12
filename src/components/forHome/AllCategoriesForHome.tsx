@@ -2,14 +2,19 @@ import styled from "styled-components";
 import Reacte, { useEffect } from "react";
 import data from "../../data.json"
 import Categories from "./Categories"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function AllCategory(){
+  AOS.init({
+    duration: 1200,
+  })
    return(
 <>
 <MainCont>
     <Greating>
         <ShopName>
-            <p className="shopName">Flowers Luxurious Bouquets<span>®</span></p>
+            <p className="shopName" data-aos="fade-down-right" >Flowers Luxurious Bouquets<span>®</span></p>
             <p className="shopGreating">Discover Uniquely Crafted Bouquets and Gifts for Any Occasion: Spread Joy with Our Online Flower Delivery Service</p>
         </ShopName>
 
@@ -17,7 +22,7 @@ export default function AllCategory(){
           <div>
             <img src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/64a03d676a877d080695084a_ewddewd%201.webp"} alt="" />
           </div>  
-            <p className="suggestText">Experience the joy of giving with our modern floral studio. Order online and send fresh flowers, plants and gifts today.</p>
+            <p className="suggestText" data-aos="fade-up" >Experience the joy of giving with our modern floral studio. Order online and send fresh flowers, plants and gifts today.</p>
         </Suggest>
     </Greating>
 

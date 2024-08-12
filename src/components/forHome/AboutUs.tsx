@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function AboutUs(){
+    AOS.init({
+        duration: 1200,
+      })
    return(
-    <MainCont>
-        <p>About us</p>
+    <MainCont >
+        <p data-aos="zoom-in">About us</p>
         <Description>
-            <p className = "ourStory">OUR STORY</p>
-            <p className = "shopName">Flowers Luxurious Bouquets</p>
-            <p className="description">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
+            <p className = "ourStory" >OUR STORY</p>
+            <p className = "shopName" data-aos="fade-up">Flowers Luxurious Bouquets</p>
+            <p className="description" data-aos="fade-up">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
             <p className="learnMore">LEARN MORE</p>
         </Description>
     </MainCont>
@@ -27,7 +32,7 @@ const MainCont=styled.div`
     padding: 40px 16px;
     font-size: 34px;
     font-weight: 600;
-    border-bottom: 1px solid #121212;
+    /* border-bottom: 1px solid #121212; */
     @media (min-width: 768px){
         padding: 80px 112px;
         font-size: 50px;
@@ -43,12 +48,14 @@ const Description=styled.div`
     padding: 40px 16px;
     font-weight: 500;
     color: #121212;
-    /* border-left: 1px solid #121212; */
+    
     @media (min-width: 768px){
         padding: 80px;
+        border-top: 1px solid #121212;
     }
     @media (min-width: 1440px){
         padding: 100px 70px;
+        border-left: 1px solid #121212;
     }
 
     .ourStory{
