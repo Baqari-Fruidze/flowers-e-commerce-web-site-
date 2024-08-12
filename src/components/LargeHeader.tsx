@@ -7,7 +7,7 @@ export default function LargeHeader() {
   return (
     <Parent>
       <HomeCon>
-        <Link>Home</Link>
+        <Link to={"/"}>Home</Link>
       </HomeCon>
       <ContactCon>
         <Link>Contact</Link>
@@ -16,7 +16,7 @@ export default function LargeHeader() {
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        <Link>Sign In</Link>
+        <Link to={"login"}>Sign In</Link>
       </SignInCon>
       <CartCon>
         <svg
