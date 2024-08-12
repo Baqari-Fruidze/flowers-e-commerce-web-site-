@@ -41,13 +41,13 @@ export default function AllCategory() {
                   </div>
                 </TitleCategory>
                 <ImageCategory>
-                  <img src={item.img} alt="" />
+                  <img src={item.image} alt="" />
                 </ImageCategory>
               </Category>
             ) : (
               <Category key={index}>
                 <ImageCategory>
-                  <img src={item.img} alt="" />
+                  <img src={item.image} alt="" />
                 </ImageCategory>
                 <TitleCategory>
                   <span>{item.name}</span>
