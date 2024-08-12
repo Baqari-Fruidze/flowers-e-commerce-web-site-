@@ -4,7 +4,6 @@ import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AllCategory from "./pages/AllCategory";
-
 import { useMediaQuery } from "@uidotdev/usehooks";
 import LargeHeader from "./components/LargeHeader";
 import SingleCategory from "./pages/SingleCategory";
@@ -15,7 +14,6 @@ export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
 });
-
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);

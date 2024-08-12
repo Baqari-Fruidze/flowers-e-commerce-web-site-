@@ -1,4 +1,4 @@
-export default interface Tlogin {
-  userName: string;
-  password: string;
-}
+export  interface Tlogin {
+    userName: string;
+    password: string;
+  }
