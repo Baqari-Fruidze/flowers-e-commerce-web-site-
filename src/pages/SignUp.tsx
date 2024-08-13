@@ -141,6 +141,8 @@ const InputsCon = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
   padding: 0 2.4rem 2.4rem 2.4rem;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  max-width: 50rem;
 `;
