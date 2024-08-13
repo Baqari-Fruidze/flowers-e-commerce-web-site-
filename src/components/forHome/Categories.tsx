@@ -7,16 +7,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function AllCategory(){
-    useEffect(() => {
-        fetch("http://localhost:3000/datas")
-          .then((response) => response.json())
-          .then((data) => {
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
-      }, []);
-
+   
       const navigate = useNavigate() 
 
       AOS.init({
@@ -26,7 +17,6 @@ export default function AllCategory(){
     return(
 <>
 
-    
     <Categories>
         {data.datas[0].categories.map((item, index)=>( index%2 == 0 ?
         <Category key={index}>

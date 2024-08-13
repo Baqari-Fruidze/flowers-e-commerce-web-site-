@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Reacte, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -14,11 +14,34 @@ export default function AboutUs(){
             <p className = "ourStory" >OUR STORY</p>
             <p className = "shopName" data-aos="fade-up">Flowers Luxurious Bouquets</p>
             <p className="description" data-aos="fade-up">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
-            <p className="learnMore">LEARN MORE</p>
+            <button className="learnMore"><p className="anim">LEARN MORE</p></button>
         </Description>
     </MainCont>
    )
 }
+
+const spinWord = keyframes`
+ 0% {
+    transform: translateY(-150%);
+  }
+  20% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+`;
+const spinWords = keyframes`
+  20% {
+    transform: translateY(-150%);
+  }
+  0% {
+    transform: translateY(0%);
+  }
+`;
 
 const MainCont=styled.div`
    display: flex;
@@ -83,7 +106,7 @@ const Description=styled.div`
         font-weight: normal;
     }
 
-    .learnMore{
+    & > button {
         margin-top: 64px;
         padding: 18px 0;
         border: 1px solid #121212;
@@ -91,10 +114,18 @@ const Description=styled.div`
         letter-spacing: 0.35px;
         text-align: center;
         align-items: center;
-        @media (min-width: 768px){
-            font-size: 16px;
-            width: 175px;
-            height: 50px;
+        cursor: pointer;
+    
+    & > .anim {
+                cursor: pointer;
+                animation: ${spinWords} 2s normal;
+                font-size: 16px;
+                opacity: 1;
+            }
+            
+            &:hover > :last-child {
+                animation: ${spinWord} 2s normal;
+                opacity: 0.5;
+            }
         }
-    }
 `

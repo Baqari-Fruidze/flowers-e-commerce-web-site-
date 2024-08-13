@@ -8,6 +8,7 @@ import WhyChooseUs from "../components/forHome/WhyChoosUs"
 import LetTalk from "../components/forHome/LetTalk"
 import OurService from "../components/forHome/OurService"
 import Wedding from "../components/forHome/Wedding"
+import OurClientSey from "../components/forHome/OurClientSay";
 
  
 export default function AllCategory(){
@@ -20,6 +21,7 @@ export default function AllCategory(){
         <LetTalk />
         <OurService />
         <Wedding />
+        <OurClientSey />
     </HomeDiv>
 </>
 
