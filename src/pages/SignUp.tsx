@@ -1,23 +1,105 @@
 import styled from "styled-components";
-
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signUpScema } from "../Scema/SignUpYup";
+import { TSignUp } from "../types/SignUp";
 export default function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(signUpScema) });
+  const inputHandler: SubmitHandler<TSignUp> = (data) => console.log(data);
   return (
     <Parent>
-      <form style={{ width: "100%" }}>
+      <form style={{ width: "100%" }} onSubmit={handleSubmit(inputHandler)}>
         <InputsCon>
-          <InputStyles type="text" placeholder="First Name" />
-          <InputStyles type="text" placeholder="Last Name" />
-          <InputStyles type="text" placeholder="Username" />
-          <InputStyles type="text" placeholder="Email" />
-          <InputStyles type="text" placeholder="Password" />
-          <InputStyles type="text" placeholder="Repeat Password" />
-          <InputStyles type="file" />
+          <InputStyles
+            type="text"
+            placeholder="First Name"
+            {...register("first_name")}
+          />
+          {errors.first_name ? (
+            <FirsNameSpan>{errors.first_name.message}</FirsNameSpan>
+          ) : null}
+          <InputStyles
+            type="text"
+            placeholder="Last Name"
+            {...register("last_name")}
+          />
+          {errors.last_name ? (
+            <LastNameSpan>{errors.last_name.message}</LastNameSpan>
+          ) : null}
+          <InputStyles
+            type="text"
+            placeholder="Username"
+            {...register("username")}
+          />
+          {errors.username ? (
+            <UserNameSpan>{errors.username.message}</UserNameSpan>
+          ) : null}
+          <InputStyles type="text" placeholder="Email" {...register("email")} />{" "}
+          {errors.email ? <EmailSpan>{errors.email.message}</EmailSpan> : null}
+          <InputStyles
+            type="text"
+            placeholder="Password"
+            {...register("password")}
+          />
+          {errors.password ? (
+            <PaswordSpan>{errors.password.message}</PaswordSpan>
+          ) : null}
+          <InputStyles type="file" {...register("profilePicture")} />
           <Btn>Register</Btn>
         </InputsCon>
       </form>
     </Parent>
   );
 }
+const PaswordSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 21.5rem;
+  right: 4rem;
+  letter-spacing: 1px;
+`;
+const EmailSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 16.5rem;
+  right: 4rem;
+  letter-spacing: 1px;
+`;
+const UserNameSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 11.5rem;
+  right: 4rem;
+  letter-spacing: 1px;
+`;
+const LastNameSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 6.5rem;
+  right: 4rem;
+  letter-spacing: 1px;
+`;
+const FirsNameSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  letter-spacing: 1px;
+`;
 const Btn = styled.button`
   letter-spacing: 2px;
   font-weight: 500;
@@ -56,6 +138,7 @@ const Parent = styled.div`
   padding: 10rem 2.4rem;
 `;
 const InputsCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
