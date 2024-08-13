@@ -12,7 +12,10 @@ export default function SignUp() {
   const inputHandler: SubmitHandler<TSignUp> = (data) => console.log(data);
   return (
     <Parent>
-      <form style={{ width: "100%" }} onSubmit={handleSubmit(inputHandler)}>
+      <form
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        onSubmit={handleSubmit(inputHandler)}
+      >
         <InputsCon>
           <InputStyles
             type="text"
