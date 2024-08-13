@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -36,7 +36,7 @@ export default function LetTalk(){
                     type="number" 
                     placeholder="+995 XXX XXX XXX"
                     />
-                <button className="bookACallBtn" >BOOK A CALL</button>
+                <button className="bookACallBtn" ><p className="anim">BOOK A CALL</p></button>
             </div>
         
 
@@ -69,6 +69,24 @@ export default function LetTalk(){
     </>
     )
 }
+
+const spinWord = keyframes`
+  20% {
+    transform: translateY(0%);
+  }
+  0% {
+    transform: translateY(-150%);
+  }
+`;
+const spinWords = keyframes`
+  20% {
+    transform: translateY(0%);
+  }
+  0% {
+    transform: translateY(150%);
+  }
+`;
+
 
 const ToContactUs=styled.div`
     display: flex;
@@ -136,6 +154,8 @@ const Contact=styled.div`
     border-top: 1px solid #121212;
     border-bottom: 1px solid #121212;
     font-family: Gilroy sans-serif;
+
+    
     @media (min-width: 768px){
         padding: 16px 0 0 0;
     }
@@ -166,6 +186,9 @@ const Contact=styled.div`
         display: flex;
             flex-direction: column;
             gap: 16px;
+            overflow-y: hidden;
+            cursor: pointer;
+          
         @media (min-width: 768px) {
             display: flex;
             flex-direction: row;
@@ -197,8 +220,23 @@ const Contact=styled.div`
             @media (min-width: 768px){
                 width: 296px;
             }
+            & > .anim {
+                cursor: pointer;
+                animation: ${spinWords} 3s normal;
+                font-size: 16px;
+                opacity: 1;
+            }
+            
+            &:hover > :last-child {
+                animation: ${spinWord} 3s normal;
+                opacity: 0.5;
+            }
 
         }
+
+        
+ 
+
     }
     
 `
@@ -260,8 +298,5 @@ const PhoneAdress=styled.div`
         }
         
     }
-   
-   
-    
-
 `
+
