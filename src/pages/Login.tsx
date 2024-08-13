@@ -14,7 +14,10 @@ export default function Login() {
 
   return (
     <Outside>
-      <form onSubmit={handleSubmit(inputsData)} style={{ width: "100%" }}>
+      <form
+        onSubmit={handleSubmit(inputsData)}
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
         <Parent>
           <InputsCon>
             <UsernameInput
@@ -129,7 +132,6 @@ const RestorePasswordSpan = styled.span`
 `;
 const ForgotPassworsSpan = styled.span`
   color: var(--Gray, #808080);
-
   font-family: Gilroy;
   font-size: 16px;
   font-style: normal;
@@ -150,7 +152,7 @@ const PasswordInput = styled.input<{ eror?: string }>`
   letter-spacing: 2px;
   padding: 1.5rem 0 1.5rem 2rem;
   border: none;
-  border-bottom: 1px solid ${(props) => (props ? " red" : "#121212")};
+  border-bottom: 1px solid ${(props) => (props.eror ? " red" : "#121212")};
   outline: none;
   &::placeholder {
     opacity: 0.5;
@@ -164,7 +166,7 @@ const UsernameInput = styled.input<{ eror?: string }>`
   letter-spacing: 2px;
   padding: 1.5rem 0 1.5rem 2rem;
   border: none;
-  border-bottom: 1px solid ${(props) => (props ? " red" : "#121212")};
+  border-bottom: 1px solid ${(props) => (props.eror ? " red" : "#121212")};
   outline: none;
 
   &::placeholder {
@@ -192,5 +194,6 @@ const Outside = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   min-height: 100vh;
 `;

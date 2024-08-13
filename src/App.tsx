@@ -44,7 +44,7 @@ function App() {
           <Route path="/all-categories-products" element={<AllCategory />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/singleCategory" element={<SingleCategory />} />
+          <Route path="/:singleCategory" element={<SingleCategory />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
