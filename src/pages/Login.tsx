@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
 import {Tlogin} from "../types/Login"
 
-
 export default function Login() {
   const {
     register,
@@ -12,21 +11,33 @@ export default function Login() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schemaLogin) });
   const inputsData: SubmitHandler<Tlogin> = (data) => console.log(data);
+
   return (
     <Outside>
-      <form onSubmit={handleSubmit(inputsData)} style={{ width: "100%" }}>
+      <form
+        onSubmit={handleSubmit(inputsData)}
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
         <Parent>
           <InputsCon>
             <UsernameInput
               type="text"
               placeholder="userName"
               {...register("userName")}
+              eror={errors.userName?.message}
             />
+            {errors.userName ? (
+              <UsernameErorSpan>{errors.userName?.message}</UsernameErorSpan>
+            ) : null}
             <PasswordInput
               type="text"
               placeholder="password"
               {...register("password")}
+              eror={errors.password?.message}
             />
+            {errors.password ? (
+              <PaswordErorSpan>{errors.password?.message}</PaswordErorSpan>
+            ) : null}
             <Btn>Login</Btn>
           </InputsCon>
 
@@ -46,6 +57,22 @@ export default function Login() {
   );
 }
 
+const PaswordErorSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  right: 4rem;
+  top: 7rem;
+`;
+const UsernameErorSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  right: 4rem;
+  top: 2rem;
+`;
 const Btn = styled.button`
   letter-spacing: 2px;
   font-weight: 500;
@@ -105,7 +132,6 @@ const RestorePasswordSpan = styled.span`
 `;
 const ForgotPassworsSpan = styled.span`
   color: var(--Gray, #808080);
-
   font-family: Gilroy;
   font-size: 16px;
   font-style: normal;
@@ -118,7 +144,7 @@ const TexstCon = styled.div`
   gap: 2.4rem;
   padding: 2rem;
 `;
-const PasswordInput = styled.input`
+const PasswordInput = styled.input<{ eror?: string }>`
   color: var(--Gray, #808080);
   width: 100%;
   font-size: 16px;
@@ -126,13 +152,13 @@ const PasswordInput = styled.input`
   letter-spacing: 2px;
   padding: 1.5rem 0 1.5rem 2rem;
   border: none;
-  border-bottom: 1px solid #121212;
+  border-bottom: 1px solid ${(props) => (props.eror ? " red" : "#121212")};
   outline: none;
   &::placeholder {
     opacity: 0.5;
   }
 `;
-const UsernameInput = styled.input`
+const UsernameInput = styled.input<{ eror?: string }>`
   color: var(--Gray, #808080);
   width: 100%;
   font-size: 16px;
@@ -140,7 +166,7 @@ const UsernameInput = styled.input`
   letter-spacing: 2px;
   padding: 1.5rem 0 1.5rem 2rem;
   border: none;
-  border-bottom: 1px solid #121212;
+  border-bottom: 1px solid ${(props) => (props.eror ? " red" : "#121212")};
   outline: none;
 
   &::placeholder {
@@ -152,6 +178,7 @@ const InputsCon = styled.div`
   padding-right: 2.4rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 const Parent = styled.div`
   width: 100%;
@@ -167,4 +194,6 @@ const Outside = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  min-height: 100vh;
 `;

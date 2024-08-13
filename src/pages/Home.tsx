@@ -1,6 +1,6 @@
-
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
+
 
 import AllCategoryforHome from "../components/forHome/AllCategoriesForHome"
 import AboutUs from "../components/forHome/AboutUs"
@@ -30,9 +30,10 @@ export default function AllCategory(){
    
 
 
+
 }
 
-const HomeDiv=styled.div`
-    border-left: 1px solid #121212;
-    border-right: 1px solid #121212;
-`
+const HomeDiv = styled.div`
+  border-left: 1px solid #121212;
+  border-right: 1px solid #121212;
+`;
