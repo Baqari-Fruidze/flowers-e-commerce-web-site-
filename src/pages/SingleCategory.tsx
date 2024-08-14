@@ -2,30 +2,43 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import data from "../data.json";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleCategory() {
+  const navigate = useNavigate();
   const { singleCategory } = useParams();
 
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
   );
-  const categoryName = dataToMap?.find((item) => item.category.name)?.category
-    .name;
-  const backgroundImage = dataToMap?.find((item) => item.category.bg_picture)
-    ?.category.bg_picture;
+  // const categoryName = dataToMap?.find((item) => item.category.name)?.category
+  //   .name;
+  let backgroundImage;
+  if (dataToMap) {
+    backgroundImage = dataToMap[0]?.category.bg_picture;
+  }
 
   return (
     <Parent>
       <BackGroundImageCon backImage={backgroundImage}>
-        <ImageCategoryNameSpan>{categoryName}</ImageCategoryNameSpan>
+        <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
       {dataToMap?.map((item, index) => {
         return (
           <>
             <ProductsCon key={index}>
-              <ImageCon backImg={item.src}></ImageCon>
+              <ImageCon
+                backImg={item.src}
+                onClick={() => navigate(`/${item.category.name}/${item.name}`)}
+              ></ImageCon>
               <TextCon>
-                <ItemNameSpan>{item.name}</ItemNameSpan>
+                <ItemNameSpan
+                  onClick={() =>
+                    navigate(`/${item.category.name}/${item.name}`)
+                  }
+                >
+                  {item.name}
+                </ItemNameSpan>
                 <PriceSpan> price ${item.price}</PriceSpan>
               </TextCon>
             </ProductsCon>
