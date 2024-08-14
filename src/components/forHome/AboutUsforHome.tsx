@@ -2,8 +2,9 @@ import styled, { keyframes } from "styled-components";
 import Reacte, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from "react-router-dom";
 
-export default function AboutUs(){
+export default function AboutUsforHome(){
     AOS.init({
         duration: 1200,
       })
@@ -14,31 +15,33 @@ export default function AboutUs(){
             <p className = "ourStory" >OUR STORY</p>
             <p className = "shopName" data-aos="fade-up">Flowers Luxurious Bouquets</p>
             <p className="description" data-aos="fade-up">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
-            <button className="learnMore"><p className="anim">LEARN MORE</p></button>
+            
+            <button className="learnMore"><p className="anim"><Link to={"/about-us"}>LEARN MORE </Link></p></button>
+           
         </Description>
     </MainCont>
    )
 }
 
 const spinWord = keyframes`
- 0% {
-    transform: translateY(-150%);
+ 20% {
+    transform: translateY(-100%);
   }
   20% {
     transform: translateY(0%);
   }
   50% {
-    transform: translateY(150%);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(0%);
   }
 `;
 const spinWords = keyframes`
-  20% {
-    transform: translateY(-150%);
+  30% {
+    transform: translateY(-100%);
   }
-  0% {
+  10% {
     transform: translateY(0%);
   }
 `;
@@ -108,13 +111,19 @@ const Description=styled.div`
     & > button {
         width: 100%;
         margin-top: 64px;
-        padding: 18px 0;
+        padding: 29px 0;
         border: 1px solid #121212;
         font-size: 14px;
         letter-spacing: 0.35px;
-        text-align: center;
+        /* text-align: center; */
         align-items: center;
         cursor: pointer;
+        :hover{
+            background-color: #121212;
+            color: #fff;
+            opacity: 1;
+        }
+        
         @media (min-width: 1440px){
             width: 30%;
             font-size: 24px;
@@ -131,5 +140,8 @@ const Description=styled.div`
                 animation: ${spinWord} 2s normal;
                 opacity: 0.5;
             }
+          
         }
+       
+        
 `
