@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 export default function AllCategory() {
   const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ export default function AllCategory() {
           index % 2 == 0 ? (
             <Category key={index}>
               <TitleCategory style={{ borderRight: "solid 1px #121212" }}>
+
                 <span>{item.name}</span>
                 <div>
                   <Link className="shopNow" to={`/${item.name}`}>

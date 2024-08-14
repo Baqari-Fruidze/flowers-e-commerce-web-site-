@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import data from "../../data.json";
@@ -16,11 +17,12 @@ export default function OurClientSey(){
 
 
     console.log(sliderDots)
- 
+
     return(
         <>
         <MainCont>
             <img src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/644c14578243042ce032ac85_google%20logo.png"} alt="" />
+
             <p>REVIEWS</p>
             <h1>Our Client say</h1>
 
@@ -37,6 +39,7 @@ export default function OurClientSey(){
             <Slide>
                 <div onClick={isActive}></div>
                 <div onClick={isActive}></div>
+
             </Slide>
 
             <button>READ REVIEWS</button>
@@ -50,16 +53,19 @@ const MainCont=styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+
     align-items: center;
     gap: 16px;
-    padding: 43.5px 16px;
+    padding: 40px 43.5px;
+    font-family: Gilroy;
     img{
-        width: 76px;
+        width: 77px;
+
         height: 28px;
     }
 
     p{
+
         font-size: 14px;
         font-weight: 500;
         line-height: 1.2;
@@ -67,11 +73,13 @@ const MainCont=styled.div`
             font-size: 32px;
             font-weight: 500;
         }
+
     }
 
     h1{
         font-size: 34px;
         font-weight: 600;
+
         line-height: 1.2;
         @media (min-width: 768px){
             font-size: 52px;
@@ -125,9 +133,11 @@ const ReviewMap=styled.div`
         }
 `
 
+
 const Slide=styled.div`
     display: flex;
     gap: 4px;
+
     margin-top: 25px;
     & > div{
         border-radius: 50%;
@@ -135,6 +145,6 @@ const Slide=styled.div`
         height: 4px;
         background-color: red;;
     }
-   
+
 `
 

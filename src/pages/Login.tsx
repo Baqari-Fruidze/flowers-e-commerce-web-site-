@@ -2,7 +2,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
-import { TLogin } from "../types/Login";
+
+import {Tlogin} from "../types/Login"
+
 
 export default function Login() {
   const {
