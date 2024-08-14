@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Reacte, { useEffect } from "react";
 import AllCategoryforHome from "../components/forHome/AllCategoriesForHome";
-import AboutUs from "../components/forHome/AboutUs";
+import AboutUsforHome from "../components/forHome/AboutUsforHome";
 import WhyChooseUs from "../components/forHome/WhyChoosUs";
 import LetTalk from "../components/forHome/LetTalk";
 import OurService from "../components/forHome/OurService";
@@ -15,7 +15,7 @@ export default function AllCategory() {
       <HomeDiv>
 
         <AllCategoryforHome />
-        <AboutUs />
+        <AboutUsforHome />
         <WhyChooseUs />
         <LetTalk />
         <OurService />
