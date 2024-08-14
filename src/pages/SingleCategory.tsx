@@ -2,8 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import data from "../data.json";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleCategory() {
+  const navigate = useNavigate();
   const { singleCategory } = useParams();
 
   const dataToMap = data.datas[1].flowers?.filter(
@@ -25,9 +27,18 @@ export default function SingleCategory() {
         return (
           <>
             <ProductsCon key={index}>
-              <ImageCon backImg={item.src}></ImageCon>
+              <ImageCon
+                backImg={item.src}
+                onClick={() => navigate(`/${item.category.name}/${item.name}`)}
+              ></ImageCon>
               <TextCon>
-                <ItemNameSpan>{item.name}</ItemNameSpan>
+                <ItemNameSpan
+                  onClick={() =>
+                    navigate(`/${item.category.name}/${item.name}`)
+                  }
+                >
+                  {item.name}
+                </ItemNameSpan>
                 <PriceSpan> price ${item.price}</PriceSpan>
               </TextCon>
             </ProductsCon>
