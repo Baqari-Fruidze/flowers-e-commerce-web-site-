@@ -10,14 +10,9 @@ export default function OurClientSey(){
 
     const isActive = () => {
         setSliderDots(!sliderDots)
-    
     }
 
     const filtered = data.datas[2]?.users.filter((item)=>item.review.length > 0 )
-
-
-    console.log(sliderDots)
-
     return(
         <>
         <MainCont>
@@ -26,20 +21,17 @@ export default function OurClientSey(){
             <p>REVIEWS</p>
             <h1>Our Client say</h1>
 
-    <div>        
-        
-        <ReviewMap>
-        {sliderDots ? <><p className="reviewDescr">{filtered[0].review}</p> <p className="userName">{filtered[0].username}</p> </> :
-        <><p className="reviewDescr">{filtered[1].review}</p> <p className="userName">{filtered[1].username}</p> </>
-        }
-        </ReviewMap> 
-        
-        
-</div>
+            <div> 
+                <ReviewMap>
+                {sliderDots ? <><p className="reviewDescr">{filtered[0].review}</p> <p className="userName">{filtered[0].username}</p> </> :
+                <><p className="reviewDescr">{filtered[1].review}</p> <p className="userName">{filtered[1].username}</p> </>
+                }
+                </ReviewMap>  
+            </div>
+            
             <Slide>
-                <div onClick={isActive}></div>
-                <div onClick={isActive}></div>
-
+                <div style={{backgroundColor: sliderDots ? "#808080" : "#222"}} onClick={isActive}></div>
+                <div style={{backgroundColor: !sliderDots ? "#c4c2c2" : "#222"}} onClick={isActive}></div>
             </Slide>
 
             <button>READ REVIEWS</button>
@@ -53,19 +45,27 @@ const MainCont=styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     align-items: center;
     gap: 16px;
     padding: 40px 43.5px;
     font-family: Gilroy;
+    @media (min-width: 768px){
+        padding: 60px 100px;
+    }
+    @media (min-width: 1440px){
+        padding: 200px 270px 100px;
+    }
+
     img{
         width: 77px;
-
         height: 28px;
+        @media (min-width: 768px){
+            width: 120px;
+            height: 40px;
+        }
     }
 
     p{
-
         font-size: 14px;
         font-weight: 500;
         line-height: 1.2;
@@ -73,25 +73,14 @@ const MainCont=styled.div`
             font-size: 32px;
             font-weight: 500;
         }
-
     }
 
     h1{
         font-size: 34px;
         font-weight: 600;
-
         line-height: 1.2;
         @media (min-width: 768px){
             font-size: 52px;
-        }
-
-        .reviewDescr{
-        font-size: 16px;
-        line-height: 1.4;
-        opacity: 0.85;
-        @media (min-width: 768px){
-            font-size: 30px;
-            }
         }
     }
 
@@ -99,9 +88,9 @@ const MainCont=styled.div`
         background-color: transparent; 
         color: #121212;
         border: 2px solid #121212;
-        width: 70%;
+        width: 100%;
         padding: 16px;
-        margin-top: 35px;
+        margin-top: 70px;
         font-size: 14px;
         font-weight: 500;
         line-height: 1;
@@ -109,12 +98,12 @@ const MainCont=styled.div`
         @media (min-width: 768px){
             font-size: 34px;
             width: 80%;
-            margin-top: 200px;
+            margin-top: 20px;
         }
         @media (min-width: 1440px){
             font-size: 34px;
-            width: 30%;
-            margin-top: 150px;
+            width: 50%;
+            margin-top: 50px;
         }
     }
     
@@ -123,27 +112,37 @@ const MainCont=styled.div`
 const ReviewMap=styled.div`
         display: flex;
         flex-direction: column;
+        text-align: center;
         gap: 16px;
         margin-top: 25px;
+        height: 200px;
         .reviewDescr,
-        .userName
-        {
+        .userName {
+            font-size: 16px;
+            opacity: 0.85;
+            @media (min-width: 768px){
+                font-size: 30px;
+                }
+        }
+        .reviewDescr{
+            font-style: italic;
             font-size: 22px;
-            opacity: 0.8;
+            line-height: 1.4;
+            letter-spacing: 1.2px;
+            font-family: gilroy;
         }
 `
 
 
 const Slide=styled.div`
     display: flex;
-    gap: 4px;
-
-    margin-top: 25px;
+    gap: 8px;
+    margin-top: 55px;
     & > div{
         border-radius: 50%;
-        width: 4px;
-        height: 4px;
-        background-color: red;;
+        width: 15px;
+        height: 15px;
+        background-color: #d2d2d7;
     }
 
 `

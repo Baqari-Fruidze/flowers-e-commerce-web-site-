@@ -55,7 +55,6 @@ const MainCont=styled.div`
     padding: 40px 16px;
     font-size: 34px;
     font-weight: 600;
-    /* border-bottom: 1px solid #121212; */
     @media (min-width: 768px){
         padding: 80px 112px;
         font-size: 50px;
@@ -107,6 +106,7 @@ const Description=styled.div`
     }
 
     & > button {
+        width: 100%;
         margin-top: 64px;
         padding: 18px 0;
         border: 1px solid #121212;
@@ -115,6 +115,10 @@ const Description=styled.div`
         text-align: center;
         align-items: center;
         cursor: pointer;
+        @media (min-width: 1440px){
+            width: 30%;
+            font-size: 24px;
+        }
     
     & > .anim {
                 cursor: pointer;
