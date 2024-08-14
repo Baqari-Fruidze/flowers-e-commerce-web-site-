@@ -1,6 +1,5 @@
 import Reacte from "react";
 import styled, { keyframes } from "styled-components";
-import { useEffect } from "react";
 import data from "../../data.json";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
