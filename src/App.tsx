@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import { useLocation } from "react-router-dom";
+import SingleProduct from "./pages/SingleProduct";
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -45,6 +46,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
+          <Route
+            path="/:singleCategory/:singleProduct"
+            element={<SingleProduct />}
+          />
         </Routes>
         <FooterChanger />
       </BrowserRouter>

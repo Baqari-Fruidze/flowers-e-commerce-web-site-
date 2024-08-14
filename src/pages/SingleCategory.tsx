@@ -9,15 +9,17 @@ export default function SingleCategory() {
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
   );
-  const categoryName = dataToMap?.find((item) => item.category.name)?.category
-    .name;
-  const backgroundImage = dataToMap?.find((item) => item.category.bg_picture)
-    ?.category.bg_picture;
+  // const categoryName = dataToMap?.find((item) => item.category.name)?.category
+  //   .name;
+  let backgroundImage;
+  if (dataToMap) {
+    backgroundImage = dataToMap[0]?.category.bg_picture;
+  }
 
   return (
     <Parent>
       <BackGroundImageCon backImage={backgroundImage}>
-        <ImageCategoryNameSpan>{categoryName}</ImageCategoryNameSpan>
+        <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
       {dataToMap?.map((item, index) => {
         return (
