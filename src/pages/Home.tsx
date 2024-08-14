@@ -6,6 +6,9 @@ import AboutUs from "../components/forHome/AboutUs";
 import WhyChooseUs from "../components/forHome/WhyChoosUs";
 import LetTalk from "../components/forHome/LetTalk";
 import OurService from "../components/forHome/OurService";
+import Wedding from "../components/forHome/Weddind";
+import OurClientSey from "../components/forHome/OurClientSay";
+
 
 export default function AllCategory() {
   return (
@@ -14,12 +17,10 @@ export default function AllCategory() {
         <AllCategoryforHome />
         <AboutUs />
         <WhyChooseUs />
-
         <LetTalk />
         <OurService />
-
-        {/* <FlowerSubcriptions /> */}
-        {/* <OurClientsSay /> */}
+        <Wedding />
+        <OurClientSey />
       </HomeDiv>
     </>
   );
