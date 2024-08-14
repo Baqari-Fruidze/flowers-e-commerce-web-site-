@@ -32,6 +32,7 @@ export default function OurClientSey(){
         }
         </ReviewMap> 
         
+        
 </div>
             <Slide>
                 <div onClick={isActive}></div>
@@ -54,7 +55,7 @@ const MainCont=styled.div`
     gap: 16px;
     padding: 43.5px 16px;
     img{
-        width: 77px;
+        width: 76px;
         height: 28px;
     }
 
