@@ -12,8 +12,12 @@ export default function AllCategory(){
    return(
 <>
 <MainCont>
+
+
+
+  
     <Greating>
-        <ShopName>
+          <ShopName>
             <p className="shopName" data-aos="fade-down-right" >Flowers Luxurious Bouquets<span>®</span></p>
             <p className="shopGreating">Discover Uniquely Crafted Bouquets and Gifts for Any Occasion: Spread Joy with Our Online Flower Delivery Service</p>
         </ShopName>
