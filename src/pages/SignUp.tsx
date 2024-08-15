@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpScema } from "../Scema/SignUpYup";
 import { TSignUp } from "../types/SignUp";
+
 export default function SignUp() {
   const {
     register,
@@ -56,8 +57,11 @@ export default function SignUp() {
         </InputsCon>
       </form>
     </Parent>
+   
   );
 }
+
+
 const PaswordSpan = styled.span`
   color: red;
   font-size: 14px;
@@ -149,3 +153,4 @@ const InputsCon = styled.div`
   min-height: 100vh;
   max-width: 50rem;
 `;
+

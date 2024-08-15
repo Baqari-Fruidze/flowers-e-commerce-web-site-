@@ -2,8 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
-
 import { Tlogin } from "../types/Login";
+import flowerBgimag from "/image/water.jpg";
 
 
 
@@ -201,4 +201,8 @@ const Outside = styled.div`
   justify-content: center;
   margin: 0 auto;
   min-height: 100vh;
+  background-image: url(${flowerBgimag});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  
 `;

@@ -40,7 +40,7 @@ export default function Categories() {
                 </div>
               </TitleCategory>
               <ImageCategory onClick={() => navigate(`/${item.name}`)}>
-              {index == 0 || index == 1 ? <img data-aos = "fade-in" src={item.image} alt="" /> : <img src={item.image} alt="" />}
+              <img src={item.image} alt="" />
               </ImageCategory>
             </Category>
           ) : (
@@ -49,7 +49,7 @@ export default function Categories() {
                 onClick={() => navigate(`/${item.name}`)}
                 style={{ borderRight: "solid 1px #121212" }}
               >
-                {index == 0 || index == 1 ? <img data-aos = "fade-in" src={item.image} alt="" /> : <img src={item.image} alt="" />}
+                <img src={item.image} alt="" />
               
               </ImageCategory>
               <TitleCategory>
