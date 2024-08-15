@@ -95,7 +95,7 @@ const Found = styled.div`
     }
 
     @media (min-width: 1440px){
-            padding: 100px 400px;
+            padding: 70px 400px;
         }
 
 `

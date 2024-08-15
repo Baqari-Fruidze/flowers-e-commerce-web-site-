@@ -3,6 +3,7 @@ import styled from "styled-components";
 import wedding  from "/image/wedding.jpg";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from "react-router-dom";
 
 export default function OurService(){
     AOS.init({
@@ -21,7 +22,10 @@ export default function OurService(){
                 <p className="service">SERVICE</p>
                 <h1 className="subscriptions" data-aos="fade-up" >Flower Subscriptions</h1>
                 <p className="serviceDescr" data-aos="fade-up" >Experience the convenience and savings of regular flower deliveries with our flexible subscription service - up to 30% more profitable than one-time purchases.</p>
+                <Link to={"/subscriptions"}>
                 <button>SUBSCRIBE NOW</button>
+                </Link>
+
             </FlowerSubcriptions>
         </Services>
         </>
@@ -98,15 +102,25 @@ const FlowerSubcriptions=styled.div`
         font-size: 16px;
         line-height: 1.4;
         color: rgba(18, 18, 18, 0.9);
+        @media (min-width: 768px){
+            padding: 10px 80px;
+        }
         @media (min-width: 1440px){
             font-size: 20px;
-    }
+        }
     }
     button {
         padding: 16px 24px;
+        cursor: pointer;
         @media (min-width: 1440px){
             padding: 16px 44px;
+           
     }
+    
+    }
+    button:hover{
+        background-color: #121212;
+        color: #fff;
     }
 
 `
