@@ -1,18 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import OurStory from "../components/forAboutUs/OurStory";
+import OurFounderPassion from "../components/forAboutUs/OurFounderPassion";
 
 export default function() {
     return(
         <>
-            <MainCont>
-                Heii
-            </MainCont>
+        <OurStory />
+        <OurFounderPassion />
         </>
     )
 }
 
-const MainCont = styled.div`
-    color: red;
-    font-size: 100px;
-`
 

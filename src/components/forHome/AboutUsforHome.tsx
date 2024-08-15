@@ -21,6 +21,7 @@ export default function AboutUsforHome(){
         </Description>
     </MainCont>
    )
+
 }
 
 const spinWord = keyframes`

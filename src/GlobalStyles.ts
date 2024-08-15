@@ -2,6 +2,9 @@ import { createGlobalStyle } from "styled-components";
 export const Global = createGlobalStyle`
 
 @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@import url('https://fonts.cdnfonts.com/css/zapfino');
+
+                
 
 *{
     padding: 0;
@@ -19,7 +22,7 @@ html{
 body{
  background-color: #fff;
 
-    font-family: "Gilroy", sans-serif;
+    font-family: Gilroy;
   }
 
     .slide-up-text {
