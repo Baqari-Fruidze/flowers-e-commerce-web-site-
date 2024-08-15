@@ -11,7 +11,11 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import { useLocation } from "react-router-dom";
+
+import AboutUs from "./pages/AboutUs";
+
 import SingleProduct from "./pages/SingleProduct";
+
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -42,6 +46,7 @@ function App() {
         <HeaderChanger />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/all-categories-products" element={<AllCategory />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
