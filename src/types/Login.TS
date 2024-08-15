@@ -1,5 +1,9 @@
 export interface Tlogin {
-    userName: string;
-    password: string;
-  }
+
+  username: string;
+  password: string;
+}
+
+
   
+
