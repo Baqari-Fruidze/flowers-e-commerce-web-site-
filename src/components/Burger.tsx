@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function Burger() {
+  async function fetchCategories() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
   return (
     <BlackBackground>
       <Parent>

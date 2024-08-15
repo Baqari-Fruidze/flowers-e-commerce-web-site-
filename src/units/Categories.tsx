@@ -5,15 +5,11 @@ import data from "../data.json";
 import { Link } from "react-router-dom";
 
 export default function AllCategory() {
-  useEffect(() => {
-    fetch("http://localhost:3000/datas")
-      .then((response) => response.json())
-      .then((data) => {})
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-  console.log(data.datas[0]);
+  async function fetchCategories() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
 
   return (
     <>

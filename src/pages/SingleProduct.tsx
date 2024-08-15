@@ -6,6 +6,11 @@ import Quantity from "../components/Quantity";
 
 export default function SingleProduct() {
   const { singleProduct } = useParams();
+  async function fetchSingleProduct() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.name === singleProduct
   );
