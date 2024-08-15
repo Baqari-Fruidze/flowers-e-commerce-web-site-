@@ -15,9 +15,9 @@ export default function AboutUsforHome(){
             <p className = "ourStory" >OUR STORY</p>
             <p className = "shopName" data-aos="fade-up">Flowers Luxurious Bouquets</p>
             <p className="description" data-aos="fade-up">We are a modern local floral studio, which specializes in the design and delivery of unique bouquets. We have the best florists who carefully select each look, our studio cooperates directly with farms for growing different flowers, so we always have fresh flowers, which are collected by our florists in exquisite bouquets. We have a collection of fresh bouquets, collections of dried bouquets, house plants, as well as fragrant candles from luxury brands to create the perfect atmosphere. Make someone's day amazing by sending flowers, plants and gifts the same or next day. Ordering flowers online has never been easier.</p>
-            
-            <button className="learnMore"><p className="anim"><Link to={"/about-us"}>LEARN MORE </Link></p></button>
-           
+            <Link to={"/about-us"}>
+                <button className="learnMore"><p className="anim">LEARN MORE</p></button>
+            </Link>
         </Description>
     </MainCont>
    )
@@ -109,7 +109,7 @@ const Description=styled.div`
         font-weight: normal;
     }
 
-    & > button {
+    .learnMore {
         width: 100%;
         margin-top: 64px;
         padding: 29px 0;
@@ -119,30 +119,26 @@ const Description=styled.div`
         /* text-align: center; */
         align-items: center;
         cursor: pointer;
-        :hover{
-            background-color: #121212;
-            color: #fff;
-            opacity: 1;
-        }
-        
         @media (min-width: 1440px){
             width: 30%;
             font-size: 24px;
         }
+        
     
     & > .anim {
                 cursor: pointer;
                 animation: ${spinWords} 2s normal;
                 font-size: 16px;
-                opacity: 1;
             }
             
             &:hover > :last-child {
                 animation: ${spinWord} 2s normal;
-                opacity: 0.5;
             }
           
         }
-       
+        .learnMore:hover{
+            background-color: #121212;
+            color: #fff;
+        }
         
 `

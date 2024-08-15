@@ -14,7 +14,7 @@ export default function OurStory() {
             <MainCont>
                 <Story>
                     <h1 data-aos="fade-up">Our Story</h1>
-                    <img data-aos="fade-up" src={about} aldata-aos="fade-up"t="" />
+                    <img data-aos="fade-up" src={about} />
                     <h1 data-aos="fade-up">Flowers Luxurious Bouquets</h1>
                     <p data-aos="fade-up">Discover Uniquely Crafted Bouquets and Gifts for Any Occasion: Spread Joy with Our Online Flower Delivery Service</p>
                     <div data-aos="fade-up"className="icons">
@@ -26,9 +26,8 @@ export default function OurStory() {
                     </div>
                 </Story>
 
-                {/* <div data-aos="fade-up"> */}
-                    <img data-aos="fade-up" src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6442512f0b353c7303729616_image-p-1080.png"} alt="" />
-                    {/* </div> */}
+                <img data-aos="fade-up" src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6442512f0b353c7303729616_image-p-1080.png"} alt="" />
+                   
 
             </MainCont>
         </>
@@ -49,7 +48,6 @@ const MainCont = styled.div`
    
     img{
         width: 100%;
-        height: 100vh;
     }
 `
 const Story = styled.div`
@@ -85,7 +83,7 @@ const Story = styled.div`
         margin: 24px 0 44px;
         @media (min-width: 1440px){
             font-size: 24px;
-            margin: 100px 0 50px;
+            margin: 15px 0 50px;
     }    
     }
 
