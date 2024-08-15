@@ -5,6 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 export default function Categories() {
+  async function fetchCategories() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
 
   const navigate = useNavigate();
 
@@ -40,7 +45,9 @@ export default function Categories() {
                 </div>
               </TitleCategory>
               <ImageCategory onClick={() => navigate(`/${item.name}`)}>
+
               <img src={item.image} alt="" />
+
               </ImageCategory>
             </Category>
           ) : (
@@ -49,8 +56,9 @@ export default function Categories() {
                 onClick={() => navigate(`/${item.name}`)}
                 style={{ borderRight: "solid 1px #121212" }}
               >
+
                 <img src={item.image} alt="" />
-              
+
               </ImageCategory>
               <TitleCategory>
                 <span>{item.name}</span>
@@ -154,7 +162,7 @@ const TitleCategory = styled.div`
       text-align: center;
       letter-spacing: 1.04px;
       font-weight: 600;
-      @media (min-width: 1440px){
+      @media (min-width: 1440px) {
         font-size: 24px;
       }
     }
