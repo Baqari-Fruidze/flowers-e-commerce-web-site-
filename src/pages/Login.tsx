@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
-import {Tlogin} from "../types/Login"
+import { Tlogin } from "../types/Login";
 
 export default function Login() {
   const {
@@ -23,11 +23,11 @@ export default function Login() {
             <UsernameInput
               type="text"
               placeholder="userName"
-              {...register("userName")}
-              eror={errors.userName?.message}
+              {...register("username")}
+              eror={errors.username?.message}
             />
-            {errors.userName ? (
-              <UsernameErorSpan>{errors.userName?.message}</UsernameErorSpan>
+            {errors.username ? (
+              <UsernameErorSpan>{errors.username?.message}</UsernameErorSpan>
             ) : null}
             <PasswordInput
               type="text"

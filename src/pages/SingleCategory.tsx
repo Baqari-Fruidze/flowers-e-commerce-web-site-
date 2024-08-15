@@ -82,6 +82,7 @@ const ImageCon = styled.div<{ backImg: string }>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-size: auto 100%;
 `;
 const ProductsCon = styled.div`
   display: grid;

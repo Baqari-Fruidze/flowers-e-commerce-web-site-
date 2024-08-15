@@ -1,4 +1,4 @@
 export interface Tlogin {
-  userName: string;
+  username: string;
   password: string;
 }
