@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
+  async function fetchSingleCategories() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
 
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
@@ -98,6 +103,8 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   align-items: center;
   justify-content: center;
   background-image: url(${(props) => props.backImage});
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
