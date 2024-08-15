@@ -5,7 +5,7 @@ import AboutUsforHome from "../components/forHome/AboutUsforHome";
 import WhyChooseUs from "../components/forHome/WhyChoosUs";
 import LetTalk from "../components/forHome/LetTalk";
 import OurService from "../components/forHome/OurService";
-import Wedding from "../components/forHome/Weddind";
+import Wedding from "../components/forHome/Wedding";
 import OurClientSey from "../components/forHome/OurClientSay";
 
 
