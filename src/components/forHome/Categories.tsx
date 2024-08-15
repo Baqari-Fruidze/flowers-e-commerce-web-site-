@@ -1,26 +1,25 @@
 import Reacte from "react";
 import styled, { keyframes } from "styled-components";
-import { useEffect } from "react";
 import data from "../../data.json";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-export default function AllCategory() {
+export default function Categories() {
   async function fetchCategories() {
     const response = await fetch("");
     const data = await response.json();
     console.log(data);
   }
+
   const navigate = useNavigate();
 
   AOS.init({
-    duration: 1200,
+    duration: 1000,
   });
 
   return (
     <>
-      <Categories>
+      <MainCont>
         {data.datas[0].categories.map((item, index) =>
           index % 2 == 0 ? (
             <Category key={index}>
@@ -46,7 +45,11 @@ export default function AllCategory() {
                 </div>
               </TitleCategory>
               <ImageCategory onClick={() => navigate(`/${item.name}`)}>
-                <img src={item.image} alt="" />
+                {index == 0 || index == 1 ? (
+                  <img data-aos="fade-in" src={item.image} alt="" />
+                ) : (
+                  <img src={item.image} alt="" />
+                )}
               </ImageCategory>
             </Category>
           ) : (
@@ -55,7 +58,11 @@ export default function AllCategory() {
                 onClick={() => navigate(`/${item.name}`)}
                 style={{ borderRight: "solid 1px #121212" }}
               >
-                <img src={item.image} alt="" />
+                {index == 0 || index == 1 ? (
+                  <img data-aos="fade-in" src={item.image} alt="" />
+                ) : (
+                  <img src={item.image} alt="" />
+                )}
               </ImageCategory>
               <TitleCategory>
                 <span>{item.name}</span>
@@ -82,7 +89,7 @@ export default function AllCategory() {
             </Category>
           )
         )}
-      </Categories>
+      </MainCont>
     </>
   );
 }
@@ -105,7 +112,7 @@ const imgZoom = keyframes`
 }
 `;
 
-const Categories = styled.div`
+const MainCont = styled.div`
   display: grid;
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -159,6 +166,9 @@ const TitleCategory = styled.div`
       text-align: center;
       letter-spacing: 1.04px;
       font-weight: 600;
+      @media (min-width: 1440px) {
+        font-size: 24px;
+      }
     }
   }
 `;
