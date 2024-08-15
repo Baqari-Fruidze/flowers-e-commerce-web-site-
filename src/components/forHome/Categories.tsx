@@ -7,6 +7,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function AllCategory() {
+  async function fetchCategories() {
+    const response = await fetch("");
+    const data = await response.json();
+    console.log(data);
+  }
   const navigate = useNavigate();
 
   AOS.init({
