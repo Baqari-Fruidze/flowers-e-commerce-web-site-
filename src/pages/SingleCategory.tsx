@@ -28,9 +28,10 @@ export default function SingleCategory() {
       <BackGroundImageCon backImage={backgroundImage}>
         <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
-      {dataToMap?.map((item, index) => {
-        return (
-          <GridedCon>
+
+      <GridedCon>
+        {dataToMap?.map((item, index) => {
+          return (
             <ProductsCon key={index}>
               <ImageCon
                 backImg={item.src}
@@ -47,19 +48,18 @@ export default function SingleCategory() {
                 <PriceSpan> price ${item.price}</PriceSpan>
               </TextCon>
             </ProductsCon>
-          </GridedCon>
-        );
-      })}
+          );
+        })}
+      </GridedCon>
     </Parent>
   );
 }
 const GridedCon = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
   @media (min-width: 768px) {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
   }
 `;
 const ItemNameSpan = styled.span`
@@ -121,7 +121,7 @@ const ImageCategoryNameSpan = styled.h1`
 `;
 const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   height: 40rem;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
