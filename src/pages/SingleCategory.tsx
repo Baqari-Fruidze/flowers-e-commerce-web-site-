@@ -61,6 +61,9 @@ const GridedCon = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  @media (min-width: 1440px) {
+    width: 50%;
+  }
 `;
 const ItemNameSpan = styled.span`
   color: var(--Black, #121212);
@@ -100,19 +103,16 @@ const ProductsCon = styled.div`
   gap: 2.4rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #121212;
+  @media (min-width: 768px) {
+    width: 100%;
+    border: 1px solid #121212;
+  }
+  @media (min-width: 1440px) {
+    width: 100%;
+    border: 1px solid #121212;
+    height: fit-content;
+  }
 `;
-// const ProductsConParent = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   grid-template-rows: 1fr;
-//   grid-row-gap: 2rem;
-//   border-bottom: 1px solid #121212;
-
-//   @media (min-width: 768px) {
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: 1fr;
-//   }
-// `;
 const ImageCategoryNameSpan = styled.h1`
   font-weight: 600;
   font-size: 38px;
@@ -121,7 +121,7 @@ const ImageCategoryNameSpan = styled.h1`
 `;
 const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   height: 40rem;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,9 +131,19 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  @media (min-width: 768px) {
+    height: 56rem;
+  }
+  @media (min-width: 1440px) {
+    width: 50%;
+    min-height: 100vh;
+  }
 `;
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(211, 211, 211, 0.3);
+  @media (min-width: 1440px) {
+    flex-direction: row;
+  }
 `;
