@@ -49,19 +49,19 @@ export default function Footer() {
           <div className="contactInfo">
             <p className="contactTatle">Address</p>
             <AnimDiv>
-              <p className="anim">15/4 Khreshchatyk Street, Kyiv</p>
+              <p className="anim">223 Chavchavadze avenue, Telavi</p>
             </AnimDiv>
           </div>
           <div className="contactInfo">
             <p className="contactTatle">Phone</p>
             <AnimDiv>
-              <p className="anim">+380980099777</p>
+              <p className="anim">+995577054010</p>
             </AnimDiv>
           </div>
           <div className="contactInfo">
             <p className="contactTatle">General Enquiry</p>
             <AnimDiv>
-              <p className="anim">kiev.Florist.Studio@gmail.com</p>
+              <p className="anim">sweetwater@gmail.com</p>
             </AnimDiv>
           </div>
           <span className="title">Follow Us</span>
