@@ -28,9 +28,10 @@ export default function SingleCategory() {
       <BackGroundImageCon backImage={backgroundImage}>
         <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
-      {dataToMap?.map((item, index) => {
-        return (
-          <>
+
+      <GridedCon>
+        {dataToMap?.map((item, index) => {
+          return (
             <ProductsCon key={index}>
               <ImageCon
                 backImg={item.src}
@@ -47,12 +48,23 @@ export default function SingleCategory() {
                 <PriceSpan> price ${item.price}</PriceSpan>
               </TextCon>
             </ProductsCon>
-          </>
-        );
-      })}
+          );
+        })}
+      </GridedCon>
     </Parent>
   );
 }
+const GridedCon = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1440px) {
+    width: 50%;
+  }
+`;
 const ItemNameSpan = styled.span`
   color: var(--Black, #121212);
   text-align: center;
@@ -74,7 +86,7 @@ const PriceSpan = styled.span`
 const TextCon = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
 `;
 const ImageCon = styled.div<{ backImg: string }>`
   height: 33rem;
@@ -84,12 +96,22 @@ const ImageCon = styled.div<{ backImg: string }>`
   background-size: cover;
   background-size: auto 100%;
 `;
+
 const ProductsCon = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid #121212;
+  @media (min-width: 768px) {
+    width: 100%;
+    border: 1px solid #121212;
+  }
+  @media (min-width: 1440px) {
+    width: 100%;
+    border: 1px solid #121212;
+    height: fit-content;
+  }
 `;
 const ImageCategoryNameSpan = styled.h1`
   font-weight: 600;
@@ -109,8 +131,19 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  @media (min-width: 768px) {
+    height: 56rem;
+  }
+  @media (min-width: 1440px) {
+    width: 50%;
+    min-height: 100vh;
+  }
 `;
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: rgba(211, 211, 211, 0.3);
+  @media (min-width: 1440px) {
+    flex-direction: row;
+  }
 `;
