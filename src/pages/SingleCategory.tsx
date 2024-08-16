@@ -30,7 +30,7 @@ export default function SingleCategory() {
       </BackGroundImageCon>
       {dataToMap?.map((item, index) => {
         return (
-          <>
+          <GridedCon>
             <ProductsCon key={index}>
               <ImageCon
                 backImg={item.src}
@@ -47,12 +47,21 @@ export default function SingleCategory() {
                 <PriceSpan> price ${item.price}</PriceSpan>
               </TextCon>
             </ProductsCon>
-          </>
+          </GridedCon>
         );
       })}
     </Parent>
   );
 }
+const GridedCon = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+`;
 const ItemNameSpan = styled.span`
   color: var(--Black, #121212);
   text-align: center;
@@ -74,7 +83,7 @@ const PriceSpan = styled.span`
 const TextCon = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
 `;
 const ImageCon = styled.div<{ backImg: string }>`
   height: 33rem;
@@ -84,13 +93,26 @@ const ImageCon = styled.div<{ backImg: string }>`
   background-size: cover;
   background-size: auto 100%;
 `;
+
 const ProductsCon = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid #121212;
 `;
+// const ProductsConParent = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   grid-template-rows: 1fr;
+//   grid-row-gap: 2rem;
+//   border-bottom: 1px solid #121212;
+
+//   @media (min-width: 768px) {
+//     grid-template-columns: 1fr 1fr;
+//     grid-template-rows: 1fr;
+//   }
+// `;
 const ImageCategoryNameSpan = styled.h1`
   font-weight: 600;
   font-size: 38px;
@@ -113,4 +135,5 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: rgba(211, 211, 211, 0.3);
 `;
