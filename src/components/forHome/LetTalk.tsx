@@ -2,6 +2,8 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import shop1 from "/image/shop1.png";
+import shop2 from "/image/shop2.png"
 
 export default function LetTalk(){
     AOS.init({
@@ -10,21 +12,7 @@ export default function LetTalk(){
     return(
     <>
      <ToContactUs>
-        <FollowUs>
-                <img src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/64a03b42882782a8aa1f0e26_KYIV%20LB%202%20720.webp"} alt="" />
         
-            
-            <div className="follow">
-                <div><p>Follow us:</p></div>
-                <div className="icons">
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e144ecf86c56_Instagram.svg"} alt="instagram" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1d70bf86c58_Pinterest.svg"} alt="pinterest" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e16d07f86c59_Facebook.svg"} alt="favebook" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1cb4ef86c57_Twitter.svg"} alt="twitt" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e17d93f86c5a_Telegram.svg"} alt="telegram" />
-                </div>
-            </div>
-        </FollowUs>
 
         <Contact>
            
@@ -60,11 +48,27 @@ export default function LetTalk(){
                     <p className="phoneAdressTitle">Address</p>
                     <div>
                         <p className="phoneAdressDecsr, open">OPENNING HOURS: 8 TO 11 PM</p>
-                        <p className="phoneAdressDecsr, openAdress">15/4 Chavchavadze Avn N 223</p>
+                        <p className="phoneAdressDecsr, openAdress">N 223 Chavchavadze Avenue, Telavi</p>
                     </div>
                     </div>
             </PhoneAdress>
         </Contact>
+
+        <FollowUs>
+                <img src={shop1} alt="" />
+        
+            
+            <div className="follow">
+                <div><p>Follow us:</p></div>
+                <div className="icons">
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e144ecf86c56_Instagram.svg"} alt="instagram" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1d70bf86c58_Pinterest.svg"} alt="pinterest" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e16d07f86c59_Facebook.svg"} alt="favebook" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1cb4ef86c57_Twitter.svg"} alt="twitt" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e17d93f86c5a_Telegram.svg"} alt="telegram" />
+                </div>
+            </div>
+        </FollowUs>
      </ToContactUs>
     </>
     )
@@ -102,7 +106,7 @@ const FollowUs=styled.div`
     display: flex;
     flex-direction: column;
     @media (min-width: 1440px){
-            border-right: 1px solid #121212;
+            border-left: 1px solid #121212;
         }
     
     & > img{

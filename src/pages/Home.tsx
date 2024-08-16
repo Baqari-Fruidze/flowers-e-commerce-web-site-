@@ -7,7 +7,7 @@ import LetTalk from "../components/forHome/LetTalk";
 import OurService from "../components/forHome/OurService";
 import Wedding from "../components/forHome/Wedding";
 import OurClientSey from "../components/forHome/OurClientSay";
-import floverVideoBg from "/image/water.jpg"
+import floverVideoBg from "/image/loginBg.jpg"
 
 
 export default function AllCategory() {
