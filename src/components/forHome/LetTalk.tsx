@@ -12,10 +12,21 @@ export default function LetTalk(){
     return(
     <>
      <ToContactUs>
-        
+     <FollowUs>
+            <img src={shop2} alt="" />
+            <div className="follow">
+                <div><p>Follow us:</p></div>
+                <div className="icons">
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e144ecf86c56_Instagram.svg"} alt="instagram" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1d70bf86c58_Pinterest.svg"} alt="pinterest" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e16d07f86c59_Facebook.svg"} alt="favebook" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1cb4ef86c57_Twitter.svg"} alt="twitt" />
+                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e17d93f86c5a_Telegram.svg"} alt="telegram" />
+                </div>
+            </div>
+        </FollowUs>
 
         <Contact>
-           
             <p className="contactUsTitle" data-aos="fade-up">To Contact Us</p>
             <p  className="contactUsDescr">We will call you back</p>
             <div className="bookACall">
@@ -27,7 +38,6 @@ export default function LetTalk(){
                 <button className="bookACallBtn" ><p className="anim">BOOK A CALL</p></button>
             </div>
         
-
             <PhoneAdress>
                 <div className="phoneAdress">
                     <p className="phoneAdressTitle">Phone</p>
@@ -44,31 +54,17 @@ export default function LetTalk(){
                     </div>
                 </div>
 
-                <div className="phoneAdress">
+                <div className="phoneAdress"  id="phoneAdressTitle" >
                     <p className="phoneAdressTitle">Address</p>
                     <div>
                         <p className="phoneAdressDecsr, open">OPENNING HOURS: 8 TO 11 PM</p>
                         <p className="phoneAdressDecsr, openAdress">N 223 Chavchavadze Avenue, Telavi</p>
                     </div>
-                    </div>
+                </div>
             </PhoneAdress>
         </Contact>
 
-        <FollowUs>
-                <img src={shop1} alt="" />
-        
-            
-            <div className="follow">
-                <div><p>Follow us:</p></div>
-                <div className="icons">
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e144ecf86c56_Instagram.svg"} alt="instagram" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1d70bf86c58_Pinterest.svg"} alt="pinterest" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e16d07f86c59_Facebook.svg"} alt="favebook" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e1cb4ef86c57_Twitter.svg"} alt="twitt" />
-                    <img style={{ cursor: "pointer"}} src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6433f820e186e17d93f86c5a_Telegram.svg"} alt="telegram" />
-                </div>
-            </div>
-        </FollowUs>
+       
      </ToContactUs>
     </>
     )
@@ -98,20 +94,16 @@ const ToContactUs=styled.div`
     @media (min-width: 1440px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-auto-flow: dense;
-        border: 1px solid #121212;   
+        border-bottom: 1px solid #121212;
     }
 `
 const FollowUs=styled.div`
     display: flex;
     flex-direction: column;
-    @media (min-width: 1440px){
-            border-left: 1px solid #121212;
-        }
+    border-top: 1px solid #121212;
     
     & > img{
         width: 100%;
-      
         }
     & > .follow {
         display: flex;
@@ -130,6 +122,7 @@ const FollowUs=styled.div`
         @media (min-width: 1440px) {
             margin: 0px;
             gap: 0px;
+            border-top: 1px solid #121212;
             }    
 
             & > .icons {
@@ -137,7 +130,6 @@ const FollowUs=styled.div`
                 gap: 32px;
                 @media (min-width: 768px) {
                     display: flex;
-                    border-left: 1px solid #121212;
                     justify-content: center;
                 }
             }
@@ -164,9 +156,11 @@ const Contact=styled.div`
         padding: 16px 0 0 0;
     }
     @media (min-width: 1440px){
-        padding: 40px 0;
+        padding: 40px 0 0;
         border-top: none;
-    border-bottom: none;
+        border-bottom: none;
+        border-top: 1px solid #121212;
+        border-left: 1px solid #121212;
     }
     & > .contactUsTitle{
         font-size: 34px;
@@ -212,7 +206,7 @@ const Contact=styled.div`
                 width: 296px;
             }
             @media (min-width: 1440px){
-                margin-left: 80px; 
+                margin-left: 57px; 
             }
         }
     
@@ -252,6 +246,13 @@ const PhoneAdress=styled.div`
         grid-template-columns: 1fr 1fr;
         text-align: center;
     }
+
+    #phoneAdressTitle{
+        @media (min-width: 768px){
+            border-left: 1px solid #121212;
+        }
+        
+    }
     
     & > .phoneAdress{
         display: flex;
@@ -263,15 +264,13 @@ const PhoneAdress=styled.div`
             padding: 40px 16px;
             font-size: 16px;
             font-weight: 600;
-            
             .open{
                 font-size: 14px;
-                font-weight: 500;
+                font-weight: 500;  
             }
-
             .openAdress{
                 font-size: 14px;
-                font-weight: 600;
+                font-weight: 600; 
             }
         }
         
@@ -280,6 +279,7 @@ const PhoneAdress=styled.div`
             display: flex;
             gap: 16px;
             align-items: center;
+            
         }
         span {
             display: flex;
@@ -297,10 +297,6 @@ const PhoneAdress=styled.div`
         font-size: 26px;
         font-weight: 500;
         border-bottom: 1px solid #121212;
-        @media (min-width: 768px){
-            border-left: 1px solid #121212;
-        }
-        
     }
 `
 
