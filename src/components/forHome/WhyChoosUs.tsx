@@ -100,7 +100,10 @@ const ReasonWhy = styled.div`
 
     .boxDescription{
         font-size: 16px;
-        color: rgba(18, 18, 18, 0.9);
+        color: #6e6c6c;
+        @media (min-width: 1440px){
+            font-size: 18px;
+        }
     }
 
    }

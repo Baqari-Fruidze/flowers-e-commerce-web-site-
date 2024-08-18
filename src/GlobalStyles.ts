@@ -10,7 +10,7 @@ export const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Gilroy;
+    font-family: Gilroy, sans-serif;
 }
 
 html{

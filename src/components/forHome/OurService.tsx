@@ -56,6 +56,7 @@ const Services=styled.div`
 
         img{
             width: 100%;
+           
             @media (min-width: 1440px){
             height: 100vh;
         }
@@ -101,12 +102,12 @@ const FlowerSubcriptions=styled.div`
         text-align: center;
         font-size: 16px;
         line-height: 1.4;
-        color: rgba(18, 18, 18, 0.9);
+        color: #6e6c6c;
         @media (min-width: 768px){
             padding: 10px 80px;
         }
         @media (min-width: 1440px){
-            font-size: 20px;
+            font-size: 18px;
         }
     }
     button {

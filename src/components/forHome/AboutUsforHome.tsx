@@ -104,9 +104,10 @@ const Description=styled.div`
     }
 
     .description{
-        font-size: 16px;
-        color: rgba(18, 18, 18, 0.9);
-        font-weight: normal;
+        font-size: 16px;color: #6e6c6c;
+        @media (min-width: 1440px){
+        font-size: 18px;
+        }
     }
 
     .learnMore {
@@ -116,7 +117,6 @@ const Description=styled.div`
         border: 1px solid #121212;
         font-size: 14px;
         letter-spacing: 0.35px;
-        /* text-align: center; */
         align-items: center;
         cursor: pointer;
         @media (min-width: 1440px){
