@@ -14,7 +14,6 @@ export default function AllCategory() {
   return (
     <>
       <HomeDiv>
-      
         <iframe src="https://player.vimeo.com/video/917253515" ></iframe>
         <AllCategoryforHome />
         <AboutUsforHome />
@@ -33,18 +32,15 @@ export default function AllCategory() {
 const HomeDiv = styled.div`
   border-left: 1px solid #121212;
   border-right: 1px solid #121212;
-  
-    
     Iframe{
       background-image: url(${floverVideoBg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100vw;
-    height: 50vh;
-    @media (min-vidth: 758px){
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 100%;
+      height: 50vh;
+      @media (min-vidth: 758px){
       height: 70vh;
-    
-  }
+      }
   
   }
   

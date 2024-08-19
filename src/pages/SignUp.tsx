@@ -145,9 +145,11 @@ const Parent = styled.div`
   background-color: #f5f5f7;
   padding: 10rem 2.4rem;
   min-height: 100vh;
-  background-image: url(${loginBg});
-  background-repeat: no-repeat;
-  background-size: 100%;
+  @media (min-width: 1440px){
+    background-image: url(${loginBg});
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
 `;
 const InputsCon = styled.div`
   position: relative;

@@ -110,6 +110,7 @@ const deliveryFrequency=data.datas[4].deliveryFrequency
 const Main=styled.div`
     display:flex;
     flex-direction: column;
+    border-bottom: 1px solid #121212;
     @media (min-width: 1440px){
         display: grid;
         grid-template-columns: 1fr 1fr;
