@@ -202,8 +202,9 @@ const Outside = styled.div`
   justify-content: center;
   margin: 0 auto;
   min-height: 100vh;
-  background-image: url(${loginBg});
-  background-repeat: no-repeat;
-  background-size: 100%;
-  
+  @media (min-width: 1440px){
+    background-image: url(${loginBg});
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
 `;

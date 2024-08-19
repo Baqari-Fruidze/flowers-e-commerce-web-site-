@@ -20,9 +20,8 @@ html{
 
 
 body{
- background-color: #fff;
-
-    font-family: Gilroy;
+  background-color: #f5f5f7;
+  font-family: Gilroy;
   }
 
     .slide-up-text {
