@@ -31,7 +31,7 @@ export default function AllCategory() {
 
 const HomeDiv = styled.div`
   border-left: 1px solid #121212;
-  border-right: 1px solid #121212;
+  border-right: 2px solid #121212;
     Iframe{
       background-image: url(${floverVideoBg});
       background-repeat: no-repeat;
