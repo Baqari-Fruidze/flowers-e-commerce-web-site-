@@ -9,9 +9,9 @@ export default function SelectingAPlan(){
     const [selectCategory, setSelectCategory] = useState(false)
     const [selectFrequency, setSelectFrequency] = useState(false)
     const [selectQuantity, setSelectQuantity] = useState(false)
-    console.log(selectCategory)
-    console.log(selectFrequency)
-    console.log(selectQuantity)
+    // console.log(selectCategory)
+    // console.log(selectFrequency)
+    // console.log(selectQuantity)
     
 const subscriptionData=data.datas[3].subscription
 const deliveryFrequency=data.datas[4].deliveryFrequency
@@ -50,8 +50,8 @@ const deliveryFrequency=data.datas[4].deliveryFrequency
                 onClick={(()=>{
                 setSelectCategory(true)
                 setSelectFrequency(true)
-                console.log(item.category)
-                console.log(selectCategory)
+                // console.log(item.category)
+                // console.log(selectCategory)
                 })}
                 style = {!selectCategory ? {cursor: "pointer"} : {cursor: "default"}}
     >SELECT</button>
@@ -72,8 +72,8 @@ const deliveryFrequency=data.datas[4].deliveryFrequency
                     onClick={(()=>{
                         setSelectQuantity(true) 
                         setSelectFrequency(false)
-                        console.log(item.frequency)
-                        console.log(selectFrequency)
+                        // console.log(item.frequency)
+                        // console.log(selectFrequency)
                     })}
                     
                     style = {selectFrequency ? {"cursor": "pointer"} : {"cursor": "default"}}
