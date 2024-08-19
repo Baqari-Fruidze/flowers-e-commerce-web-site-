@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import data from "../data.json";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
+import YouMayAlsoLike from "../components/YouMayAlsoLike";
 
 export default function SingleProduct() {
   const { singleProduct } = useParams();
@@ -17,27 +18,42 @@ export default function SingleProduct() {
   console.log(dataToMap);
   return (
     <Parent>
-      {dataToMap?.map((item) => {
-        return (
-          <div>
-            <img src={item.src} alt="" />
-            <span>{item.category.name}/</span>
-            <span>{item.name}</span>
-            <p>{item.name}</p>
-            <p>${item.price}</p>
-            <p>{item.description}</p>
-            <p>Quantity</p>
-            <Quantity />
-          </div>
-        );
-      })}
+      <div>
+        {dataToMap?.map((item) => {
+          return (
+            <div>
+              <ImageCon>
+                <Image src={item.src} alt="" />
+              </ImageCon>
+              <span>{item.category.name}/</span>
+              <span>{item.name}</span>
+              <p>{item.name}</p>
+              <p>${item.price}</p>
+              <p>{item.description}</p>
+              <p>Quantity</p>
+              <Quantity />
+            </div>
+          );
+        })}
+      </div>
+      <YouMayAlsoLike />
     </Parent>
   );
 }
+
+const Image = styled.img`
+  width: 100%;
+  height: 36rem;
+`;
+const ImageCon = styled.div`
+  width: 100%;
+  height: 36rem;
+  border-bottom: 1px solid #121212;
+  @media (min-width: 768px) {
+    height: 46rem;
+  }
+`;
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
-  & > span {
-    color: red;
-  }
 `;
