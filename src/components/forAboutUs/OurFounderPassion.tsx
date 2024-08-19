@@ -95,7 +95,7 @@ const Found = styled.div`
     }
 
     @media (min-width: 1440px){
-            padding: 100px 400px;
+            padding: 70px 400px;
         }
 
 `
@@ -117,7 +117,7 @@ const ExpertlyCraftedBouquets = styled.div`
         }
         & > p{
             font-size: 18px;
-        opacity: 0.8;
+            color: #6e6c6c;
         margin: 24px 0 44px;
         @media (min-width: 1440px){
             font-size: 24px;
@@ -132,6 +132,7 @@ const ExpertlyCraftedBouquets = styled.div`
         }
     }
         img{
+            height:100%;
             width: 100%;
             border-bottom: 1px solid #121212;
             @media (min-width: 1440px){
@@ -151,7 +152,7 @@ const BouquetsGiftsAmbiance = styled.div`
             border-bottom: 1px solid #121212;
             & > p{
                 font-size: 18px;
-            opacity: 0.8;
+                color: #6e6c6c;
             margin: 24px 0 44px;
             }
             & > h1{
@@ -159,6 +160,7 @@ const BouquetsGiftsAmbiance = styled.div`
             }
         }
         img{
+            height:100%;
             width: 100%;
             border-bottom: 1px solid #121212;
         }
@@ -171,10 +173,10 @@ const BouquetsGiftsAmbiance = styled.div`
         @media (min-width: 1440px){
             display: grid;
             grid-template-columns: 1fr 1fr;
-                & > img{
+                /* & > img{
                 width: 100%;
-                height: 100%
-                }
+                height: 100%;
+                } */
             }
         div{
             @media (min-width: 1440px){
@@ -186,6 +188,7 @@ const BouquetsGiftsAmbiance = styled.div`
                 @media (min-width: 1440px){
                 font-size: 24px;
                 margin-top: 100px;
+                color: #6e6c6c;
                 } 
             }  
             & > h1{
@@ -197,6 +200,7 @@ const BouquetsGiftsAmbiance = styled.div`
         img{
             @media (min-width: 1440px){
             border-left: 1px solid #121212;
+            height:100%;
             }
         }
 }
@@ -218,7 +222,7 @@ const MakingEveryDaySpecial = styled.div`
         }
         & > p{
             font-size: 18px;
-        opacity: 0.8;
+            color: #6e6c6c;
         margin: 24px 0 44px;
         @media (min-width: 1440px){
             font-size: 24px;
@@ -234,6 +238,7 @@ const MakingEveryDaySpecial = styled.div`
     }
         img{
             width: 100%;
+            height:100%;
             @media (min-width: 1440px){
             border-right: 1px solid #121212;
             border-top: 1px solid #121212;

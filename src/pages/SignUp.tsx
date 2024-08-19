@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpScema } from "../Scema/SignUpYup";
 import { TSignUp } from "../types/SignUp";
+import loginBg from "/image/loginBg.jpg";
+
 export default function SignUp() {
   const {
     register,
@@ -56,8 +58,11 @@ export default function SignUp() {
         </InputsCon>
       </form>
     </Parent>
+   
   );
 }
+
+
 const PaswordSpan = styled.span`
   color: red;
   font-size: 14px;
@@ -139,13 +144,19 @@ const Parent = styled.div`
   justify-content: center;
   background-color: #f5f5f7;
   padding: 10rem 2.4rem;
+  min-height: 100vh;
+  @media (min-width: 1440px){
+    background-image: url(${loginBg});
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
 `;
 const InputsCon = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 2.4rem 2.4rem 2.4rem;
+  padding: 2.4rem;
   background-color: #f5f5f7;
-  min-height: 100vh;
   max-width: 50rem;
 `;
+

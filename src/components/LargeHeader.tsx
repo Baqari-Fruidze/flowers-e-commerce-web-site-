@@ -1,22 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 
 export default function LargeHeader() {
   return (
     <Parent>
       <HomeCon>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/"}>
+          <AnimDiv>
+              <p className="anim">Home</p>
+          </AnimDiv>
+        </Link>
       </HomeCon>
       <ContactCon>
-        <Link>Contact</Link>
+        <Link>
+          <AnimDiv>
+              <p className="anim">Contact</p>
+          </AnimDiv>
+        </Link>
       </ContactCon>
       <InputCon>
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        <Link to={"login"}>Sign In</Link>
+        <Link to={"login"}>
+        <AnimDiv>
+              <p className="anim">Sign In</p>
+          </AnimDiv>
+        </Link>
       </SignInCon>
       <CartCon>
         <svg
@@ -110,3 +122,40 @@ const CartCon = styled.div`
   justify-content: center;
   grid-column: 6/7;
 `;
+
+//Animation start
+const spinWordsUp = keyframes`
+  20% {
+    transform: translateY(0%);
+  }
+  0% {
+    transform: translateY(150%);
+  }
+`;
+const spinWords = keyframes`
+  20% {
+    transform: translateY(0%);
+  }
+  0% {
+    transform: translateY(-150%);
+  }
+`;
+
+const AnimDiv = styled.div`
+  overflow-y: hidden;
+  cursor: pointer;
+  & > .anim {
+    cursor: pointer;
+    animation: ${spinWords} 2s normal;
+    font-size: 16px;
+    color: #121212;
+    opacity: 1;
+  }
+
+  &:hover > :last-child {
+    animation: ${spinWordsUp} 2s normal;
+    opacity: 0.5;
+  }
+`;
+//Animation end
+

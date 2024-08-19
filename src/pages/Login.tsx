@@ -2,8 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
-
 import { Tlogin } from "../types/Login";
+import loginBg from "/image/loginBg.jpg";
 
 
 
@@ -148,6 +148,7 @@ const TexstCon = styled.div`
   flex-direction: column;
   gap: 2.4rem;
   padding: 2rem;
+  background-color: #f5f5f7;
 `;
 const PasswordInput = styled.input<{ eror?: string }>`
   color: var(--Gray, #808080);
@@ -179,11 +180,11 @@ const UsernameInput = styled.input<{ eror?: string }>`
   }
 `;
 const InputsCon = styled.div`
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
+  padding: 2.4rem;
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: #f5f5f7;
 `;
 const Parent = styled.div`
   width: 100%;
@@ -191,7 +192,7 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  background-color: #fff;
+  background-color: #f5f5f7;
 `;
 const Outside = styled.div`
   padding: 15rem 2.4rem;
@@ -201,4 +202,9 @@ const Outside = styled.div`
   justify-content: center;
   margin: 0 auto;
   min-height: 100vh;
+  @media (min-width: 1440px){
+    background-image: url(${loginBg});
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
 `;
