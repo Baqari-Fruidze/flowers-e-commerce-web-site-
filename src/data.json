@@ -31,26 +31,6 @@
           "name": "Fresheners",
 
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432ad9c41bbf2994e73de_difuser-p-1080.webp"
-        },
-        {
-          "id": 6,
-          "name": "Aroma Candles",
-          "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64343334edb3246f9258be02_candels-p-1080.webp"
-        },
-        {
-          "id": 7,
-          "name": "Fresheners",
-          "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432ad9c41bbf2994e73de_difuser-p-1080.webp"
-        },
-        {
-          "id": 8,
-          "name": "Aroma Candles",
-          "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64343334edb3246f9258be02_candels-p-1080.webp"
-        },
-        {
-          "id": 9,
-          "name": "Fresheners",
-          "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432ad9c41bbf2994e73de_difuser-p-1080.webp"
         }
       ]
     },
@@ -223,6 +203,7 @@
           "password": "password",
           "profilePicture": "",
           "phoneNumber": "123321",
+          "is_superuser": false,
           "orders": [
             {
               "RecipientsName": "",

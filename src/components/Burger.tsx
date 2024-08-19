@@ -12,15 +12,13 @@ export default function Burger() {
   return (
     <BlackBackground>
       <Parent>
-        {data.map((item) =>
-          item.categories?.map((el, index) => {
-            return (
-              <Link to={`/${el.name}`} key={index}>
-                {el.name}
-              </Link>
-            );
-          })
-        )}
+        {data.datas[0].categories?.map((item, index) => {
+          return (
+            <Link to={`/${item.name}`} key={index}>
+              {item.name}
+            </Link>
+          );
+        })}
       </Parent>
     </BlackBackground>
   );
