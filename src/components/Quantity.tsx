@@ -35,4 +35,5 @@ const Parent = styled.div`
   height: 4.8rem;
   display: flex;
   width: 100%;
+  align-items: center;
 `;

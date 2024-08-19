@@ -11,18 +11,23 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import { useLocation } from "react-router-dom";
-
 import AboutUs from "./pages/AboutUs";
-
 import SingleProduct from "./pages/SingleProduct";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
+  setCategory: () => {},
+  category: { id: 1, name: "", image: "" },
 });
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
+  const [category, setCategory] = useState({
+    id: 1,
+    name: "",
+    image: "",
+  });
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -41,7 +46,9 @@ function App() {
     );
   };
   return (
-    <Context.Provider value={{ burgerToShow, setBurgerToShow }}>
+    <Context.Provider
+      value={{ burgerToShow, setBurgerToShow, category, setCategory }}
+    >
       <BrowserRouter>
         <HeaderChanger />
         <Routes>

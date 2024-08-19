@@ -1,10 +1,12 @@
-import Reacte from "react";
+import Reacte, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import data from "../../data.json";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Context } from "../../App";
 export default function Categories() {
+  const { setCategory, category } = useContext(Context);
   async function fetchCategories() {
     const response = await fetch("");
     const data = await response.json();

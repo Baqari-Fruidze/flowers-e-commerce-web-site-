@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data.json";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../App";
 
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
-  async function fetchSingleCategories() {
-    const response = await fetch("");
-    const data = await response.json();
-    console.log(data);
-  }
+  const { setCategory, category } = useContext(Context);
+  useEffect(() => {
+    async function fetchSingleCategories() {
+      const response = await fetch("");
+      const data = await response.json();
+      console.log(data);
+    }
+  });
 
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
@@ -22,13 +26,12 @@ export default function SingleCategory() {
   if (dataToMap) {
     backgroundImage = dataToMap[0]?.category.bg_picture;
   }
-
+  console.log(category);
   return (
     <Parent>
       <BackGroundImageCon backImage={backgroundImage}>
         <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
-
       <GridedCon>
         {dataToMap?.map((item, index) => {
           return (
@@ -103,6 +106,7 @@ const ProductsCon = styled.div`
   gap: 2.4rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #121212;
+
   @media (min-width: 768px) {
     width: 100%;
     border: 1px solid #121212;
@@ -136,6 +140,7 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   }
   @media (min-width: 1440px) {
     width: 50%;
+    /* height: 83.6rem; */
     min-height: 100vh;
   }
 `;

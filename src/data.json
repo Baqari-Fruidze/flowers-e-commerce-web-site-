@@ -203,6 +203,7 @@
           "password": "password",
           "profilePicture": "",
           "phoneNumber": "123321",
+          "is_superuser": false,
           "orders": [
             {
               "RecipientsName": "",
