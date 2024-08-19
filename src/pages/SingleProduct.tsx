@@ -21,18 +21,24 @@ export default function SingleProduct() {
       <div>
         {dataToMap?.map((item) => {
           return (
-            <div>
+            <SingleProductCon>
               <ImageCon>
                 <Image src={item.src} alt="" />
               </ImageCon>
-              <span>{item.category.name}/</span>
-              <span>{item.name}</span>
-              <p>{item.name}</p>
-              <p>${item.price}</p>
-              <p>{item.description}</p>
-              <p>Quantity</p>
+              <TextSCon>
+                <div>
+                  <span>{item.category.name}/</span>
+                  <span>{item.name}</span>
+                </div>
+
+                <p>{item.name}</p>
+                <p>${item.price}</p>
+                <p>{item.description}</p>
+                <p>Quantity</p>
+              </TextSCon>
+
               <Quantity />
-            </div>
+            </SingleProductCon>
           );
         })}
       </div>
@@ -40,10 +46,22 @@ export default function SingleProduct() {
     </Parent>
   );
 }
-
+const TextSCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+`;
+const SingleProductCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+`;
 const Image = styled.img`
   width: 100%;
   height: 36rem;
+  @media (min-width: 768px) {
+    height: 40rem;
+  }
 `;
 const ImageCon = styled.div`
   width: 100%;
