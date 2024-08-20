@@ -14,35 +14,35 @@ export default function() {
         <NavBar>
            <ol>
                 <ul onClick={(()=>{ 
-                    setAdminCategories(adminCategories == false ? true : null);
+                    setAdminCategories(adminCategories == false ? true : false);
                     setAdminFlowers(false)
                     setAdminUsers(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
                     })} >Categories</ul>
                 <ul onClick={(()=>{ 
-                    setAdminFlowers(adminFlowers == false ? true : null) 
+                    setAdminFlowers(adminFlowers == false ? true : false) 
                     setAdminCategories(false)
                     setAdminUsers(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
                     })} >Flowers</ul>
                 <ul onClick={(()=>{ 
-                    setAdminUsers(adminUsers == false ? true : null) 
+                    setAdminUsers(adminUsers == false ? true : false) 
                     setAdminCategories(false)
                     setAdminFlowers(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
                     })} >Users</ul>
                 <ul onClick={(()=>{ 
-                    setAdminSubscriptions(adminSubscriptions == false ? true : null) 
+                    setAdminSubscriptions(adminSubscriptions == false ? true : false) 
                     setAdminCategories(false)
                     setAdminFlowers(false)
                     setAdminUsers(false)
                     setAdminFaq(false)
                     })} >Subscriptions</ul>
                 <ul onClick={(()=>{ 
-                    setAdminFaq(adminFaq == false ? true : null) 
+                    setAdminFaq(adminFaq == false ? true : false) 
                     setAdminCategories(false)
                     setAdminFlowers(false)
                     setAdminUsers(false)
