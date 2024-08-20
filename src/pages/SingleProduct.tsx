@@ -91,7 +91,7 @@ const ItemCategoryName = styled.div`
   text-transform: uppercase;
 `;
 const TextSCon = styled.div`
-  padding: 2.4rem;
+  padding: 2.4rem 2.4rem 4.4rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
