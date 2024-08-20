@@ -52,6 +52,7 @@ const QuantitySpan = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
+  letter-spacing: 1px;
 `;
 const Parent = styled.div`
   display: flex;

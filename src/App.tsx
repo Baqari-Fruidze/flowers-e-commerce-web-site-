@@ -15,23 +15,24 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 
-
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
   setCategory: () => {},
   category: { id: 1, name: "", image: "" },
+  subscribe: false,
+  setSubscribe: () => {},
 });
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
+  const [subscribe, setSubscribe] = useState(false);
 
   const [category, setCategory] = useState({
     id: 1,
     name: "",
     image: "",
   });
-
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -51,7 +52,14 @@ function App() {
   };
   return (
     <Context.Provider
-      value={{ burgerToShow, setBurgerToShow, category, setCategory }}
+      value={{
+        burgerToShow,
+        setBurgerToShow,
+        category,
+        setCategory,
+        subscribe,
+        setSubscribe,
+      }}
     >
       <BrowserRouter>
         <HeaderChanger />
@@ -63,7 +71,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
-          <Route path="/:singleCategory/:singleProduct" element={<SingleProduct />} />
+          <Route
+            path="/:singleCategory/:singleProduct"
+            element={<SingleProduct />}
+          />
         </Routes>
         <FooterChanger />
       </BrowserRouter>

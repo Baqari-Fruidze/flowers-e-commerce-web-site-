@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
 import Carusel from "../components/Carusel";
+import PriceOptions from "../components/PriceOptions";
 
 export default function SingleProduct() {
   const { singleProduct } = useParams();
@@ -38,6 +39,7 @@ export default function SingleProduct() {
                 <DescriptionP>{item.description}</DescriptionP>
                 <Quantity />
                 <Carusel />
+                <PriceOptions />
               </TextSCon>
             </SingleProductCon>
           );
