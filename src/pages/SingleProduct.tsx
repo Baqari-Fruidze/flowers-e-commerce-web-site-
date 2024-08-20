@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data.json";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
 import Carusel from "../components/Carusel";
+import PriceOptions from "../components/PriceOptions";
+import { Context } from "../App";
+import Subscribe from "./Subscribe";
 
 export default function SingleProduct() {
+  const { subscribe } = useContext(Context);
   const { singleProduct } = useParams();
   async function fetchSingleProduct() {
     const response = await fetch("");
     const data = await response.json();
-    console.log(data);
   }
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.name === singleProduct
   );
-  console.log(dataToMap);
+
   return (
     <Parent>
       <div>
@@ -38,6 +41,7 @@ export default function SingleProduct() {
                 <DescriptionP>{item.description}</DescriptionP>
                 <Quantity />
                 <Carusel />
+                <PriceOptions price={item.price} />
               </TextSCon>
             </SingleProductCon>
           );
@@ -87,7 +91,7 @@ const ItemCategoryName = styled.div`
   text-transform: uppercase;
 `;
 const TextSCon = styled.div`
-  padding: 2.4rem;
+  padding: 2.4rem 2.4rem 4.4rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;

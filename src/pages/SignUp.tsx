@@ -58,17 +58,15 @@ export default function SignUp() {
         </InputsCon>
       </form>
     </Parent>
-   
   );
 }
-
 
 const PaswordSpan = styled.span`
   color: red;
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  top: 21.5rem;
+  top: 23.5rem;
   right: 4rem;
   letter-spacing: 1px;
 `;
@@ -77,7 +75,7 @@ const EmailSpan = styled.span`
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  top: 16.5rem;
+  top: 18.5rem;
   right: 4rem;
   letter-spacing: 1px;
 `;
@@ -86,7 +84,7 @@ const UserNameSpan = styled.span`
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  top: 11.5rem;
+  top: 14rem;
   right: 4rem;
   letter-spacing: 1px;
 `;
@@ -95,7 +93,7 @@ const LastNameSpan = styled.span`
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  top: 6.5rem;
+  top: 9rem;
   right: 4rem;
   letter-spacing: 1px;
 `;
@@ -104,7 +102,7 @@ const FirsNameSpan = styled.span`
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  top: 2rem;
+  top: 4rem;
   right: 4rem;
   letter-spacing: 1px;
 `;
@@ -145,7 +143,7 @@ const Parent = styled.div`
   background-color: #f5f5f7;
   padding: 10rem 2.4rem;
   min-height: 100vh;
-  @media (min-width: 1440px){
+  @media (min-width: 1440px) {
     background-image: url(${loginBg});
     background-repeat: no-repeat;
     background-size: 100%;
@@ -159,4 +157,3 @@ const InputsCon = styled.div`
   background-color: #f5f5f7;
   max-width: 50rem;
 `;
-

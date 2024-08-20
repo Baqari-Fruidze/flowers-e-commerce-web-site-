@@ -270,7 +270,7 @@
           "delivery": "Free Delivery",
           "theBest": "Best for a budget",
           "firstDelivery": "Glass vase with first delivery",
-          "firstDelivery2":"",
+          "firstDelivery2": "",
           "saveUp": "Save op to 25%"
         },
         {
@@ -280,7 +280,7 @@
           "delivery": "Free Delivery",
           "theBest": "Best seasonal selections",
           "firstDelivery": "Glass vase with first delivery",
-          "firstDelivery2":"Luxury candle with your first delivery",
+          "firstDelivery2": "Luxury candle with your first delivery",
           "saveUp": "Save op to 28%"
         },
         {
@@ -290,12 +290,12 @@
           "delivery": "Free Delivery",
           "theBest": "Premium arrangement",
           "firstDelivery": "Premium vase with first delivery",
-          "firstDelivery2":"Luxury candle with your first delivery",
+          "firstDelivery2": "Luxury candle with your first delivery",
           "saveUp": "Save op to 30%"
         }
       ]
     },
-        
+
     {
       "deliveryFrequency": [
         {
@@ -307,7 +307,30 @@
         {
           "frequency": "WEEKLY"
         }
-      
+      ]
+    },
+    {
+      "you may also like": [
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        }
       ]
     },
 
@@ -340,6 +363,6 @@
       
       ]
     }
-    
+
   ]
 }

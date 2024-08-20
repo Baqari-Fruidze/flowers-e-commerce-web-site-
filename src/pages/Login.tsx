@@ -5,10 +5,6 @@ import { schemaLogin } from "../Scema/LoginYup";
 import { Tlogin } from "../types/Login";
 import loginBg from "/image/loginBg.jpg";
 
-
-
-
-
 export default function Login() {
   const {
     register,
@@ -68,7 +64,7 @@ const PaswordErorSpan = styled.span`
   font-weight: 500;
   position: absolute;
   right: 4rem;
-  top: 7rem;
+  top: 9rem;
 `;
 const UsernameErorSpan = styled.span`
   color: red;
@@ -76,7 +72,7 @@ const UsernameErorSpan = styled.span`
   font-weight: 500;
   position: absolute;
   right: 4rem;
-  top: 2rem;
+  top: 4rem;
 `;
 const Btn = styled.button`
   letter-spacing: 2px;
@@ -202,7 +198,7 @@ const Outside = styled.div`
   justify-content: center;
   margin: 0 auto;
   min-height: 100vh;
-  @media (min-width: 1440px){
+  @media (min-width: 1440px) {
     background-image: url(${loginBg});
     background-repeat: no-repeat;
     background-size: 100%;

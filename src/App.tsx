@@ -17,7 +17,6 @@ import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import { boolean } from "yup";
 
-
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   adminCategories: false,
@@ -27,6 +26,11 @@ export const Context = createContext<TcontextType>({
   adminFaq: false,
   setBurgerToShow: () => {},
   setCategory: () => {},
+
+
+  subscribe: false,
+  setSubscribe: () => {},
+
   setAdminCategories: () => {},
   setAdminFlowers: () => {},
   setAdminUsers: () => {},
@@ -34,15 +38,21 @@ export const Context = createContext<TcontextType>({
   setAdminFaq: () => {},
   
   category: { id: 1, name: "", image: "" }
+
 });
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
+
+  const [subscribe, setSubscribe] = useState(true);
+
+
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminFlowers, setAdminFlowers] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
+
   const [category, setCategory] = useState({
     id: 1,
     name: "",
@@ -71,7 +81,13 @@ function App() {
   };
   return (
     <Context.Provider
-      value={{ 
+
+      value={{
+     
+        subscribe,
+        setSubscribe,
+
+     
         burgerToShow, 
         setBurgerToShow, 
         category, 
@@ -86,6 +102,7 @@ function App() {
         setAdminSubscriptions,
         adminFaq, 
         setAdminFaq
+
       }}
     >
       <BrowserRouter>
@@ -98,8 +115,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
+
+     
+
           <Route path="/:singleCategory/:singleProduct" element={<SingleProduct />} />
           <Route path="admin-panel"  element={<AdminPanel />} />
+
         </Routes>
         <FooterChanger />
       </BrowserRouter>
