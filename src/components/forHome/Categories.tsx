@@ -18,7 +18,7 @@ export default function Categories() {
   AOS.init({
     duration: 1000,
   });
-
+  console.log(category);
   return (
     <>
       <MainCont>
@@ -47,9 +47,7 @@ export default function Categories() {
                 </div>
               </TitleCategory>
               <ImageCategory onClick={() => navigate(`/${item.name}`)}>
-
-              <img src={item.image} alt="" />
-
+                <img src={item.image} alt="" />
               </ImageCategory>
             </Category>
           ) : (
@@ -58,9 +56,7 @@ export default function Categories() {
                 onClick={() => navigate(`/${item.name}`)}
                 style={{ borderRight: "solid 1px #121212" }}
               >
-
                 <img src={item.image} alt="" />
-
               </ImageCategory>
               <TitleCategory>
                 <span>{item.name}</span>
