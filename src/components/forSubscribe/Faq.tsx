@@ -17,9 +17,6 @@ export default function Faq(){
                     <Qa key={index}>
                         <div className="question">
                             <p  onClick={(()=>{ setIsAnswer(isAnswer !== index ? faqs.indexOf(item) : null) 
-                                console.log(faqs.indexOf(item))
-                                console.log(index)
-                                console.log(isAnswer)
                             })} >{item.question}</p>
                             <img 
                             src={arrowRightDown} 
