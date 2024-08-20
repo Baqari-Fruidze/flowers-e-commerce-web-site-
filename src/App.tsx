@@ -26,7 +26,7 @@ export const Context = createContext<TcontextType>({
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
-  const [subscribe, setSubscribe] = useState(false);
+  const [subscribe, setSubscribe] = useState(true);
 
   const [category, setCategory] = useState({
     id: 1,
