@@ -7,7 +7,7 @@ export default function YouMayAlsoLike() {
     <Parent>
       <Hone>You may also like…</Hone>
       <GridedCon>
-        {data.datas[data.datas.length - 1]["you may also like"]?.map((item) => {
+        {data.datas[5]["you may also like"]?.map((item) => {
           return (
             <ImageAndTextCon>
               <Image src={item.src} alt="" />
@@ -52,6 +52,9 @@ const ImageAndTextCon = styled.div`
   align-items: center;
   border-bottom: 1px solid #121212;
   padding-bottom: 1.6rem;
+  @media (min-width: 768px) {
+    border-right: 1px solid #121212;
+  }
 `;
 const Image = styled.img`
   width: 100%;
@@ -83,5 +86,4 @@ const Hone = styled.h1`
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
 `;
