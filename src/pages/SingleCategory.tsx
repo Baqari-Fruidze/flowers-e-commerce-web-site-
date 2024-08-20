@@ -147,7 +147,7 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgba(211, 211, 211, 0.3);
+  background-color: rgba(211, 211, 211, 0.1);
   @media (min-width: 1440px) {
     flex-direction: row;
   }
