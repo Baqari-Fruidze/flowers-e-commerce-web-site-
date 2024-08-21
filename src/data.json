@@ -200,9 +200,9 @@
           "email": "baqarifruizde@2gmail.com",
           "last_name": "pruidze",
           "first_name": "baqari",
-          "password": "password",
+          "password": "Bf1234567",
           "profilePicture": "",
-          "phoneNumber": "123321",
+          "phoneNumber": "+995577121517",
           "is_superuser": false,
           "orders": [
             {
@@ -233,9 +233,9 @@
           "email": "baqarifruizde@2gmail.com",
           "last_name": "pruidze",
           "first_name": "baqari",
-          "password": "password",
+          "password": "Em1234567",
           "profilePicture": "",
-          "phoneNumber": "123321",
+          "phoneNumber": "+995577457898",
           "orders": [
             {
               "RecipientsName": "",
@@ -266,32 +266,34 @@
         {
           "image": "https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6437c914d82daf41dba1c7e6_Classic_Subscription.webp",
           "category": "Classic",
-          "price": "Price $45",
+          "price": 45,
           "delivery": "Free Delivery",
           "theBest": "Best for a budget",
           "firstDelivery": "Glass vase with first delivery",
           "firstDelivery2": "",
-          "saveUp": "Save op to 25%"
+
+          "saveUp": 25
+
         },
         {
           "image": "https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6437c914e8478a1d953b1791_Seasonal_Subscription.webp",
           "category": "Seasonal",
-          "price": "Price $65",
+          "price": 65,
           "delivery": "Free Delivery",
           "theBest": "Best seasonal selections",
           "firstDelivery": "Glass vase with first delivery",
           "firstDelivery2": "Luxury candle with your first delivery",
-          "saveUp": "Save op to 28%"
+          "saveUp": 28
         },
         {
           "image": "https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6437c23ff2f4a80bdf1a23f2_Subscription.webp",
           "category": "Luxe",
-          "price": "Price $95",
+          "price": 95,
           "delivery": "Free Delivery",
           "theBest": "Premium arrangement",
           "firstDelivery": "Premium vase with first delivery",
           "firstDelivery2": "Luxury candle with your first delivery",
-          "saveUp": "Save op to 30%"
+          "saveUp": 30
         }
       ]
     },
