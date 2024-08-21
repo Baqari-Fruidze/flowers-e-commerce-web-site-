@@ -2,6 +2,7 @@ import React from "react";
 import data from "../data.json";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 
 export default function Carusel() {
   return (
@@ -24,11 +25,16 @@ export default function Carusel() {
             return (
               <SplideSlide>
                 <SingleItemCon>
-                  <Image src={item.src} alt="" />
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <NameP>{item.name}</NameP>
-                    <PriceP>${item.price}</PriceP>
-                  </div>
+                  <Link
+                    style={{ textDecorationLine: "none" }}
+                    to={`/${item.category.name}/${item.name}`}
+                  >
+                    <Image src={item.src} alt="" />
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <NameP>{item.name}</NameP>
+                      <PriceP>${item.price}</PriceP>
+                    </div>
+                  </Link>
                 </SingleItemCon>
               </SplideSlide>
             );
