@@ -16,13 +16,15 @@ export default function AdminPanel() {
     const {adminUsers} = useContext(Context);
     const {adminSubscriptions} = useContext(Context);
     const {adminFaq} = useContext(Context);
+    
+    console.log(adminCategories)
     return(
         <>
         <HeaderAdminPanel />
 
         <MainCont>
             <NavBar />
-            {adminCategories ? <Categories /> : null}
+            {adminCategories ?  <Categories /> : null}
             {adminFlowers ?  <Flowers /> : null}
             {adminUsers ?  <Users /> : null}
             {adminSubscriptions ?  <Subscriptions /> : null}
@@ -36,5 +38,5 @@ export default function AdminPanel() {
 const MainCont=styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
-    height: 100vh;
+    height: 90vh;
 `
