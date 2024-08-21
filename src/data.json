@@ -272,7 +272,6 @@
           "firstDelivery": "Glass vase with first delivery",
           "firstDelivery2": "",
           "saveUp": "Save op to 25%"
-          
         },
         {
           "image": "https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6437c914e8478a1d953b1791_Seasonal_Subscription.webp",
@@ -361,9 +360,61 @@
           "question": "Can I suspend my subscription to flowers ?",
           "answer": "Yes, you can! After you create an account, you can log in and adjust your settings to pause the next delivery and let us know the next best delivery date."
         }
-      
+      ]
+    },
+    {
+      "carusel": [
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        },
+        {
+          "name": "Lime & Matcha",
+          "price": 25,
+          "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
+        }
       ]
     }
-
   ]
 }
