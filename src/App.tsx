@@ -26,27 +26,27 @@ export const Context = createContext<TcontextType>({
   adminFaq: false,
   setBurgerToShow: () => {},
   setCategory: () => {},
-
-
   subscribe: false,
   setSubscribe: () => {},
-
   setAdminCategories: () => {},
   setAdminFlowers: () => {},
   setAdminUsers: () => {},
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
-  
-  category: { id: 1, name: "", image: "" }
+  category: { id: 1, name: "", image: "" },
+  addCategories: { id: 1, name: "", image: ""},
+  setAddCategories: ()=> {},
+  addFlowers: {id: 1, name: "", price: 0, category: {id: 1, name: "", bg_picture: ""}, description: "", inStock: 0, src: ""},
+  setAddFlowers: () => {},
 
 });
+  
+
+
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
-
   const [subscribe, setSubscribe] = useState(true);
-
-
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminFlowers, setAdminFlowers] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
@@ -58,6 +58,22 @@ function App() {
     name: "",
     image: "",
   });
+  const [addCategories, setAddCategories] = useState({
+    id: 1,
+    name: "",
+    Image: ""
+  });
+  const [addFlowers, setAddFlowers] = useState({
+    id: 1,
+    name: "",
+    price: 0,
+    category: "",
+    description: "",
+    inStock: 0,
+    src: ""
+})
+
+  
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -83,11 +99,8 @@ function App() {
     <Context.Provider
 
       value={{
-     
         subscribe,
         setSubscribe,
-
-     
         burgerToShow, 
         setBurgerToShow, 
         category, 
@@ -101,7 +114,12 @@ function App() {
         adminSubscriptions, 
         setAdminSubscriptions,
         adminFaq, 
-        setAdminFaq
+        setAdminFaq,
+        setAddCategories,
+        addCategories, 
+        addFlowers, 
+        setAddFlowers
+        
 
       }}
     >

@@ -4,31 +4,29 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Flowers(){
-    const [addFlowers, setAddFlowers] = useState({
-        name: "",
-        price: 0,
-        category: "",
-        description: "",
-        inStock: 0,
-        src: null
-    })
+    const {addFlowers, setAddFlowers} = useContext(Context)
+
     const dataFlowers = data.datas[1].flowers
     
     console.log(data.datas[1].flowers)
 
-    async function add(event) {
+    async function add(event: any) {
         event.preventDefault()
         dataFlowers.push(addFlowers)
         setAddFlowers({
             "name": "",
             "price": 0,
-            "category": "",
+            "category": {
+                name: "",
+                id: 1,
+                bg_picture: ""
+            },
             "description": "",
             "inStock": 0,
-            "src": null
+            "src": ""
         })}
        
-    const addFlower = (event)=>{
+    const addFlower = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddFlowers({
