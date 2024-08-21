@@ -13,7 +13,7 @@ export default function Carusel() {
           options={{
             width: 300,
             type: "loop",
-            autoplay: false,
+            autoplay: true,
             rewind: true,
             pagination: false,
             arrows: false,
@@ -78,8 +78,6 @@ const SingleItemCon = styled.div`
   gap: 0.8rem;
   width: 30rem;
   border: 1px solid #121212;
-  @media (min-width: 768px) {
-  }
 `;
 const CaruselCon = styled.div`
   display: flex;
@@ -101,4 +99,7 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  @media (min-width: 1200px) {
+    height: 199px;
+  }
 `;

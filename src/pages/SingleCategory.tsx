@@ -60,6 +60,8 @@ export default function SingleCategory() {
 const GridedCon = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  overflow-y: auto;
+  height: 100vh;
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -141,7 +143,7 @@ const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
   @media (min-width: 1440px) {
     width: 50%;
     /* height: 83.6rem; */
-    min-height: 100vh;
+    height: 100vh;
   }
 `;
 const Parent = styled.div`
