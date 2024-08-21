@@ -23,12 +23,6 @@ export default function PriceOptions({ price }: { price: number }) {
   );
 }
 
-// const InsideCon = styled.div`
-//   width: 1.6rem;
-//   height: 1.6rem;
-//   background: #121212;
-//   border-radius: 50%;
-// `;
 const Btn = styled.button`
   background-color: #121212;
   padding: 1.6rem;
@@ -41,6 +35,9 @@ const Btn = styled.button`
   letter-spacing: 0.48px;
   text-transform: uppercase;
   border: none;
+  @media (min-width: 1200px) {
+    padding: 2rem;
+  }
 `;
 const SubscribeP = styled.p`
   color: var(--Black, #121212);
@@ -49,6 +46,9 @@ const SubscribeP = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
 `;
 const PurchaseP = styled.p`
   color: var(--Black, #121212);
@@ -57,17 +57,11 @@ const PurchaseP = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
 `;
-// const Circle = styled.div<{ sub: boolean }>`
-//   border-radius: 50%;
-//   width: 2.4rem;
-//   height: 2.4rem;
-//   /* background: #121212; */
-//   border: 1px solid #121212;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
+
 const CircleCon = styled.div`
   display: flex;
   gap: 1.2rem;

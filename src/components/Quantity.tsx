@@ -58,6 +58,12 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  @media (min-width: 500px) {
+    align-items: center;
+    flex-direction: row;
+    width: 20rem;
+    height: 4rem;
+  }
 `;
 const NumCon = styled.div`
   display: flex;
@@ -65,7 +71,7 @@ const NumCon = styled.div`
   justify-content: center;
   width: 100%;
   border: 1px solid #121212;
-  height: 4.8rem;
+  height: 4rem;
 `;
 const Plus = styled.div`
   width: 4.8rem;
@@ -73,7 +79,7 @@ const Plus = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid #121212;
-  height: 4.8rem;
+  height: 4rem;
 `;
 const Minus = styled.div`
   width: 4.8rem;
@@ -81,7 +87,7 @@ const Minus = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid #121212;
-  height: 4.8rem;
+  height: 4rem;
 `;
 const Signs = styled.div`
   display: flex;

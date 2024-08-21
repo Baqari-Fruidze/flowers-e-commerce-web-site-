@@ -35,5 +35,4 @@ body{
   opacity: 1; /* Make the text visible */
   transform: translateY(0); /* Move the text to its final position */
 }
-`
-
+`;
