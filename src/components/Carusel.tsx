@@ -57,23 +57,30 @@ const NameP = styled.p`
   line-height: 120%;
 `;
 const Image = styled.img`
+  align-self: center;
   width: 20.8rem;
   height: 162px;
+  @media (min-width: 768px) {
+    width: 13rem;
+    height: 12rem;
+  }
 `;
 const SingleItemCon = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  .splide__slide is-next {
-    list-style-type: none;
+  width: 30rem;
+  border: 1px solid #121212;
+  @media (min-width: 768px) {
   }
 `;
 const CaruselCon = styled.div`
   display: flex;
   overflow-x: hidden;
-  width: 3orem;
   & .splide__list {
     display: flex;
+    list-style-type: none;
   }
 `;
 const Title = styled.h1`
