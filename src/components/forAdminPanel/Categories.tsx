@@ -10,7 +10,7 @@ export default function Categories(){
     
     console.log(data.datas[0].categories)
 
-    async function add(event: any) {
+    function add(event: any) {
         event.preventDefault()
         dataCategories.push(addCategories)
         setAddCategories({
@@ -74,8 +74,8 @@ export default function Categories(){
   </form> 
 </MainCategories>
 </>
-    )
-}
+        )
+    }
 
 const MainCategories = styled.div`
     background-color: #eaf07740;
@@ -114,8 +114,8 @@ const MainCategories = styled.div`
         font-weight: 600;
         p{
             font-size: 20px;
+            }
         }
-}
 
     .container{
         border-bottom: 1px solid #121212;

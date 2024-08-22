@@ -4,12 +4,10 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function FAQ(){
-   
+    // useEffect(()=>{ }, [])
     const {addFaq, setAddFaq} = useContext(Context)
     const dataFaq = data.datas[6].faq
     
-    console.log(data.datas[6].faq)
-
     async function add(event:any) {
         event.preventDefault()
         dataFaq.push(addFaq)
@@ -26,7 +24,10 @@ export default function FAQ(){
         [name]: value,
     })}
 
-    console.log(addFaq)
+    function onDelete(index: number): void {
+        throw new Error("Function not implemented.");
+    }
+
     return(
 <>       
 <MainFaq>
@@ -46,7 +47,7 @@ export default function FAQ(){
         </div>
         <div className="editDelete">
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={()=>console.log(findIndex(dataFaq))}>Delete</button>
         </div>      
       </div>
      ))}
