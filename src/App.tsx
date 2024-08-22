@@ -15,7 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
-import { boolean } from "yup";
+import Cart from "./components/Cart";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -26,16 +26,18 @@ export const Context = createContext<TcontextType>({
   adminFaq: false,
   setBurgerToShow: () => {},
   setCategory: () => {},
-
-
   subscribe: false,
   setSubscribe: () => {},
-
   setAdminCategories: () => {},
   setAdminFlowers: () => {},
   setAdminUsers: () => {},
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
+
+  category: { id: 1, name: "", image: "" },
+  cartshow: false,
+  setCartshow: () => {},
+
   
   category: { id: 1, name: "", image: "" },
 
@@ -64,21 +66,18 @@ export const Context = createContext<TcontextType>({
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
-
   const [subscribe, setSubscribe] = useState(true);
-
-
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminFlowers, setAdminFlowers] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
-
   const [category, setCategory] = useState({
     id: 1,
     name: "",
     image: "",
   });
+  const [cartshow, setCartshow] = useState(false);
 
   const [addCategories, setAddCategories] = useState({
     id: 1,
@@ -159,17 +158,15 @@ function App() {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" 
-      ? null : (
+      location.pathname === "/admin-panel" ? null : (
       <Footer />
     );
   };
   const HeaderChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
-      location.pathname === "/signUp" || 
-      location.pathname === "/admin-panel" ?
-      null : isSmallDevice ? (
+      location.pathname === "/signUp" ||
+      location.pathname === "/admin-panel" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
@@ -177,25 +174,28 @@ function App() {
   };
   return (
     <Context.Provider
-
       value={{
-     
         subscribe,
         setSubscribe,
 
-     
-        burgerToShow, 
-        setBurgerToShow, 
-        category, 
+        burgerToShow,
+        setBurgerToShow,
+        category,
         setCategory,
         adminCategories,
         setAdminCategories,
         adminFlowers,
         setAdminFlowers,
-        adminUsers, 
+        adminUsers,
         setAdminUsers,
-        adminSubscriptions, 
+        adminSubscriptions,
         setAdminSubscriptions,
+
+        adminFaq,
+        setAdminFaq,
+        cartshow,
+        setCartshow,
+
         adminFaq, 
         setAdminFaq,
         addCategories,
@@ -210,6 +210,7 @@ function App() {
         setFlowersCategory,
         addUsers, 
         setAddUsers,
+
       }}
     >
       <BrowserRouter>
@@ -223,11 +224,11 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
 
-     
-
-          <Route path="/:singleCategory/:singleProduct" element={<SingleProduct />} />
-          <Route path="admin-panel"  element={<AdminPanel />} />
-
+          <Route
+            path="/:singleCategory/:singleProduct"
+            element={<SingleProduct />}
+          />
+          <Route path="admin-panel" element={<AdminPanel />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
