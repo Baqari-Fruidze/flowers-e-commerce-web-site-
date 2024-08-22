@@ -15,7 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
-import { boolean } from "yup";
+import Cart from "./components/Cart";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -26,76 +26,110 @@ export const Context = createContext<TcontextType>({
   adminFaq: false,
   setBurgerToShow: () => {},
   setCategory: () => {},
-
-
   subscribe: false,
   setSubscribe: () => {},
-
   setAdminCategories: () => {},
   setAdminFlowers: () => {},
   setAdminUsers: () => {},
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
-  
   category: { id: 1, name: "", image: "" },
-
-  addCategories:  {id: 1, name: "", image: ""},
+  cartshow: false,
+  setCartshow: () => {},
+  addCategories: { id: 1, name: "", image: "" },
   setAddCategories: () => {},
-
-  addFaq: { question: "", answer: ""},
+  addFaq: { question: "", answer: "" },
   setAddFaq: () => {},
-
-  addSubscriptions: { image: "", category: "", price: 0, delivery: "", theBest: "", firstDelivery: "", firstDelivery2: "", saveUp: 0 },
+  addSubscriptions: {
+    image: "",
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0,
+  },
   setAddSubscriptions: () => {},
-
-  addFlowers: { name: "", price: 0, category: {name: "", id: 1, bg_picture: ""}, description: "", inStock: 0, src: "" },
+  addFlowers: {
+    name: "",
+    price: 0,
+    category: { name: "", id: 1, bg_picture: "" },
+    description: "",
+    inStock: 0,
+    src: "",
+  },
   setAddFlowers: () => {},
-  
-  flowersCategory: {name: "", id: 1, bg_picture: ""},
+  flowersCategory: { name: "", id: 1, bg_picture: "" },
   setFlowersCategory: () => {},
-
-  addUsers: { review: "", username: "", email: "", last_name: "", first_name: "", password: "", profilePicture: "", phoneNumber: "", is_superuser: false, 
-    orders: [ { RecipientsName: "", Recipients_Phone_number: "", DataofDelivery: "", Delivery_Time: "", street: "", houseNumber: "", total: 0, 
-    items: [ { product: { image: "", name: "", price: 0, category: "", description: "" } } ] } ] },
+  addUsers: {
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: {
+              image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: "",
+            },
+          },
+        ],
+      },
+    ],
+  },
   setAddUsers: () => {},
-
 });
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
-
   const [subscribe, setSubscribe] = useState(true);
-
-
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminFlowers, setAdminFlowers] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
-
   const [category, setCategory] = useState({
     id: 1,
     name: "",
     image: "",
   });
+  const [cartshow, setCartshow] = useState(false);
 
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
-    image: ""
-});
+    image: "",
+  });
 
   const [addFaq, setAddFaq] = useState({
     question: "",
-    answer: ""
+    answer: "",
   });
 
   const [flowersCategory, setFlowersCategory] = useState({
     name: "",
     id: 1,
     bg_picture: "",
-  })
+  });
 
   const [addFlowers, setAddFlowers] = useState({
     name: "",
@@ -108,7 +142,7 @@ function App() {
     description: "",
     inStock: 0,
     src: "",
-  })
+  });
 
   const [addSubscriptions, setAddSubscriptions] = useState({
     image: "",
@@ -118,8 +152,8 @@ function App() {
     theBest: "",
     firstDelivery: "",
     firstDelivery2: "",
-    saveUp: 0
-  })
+    saveUp: 0,
+  });
 
   const [addUsers, setAddUsers] = useState({
     review: "",
@@ -142,34 +176,32 @@ function App() {
         total: 0,
         items: [
           {
-            product: 
-            { image: "",
+            product: {
+              image: "",
               name: "",
               price: 0,
               category: "",
-              description: ""
-            }
-          }
-        ]
-      }
-    ]
-})
+              description: "",
+            },
+          },
+        ],
+      },
+    ],
+  });
 
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" 
-      ? null : (
+      location.pathname === "/admin-panel" ? null : (
       <Footer />
     );
   };
   const HeaderChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
-      location.pathname === "/signUp" || 
-      location.pathname === "/admin-panel" ?
-      null : isSmallDevice ? (
+      location.pathname === "/signUp" ||
+      location.pathname === "/admin-panel" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
@@ -177,26 +209,24 @@ function App() {
   };
   return (
     <Context.Provider
-
       value={{
-     
         subscribe,
         setSubscribe,
-
-     
-        burgerToShow, 
-        setBurgerToShow, 
-        category, 
+        burgerToShow,
+        setBurgerToShow,
+        category,
         setCategory,
         adminCategories,
         setAdminCategories,
         adminFlowers,
         setAdminFlowers,
-        adminUsers, 
+        adminUsers,
         setAdminUsers,
-        adminSubscriptions, 
+        adminSubscriptions,
         setAdminSubscriptions,
-        adminFaq, 
+        cartshow,
+        setCartshow,
+        adminFaq,
         setAdminFaq,
         addCategories,
         setAddCategories,
@@ -208,7 +238,7 @@ function App() {
         setAddFlowers,
         flowersCategory,
         setFlowersCategory,
-        addUsers, 
+        addUsers,
         setAddUsers,
       }}
     >
@@ -223,11 +253,11 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
 
-     
-
-          <Route path="/:singleCategory/:singleProduct" element={<SingleProduct />} />
-          <Route path="admin-panel"  element={<AdminPanel />} />
-
+          <Route
+            path="/:singleCategory/:singleProduct"
+            element={<SingleProduct />}
+          />
+          <Route path="admin-panel" element={<AdminPanel />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
