@@ -56,6 +56,8 @@ export default function Users(){
     })}
 
 
+
+
     return(
 <>       
 <MainCategories>
@@ -85,8 +87,13 @@ export default function Users(){
             <p style={{width: "70px"}} className="userName">{item.phoneNumber}</p>
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataUsers.splice(index, 1)
+                setAddUsers({...addUser})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}
