@@ -1,17 +1,13 @@
-
-
 import React, { useContext } from "react";
 import styled from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import { Context } from "../App";
 import Burger from "./Burger";
 
-
 export default function Header() {
   const { setBurgerToShow, burgerToShow } = useContext(Context);
 
   return (
-
     <Parent>
       <BurgerSvgCon>
         <svg
@@ -46,7 +42,6 @@ export default function Header() {
       {burgerToShow ? <Burger /> : null}
     </Parent>
   );
-
 }
 const Parent = styled.div`
   position: relative;
@@ -79,6 +74,7 @@ const InputCon = styled.div`
   padding-bottom: 1rem;
 `;
 const Input = styled.input`
+  background-color: #f5f5f7;
   font-size: 15px;
   font-weight: 400;
   width: 100%;
@@ -105,7 +101,3 @@ const CartCon = styled.div`
     opacity: 0.5;
   }
 `;
-
-
-
-

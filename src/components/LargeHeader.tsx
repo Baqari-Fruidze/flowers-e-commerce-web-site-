@@ -9,14 +9,14 @@ export default function LargeHeader() {
       <HomeCon>
         <Link to={"/"}>
           <AnimDiv>
-              <p className="anim">Home</p>
+            <p className="anim">Home</p>
           </AnimDiv>
         </Link>
       </HomeCon>
       <ContactCon>
         <Link>
           <AnimDiv>
-              <p className="anim">Contact</p>
+            <p className="anim">Contact</p>
           </AnimDiv>
         </Link>
       </ContactCon>
@@ -25,8 +25,8 @@ export default function LargeHeader() {
       </InputCon>
       <SignInCon>
         <Link to={"login"}>
-        <AnimDiv>
-              <p className="anim">Sign In</p>
+          <AnimDiv>
+            <p className="anim">Sign In</p>
           </AnimDiv>
         </Link>
       </SignInCon>
@@ -85,6 +85,7 @@ const InputCon = styled.div`
     padding-bottom: 2.5rem;
   }
   & > input {
+    background-color: #f5f5f7;
     font-weight: 500;
     padding-left: 20%;
     font-size: 18px;
@@ -158,4 +159,3 @@ const AnimDiv = styled.div`
   }
 `;
 //Animation end
-
