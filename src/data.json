@@ -5,31 +5,26 @@
         {
           "id": 1,
           "name": "Fresh Flowers",
-
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f2f1d0047afe1dfaeff_640a0dd1910159199045fee7_point-du-jour%25202%2520copy%25202.webp"
         },
         {
           "id": 2,
           "name": "Dried Flowers",
-
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64a050f92a4cfebda6a211d3_41adf0e5-a60f-4ae0-8f56-26e6026572cb%20copy-p-1080.webp"
         },
         {
           "id": 3,
           "name": "Live Plants",
-
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432d51ec41c03ba2a35bb_live%20plans-p-1080.webp"
         },
         {
           "id": 4,
           "name": "Aroma Candles",
-
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64343334edb3246f9258be02_candels-p-1080.webp"
         },
         {
           "id": 5,
           "name": "Fresheners",
-
           "image": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432ad9c41bbf2994e73de_difuser-p-1080.webp"
         }
       ]
@@ -44,9 +39,7 @@
             "id": 1,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -58,9 +51,7 @@
             "id": 2,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -72,9 +63,7 @@
             "id": 3,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -86,9 +75,7 @@
             "id": 4,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -100,9 +87,7 @@
             "id": 5,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -114,9 +99,7 @@
             "id": 6,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -128,9 +111,7 @@
             "id": 7,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -142,9 +123,7 @@
             "id": 8,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -156,9 +135,7 @@
             "id": 9,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -198,9 +175,7 @@
             "id": 10,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         },
@@ -212,9 +187,7 @@
             "id": 11,
             "bg_picture": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/643432f353b60dfd4b4ecece_flowers.webp"
           },
-
           "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space.",
-
           "inStock": 9,
           "src": "https://uploads-ssl.webflow.com/6400d82951450087c6d1eba8/64342f30da060942820af72b_63c1bed2aa744236cba36b46_DoubleLuna_Carouseljpg.webp"
         }
@@ -235,9 +208,9 @@
           "orders": [
             {
               "RecipientsName": "",
-              "Recipients Phone number": "",
-              "DataofDelivery ": "",
-              "Delivery Time": "",
+              "Recipients_Phone_number": "",
+              "DataofDelivery": "",
+              "Delivery_Time": "",
               "street": "",
               "houseNumber": "",
               "total": 256,
@@ -325,7 +298,6 @@
         }
       ]
     },
-
     {
       "deliveryFrequency": [
         {
@@ -363,7 +335,6 @@
         }
       ]
     },
-
     {
       "faq": [
         {

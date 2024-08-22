@@ -4,31 +4,50 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Users(){
-    const [addUsers, setAddUsers] = useState({
-        "username": "",
-        "email": "",
-        "last_name": "",
-        "first_name": "",
-        "password": "",
-        "profilePicture": "",
-        "phoneNumber": 0
-    })
+  
     const dataUsers = data.datas[2].users
     
-    async function add(event) {
+
+    const {addUsers, setAddUsers}=useContext(Context)
+    
+    async function add(event:any) {
         event.preventDefault()
         dataUsers.push(addUsers)
         setAddUsers({
-            "username": "",
-            "email": "",
-            "last_name": "",
-            "first_name": "",
-            "password": "",
-            "profilePicture": "",
-            "phoneNumber": 0
+            review: "",
+            username: "",
+            email: "",
+            last_name: "",
+            first_name: "",
+            password: "",
+            profilePicture: "",
+            phoneNumber: "",
+            is_superuser: false,
+            orders: [
+              {
+                RecipientsName: "",
+                Recipients_Phone_number: "",
+                DataofDelivery: "",
+                Delivery_Time: "",
+                street: "",
+                houseNumber: "",
+                total: 0,
+                items: [
+                  {
+                    product: 
+                    { image: "",
+                      name: "",
+                      price: 0,
+                      category: "",
+                      description: ""        
+                    }
+                }
+                ]
+            }
+            ]
         })}
        
-    const addUser = (event)=>{
+    const addUser = (event:any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddUsers({

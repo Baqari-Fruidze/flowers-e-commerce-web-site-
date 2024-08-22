@@ -4,19 +4,13 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 
-
-
-
 export default function Categories(){
-    const [addCategories, setAddCategories] = useState({
-        name: "",
-        Image: ""
-    })
+    const { addCategories, setAddCategories } = useContext(Context);
     const dataCategories = data.datas[0].categories
     
     console.log(data.datas[0].categories)
 
-    async function add(event) {
+    async function add(event: any) {
         event.preventDefault()
         dataCategories.push(addCategories)
         setAddCategories({
@@ -24,7 +18,7 @@ export default function Categories(){
             "image": null
     })}
  
-    const addCategory = (event)=>{
+    const addCategory = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddCategories({
@@ -58,7 +52,6 @@ export default function Categories(){
      ))}
   </div>
   <form 
-//   onChange={addCategory}
   className="addContainer">
     <h2>Add category</h2>
     <div className="field">

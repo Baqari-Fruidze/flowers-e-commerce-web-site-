@@ -4,15 +4,13 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function FAQ(){
-    const [addFaq, setAddFaq] = useState({
-        question: "",
-        answer: ""
-    })
+   
+    const {addFaq, setAddFaq} = useContext(Context)
     const dataFaq = data.datas[6].faq
     
     console.log(data.datas[6].faq)
 
-    async function add(event) {
+    async function add(event:any) {
         event.preventDefault()
         dataFaq.push(addFaq)
         setAddFaq({
@@ -20,7 +18,7 @@ export default function FAQ(){
             "answer": ""
     })}
  
-    const addFAQ = (event)=>{
+    const addFAQ = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddFaq({
