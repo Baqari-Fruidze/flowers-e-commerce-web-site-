@@ -4,7 +4,6 @@ export interface TcontextType {
   setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
   setCategory: React.Dispatch<React.SetStateAction<Tcategory>>;
   category: Tcategory;
-
   adminCategories: boolean;
   setAdminCategories: React.Dispatch<React.SetStateAction<boolean>>;
   adminFlowers: boolean;
@@ -15,8 +14,8 @@ export interface TcontextType {
   setAdminSubscriptions: React.Dispatch<React.SetStateAction<boolean>>;
   adminFaq: boolean;
   setAdminFaq: React.Dispatch<React.SetStateAction<boolean>>;
-
   subscribe: boolean;
   setSubscribe: React.Dispatch<React.SetStateAction<boolean>>;
-
+  setCartshow: React.Dispatch<React.SetStateAction<boolean>>;
+  cartshow: boolean;
 }
