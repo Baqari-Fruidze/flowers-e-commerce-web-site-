@@ -33,10 +33,36 @@ export const Context = createContext<TcontextType>({
   setAdminUsers: () => {},
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
+
   category: { id: 1, name: "", image: "" },
   cartshow: false,
   setCartshow: () => {},
+
+  
+  category: { id: 1, name: "", image: "" },
+
+  addCategories:  {id: 1, name: "", image: ""},
+  setAddCategories: () => {},
+
+  addFaq: { question: "", answer: ""},
+  setAddFaq: () => {},
+
+  addSubscriptions: { image: "", category: "", price: 0, delivery: "", theBest: "", firstDelivery: "", firstDelivery2: "", saveUp: 0 },
+  setAddSubscriptions: () => {},
+
+  addFlowers: { name: "", price: 0, category: {name: "", id: 1, bg_picture: ""}, description: "", inStock: 0, src: "" },
+  setAddFlowers: () => {},
+  
+  flowersCategory: {name: "", id: 1, bg_picture: ""},
+  setFlowersCategory: () => {},
+
+  addUsers: { review: "", username: "", email: "", last_name: "", first_name: "", password: "", profilePicture: "", phoneNumber: "", is_superuser: false, 
+    orders: [ { RecipientsName: "", Recipients_Phone_number: "", DataofDelivery: "", Delivery_Time: "", street: "", houseNumber: "", total: 0, 
+    items: [ { product: { image: "", name: "", price: 0, category: "", description: "" } } ] } ] },
+  setAddUsers: () => {},
+
 });
+
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
@@ -52,6 +78,81 @@ function App() {
     image: "",
   });
   const [cartshow, setCartshow] = useState(false);
+
+  const [addCategories, setAddCategories] = useState({
+    id: 1,
+    name: "",
+    image: ""
+});
+
+  const [addFaq, setAddFaq] = useState({
+    question: "",
+    answer: ""
+  });
+
+  const [flowersCategory, setFlowersCategory] = useState({
+    name: "",
+    id: 1,
+    bg_picture: "",
+  })
+
+  const [addFlowers, setAddFlowers] = useState({
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 1,
+      bg_picture: "",
+    },
+    description: "",
+    inStock: 0,
+    src: "",
+  })
+
+  const [addSubscriptions, setAddSubscriptions] = useState({
+    image: "",
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0
+  })
+
+  const [addUsers, setAddUsers] = useState({
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: 
+            { image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: ""
+            }
+          }
+        ]
+      }
+    ]
+})
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -89,10 +190,27 @@ function App() {
         setAdminUsers,
         adminSubscriptions,
         setAdminSubscriptions,
+
         adminFaq,
         setAdminFaq,
         cartshow,
         setCartshow,
+
+        adminFaq, 
+        setAdminFaq,
+        addCategories,
+        setAddCategories,
+        addFaq,
+        setAddFaq,
+        addSubscriptions,
+        setAddSubscriptions,
+        addFlowers,
+        setAddFlowers,
+        flowersCategory,
+        setFlowersCategory,
+        addUsers, 
+        setAddUsers,
+
       }}
     >
       <BrowserRouter>

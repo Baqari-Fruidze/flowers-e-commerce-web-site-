@@ -5,7 +5,7 @@ import data from "../../data.json";
 
 export default function Faq(){
     const [isAnswer, setIsAnswer] = useState(null)
-    const faqs = data.datas[5].faq
+    const faqs = data.datas[6].faq
    
     return (
         <>

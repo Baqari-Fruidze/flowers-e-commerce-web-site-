@@ -8,7 +8,7 @@ import { Context } from "../App";
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
-  const { setCategory, category } = useContext(Context);
+  const { category } = useContext(Context);
   useEffect(() => {
     async function fetchSingleCategories() {
       const response = await fetch("");

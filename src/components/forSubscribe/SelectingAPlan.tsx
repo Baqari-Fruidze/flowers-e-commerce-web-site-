@@ -38,20 +38,18 @@ const deliveryFrequency=data.datas[4].deliveryFrequency
                     <img src={item.image} alt="" />
                     <div className="categorydesc">
                         <p className="tatle">{item.category}</p>
-                        <li>{item.price}</li>
+                        <li>Price ${item.price}</li>
                         <li>{item.delivery}</li>
                         <li>{item.theBest}</li>
                         <li>{item.firstDelivery}</li>
                         {item.firstDelivery2 ? <li>{item.firstDelivery2}</li> : null}
-                        <li>{item.saveUp}</li>
+                        <li>Save up to {item.saveUp}%</li>
                     </div> 
                 </div> 
                 <button 
                 onClick={(()=>{
                 setSelectCategory(true)
                 setSelectFrequency(true)
-                // console.log(item.category)
-                // console.log(selectCategory)
                 })}
                 style = {!selectCategory ? {cursor: "pointer"} : {cursor: "default"}}
     >SELECT</button>
