@@ -50,12 +50,6 @@ export default function Flowers(){
             inStock: 0,
             src: "",
         })}
-       
-    
-
-    
-
-    
     return(
 <>       
 <MainCategories>
@@ -83,8 +77,13 @@ export default function Flowers(){
             <p className="flowerName">{item.inStock}</p>
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataFlowers.splice(index, 1)
+                setAddFlowers({...addFlowers})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}

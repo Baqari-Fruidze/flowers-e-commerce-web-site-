@@ -3,7 +3,6 @@ import styled from "styled-components";
 import data from "../../data.json"
 import { Context } from "../../App"
 
-
 export default function Categories(){
     const { addCategories, setAddCategories } = useContext(Context);
     const dataCategories = data.datas[0].categories
@@ -45,8 +44,13 @@ export default function Categories(){
             <p className="CatName">{item.name}</p> 
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataCategories.splice(index, 1)
+                setAddCategories({...addCategories})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}

@@ -59,8 +59,13 @@ export default function Subscriptions(){
             <p style={{width: "70px"}} className="userName">{item.saveUp}</p>
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataSubscriptions.splice(index, 1)
+                setAddSubscriptions({...addSubscriptions})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}
