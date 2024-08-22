@@ -1,4 +1,11 @@
 import { Tcategory } from "./Category";
+import { TaddCategories } from "./AddCategories";
+import { TaddFaq } from "./AddCategories";
+import { TaddSubscriptions } from "./AddCategories";
+import { TaddFlowers } from "./AddCategories";
+import { TflowersCategory } from "./AddCategories";
+import { TaddUsers } from "./AddCategories";
+
 export interface TcontextType {
   burgerToShow: boolean;
   setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,5 +25,23 @@ export interface TcontextType {
 
   subscribe: boolean;
   setSubscribe: React.Dispatch<React.SetStateAction<boolean>>;
+
+  addCategories: TaddCategories;
+  setAddCategories: React.Dispatch<React.SetStateAction<TaddCategories>>;
+
+  addFaq: TaddFaq;
+  setAddFaq: React.Dispatch<React.SetStateAction<TaddFaq>>;
+
+  addSubscriptions: TaddSubscriptions;
+  setAddSubscriptions: React.Dispatch<React.SetStateAction<TaddSubscriptions>>;
+
+  addFlowers: TaddFlowers;
+  setAddFlowers: React.Dispatch<React.SetStateAction<TaddFlowers>>;
+
+  flowersCategory: TflowersCategory;
+  setFlowersCategory: React.Dispatch<React.SetStateAction<TflowersCategory>>;
+
+  addUsers: TaddUsers;
+  setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
 
 }

@@ -4,31 +4,24 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Subscriptions(){
-    const [addSubscriptions, setAddSubscriptions] = useState({
-        "image": "",
-        "category": "",
-        "price": 0,
-        "theBest": "",
-        "firstDelivery": "",
-        "firstDelivery2": "",
-        "saveUp": 0
-    })
+    const { addSubscriptions, setAddSubscriptions} = useContext(Context)
     const dataSubscriptions = data.datas[3].subscription
     
-    async function add(event) {
+    async function add(event : any) {
         event.preventDefault()
         dataSubscriptions.push(addSubscriptions)
         setAddSubscriptions({
-            "image": "",
-            "category": "",
-            "price": 0,
-            "theBest": "",
-            "firstDelivery": "",
-            "firstDelivery2": "",
-            "saveUp": 0
+            image: "",
+            category: "",
+            price: 0,
+            delivery: "",
+            theBest: "",
+            firstDelivery: "",
+            firstDelivery2: "",
+            saveUp: 0
         })}
        
-    const addSubscription = (event)=>{
+    const addSubscription = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddSubscriptions({
@@ -77,7 +70,7 @@ export default function Subscriptions(){
     <h2>Add Subscriptions</h2>
     <div className="field">
         <input 
-        placeholder="Add user's name"
+        placeholder="Add subscriptions's category"
         className="inputSubscriptions" 
         type="text" 
         name="category"
@@ -85,7 +78,7 @@ export default function Subscriptions(){
         onChange={addSubscription}
         />
         <input 
-        placeholder="Add user's e-mail"
+        placeholder="Add subscriptions's price"
         className="inputSubscriptions" 
         type="text" 
         name="price"
@@ -93,7 +86,7 @@ export default function Subscriptions(){
         onChange={addSubscription}
         />
         <input 
-        placeholder="Add user's last_name"
+        placeholder="Add subscriptions's theBest"
         className="inputSubscriptions" 
         type="text" 
         name="theBest"
@@ -101,7 +94,7 @@ export default function Subscriptions(){
         onChange={addSubscription}
         />
         <input 
-        placeholder="Add user's first_name"
+        placeholder="Add subscriptions's firstDelivery"
         className="inputSubscriptions" 
         type="text" 
         name="firstDelivery"
@@ -109,7 +102,7 @@ export default function Subscriptions(){
         onChange={addSubscription}
         />
         <input 
-        placeholder="Add user's password"
+        placeholder="Add subscriptions's firstDelivery2"
         className="inputSubscriptions" 
         type="text" 
         name="firstDelivery2"
@@ -117,7 +110,7 @@ export default function Subscriptions(){
         onChange={addSubscription}
         />
         <input 
-        placeholder="Add user's phoneNumber"
+        placeholder="Add subscriptions's saveUp"
         className="inputSubscriptions" 
         type="text" 
         name="saveUp"

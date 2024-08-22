@@ -4,39 +4,58 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Flowers(){
-    const [addFlowers, setAddFlowers] = useState({
-        name: "",
-        price: 0,
-        category: "",
-        description: "",
-        inStock: 0,
-        src: null
-    })
     const dataFlowers = data.datas[1].flowers
+
+    const { addFlowers, setAddFlowers } = useContext(Context)
+    const { flowersCategory, setFlowersCategory} =useContext(Context)
+
+    
     
     console.log(data.datas[1].flowers)
 
-    async function add(event) {
+    const addFlowersCategory = (event : any)=>{
+        event.preventDefault()
+        const {name, value} = event.target;
+        setFlowersCategory({
+            ...flowersCategory,
+            [name]: value,
+        })
+        }
+
+
+    const addFlower = (event : any)=>{
+        event.preventDefault()
+        const {name, value} = event.target;
+        setAddFlowers({
+            ...addFlowers,
+            category: flowersCategory,
+            [name]: value,
+        })
+        
+        
+        }
+
+    async function add(event : any) {
         event.preventDefault()
         dataFlowers.push(addFlowers)
         setAddFlowers({
-            "name": "",
-            "price": 0,
-            "category": "",
-            "description": "",
-            "inStock": 0,
-            "src": null
+            name: "",
+            price: 0,
+            category: {
+                name: "",
+                id: 1,
+                bg_picture: "",
+              },
+            description: "",
+            inStock: 0,
+            src: "",
         })}
        
-    const addFlower = (event)=>{
-    event.preventDefault()
-    const {name, value} = event.target;
-    setAddFlowers({
-        ...addFlowers,
-        [name]: value,
-    })}
+    
 
+    
 
+    
     return(
 <>       
 <MainCategories>
@@ -87,9 +106,9 @@ export default function Flowers(){
         placeholder="Add flower's category"
         className="inputFlower" 
         type="text" 
-        name="category"
-        value={addFlowers.category}
-        onChange={addFlower}
+        name="name"
+        value={flowersCategory.name}
+        onChange={addFlowersCategory}
         />
         <input 
         placeholder="Add flower's description"
@@ -118,7 +137,10 @@ export default function Flowers(){
         <input 
         className="chooseFile" 
         type="file"
-        value={addFlowers.image} />
+        name="src"
+        value={addFlowers.src}
+        onChange={addFlower}
+        />
     </div>
     <button 
     onClick={add}
