@@ -9,12 +9,9 @@ export default function SelectingAPlan(){
     const [selectCategory, setSelectCategory] = useState(false)
     const [selectFrequency, setSelectFrequency] = useState(false)
     const [selectQuantity, setSelectQuantity] = useState(false)
-    // console.log(selectCategory)
-    // console.log(selectFrequency)
-    // console.log(selectQuantity)
     
-const subscriptionData=data.datas[3].subscription
-const deliveryFrequency=data.datas[4].deliveryFrequency
+    const subscriptionData=data.datas[3].subscription
+    const deliveryFrequency=data.datas[4].deliveryFrequency
 
     
 

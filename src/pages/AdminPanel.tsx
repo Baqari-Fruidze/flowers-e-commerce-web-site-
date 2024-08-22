@@ -21,7 +21,6 @@ export default function AdminPanel() {
     return(
         <>
         <HeaderAdminPanel />
-
         <MainCont>
             <NavBar />
             {adminCategories ?  <Categories /> : null}
@@ -39,4 +38,5 @@ const MainCont=styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: 90vh;
+    /* background-color: #90f190 */
 `
