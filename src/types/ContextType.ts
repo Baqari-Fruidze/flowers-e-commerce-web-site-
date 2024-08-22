@@ -23,27 +23,18 @@ export interface TcontextType {
   setAdminFaq: React.Dispatch<React.SetStateAction<boolean>>;
   subscribe: boolean;
   setSubscribe: React.Dispatch<React.SetStateAction<boolean>>;
-
   setCartshow: React.Dispatch<React.SetStateAction<boolean>>;
   cartshow: boolean;
-
-
   addCategories: TaddCategories;
   setAddCategories: React.Dispatch<React.SetStateAction<TaddCategories>>;
-
   addFaq: TaddFaq;
   setAddFaq: React.Dispatch<React.SetStateAction<TaddFaq>>;
-
   addSubscriptions: TaddSubscriptions;
   setAddSubscriptions: React.Dispatch<React.SetStateAction<TaddSubscriptions>>;
-
   addFlowers: TaddFlowers;
   setAddFlowers: React.Dispatch<React.SetStateAction<TaddFlowers>>;
-
   flowersCategory: TflowersCategory;
   setFlowersCategory: React.Dispatch<React.SetStateAction<TflowersCategory>>;
-
   addUsers: TaddUsers;
   setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
-
 }
