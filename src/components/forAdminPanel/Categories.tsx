@@ -4,33 +4,23 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Categories(){
-<<<<<<< HEAD
-    const {addCategories, setAddCategories} = useContext(Context);
 
-=======
-    const { addCategories, setAddCategories } = useContext(Context);
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+    const {addCategories, setAddCategories} = useContext(Context);
     const dataCategories = data.datas[0].categories
     
     console.log(data.datas[0].categories)
 
-<<<<<<< HEAD
-    async function add(event:any) {
-=======
+
     function add(event: any) {
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
         event.preventDefault()
         dataCategories.push(addCategories)
         dataCategories({
             "name": "",
             "image": ""
     })}
- 
-<<<<<<< HEAD
-    const addCategory = (event:any)=>{
-=======
+
     const addCategory = (event: any)=>{
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     event.preventDefault()
     const {name, value} = event.target;
     dataCategories({

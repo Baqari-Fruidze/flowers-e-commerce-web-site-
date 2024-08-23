@@ -4,11 +4,7 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Flowers(){
-<<<<<<< HEAD
-    const {addFlowers, setAddFlowers} = useContext(Context)
 
-=======
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     const dataFlowers = data.datas[1].flowers
 
     const { addFlowers, setAddFlowers } = useContext(Context)
@@ -18,33 +14,22 @@ export default function Flowers(){
     
     console.log(data.datas[1].flowers)
 
-<<<<<<< HEAD
-    async function add(event: any) {
+    async function add(event : any) {
         event.preventDefault()
         dataFlowers.push(addFlowers)
         setAddFlowers({
-            "name": "",
-            "price": 0,
-            "category": {
+            name: "",
+            price: 0,
+            category: {
                 name: "",
                 id: 1,
-                bg_picture: ""
-            },
-            "description": "",
-            "inStock": 0,
-            "src": ""
+                bg_picture: "",
+              },
+            description: "",
+            inStock: 0,
+            src: "",
         })}
-       
-    const addFlower = (event: any)=>{
-    event.preventDefault()
-    const {name, value} = event.target;
-    setAddFlowers({
-        ...addFlowers,
-        [name]: value,
-    })}
 
-
-=======
     const addFlowersCategory = (event : any)=>{
         event.preventDefault()
         const {name, value} = event.target;
@@ -82,7 +67,7 @@ export default function Flowers(){
             inStock: 0,
             src: "",
         })}
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
     return(
 <>       
 <MainCategories>

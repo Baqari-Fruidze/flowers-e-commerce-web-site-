@@ -1,15 +1,12 @@
 import { Tcategory } from "./Category";
-<<<<<<< HEAD
-import { TaddCategories} from "./AddCategories"
-import { TaddFlowers } from "./AddFlowers";
-=======
+
 import { TaddCategories } from "./AddCategories";
 import { TaddFaq } from "./AddCategories";
 import { TaddSubscriptions } from "./AddCategories";
 import { TaddFlowers } from "./AddCategories";
 import { TflowersCategory } from "./AddCategories";
 import { TaddUsers } from "./AddCategories";
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
 
 export interface TcontextType {
   burgerToShow: boolean;
@@ -28,13 +25,7 @@ export interface TcontextType {
   setAdminFaq: React.Dispatch<React.SetStateAction<boolean>>;
   subscribe: boolean;
   setSubscribe: React.Dispatch<React.SetStateAction<boolean>>;
-<<<<<<< HEAD
 
-  addCategories: TaddCategories;
-  setAddCategories: React.Dispatch<React.SetStateAction<TaddCategories>>; 
-  addFlowers: TaddFlowers;
-  setAddFlowers: React.Dispatch<React.SetStateAction<TaddFlowers>>;
-=======
   setCartshow: React.Dispatch<React.SetStateAction<boolean>>;
   cartshow: boolean;
   addCategories: TaddCategories;
@@ -49,5 +40,4 @@ export interface TcontextType {
   setFlowersCategory: React.Dispatch<React.SetStateAction<TflowersCategory>>;
   addUsers: TaddUsers;
   setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
-}
+

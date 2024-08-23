@@ -34,16 +34,14 @@ export const Context = createContext<TcontextType>({
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
   category: { id: 1, name: "", image: "" },
-<<<<<<< HEAD
+
   addCategories: { id: 1, name: "", image: ""},
   setAddCategories: ()=> {},
   addFlowers: {id: 1, name: "", price: 0, category: {id: 1, name: "", bg_picture: ""}, description: "", inStock: 0, src: ""},
   setAddFlowers: () => {},
 
 });
-  
 
-=======
   cartshow: false,
   setCartshow: () => {},
   addCategories: { id: 1, name: "", image: "" },
@@ -107,7 +105,7 @@ export const Context = createContext<TcontextType>({
   },
   setAddUsers: () => {},
 });
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
@@ -123,7 +121,7 @@ function App() {
     name: "",
     image: "",
   });
-<<<<<<< HEAD
+
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
@@ -139,8 +137,6 @@ function App() {
     src: ""
 })
 
-  
-=======
   const [cartshow, setCartshow] = useState(false);
 
   const [addCategories, setAddCategories] = useState({
@@ -217,7 +213,7 @@ function App() {
       },
     ],
   });
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -242,15 +238,11 @@ function App() {
       value={{
         subscribe,
         setSubscribe,
-<<<<<<< HEAD
-        burgerToShow, 
-        setBurgerToShow, 
-        category, 
-=======
+
         burgerToShow,
         setBurgerToShow,
         category,
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
         setCategory,
         adminCategories,
         setAdminCategories,
@@ -260,16 +252,6 @@ function App() {
         setAdminUsers,
         adminSubscriptions,
         setAdminSubscriptions,
-<<<<<<< HEAD
-        adminFaq, 
-        setAdminFaq,
-        setAddCategories,
-        addCategories, 
-        addFlowers, 
-        setAddFlowers
-        
-
-=======
         cartshow,
         setCartshow,
         adminFaq,
@@ -286,7 +268,7 @@ function App() {
         setFlowersCategory,
         addUsers,
         setAddUsers,
->>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
+
       }}
     >
       <BrowserRouter>
