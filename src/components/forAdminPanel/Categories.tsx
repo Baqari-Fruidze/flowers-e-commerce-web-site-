@@ -1,31 +1,34 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Categories(){
-    const { addCategories, setAddCategories } = useContext(Context);
+
+    const {addCategories, setAddCategories} = useContext(Context);
     const dataCategories = data.datas[0].categories
     
     console.log(data.datas[0].categories)
 
+
     function add(event: any) {
+
         event.preventDefault()
         dataCategories.push(addCategories)
-        setAddCategories({
+        dataCategories({
             "name": "",
-            "image": null
+            "image": ""
     })}
- 
+
     const addCategory = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
-    setAddCategories({
+    dataCategories({
         ...addCategories,
         [name]: value,
     })}
 
-    console.log(addCategories)
+   
     return(
 <>       
 <MainCategories>
