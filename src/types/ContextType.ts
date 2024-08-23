@@ -6,7 +6,6 @@ import { TaddFlowers } from "./AddCategories";
 import { TflowersCategory } from "./AddCategories";
 import { TaddUsers } from "./AddCategories";
 
-
 export interface TcontextType {
   burgerToShow: boolean;
   setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;

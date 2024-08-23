@@ -3,13 +3,10 @@ export interface TaddCategories {
   name: string;
   image: string;
 }
-
 export interface TaddFaq{
     question: string,
     answer: string,
-
 }
-
 export interface TaddSubscriptions {
   image: string;
   category: string;

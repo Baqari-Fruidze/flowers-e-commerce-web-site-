@@ -37,6 +37,8 @@ export const Context = createContext<TcontextType>({
   setCartshow: () => {},
   addCategories: { id: 1, name: "", image: "" },
   setAddCategories: () => {},
+  cartshow: false,
+  setCartshow: () => {},
   addFaq: { question: "", answer: "" },
   setAddFaq: () => {},
   addSubscriptions: {
@@ -97,7 +99,6 @@ export const Context = createContext<TcontextType>({
   setAddUsers: () => {},
 });
 
-
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [burgerToShow, setBurgerToShow] = useState(false);
@@ -112,9 +113,7 @@ function App() {
     name: "",
     image: "",
   });
-
   const [cartshow, setCartshow] = useState(false);
-
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
@@ -190,7 +189,6 @@ function App() {
     ],
   });
 
-
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
@@ -244,7 +242,6 @@ function App() {
         setFlowersCategory,
         addUsers,
         setAddUsers,
-
       }}
     >
       <BrowserRouter>
