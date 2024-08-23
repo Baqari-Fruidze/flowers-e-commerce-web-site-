@@ -5,7 +5,6 @@ export interface TaddCategories {
 }
 
 export interface TaddFaq{
-    [x: string]: any
     question: string,
     answer: string,
 

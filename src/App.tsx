@@ -15,7 +15,6 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
-import Cart from "./components/Cart";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -34,14 +33,6 @@ export const Context = createContext<TcontextType>({
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
   category: { id: 1, name: "", image: "" },
-
-  addCategories: { id: 1, name: "", image: ""},
-  setAddCategories: ()=> {},
-  addFlowers: {id: 1, name: "", price: 0, category: {id: 1, name: "", bg_picture: ""}, description: "", inStock: 0, src: ""},
-  setAddFlowers: () => {},
-
-});
-
   cartshow: false,
   setCartshow: () => {},
   addCategories: { id: 1, name: "", image: "" },
@@ -121,21 +112,6 @@ function App() {
     name: "",
     image: "",
   });
-
-  const [addCategories, setAddCategories] = useState({
-    id: 1,
-    name: "",
-    Image: ""
-  });
-  const [addFlowers, setAddFlowers] = useState({
-    id: 1,
-    name: "",
-    price: 0,
-    category: "",
-    description: "",
-    inStock: 0,
-    src: ""
-})
 
   const [cartshow, setCartshow] = useState(false);
 
