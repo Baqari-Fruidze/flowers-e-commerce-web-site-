@@ -4,6 +4,7 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Flowers(){
+
     const dataFlowers = data.datas[1].flowers
 
     const { addFlowers, setAddFlowers } = useContext(Context)
@@ -12,6 +13,22 @@ export default function Flowers(){
     
     
     console.log(data.datas[1].flowers)
+
+    async function add(event : any) {
+        event.preventDefault()
+        dataFlowers.push(addFlowers)
+        setAddFlowers({
+            name: "",
+            price: 0,
+            category: {
+                name: "",
+                id: 1,
+                bg_picture: "",
+              },
+            description: "",
+            inStock: 0,
+            src: "",
+        })}
 
     const addFlowersCategory = (event : any)=>{
         event.preventDefault()
@@ -50,6 +67,7 @@ export default function Flowers(){
             inStock: 0,
             src: "",
         })}
+
     return(
 <>       
 <MainCategories>
