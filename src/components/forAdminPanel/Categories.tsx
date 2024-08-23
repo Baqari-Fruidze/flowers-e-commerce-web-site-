@@ -33,7 +33,7 @@ export default function Categories(){
 <div className="titleContainer">
         <div className="descr">
             <p className="CatName">Picture</p>
-            <p className="CatName">name</p> 
+            <p className="CatName">names</p> 
         </div>     
       </div>
   <div className="listCategories">
