@@ -15,7 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
-import { boolean } from "yup";
+import Cart from "./components/Cart";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -34,6 +34,7 @@ export const Context = createContext<TcontextType>({
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
   category: { id: 1, name: "", image: "" },
+<<<<<<< HEAD
   addCategories: { id: 1, name: "", image: ""},
   setAddCategories: ()=> {},
   addFlowers: {id: 1, name: "", price: 0, category: {id: 1, name: "", bg_picture: ""}, description: "", inStock: 0, src: ""},
@@ -42,6 +43,71 @@ export const Context = createContext<TcontextType>({
 });
   
 
+=======
+  cartshow: false,
+  setCartshow: () => {},
+  addCategories: { id: 1, name: "", image: "" },
+  setAddCategories: () => {},
+  addFaq: { question: "", answer: "" },
+  setAddFaq: () => {},
+  addSubscriptions: {
+    image: "",
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0,
+  },
+  setAddSubscriptions: () => {},
+  addFlowers: {
+    name: "",
+    price: 0,
+    category: { name: "", id: 1, bg_picture: "" },
+    description: "",
+    inStock: 0,
+    src: "",
+  },
+  setAddFlowers: () => {},
+  flowersCategory: { name: "", id: 1, bg_picture: "" },
+  setFlowersCategory: () => {},
+  addUsers: {
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: {
+              image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: "",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  setAddUsers: () => {},
+});
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
@@ -52,12 +118,12 @@ function App() {
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
-
   const [category, setCategory] = useState({
     id: 1,
     name: "",
     image: "",
   });
+<<<<<<< HEAD
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
@@ -74,22 +140,98 @@ function App() {
 })
 
   
+=======
+  const [cartshow, setCartshow] = useState(false);
+
+  const [addCategories, setAddCategories] = useState({
+    id: 1,
+    name: "",
+    image: "",
+  });
+
+  const [addFaq, setAddFaq] = useState({
+    question: "",
+    answer: "",
+  });
+
+  const [flowersCategory, setFlowersCategory] = useState({
+    name: "",
+    id: 1,
+    bg_picture: "",
+  });
+
+  const [addFlowers, setAddFlowers] = useState({
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 1,
+      bg_picture: "",
+    },
+    description: "",
+    inStock: 0,
+    src: "",
+  });
+
+  const [addSubscriptions, setAddSubscriptions] = useState({
+    image: "",
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0,
+  });
+
+  const [addUsers, setAddUsers] = useState({
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: {
+              image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: "",
+            },
+          },
+        ],
+      },
+    ],
+  });
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
 
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" 
-      ? null : (
+      location.pathname === "/admin-panel" ? null : (
       <Footer />
     );
   };
   const HeaderChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
-      location.pathname === "/signUp" || 
-      location.pathname === "/admin-panel" ?
-      null : isSmallDevice ? (
+      location.pathname === "/signUp" ||
+      location.pathname === "/admin-panel" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
@@ -97,22 +239,28 @@ function App() {
   };
   return (
     <Context.Provider
-
       value={{
         subscribe,
         setSubscribe,
+<<<<<<< HEAD
         burgerToShow, 
         setBurgerToShow, 
         category, 
+=======
+        burgerToShow,
+        setBurgerToShow,
+        category,
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
         setCategory,
         adminCategories,
         setAdminCategories,
         adminFlowers,
         setAdminFlowers,
-        adminUsers, 
+        adminUsers,
         setAdminUsers,
-        adminSubscriptions, 
+        adminSubscriptions,
         setAdminSubscriptions,
+<<<<<<< HEAD
         adminFaq, 
         setAdminFaq,
         setAddCategories,
@@ -121,6 +269,24 @@ function App() {
         setAddFlowers
         
 
+=======
+        cartshow,
+        setCartshow,
+        adminFaq,
+        setAdminFaq,
+        addCategories,
+        setAddCategories,
+        addFaq,
+        setAddFaq,
+        addSubscriptions,
+        setAddSubscriptions,
+        addFlowers,
+        setAddFlowers,
+        flowersCategory,
+        setFlowersCategory,
+        addUsers,
+        setAddUsers,
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
       }}
     >
       <BrowserRouter>
@@ -134,11 +300,11 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
 
-     
-
-          <Route path="/:singleCategory/:singleProduct" element={<SingleProduct />} />
-          <Route path="admin-panel"  element={<AdminPanel />} />
-
+          <Route
+            path="/:singleCategory/:singleProduct"
+            element={<SingleProduct />}
+          />
+          <Route path="admin-panel" element={<AdminPanel />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>

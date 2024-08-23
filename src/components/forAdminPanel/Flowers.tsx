@@ -4,12 +4,21 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Flowers(){
+<<<<<<< HEAD
     const {addFlowers, setAddFlowers} = useContext(Context)
 
+=======
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     const dataFlowers = data.datas[1].flowers
+
+    const { addFlowers, setAddFlowers } = useContext(Context)
+    const { flowersCategory, setFlowersCategory} =useContext(Context)
+
+    
     
     console.log(data.datas[1].flowers)
 
+<<<<<<< HEAD
     async function add(event: any) {
         event.preventDefault()
         dataFlowers.push(addFlowers)
@@ -35,6 +44,45 @@ export default function Flowers(){
     })}
 
 
+=======
+    const addFlowersCategory = (event : any)=>{
+        event.preventDefault()
+        const {name, value} = event.target;
+        setFlowersCategory({
+            ...flowersCategory,
+            [name]: value,
+        })
+        }
+
+
+    const addFlower = (event : any)=>{
+        event.preventDefault()
+        const {name, value} = event.target;
+        setAddFlowers({
+            ...addFlowers,
+            category: flowersCategory,
+            [name]: value,
+        })
+        
+        
+        }
+
+    async function add(event : any) {
+        event.preventDefault()
+        dataFlowers.push(addFlowers)
+        setAddFlowers({
+            name: "",
+            price: 0,
+            category: {
+                name: "",
+                id: 1,
+                bg_picture: "",
+              },
+            description: "",
+            inStock: 0,
+            src: "",
+        })}
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     return(
 <>       
 <MainCategories>
@@ -62,8 +110,13 @@ export default function Flowers(){
             <p className="flowerName">{item.inStock}</p>
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataFlowers.splice(index, 1)
+                setAddFlowers({...addFlowers})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}
@@ -85,9 +138,9 @@ export default function Flowers(){
         placeholder="Add flower's category"
         className="inputFlower" 
         type="text" 
-        name="category"
-        value={addFlowers.category}
-        onChange={addFlower}
+        name="name"
+        value={flowersCategory.name}
+        onChange={addFlowersCategory}
         />
         <input 
         placeholder="Add flower's description"
@@ -116,7 +169,10 @@ export default function Flowers(){
         <input 
         className="chooseFile" 
         type="file"
-        value={addFlowers.image} />
+        name="src"
+        value={addFlowers.src}
+        onChange={addFlower}
+        />
     </div>
     <button 
     onClick={add}

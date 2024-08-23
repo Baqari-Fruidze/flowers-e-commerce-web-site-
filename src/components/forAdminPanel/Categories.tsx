@@ -3,18 +3,22 @@ import styled from "styled-components";
 import data from "../../data.json"
 import { Context } from "../../App"
 
-
-
-
-
 export default function Categories(){
+<<<<<<< HEAD
     const {addCategories, setAddCategories} = useContext(Context);
 
+=======
+    const { addCategories, setAddCategories } = useContext(Context);
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     const dataCategories = data.datas[0].categories
     
     console.log(data.datas[0].categories)
 
+<<<<<<< HEAD
     async function add(event:any) {
+=======
+    function add(event: any) {
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
         event.preventDefault()
         dataCategories.push(addCategories)
         dataCategories({
@@ -22,7 +26,11 @@ export default function Categories(){
             "image": ""
     })}
  
+<<<<<<< HEAD
     const addCategory = (event:any)=>{
+=======
+    const addCategory = (event: any)=>{
+>>>>>>> 8766afb9de6625b50311e22eef77a14711e4cf88
     event.preventDefault()
     const {name, value} = event.target;
     dataCategories({
@@ -49,14 +57,18 @@ export default function Categories(){
             <p className="CatName">{item.name}</p> 
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button
+            onClick={()=>{
+                dataCategories.splice(index, 1)
+                setAddCategories({...addCategories})
+                }}
+            >Delete</button>
         </div>      
       </div>
      ))}
   </div>
   <form 
-//   onChange={addCategory}
   className="addContainer">
     <h2>Add category</h2>
     <div className="field">
@@ -79,8 +91,8 @@ export default function Categories(){
   </form> 
 </MainCategories>
 </>
-    )
-}
+        )
+    }
 
 const MainCategories = styled.div`
     background-color: #eaf07740;
@@ -119,8 +131,8 @@ const MainCategories = styled.div`
         font-weight: 600;
         p{
             font-size: 20px;
+            }
         }
-}
 
     .container{
         border-bottom: 1px solid #121212;

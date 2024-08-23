@@ -4,15 +4,10 @@ import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function FAQ(){
-    const [addFaq, setAddFaq] = useState({
-        question: "",
-        answer: ""
-    })
+    const {addFaq, setAddFaq} = useContext(Context)
     const dataFaq = data.datas[6].faq
     
-    console.log(data.datas[6].faq)
-
-    async function add(event) {
+    async function add(event:any) {
         event.preventDefault()
         dataFaq.push(addFaq)
         setAddFaq({
@@ -20,7 +15,7 @@ export default function FAQ(){
             "answer": ""
     })}
  
-    const addFAQ = (event)=>{
+    const addFAQ = (event: any)=>{
     event.preventDefault()
     const {name, value} = event.target;
     setAddFaq({
@@ -28,7 +23,13 @@ export default function FAQ(){
         [name]: value,
     })}
 
-    console.log(addFaq)
+    // const function deleteBtn(){
+    //     let addFaqindex = dataFaq[4]
+    //     console.log(addFaqindex)
+    //     }
+
+
+
     return(
 <>       
 <MainFaq>
@@ -47,8 +48,12 @@ export default function FAQ(){
             <p style={{width: "520px"}} className="faqName">{item.answer}</p> 
         </div>
         <div className="editDelete">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <button 
+            onClick={()=>{
+            dataFaq.splice(index, 1)
+            setAddFaq({...addFaq})
+            }}>Delete</button>
         </div>      
       </div>
      ))}
