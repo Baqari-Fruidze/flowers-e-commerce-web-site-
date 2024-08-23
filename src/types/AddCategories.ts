@@ -4,11 +4,9 @@ export interface TaddCategories {
   image: string;
 }
 
-export interface TaddFaq{
-    [x: string]: any
-    question: string,
-    answer: string,
-
+export interface TaddFaq {
+  question: string;
+  answer: string;
 }
 
 export interface TaddSubscriptions {
