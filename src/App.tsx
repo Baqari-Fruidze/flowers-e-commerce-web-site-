@@ -33,6 +33,8 @@ export const Context = createContext<TcontextType>({
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
   category: { id: 1, name: "", image: "" },
+  cartshow: false,
+  setCartshow: () => {},
   addCategories: { id: 1, name: "", image: "" },
   setAddCategories: () => {},
   cartshow: false,
@@ -112,7 +114,6 @@ function App() {
     image: "",
   });
   const [cartshow, setCartshow] = useState(false);
-
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
