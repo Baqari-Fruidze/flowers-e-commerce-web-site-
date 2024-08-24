@@ -60,7 +60,9 @@ export default function Login() {
           <TexstCon>
             <ForgotAndRestoreCon>
               <ForgotPassworsSpan>forgot password?</ForgotPassworsSpan>
-              <RestorePasswordSpan>restore now</RestorePasswordSpan>
+              <RestorePasswordSpan onClick={() => navigate("/restore")}>
+                restore now
+              </RestorePasswordSpan>
             </ForgotAndRestoreCon>
             <DonotHaveAcountCon>
               <DonotHaveAcountP>Do not have an account?</DonotHaveAcountP>

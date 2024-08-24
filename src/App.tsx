@@ -96,10 +96,13 @@ export const Context = createContext<TcontextType>({
     ],
   },
   setAddUsers: () => {},
+  recoverUsername: "",
+  setRecoverUsername: () => {},
 });
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
@@ -244,6 +247,8 @@ function App() {
         setFlowersCategory,
         addUsers,
         setAddUsers,
+        recoverUsername,
+        setRecoverUsername,
       }}
     >
       <BrowserRouter>
