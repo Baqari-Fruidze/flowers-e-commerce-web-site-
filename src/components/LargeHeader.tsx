@@ -24,7 +24,7 @@ export default function LargeHeader() {
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        <Link to={"login"}>
+        <Link to={"/login"}>
           <AnimDiv>
             <p className="anim">Sign In</p>
           </AnimDiv>

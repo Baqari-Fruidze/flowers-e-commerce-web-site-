@@ -37,4 +37,6 @@ export interface TcontextType {
   setFlowersCategory: React.Dispatch<React.SetStateAction<TflowersCategory>>;
   addUsers: TaddUsers;
   setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
+  setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
+  recoverUsername: string;
 }

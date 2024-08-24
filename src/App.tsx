@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
+import Restore from "./pages/Restore";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -97,10 +98,13 @@ export const Context = createContext<TcontextType>({
     ],
   },
   setAddUsers: () => {},
+  recoverUsername: "",
+  setRecoverUsername: () => {},
 });
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
@@ -193,7 +197,8 @@ function App() {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" ? null : (
+      location.pathname === "/admin-panel" ||
+      location.pathname === "/restore" ? null : (
       <Footer />
     );
   };
@@ -201,7 +206,8 @@ function App() {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" ? null : isSmallDevice ? (
+      location.pathname === "/admin-panel" ||
+      location.pathname === "/restore" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
@@ -242,6 +248,8 @@ function App() {
         setFlowersCategory,
         addUsers,
         setAddUsers,
+        recoverUsername,
+        setRecoverUsername,
       }}
     >
       <BrowserRouter>
@@ -254,12 +262,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
-
           <Route
             path="/:singleCategory/:singleProduct"
             element={<SingleProduct />}
           />
           <Route path="admin-panel" element={<AdminPanel />} />
+          <Route path="/restore" element={<Restore />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
