@@ -4,15 +4,17 @@ import styled from "styled-components";
 import { schemaLogin } from "../Scema/LoginYup";
 import { Tlogin } from "../types/Login";
 import loginBg from "/image/loginBg.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schemaLogin) });
   const inputsData: SubmitHandler<Tlogin> = (data) => loginUser(data);
-  async function loginUser(data) {
+  async function loginUser(userinfo) {
     const res = await fetch("http://164.90.184.221:8000/auth/login/", {
       method: "POST",
       headers: {
@@ -20,7 +22,7 @@ export default function Login() {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NDMzNDc0LCJpYXQiOjE3MjQ0M",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(userinfo),
     });
     const info = await res.json();
     console.log(info);
@@ -62,7 +64,9 @@ export default function Login() {
             </ForgotAndRestoreCon>
             <DonotHaveAcountCon>
               <DonotHaveAcountP>Do not have an account?</DonotHaveAcountP>
-              <SignUpSpan>Sign up</SignUpSpan>
+              <SignUpSpan onClick={() => navigate("/signUp")}>
+                Sign up
+              </SignUpSpan>
             </DonotHaveAcountCon>
           </TexstCon>
         </Parent>
@@ -117,13 +121,15 @@ const ForgotAndRestoreCon = styled.div`
 `;
 const SignUpSpan = styled.span`
   color: red;
-
   font-family: Gilroy;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
   text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const DonotHaveAcountP = styled.p`
   color: var(--Gray, #808080);
@@ -143,6 +149,9 @@ const RestorePasswordSpan = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const ForgotPassworsSpan = styled.span`
   color: var(--Gray, #808080);

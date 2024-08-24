@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
+import Restore from "./pages/Restore";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -192,7 +193,8 @@ function App() {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" ? null : (
+      location.pathname === "/admin-panel" ||
+      location.pathname === "/restore" ? null : (
       <Footer />
     );
   };
@@ -200,7 +202,8 @@ function App() {
     const location = useLocation();
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
-      location.pathname === "/admin-panel" ? null : isSmallDevice ? (
+      location.pathname === "/admin-panel" ||
+      location.pathname === "/restore" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
@@ -253,12 +256,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/:singleCategory" element={<SingleCategory />} />
-
           <Route
             path="/:singleCategory/:singleProduct"
             element={<SingleProduct />}
           />
           <Route path="admin-panel" element={<AdminPanel />} />
+          <Route path="/restore" element={<Restore />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
