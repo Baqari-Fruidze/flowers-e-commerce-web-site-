@@ -16,6 +16,7 @@ import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
+import { Tcategory } from "./types/Category";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -33,13 +34,17 @@ export const Context = createContext<TcontextType>({
   setAdminUsers: () => {},
   setAdminSubscriptions: () => {},
   setAdminFaq: () => {},
-  category: { id: 1, name: "", image: "" },
+  category: [
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ],
   cartshow: false,
   setCartshow: () => {},
   addCategories: { id: 1, name: "", image: "" },
   setAddCategories: () => {},
-  cartshow: false,
-  setCartshow: () => {},
   addFaq: { question: "", answer: "" },
   setAddFaq: () => {},
   addSubscriptions: {
@@ -112,11 +117,13 @@ function App() {
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
-  const [category, setCategory] = useState({
-    id: 1,
-    name: "",
-    image: "",
-  });
+  const [category, setCategory] = useState<Tcategory[]>([
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ]);
   const [cartshow, setCartshow] = useState(false);
   const [addCategories, setAddCategories] = useState({
     id: 1,

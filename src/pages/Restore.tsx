@@ -21,6 +21,7 @@ export default function Restore() {
           id="username"
           onChange={(e) => setRecoverUsername(e.target.value)}
         />
+        <p>(your recovery code has been sent to your email)</p>
         <Btn onClick={() => navigate("/login")}>Recover</Btn>
       </InsideCon>
     </Parent>
