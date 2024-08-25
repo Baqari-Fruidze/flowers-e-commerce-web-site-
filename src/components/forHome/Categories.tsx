@@ -21,7 +21,6 @@ export default function Categories() {
   AOS.init({
     duration: 1000,
   });
-  console.log(category);
   return (
     <>
       <MainCont>

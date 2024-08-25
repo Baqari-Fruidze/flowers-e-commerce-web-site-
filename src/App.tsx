@@ -17,6 +17,7 @@ import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
+import { TsingleCategory } from "./types/SingleCategoryType";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -105,6 +106,21 @@ export const Context = createContext<TcontextType>({
   setAddUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
+  singleCategoryState: [
+    {
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        bg_picture: "",
+      },
+      description: "",
+      inStock: 0,
+      src: "",
+    },
+  ],
+  setSingleCategoryState: () => {},
 });
 
 function App() {
@@ -122,6 +138,22 @@ function App() {
       id: 1,
       name: "",
       image: "",
+    },
+  ]);
+  const [singleCategoryState, setSingleCategoryState] = useState<
+    TsingleCategory[]
+  >([
+    {
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        bg_picture: "",
+      },
+      description: "",
+      inStock: 0,
+      src: "",
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
@@ -255,6 +287,8 @@ function App() {
         setAddUsers,
         recoverUsername,
         setRecoverUsername,
+        singleCategoryState,
+        setSingleCategoryState,
       }}
     >
       <BrowserRouter>

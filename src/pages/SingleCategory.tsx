@@ -8,26 +8,32 @@ import { Context } from "../App";
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
-  const { category } = useContext(Context);
+  const { category, singleCategoryState, setSingleCategoryState } =
+    useContext(Context);
+  const CategoryId = category.find((item) => {
+    item.name === singleCategory;
+  })?.id;
   useEffect(() => {
-    async function fetchSingleCategories() {
+    async function fetchSingleCategories(id: number | undefined) {
       const response = await fetch(
         `http://164.90.184.221:8000/api/product?category=${id}`
       );
       const data = await response.json();
+      setSingleCategoryState(data);
     }
-  });
+    fetchSingleCategories(CategoryId);
+  }, []);
+  console.log(singleCategoryState);
+  console.log(CategoryId);
   console.log(singleCategory);
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
   );
-  // const categoryName = dataToMap?.find((item) => item.category.name)?.category
-  //   .name;
+
   let backgroundImage;
   if (dataToMap) {
     backgroundImage = dataToMap[0]?.category.bg_picture;
   }
-  console.log(category);
   return (
     <Parent>
       <BackGroundImageCon backImage={backgroundImage}>
