@@ -11,12 +11,13 @@ export default function SingleCategory() {
   const { category } = useContext(Context);
   useEffect(() => {
     async function fetchSingleCategories() {
-      const response = await fetch("");
+      const response = await fetch(
+        `http://164.90.184.221:8000/api/product?category=${id}`
+      );
       const data = await response.json();
-      console.log(data);
     }
   });
-
+  console.log(singleCategory);
   const dataToMap = data.datas[1].flowers?.filter(
     (item) => item.category.name === singleCategory
   );

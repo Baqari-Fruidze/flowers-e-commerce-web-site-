@@ -20,6 +20,7 @@ export default function Restore() {
           placeholder="username"
           id="username"
           onChange={(e) => setRecoverUsername(e.target.value)}
+          value={recoverUsername}
         />
         <p>(your recovery code has been sent to your email)</p>
         <Btn onClick={() => navigate("/login")}>Recover</Btn>
@@ -65,6 +66,7 @@ const InsideCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.4rem;
+  max-width: 38rem;
 `;
 const Parent = styled.div`
   display: flex;
