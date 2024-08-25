@@ -1,17 +1,20 @@
-import Reacte, { useContext } from "react";
+import { useContext } from "react";
 import styled, { keyframes } from "styled-components";
-import data from "../../data.json";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Context } from "../../App";
+import { useEffect } from "react";
 export default function Categories() {
   const { setCategory, category } = useContext(Context);
-  async function fetchCategories() {
-    const response = await fetch("");
-    const data = await response.json();
-    console.log(data);
-  }
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("http://164.90.184.221:8000/api/category");
+      const data = await response.json();
+      setCategory(data);
+    }
+    fetchCategories();
+  }, [setCategory]);
 
   const navigate = useNavigate();
 
@@ -22,7 +25,7 @@ export default function Categories() {
   return (
     <>
       <MainCont>
-        {data.datas[0].categories.map((item, index) =>
+        {category.map((item, index) =>
           index % 2 == 0 ? (
             <Category key={index}>
               <TitleCategory style={{ borderRight: "solid 1px #121212" }}>
