@@ -1,19 +1,26 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import data from "../../data.json";
 import {TReview} from "../../types/Review";
 import { useSet } from "@uidotdev/usehooks";
 
 export default function OurClientSey(){
     const [sliderDots, setSliderDots]=useState(false)
+    const reviews = [
+        {
+        review: "“Ordered flowers online and they were the best bouquet! Impressed everyone around. Highly recommend this flower shop!”",
+        author: "Ronald Richards"
+        },
+        {
+        review: "“Flower subscriptions revolutionized my Sweet Water hotel! Conveniently customize and receive fresh bouquets regularly. Highly recommended for hassle-free floral arrangements!”",
+        author: "George Clooney"
+        }
+]
     
     const isActive = () => {
         setSliderDots(!sliderDots)
     }
 
-    
-    const filtered = data.datas[2]?.users.filter((item)=>item.review.length > 0 )
     return(
         <>
         <MainCont>
@@ -24,8 +31,8 @@ export default function OurClientSey(){
 
             <div> 
                 <ReviewMap>
-                {sliderDots ? <><p className="reviewDescr">{filtered[0].review}</p> <p className="userName">{filtered[0].username}</p> </> :
-                <><p className="reviewDescr">{filtered[1].review}</p> <p className="userName">{filtered[1].username}</p> </>
+                {sliderDots ? <><p className="reviewDescr">{reviews[0].review}</p> <p className="userName">{reviews[0].author}</p> </> :
+                <><p className="reviewDescr">{reviews[1].review}</p> <p className="userName">{reviews[1].author}</p> </>
                 }
                 </ReviewMap>  
             </div>
