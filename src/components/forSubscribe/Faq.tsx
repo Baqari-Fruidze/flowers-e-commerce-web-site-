@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
-import data from "../../data.json";
 
 export default function Faq(){
     const [isAnswer, setIsAnswer] = useState(null)
-    const faqs = data.datas[6].faq
+    const [faqs, setFaqs] = useState([{
+        id: 1,
+        question: "",
+        answer: ""
+    }])
+    
+    useEffect(() => {
+        async function fetchFaq() {
+          const response = await fetch("http://164.90.184.221:8000/api/faq");
+          const data = await response.json();
+          setFaqs(data);
+        }
+        fetchFaq();
+      },[]);
+    console.log(faqs)
    
     return (
         <>

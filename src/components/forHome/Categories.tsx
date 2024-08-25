@@ -5,8 +5,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Context } from "../../App";
 import { useEffect } from "react";
+
 export default function Categories() {
   const { setCategory, category } = useContext(Context);
+  
   useEffect(() => {
     async function fetchCategories() {
       const response = await fetch("http://164.90.184.221:8000/api/category");
