@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import SplitStringUsingRegex from "../units/SplitStringUsingRegex";
 import { Link } from "react-router-dom";
+import data from "../data.json"
 
 export default function Footer() {
   const [isMouseEntered, setIsMouseEntered] = useState(false);
@@ -107,45 +108,26 @@ export default function Footer() {
         <FooterBox>
           <span className="title">Shop</span>
           <div className="shop">
-            <Link id="link" to={"/"}>
+            <Link id="link" to={"/all-categories-products"}>
               <AnimDiv>
                 <p className="anim">All Product</p>
               </AnimDiv>
             </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Fresh Flowers</p>
-              </AnimDiv>
-            </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Dried Flowers</p>
-              </AnimDiv>
-            </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Live Plants</p>
-              </AnimDiv>
-            </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Designer Vases</p>
-              </AnimDiv>
-            </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Aroma Candles</p>
-              </AnimDiv>
-            </Link>
-            <Link id="link" to={"/"}>
-              <AnimDiv>
-                <p className="anim">Freshener Diffuser</p>
-              </AnimDiv>
-            </Link>
+
+            
+              {data.datas[0].categories?.map((item, index) => {
+                return (
+              <Link id="link" to={`/${item.name}`} key={index}>
+                <AnimDiv>
+                  <p className="anim">{item.name}</p>
+                </AnimDiv>
+              </Link>
+                );
+              })}
           </div>
           <span className="title">Service</span>
           <div className="shop">
-            <Link id="link" to={"/"}>
+            <Link id="link" to={"/subscriptions"}>
               <AnimDiv>
                 <p className="anim">Flower Subscription</p>
               </AnimDiv>
@@ -161,7 +143,7 @@ export default function Footer() {
         <FooterBox>
           <span className="title">About Us</span>
           <div className="shop">
-            <Link id="link" to={"/"}>
+            <Link id="link" to={"/bout-us"}>
               <AnimDiv>
                 <p className="anim">Our story</p>
               </AnimDiv>

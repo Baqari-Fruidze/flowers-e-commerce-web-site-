@@ -21,6 +21,18 @@ export default function Categories(){
     })}
 
     const addCategory = (event: any)=>{
+        const formData = new FormData()
+        formData.append(
+            "name", addCategories.name
+        )
+        if (addCategories.files.length > 0) {
+                // Get the first file (assuming single file upload)
+                const imageFile = addCategories.image.files[0];
+            
+                // Append the image file to the FormData object
+                formData.append('image', imageFile, imageFile.name);
+            }
+        
     event.preventDefault()
     const {name, value} = event.target;
     dataCategories({
@@ -73,7 +85,10 @@ export default function Categories(){
         <input 
         className="chooseFile" 
         type="file"
-        value={addCategories.image} />
+        name= "image"
+        value={addCategories.image} 
+        onChange={addCategory}
+        />
     </div>
     <button 
     onClick={add}

@@ -128,7 +128,7 @@ function App() {
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
-    image: "",
+    image: Image,
   });
 
   const [addFaq, setAddFaq] = useState({
