@@ -14,7 +14,7 @@ export default function Categories() {
       setCategory(data);
     }
     fetchCategories();
-  }, [setCategory]);
+  }, []);
 
   const navigate = useNavigate();
 

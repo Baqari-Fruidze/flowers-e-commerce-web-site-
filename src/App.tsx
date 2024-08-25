@@ -128,7 +128,7 @@ function App() {
   const [addCategories, setAddCategories] = useState({
     id: 1,
     name: "",
-    image: Image,
+    image: "",
   });
 
   const [addFaq, setAddFaq] = useState({
@@ -225,11 +225,9 @@ function App() {
       value={{
         subscribe,
         setSubscribe,
-
         burgerToShow,
         setBurgerToShow,
         category,
-
         setCategory,
         adminCategories,
         setAdminCategories,
