@@ -1,7 +1,7 @@
 export interface TaddCategories {
   id: number;
   name: string;
-  image: string;
+  image: File;
 }
 export interface TaddFaq{
     question: string,
