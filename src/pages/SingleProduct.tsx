@@ -13,7 +13,9 @@ export default function SingleProduct() {
   const { subscribe } = useContext(Context);
   const { singleProduct } = useParams();
   async function fetchSingleProduct() {
-    const response = await fetch("");
+    const response = await fetch(
+      `http://164.90.184.221:8000/api/product/${id}`
+    );
     const data = await response.json();
   }
   const dataToMap = data.datas[1].flowers?.filter(

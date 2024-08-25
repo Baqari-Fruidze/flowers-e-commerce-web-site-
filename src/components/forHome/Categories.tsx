@@ -14,14 +14,13 @@ export default function Categories() {
       setCategory(data);
     }
     fetchCategories();
-  }, [setCategory]);
+  }, []);
 
   const navigate = useNavigate();
 
   AOS.init({
     duration: 1000,
   });
-  console.log(category);
   return (
     <>
       <MainCont>

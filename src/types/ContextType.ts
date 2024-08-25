@@ -5,6 +5,7 @@ import { TaddSubscriptions } from "./AddCategories";
 import { TaddFlowers } from "./AddCategories";
 import { TflowersCategory } from "./AddCategories";
 import { TaddUsers } from "./AddCategories";
+import { TsingleCategory } from "./SingleCategoryType";
 
 export interface TcontextType {
   burgerToShow: boolean;
@@ -39,4 +40,8 @@ export interface TcontextType {
   setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;
+  setSingleCategoryState: React.Dispatch<
+    React.SetStateAction<TsingleCategory[]>
+  >;
+  singleCategoryState: TsingleCategory[];
 }
