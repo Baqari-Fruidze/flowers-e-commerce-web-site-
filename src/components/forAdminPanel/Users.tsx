@@ -7,7 +7,6 @@ export default function Users(){
   
     const dataUsers = data.datas[2].users
     
-
     const {addUsers, setAddUsers}=useContext(Context)
     
     async function add(event:any) {

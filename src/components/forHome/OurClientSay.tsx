@@ -7,11 +7,12 @@ import { useSet } from "@uidotdev/usehooks";
 
 export default function OurClientSey(){
     const [sliderDots, setSliderDots]=useState(false)
-
+    
     const isActive = () => {
         setSliderDots(!sliderDots)
     }
 
+    
     const filtered = data.datas[2]?.users.filter((item)=>item.review.length > 0 )
     return(
         <>

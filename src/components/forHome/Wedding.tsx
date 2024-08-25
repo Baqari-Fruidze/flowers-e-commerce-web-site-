@@ -5,6 +5,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function Wedding(){
+    AOS.init({
+        duration: 1200,
+      })
     return(
         <>
             <WeddingService>

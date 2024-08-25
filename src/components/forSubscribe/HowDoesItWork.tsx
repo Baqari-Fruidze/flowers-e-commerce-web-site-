@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Reacte, { useEffect } from "react";
+import Reacte from "react";
 
 
 export default function HowDoesItWork(){
