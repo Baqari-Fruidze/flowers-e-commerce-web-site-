@@ -108,16 +108,17 @@ export const Context = createContext<TcontextType>({
   setRecoverUsername: () => {},
   singleCategoryState: [
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ],
   setSingleCategoryState: () => {},
@@ -131,15 +132,6 @@ export const Context = createContext<TcontextType>({
 });
 
 function App() {
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
-      const data = await response.json();
-      setCategory(data);
-    }
-    fetchCategories();
-  }, []);
-
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
@@ -156,23 +148,22 @@ function App() {
       image: "",
     },
   ]);
-  const categoryRef = useRef(category);
-  const dataToMap = categoryRef.current;
-  console.log(dataToMap);
+
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
@@ -308,7 +299,6 @@ function App() {
         setRecoverUsername,
         singleCategoryState,
         setSingleCategoryState,
-        dataToMap: { dataToMap },
       }}
     >
       <BrowserRouter>

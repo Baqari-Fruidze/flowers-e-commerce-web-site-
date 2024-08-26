@@ -44,5 +44,4 @@ export interface TcontextType {
     React.SetStateAction<TsingleCategory[]>
   >;
   singleCategoryState: TsingleCategory[];
-  dataToMap: Tcategory[];
 }

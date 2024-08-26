@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import data from "../data.json";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
@@ -10,41 +9,39 @@ export default function SingleCategory() {
   const { singleCategory } = useParams();
   const { category, singleCategoryState, setSingleCategoryState } =
     useContext(Context);
-  const CategoryId = category.find((item) => {
-    item.name === singleCategory;
-  })?.id;
+  const CategoryId = category.find((item) => item.name === singleCategory)?.id;
   useEffect(() => {
     async function fetchSingleCategories(id: number | undefined) {
       const response = await fetch(
         `http://134.122.71.97:8000/api/product?category=${id}`
       );
       const data = await response.json();
+      console.log(data);
       setSingleCategoryState(data);
     }
     fetchSingleCategories(CategoryId);
   }, []);
   console.log(singleCategoryState);
-  console.log(CategoryId);
-  console.log(singleCategory);
-  const dataToMap = data.datas[1].flowers?.filter(
-    (item) => item.category.name === singleCategory
-  );
 
-  let backgroundImage;
-  if (dataToMap) {
-    backgroundImage = dataToMap[0]?.category.bg_picture;
-  }
+  // const dataToMap = data.datas[1].flowers?.filter(
+  //   (item) => item.category.name === singleCategory
+  // );
+
+  // let backgroundImage;
+  // if (dataToMap) {
+  //   backgroundImage = dataToMap[0]?.category.bg_picture;
+  // }
   return (
     <Parent>
-      <BackGroundImageCon backImage={backgroundImage}>
+      <BackGroundImageCon backImage={singleCategoryState[0].category.image}>
         <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
       <GridedCon>
-        {dataToMap?.map((item, index) => {
+        {singleCategoryState.map((item, index) => {
           return (
             <ProductsCon key={index}>
               <ImageCon
-                backImg={item.src}
+                backImg={item.image}
                 onClick={() => navigate(`/${item.category.name}/${item.name}`)}
               ></ImageCon>
               <TextCon>
@@ -106,7 +103,7 @@ const ImageCon = styled.div<{ backImg: string }>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-size: auto 100%;
+  background-size: 100% 100%;
 `;
 
 const ProductsCon = styled.div`
