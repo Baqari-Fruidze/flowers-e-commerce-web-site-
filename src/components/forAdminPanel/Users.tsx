@@ -1,62 +1,61 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,  useEffect, } from "react";
 import styled from "styled-components";
-import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Users(){
-  
-    const dataUsers = data.datas[2].users
-    
+    const {users, setUsers}=useContext(Context)
+    const [addUser, setAddUser] = useState({
+        username: "",
+        email: "",
+        last_name: "",
+        first_name: "",
+        password: "",
+        profilePicture: "",
+        phoneNumber: "",
+      })
 
-    const {addUsers, setAddUsers}=useContext(Context)
+      useEffect(() => {
+        async function fetchUsers() {
+          const response = await fetch("http://134.122.71.97:8000/api/user");
+          const data = await response.json();
+          setUsers(data);
+        }
+        fetchUsers();
+      },[]);
     
-    async function add(event:any) {
-        event.preventDefault()
-        dataUsers.push(addUsers)
-        setAddUsers({
-            review: "",
+    
+      const AddUser = (event: any) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setAddUser({
+          ...addUser,
+          [name]: value,
+        });
+      };
+    
+      async function addNewUser(event: any) {
+        event.preventDefault();
+        const responce = await fetch (
+          "http://134.122.71.97:8000/api/user",
+        {method: "POST",
+         headers: {
+          "Content-Type": "application/json",
+         },
+         body: JSON.stringify(addUser),
+        });
+         const newUser = await responce.json();
+        
+          setUsers([...users, newUser]);  
+          setAddUser({ 
             username: "",
-            email: "",
-            last_name: "",
-            first_name: "",
-            password: "",
-            profilePicture: "",
-            phoneNumber: "",
-            is_superuser: false,
-            orders: [
-              {
-                RecipientsName: "",
-                Recipients_Phone_number: "",
-                DataofDelivery: "",
-                Delivery_Time: "",
-                street: "",
-                houseNumber: "",
-                total: 0,
-                items: [
-                  {
-                    product: 
-                    { image: "",
-                      name: "",
-                      price: 0,
-                      category: "",
-                      description: ""        
-                    }
-                }
-                ]
-            }
-            ]
-        })}
-       
-    const addUser = (event:any)=>{
-    event.preventDefault()
-    const {name, value} = event.target;
-    setAddUsers({
-        ...addUsers,
-        [name]: value,
-    })}
-
-
-
+        email: "",
+        last_name: "",
+        first_name: "",
+        password: "",
+        profilePicture: "",
+        phoneNumber: "",
+           });
+        }
 
     return(
 <>       
@@ -75,7 +74,7 @@ export default function Users(){
 </div>
   <div className="listUsers">
       
-     {dataUsers?.map((item, index)=>(
+     {users?.map((item, index)=>(
       <div className="container" key={index}>
         <div className="descr">
             <img className="userImg" src={item.profilePicture} alt="" />
@@ -87,12 +86,12 @@ export default function Users(){
             <p style={{width: "70px"}} className="userName">{item.phoneNumber}</p>
         </div>
         <div className="editDelete">
-            {/* <button>Edit</button> */}
             <button
-            onClick={()=>{
-                dataUsers.splice(index, 1)
-                setAddUsers({...addUser})
-                }}
+             onClick={() => {
+                const updatedUsers = users.filter((_, i) => i !== index);
+                setUsers(updatedUsers);
+                console.log(users)
+              }}
             >Delete</button>
         </div>      
       </div>
@@ -107,56 +106,56 @@ export default function Users(){
         className="inputUsers" 
         type="text" 
         name="username"
-        value={addUsers.username}
-        onChange={addUser}
+        value={addUser.username}
+        onChange={AddUser}
         />
         <input 
         placeholder="Add user's e-mail"
         className="inputUsers" 
         type="text" 
         name="email"
-        value={addUsers.email}
-        onChange={addUser}
+        value={addUser.email}
+        onChange={AddUser}
         />
         <input 
         placeholder="Add user's last_name"
         className="inputUsers" 
         type="text" 
         name="last_name"
-        value={addUsers.last_name}
-        onChange={addUser}
+        value={addUser.last_name}
+        onChange={AddUser}
         />
         <input 
         placeholder="Add user's first_name"
         className="inputUsers" 
         type="text" 
         name="first_name"
-        value={addUsers.first_name}
-        onChange={addUser}
+        value={addUser.first_name}
+        onChange={AddUser}
         />
         <input 
         placeholder="Add user's password"
         className="inputUsers" 
         type="text" 
         name="password"
-        value={addUsers.password}
-        onChange={addUser}
+        value={addUser.password}
+        onChange={AddUser}
         />
         <input 
         placeholder="Add user's phoneNumber"
         className="inputUsers" 
         type="text" 
         name="phoneNumber"
-        value={addUsers.phoneNumber}
-        onChange={addUser}
+        value={addUser.phoneNumber}
+        onChange={AddUser}
         />
         <input 
         className="chooseFile" 
         type="file"
-        value={addUsers.profilePicture} />
+        value={addUser.profilePicture} />
     </div>
     <button 
-    onClick={add}
+    onClick={addNewUser}
     className="addBt">Add</button>
   </form> 
 </MainCategories>

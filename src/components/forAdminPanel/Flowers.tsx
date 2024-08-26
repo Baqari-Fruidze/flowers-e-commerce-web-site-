@@ -1,72 +1,63 @@
-import React, { useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import data from "../../data.json"
-import { Context } from "../../App"
+import { Context } from "../../App";
 
 export default function Flowers(){
 
-    const dataFlowers = data.datas[1].flowers
 
-    const { addFlowers, setAddFlowers } = useContext(Context)
-    const { flowersCategory, setFlowersCategory} =useContext(Context)
-
+    const { flowers, setFlowers } = useContext(Context)
+    const [ addFlower, setAddFlower] = useState({
+        name: "",
+        price: 0,
+        category: "",
+        description: "",
+        inStock: 0,
+        src: "",
+    })
+    useEffect(() => {
+        async function fetchFlowers() {
+          const response = await fetch("http://134.122.71.97:8000/api/faq");
+          const data = await response.json();
+          setFlowers(data);
+        }
+        fetchFlowers();
+      },[]);
     
     
-    console.log(data.datas[1].flowers)
-
-    async function add(event : any) {
-        event.preventDefault()
-        dataFlowers.push(addFlowers)
-        setAddFlowers({
+      const addFlowers = (event: any) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setAddFlower({
+          ...addFlower,
+          [name]: value,
+        });
+      };
+    
+      async function addNewFlowers(event: any) {
+        event.preventDefault();
+        const responce = await fetch (
+          "http://134.122.71.97:8000/api/faq",
+        {method: "POST",
+         headers: {
+          "Content-Type": "application/json",
+         },
+         body: JSON.stringify(addFlower),
+        });
+         const newFlowers = await responce.json();
+         console.log(newFlowers)
+          setFlowers([...flowers, newFlowers]);  
+          setAddFlower({ 
             name: "",
             price: 0,
-            category: {
-                name: "",
-                id: 1,
-                bg_picture: "",
-              },
+            category: "",
             description: "",
             inStock: 0,
             src: "",
-        })}
-
-    const addFlowersCategory = (event : any)=>{
-        event.preventDefault()
-        const {name, value} = event.target;
-        setFlowersCategory({
-            ...flowersCategory,
-            [name]: value,
-        })
+         });
         }
-
-
-    const addFlower = (event : any)=>{
-        event.preventDefault()
-        const {name, value} = event.target;
-        setAddFlowers({
-            ...addFlowers,
-            category: flowersCategory,
-            [name]: value,
-        })
-        
-        
-        }
-
-    async function add(event : any) {
-        event.preventDefault()
-        dataFlowers.push(addFlowers)
-        setAddFlowers({
-            name: "",
-            price: 0,
-            category: {
-                name: "",
-                id: 1,
-                bg_picture: "",
-              },
-            description: "",
-            inStock: 0,
-            src: "",
-        })}
+    
+    
+    
 
     return(
 <>       
@@ -84,7 +75,7 @@ export default function Flowers(){
 </div>
   <div className="listFlowers">
       
-     {dataFlowers?.map((item, index)=>(
+     {flowers?.map((item, index)=>(
       <div className="container" key={index}>
         <div className="descr">
             <img className="flowerImg" src={item.src} alt="" />
@@ -95,19 +86,18 @@ export default function Flowers(){
             <p className="flowerName">{item.inStock}</p>
         </div>
         <div className="editDelete">
-            {/* <button>Edit</button> */}
             <button
-            onClick={()=>{
-                dataFlowers.splice(index, 1)
-                setAddFlowers({...addFlowers})
-                }}
+            onClick={() => {
+                const updatedFlowers = flowers.filter((_, i) => i !== index);
+                setFlowers(updatedFlowers);
+                console.log(flowers)
+              }}
             >Delete</button>
         </div>      
       </div>
      ))}
   </div>
   <form 
-//   onChange={addCategory}
   className="addContainer">
     <h2>Add flowers</h2>
     <div className="field">
@@ -116,32 +106,32 @@ export default function Flowers(){
         className="inputFlower" 
         type="text" 
         name="name"
-        value={addFlowers.name}
-        onChange={addFlower}
+        value={addFlower.name}
+        onChange={addFlowers}
         />
         <input 
         placeholder="Add flower's category"
         className="inputFlower" 
         type="text" 
-        name="name"
-        value={flowersCategory.name}
-        onChange={addFlowersCategory}
+        name="category"
+        value={addFlower.category}
+        onChange={addFlowers}
         />
         <input 
         placeholder="Add flower's description"
         className="inputFlower" 
         type="text" 
         name="description"
-        value={addFlowers.description}
-        onChange={addFlower}
+        value={addFlower.description}
+        onChange={addFlowers}
         />
         <input 
         placeholder="Add flower's price"
         className="inputFlower" 
         type="text" 
         name="price"
-        value={addFlowers.price}
-        onChange={addFlower}
+        value={addFlower.price}
+        onChange={addFlowers}
         />
         <input 
         placeholder="Add flower's QTY inStock"
@@ -149,18 +139,19 @@ export default function Flowers(){
         type="text" 
         name="inStock"
         value={addFlowers.inStock}
-        onChange={addFlower}
+        onChange={addFlowers}
         />
         <input 
         className="chooseFile" 
         type="file"
         name="src"
-        value={addFlowers.src}
-        onChange={addFlower}
+        value={addFlower.src}
+        onChange={addFlowers}
         />
     </div>
     <button 
-    onClick={add}
+    type = "submit"
+    onClick={addNewFlowers}
     className="addBt">Add</button>
   </form> 
 </MainCategories>

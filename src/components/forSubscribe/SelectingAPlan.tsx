@@ -1,18 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import forYouImg from "/image/flowers/foryou.webp"
 import classic from "/image/flowers/classic.webp"
-import data from "../../data.json"
 import { DISABLE_SPEEDY } from "styled-components/dist/constants";
+import { Context } from "../../App"
 
 export default function SelectingAPlan(){
     const [selectCategory, setSelectCategory] = useState(false)
     const [selectFrequency, setSelectFrequency] = useState(false)
     const [selectQuantity, setSelectQuantity] = useState(false)
+   
+    const { subscriptions, setSubscriptions} = useContext(Context);
     
-    const subscriptionData=data.datas[3].subscription
-    const deliveryFrequency=data.datas[4].deliveryFrequency
-
+    useEffect(() => {
+        async function fetchSubscriptions() {
+          const response = await fetch("http://134.122.71.97:8000/api/subscription");
+          const data = await response.json();
+          setSubscriptions(data);
+        }
+        fetchSubscriptions();
+      },[]);
+    console.log(subscriptions)
+   
+    const deliveryFrequency = [
+        {
+          "frequency": "MONTHLY"
+        },
+        {
+          "frequency": "BI-WEEKLY"
+        },
+        {
+          "frequency": "WEEKLY"
+        }
+      ]
     
 
     return(
@@ -26,7 +46,7 @@ export default function SelectingAPlan(){
                 <p className="description">Enjoy free shipping on every order and save up to 30%. Every bouquet we deliver is carefully curated to ensure it arrives fresh and stunning. To modify, pause, or cancel your subscription, simply log in to your account dashboard. You're in complete control of your flower delivery experience.</p>
             </Plan>
             <div>
-            {subscriptionData.map((item, index)=>(
+            {subscriptions.map((item, index)=>(
                 <SubscriptionCategory
                 key={index}
                 style={selectCategory ? {"opacity": "0.4"} : {"opacity": "1"}}
@@ -67,8 +87,6 @@ export default function SelectingAPlan(){
                     onClick={(()=>{
                         setSelectQuantity(true) 
                         setSelectFrequency(false)
-                        // console.log(item.frequency)
-                        // console.log(selectFrequency)
                     })}
                     
                     style = {selectFrequency ? {"cursor": "pointer"} : {"cursor": "default"}}

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Reacte, { useEffect } from "react";
-import data from "../../data.json"
+import Reacte from "react";
 import Categories from "./Categories"
 import AOS from 'aos';
 import 'aos/dist/aos.css';

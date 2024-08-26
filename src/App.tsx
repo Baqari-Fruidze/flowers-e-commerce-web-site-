@@ -18,24 +18,15 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
-import { number } from "yup";
+
+
+import { TFaqs, Tflowers, Tusers } from "./types/AddCategories";
+import { Tsubscriptions } from "./types/AddCategories";
+
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
-  adminCategories: false,
-  adminFlowers: false,
-  adminUsers: false,
-  adminSubscriptions: false,
-  adminFaq: false,
   setBurgerToShow: () => {},
-  setCategory: () => {},
-  subscribe: false,
-  setSubscribe: () => {},
-  setAdminCategories: () => {},
-  setAdminFlowers: () => {},
-  setAdminUsers: () => {},
-  setAdminSubscriptions: () => {},
-  setAdminFaq: () => {},
   category: [
     {
       id: 1,
@@ -43,13 +34,34 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
+  setCategory: () => {},
+
+  adminCategories: false,
+  setAdminCategories: () => {},
+  adminFlowers: false,
+  setAdminFlowers: () => {},
+  adminUsers: false,
+  setAdminUsers: () => {},
+  adminSubscriptions: false,
+  setAdminSubscriptions: () => {},
+  adminFaq: false,
+  setAdminFaq: () => {},
+
+  subscribe: false,
+  setSubscribe: () => {},
   cartshow: false,
   setCartshow: () => {},
-  addCategories: { id: 1, name: "", image: "" },
+
+  addCategories: { id: 1, name: "", image: "" }, 
   setAddCategories: () => {},
-  addFaq: { question: "", answer: "" },
-  setAddFaq: () => {},
-  addSubscriptions: {
+  
+  faqs: [{ id: 1, question: "", answer: "" }],
+  setFaqs: () => {},
+  
+  subscriptions: 
+  [
+    {
+    id: 1,
     image: "",
     category: "",
     price: 0,
@@ -57,21 +69,22 @@ export const Context = createContext<TcontextType>({
     theBest: "",
     firstDelivery: "",
     firstDelivery2: "",
-    saveUp: 0,
-  },
-  setAddSubscriptions: () => {},
-  addFlowers: {
+    saveUp: 0
+  }], 
+  setSubscriptions: () => {},
+
+  flowers: [
+  {
     name: "",
     price: 0,
     category: { name: "", id: 1, bg_picture: "" },
     description: "",
     inStock: 0,
-    src: "",
-  },
-  setAddFlowers: () => {},
-  flowersCategory: { name: "", id: 1, bg_picture: "" },
-  setFlowersCategory: () => {},
-  addUsers: {
+    src: "", }
+  ],
+  setFlowers: () => {},
+  
+  users: [{
     review: "",
     username: "",
     email: "",
@@ -103,8 +116,9 @@ export const Context = createContext<TcontextType>({
         ],
       },
     ],
-  },
-  setAddUsers: () => {},
+  }],
+  setUsers: () => {},
+
   recoverUsername: "",
   setRecoverUsername: () => {},
   singleCategoryState: [
@@ -188,10 +202,14 @@ function App() {
     image: "",
   });
 
-  const [addFaq, setAddFaq] = useState({
+
+  const [faqs, setFaqs] = useState<
+  TFaqs[]
+  >([{
+    id: 1,
     question: "",
-    answer: "",
-  });
+    answer: ""
+}])
 
   const [flowersCategory, setFlowersCategory] = useState({
     name: "",
@@ -199,7 +217,10 @@ function App() {
     bg_picture: "",
   });
 
-  const [addFlowers, setAddFlowers] = useState({
+  const [flowers, setFlowers] = useState<
+  Tflowers[]
+  >
+  ([{
     name: "",
     price: 0,
     category: {
@@ -210,9 +231,12 @@ function App() {
     description: "",
     inStock: 0,
     src: "",
-  });
+  }]);
 
-  const [addSubscriptions, setAddSubscriptions] = useState({
+  const [subscriptions, setSubscriptions] = useState<
+  Tsubscriptions[]
+  >([{
+    id: 1,
     image: "",
     category: "",
     price: 0,
@@ -221,9 +245,11 @@ function App() {
     firstDelivery: "",
     firstDelivery2: "",
     saveUp: 0,
-  });
+  }]);
 
-  const [addUsers, setAddUsers] = useState({
+  const [users, setUsers] = useState<
+  Tusers[]
+  >([{
     review: "",
     username: "",
     email: "",
@@ -255,6 +281,7 @@ function App() {
         ],
       },
     ],
+
   });
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
@@ -271,6 +298,9 @@ function App() {
       image: "",
     }
   );
+
+  }]);;
+
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -315,16 +345,16 @@ function App() {
         setAdminFaq,
         addCategories,
         setAddCategories,
-        addFaq,
-        setAddFaq,
-        addSubscriptions,
-        setAddSubscriptions,
-        addFlowers,
-        setAddFlowers,
+        faqs,
+        setFaqs,
+        subscriptions,
+        setSubscriptions,
+        flowers,
+        setFlowers,
         flowersCategory,
         setFlowersCategory,
-        addUsers,
-        setAddUsers,
+        users,
+        setUsers,
         recoverUsername,
         setRecoverUsername,
         singleCategoryState,
