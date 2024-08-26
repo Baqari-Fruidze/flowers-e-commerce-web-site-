@@ -1,52 +1,50 @@
-import React, { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import data from "../data.json";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
 import Carusel from "../components/Carusel";
 import PriceOptions from "../components/PriceOptions";
 import { Context } from "../App";
-import Subscribe from "./Subscribe";
 
 export default function SingleProduct() {
-  const { subscribe } = useContext(Context);
   const { singleProduct } = useParams();
-  async function fetchSingleProduct() {
-    const response = await fetch(
-      `http://164.90.184.221:8000/api/product/${id}`
-    );
-    const data = await response.json();
-  }
-  const dataToMap = data.datas[1].flowers?.filter(
-    (item) => item.name === singleProduct
-  );
+  const { singlePorudctState, setSingleProductState } = useContext(Context);
+
+  useEffect(() => {
+    async function fetchSingleProduct(id: string | undefined) {
+      const response = await fetch(
+        `http://134.122.71.97:8000/api/product/${id}`
+      );
+      const data = await response.json();
+      setSingleProductState(data);
+    }
+    fetchSingleProduct(singleProduct);
+  }, []);
 
   return (
     <Parent>
-      {dataToMap?.map((item) => {
-        return (
-          <SingleProductCon>
-            <ImageCon>
-              <Image src={item.src} alt="" />
-            </ImageCon>
-            <TextSCon>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <ItemCategoryName>{item.category.name} / </ItemCategoryName>
-                <ItemByeType>{item.name}</ItemByeType>
-              </div>
-              <div style={{ display: "flex" }}>
-                <NameAndPriceP>{item.name}</NameAndPriceP>
-                <NameAndPriceP>-${item.price}</NameAndPriceP>
-              </div>
-              <DescriptionP>{item.description}</DescriptionP>
-              <Quantity />
-              <Carusel />
-              <PriceOptions price={item.price} />
-            </TextSCon>
-          </SingleProductCon>
-        );
-      })}
+      <SingleProductCon>
+        <ImageCon>
+          <Image src={singlePorudctState.image} alt="" />
+        </ImageCon>
+        <TextSCon>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <ItemCategoryName>
+              {singlePorudctState.category.name} /{" "}
+            </ItemCategoryName>
+            <ItemByeType>{singlePorudctState.name}</ItemByeType>
+          </div>
+          <div style={{ display: "flex" }}>
+            <NameAndPriceP>{singlePorudctState.name}</NameAndPriceP>
+            <NameAndPriceP>-${singlePorudctState.price}</NameAndPriceP>
+          </div>
+          <DescriptionP>{singlePorudctState.description}</DescriptionP>
+          <Quantity />
+          <Carusel />
+          <PriceOptions price={singlePorudctState.price} />
+        </TextSCon>
+      </SingleProductCon>
 
       <YouMayAlsoLike />
     </Parent>

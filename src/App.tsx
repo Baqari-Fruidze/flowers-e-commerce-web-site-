@@ -18,6 +18,7 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
+import { number } from "yup";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -129,6 +130,20 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
+  singlePorudctState: {
+    id: 1,
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 0,
+      image: "",
+    },
+    description: "",
+    inStock: 0,
+    image: "",
+  },
+  setSingleProductState: () => {},
 });
 
 function App() {
@@ -241,6 +256,21 @@ function App() {
       },
     ],
   });
+  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
+    {
+      id: 1,
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        image: "",
+      },
+      description: "",
+      inStock: 0,
+      image: "",
+    }
+  );
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -299,6 +329,8 @@ function App() {
         setRecoverUsername,
         singleCategoryState,
         setSingleCategoryState,
+        setSingleProductState,
+        singlePorudctState,
       }}
     >
       <BrowserRouter>

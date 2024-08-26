@@ -16,12 +16,10 @@ export default function SingleCategory() {
         `http://134.122.71.97:8000/api/product?category=${id}`
       );
       const data = await response.json();
-      console.log(data);
       setSingleCategoryState(data);
     }
     fetchSingleCategories(CategoryId);
   }, []);
-  console.log(singleCategoryState);
 
   // const dataToMap = data.datas[1].flowers?.filter(
   //   (item) => item.category.name === singleCategory
@@ -42,13 +40,11 @@ export default function SingleCategory() {
             <ProductsCon key={index}>
               <ImageCon
                 backImg={item.image}
-                onClick={() => navigate(`/${item.category.name}/${item.name}`)}
+                onClick={() => navigate(`/${item.category.name}/${item.id}`)}
               ></ImageCon>
               <TextCon>
                 <ItemNameSpan
-                  onClick={() =>
-                    navigate(`/${item.category.name}/${item.name}`)
-                  }
+                  onClick={() => navigate(`/${item.category.name}/${item.id}`)}
                 >
                   {item.name}
                 </ItemNameSpan>
