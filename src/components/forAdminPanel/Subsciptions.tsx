@@ -1,16 +1,57 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect} from "react";
 import styled from "styled-components";
-import data from "../../data.json"
 import { Context } from "../../App"
 
 export default function Subscriptions(){
-    const { addSubscriptions, setAddSubscriptions} = useContext(Context)
-    const dataSubscriptions = data.datas[3].subscription
-    
-    async function add(event : any) {
-        event.preventDefault()
-        dataSubscriptions.push(addSubscriptions)
-        setAddSubscriptions({
+    const { subscriptions, setSubscriptions} = useContext(Context);
+    const [addSubscription, setAddSubscription] = useState({
+        id: 0,
+        image: "",
+        category: "",
+        price: 0,
+        delivery: "",
+        theBest: "",
+        firstDelivery: "",
+        firstDelivery2: "",
+        saveUp: 0
+    })
+    console.log(addSubscription)
+    useEffect(() => {
+        async function fetchSubscriptions() {
+          const response = await fetch("http://134.122.71.97:8000/api/subscription");
+          const data = await response.json();
+          setSubscriptions(data);
+        }
+        fetchSubscriptions();
+      },[]);
+      console.log(subscriptions)
+
+      const addSubscr = (event:any) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setAddSubscription({
+          ...addSubscription,
+          [name]: value,
+        });
+      };
+      console.log(addSubscription)
+
+      async function addNewubSubscription(event: any) {
+        event.preventDefault();
+        const responce = await fetch (
+          "http://134.122.71.97:8000/api/subscription",
+        {method: "POST",
+         headers: {
+          "Content-Type": "application/json",
+         },
+         body: JSON.stringify(addSubscription),
+        });
+         const newSubscriptions = await responce.json();
+         console.log(newSubscriptions)
+         setSubscriptions([...subscriptions, newSubscriptions]);  
+         console.log(newSubscriptions)
+         setAddSubscription({ 
+            id: 0,
             image: "",
             category: "",
             price: 0,
@@ -19,16 +60,9 @@ export default function Subscriptions(){
             firstDelivery: "",
             firstDelivery2: "",
             saveUp: 0
-        })}
-       
-    const addSubscription = (event: any)=>{
-    event.preventDefault()
-    const {name, value} = event.target;
-    setAddSubscriptions({
-        ...addSubscriptions,
-        [name]: value,
-    })}
-
+        });
+        }
+        console.log(subscriptions)
 
     return(
 <>       
@@ -47,7 +81,7 @@ export default function Subscriptions(){
 </div>
   <div className="listSubscriptions">
       
-     {dataSubscriptions?.map((item, index)=>(
+     {subscriptions?.map((item, index)=>(
       <div className="container" key={index}>
         <div className="descr">
             <img className="userImg" src={item.image} alt="" />
@@ -58,15 +92,15 @@ export default function Subscriptions(){
             <p style={{width: "70px"}} className="userName">{item.firstDelivery2}</p>
             <p style={{width: "70px"}} className="userName">{item.saveUp}</p>
         </div>
-        <div className="editDelete">
-            {/* <button>Edit</button> */}
             <button
-            onClick={()=>{
-                dataSubscriptions.splice(index, 1)
-                setAddSubscriptions({...addSubscriptions})
+                onClick={() => {
+            const updatedSubscr = subscriptions.filter((_, i) => i !== index);
+            setSubscriptions(updatedSubscr);
+            console.log(subscriptions)
                 }}
-            >Delete</button>
-        </div>      
+            >
+                Delete
+            </button>
       </div>
      ))}
   </div>
@@ -79,56 +113,57 @@ export default function Subscriptions(){
         className="inputSubscriptions" 
         type="text" 
         name="category"
-        value={addSubscriptions.category}
-        onChange={addSubscription}
+        value={addSubscription.category}
+        onChange={addSubscr}
         />
         <input 
         placeholder="Add subscriptions's price"
         className="inputSubscriptions" 
-        type="text" 
+        type="number" 
         name="price"
-        value={addSubscriptions.price}
-        onChange={addSubscription}
+        value={addSubscription.price}
+        onChange={addSubscr}
         />
         <input 
         placeholder="Add subscriptions's theBest"
         className="inputSubscriptions" 
         type="text" 
         name="theBest"
-        value={addSubscriptions.theBest}
-        onChange={addSubscription}
+        value={addSubscription.theBest}
+        onChange={addSubscr}
         />
         <input 
         placeholder="Add subscriptions's firstDelivery"
         className="inputSubscriptions" 
         type="text" 
         name="firstDelivery"
-        value={addSubscriptions.firstDelivery}
-        onChange={addSubscription}
+        value={addSubscription.firstDelivery}
+        onChange={addSubscr}
         />
         <input 
         placeholder="Add subscriptions's firstDelivery2"
         className="inputSubscriptions" 
         type="text" 
         name="firstDelivery2"
-        value={addSubscriptions.firstDelivery2}
-        onChange={addSubscription}
+        value={addSubscription.firstDelivery2}
+        onChange={addSubscr}
         />
         <input 
         placeholder="Add subscriptions's saveUp"
         className="inputSubscriptions" 
-        type="text" 
+        type="number" 
         name="saveUp"
-        value={addSubscriptions.saveUp}
-        onChange={addSubscription}
+        value={addSubscription.saveUp}
+        onChange={addSubscr}
         />
         <input 
         className="chooseFile" 
         type="file"
-        value={addSubscriptions.image} />
+        value={addSubscription.image} />
     </div>
     <button 
-    onClick={add}
+    type = "submit"
+    onClick={addNewubSubscription}
     className="addBt">Add</button>
   </form> 
 </MainCategories>

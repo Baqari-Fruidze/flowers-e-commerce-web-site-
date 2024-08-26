@@ -1,20 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import data from "../../data.json";
 import { Context } from "../../App";
 
 export default function FAQ() {
-  const { addFaq, setAddFaq } = useContext(Context);
-  const dataFaq = data.datas[6].faq;
+  const { faqs, setFaqs } = useContext(Context);
+  const [addFaq, setAddFaq] = useState({
+    question: "",
+    answer: ""
+  })
 
-  async function add(event: any) {
-    event.preventDefault();
-    dataFaq.push(addFaq);
-    setAddFaq({
-      question: "",
-      answer: "",
-    });
-  }
+  useEffect(() => {
+    async function fetchFaq() {
+      const response = await fetch("http://134.122.71.97:8000/api/faq");
+      const data = await response.json();
+      setFaqs(data);
+    }
+    fetchFaq();
+  },[]);
+
 
   const addFAQ = (event: any) => {
     event.preventDefault();
@@ -25,10 +28,22 @@ export default function FAQ() {
     });
   };
 
-  // const function deleteBtn(){
-  //     let addFaqindex = dataFaq[4]
-  //     console.log(addFaqindex)
-  //     }
+  async function addNewFaq(event: any) {
+    event.preventDefault();
+    const responce = await fetch (
+      "http://134.122.71.97:8000/api/faq",
+    {method: "POST",
+     headers: {
+      "Content-Type": "application/json",
+     },
+     body: JSON.stringify(addFaq),
+    });
+     const newFaq = await responce.json();
+     console.log(newFaq)
+      setFaqs([...faqs, newFaq]);  
+      setAddFaq({ question: "", answer: "" });
+    }
+
 
   return (
     <>
@@ -45,7 +60,7 @@ export default function FAQ() {
           </div>
         </div>
         <div className="listFaq">
-          {dataFaq?.map((item, index) => (
+          {faqs?.map((item, index) => (
             <div className="container" key={index}>
               <div className="descr">
                 <p style={{ width: "120px" }} className="faqName">
@@ -56,11 +71,11 @@ export default function FAQ() {
                 </p>
               </div>
               <div className="editDelete">
-                {/* <button>Edit</button> */}
                 <button
                   onClick={() => {
-                    dataFaq.splice(index, 1);
-                    setAddFaq({ ...addFaq });
+                    const updatedFaqs = faqs.filter((_, i) => i !== index);
+                    setFaqs(updatedFaqs);
+                    console.log(faqs)
                   }}
                 >
                   Delete
@@ -89,7 +104,11 @@ export default function FAQ() {
               onChange={addFAQ}
             />
           </div>
-          <button onClick={add} className="addBt">
+          <button 
+            type = "submit"
+            onClick={addNewFaq}  
+            className="addBt"
+            >
             Add
           </button>
         </form>
