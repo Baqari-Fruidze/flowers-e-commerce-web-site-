@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import forYouImg from "/image/flowers/foryou.webp"
 import classic from "/image/flowers/classic.webp"
 import { DISABLE_SPEEDY } from "styled-components/dist/constants";
+import { Context } from "../../App"
 
 export default function SelectingAPlan(){
     const [selectCategory, setSelectCategory] = useState(false)
     const [selectFrequency, setSelectFrequency] = useState(false)
     const [selectQuantity, setSelectQuantity] = useState(false)
-    const [subscriptions, setSubscriptions] = useState([{
-        id: 1,
-        category: "",
-        price: "",
-        delivery: "",
-        theBest: "",
-        firstDelivery: "",
-        firstDelivery2: "",
-        saveUp: ""
-    }])
+   
+    const { subscriptions, setSubscriptions} = useContext(Context);
     
     useEffect(() => {
         async function fetchSubscriptions() {
-          const response = await fetch("http://164.90.184.221:8000/api/subscription");
+          const response = await fetch("http://134.122.71.97:8000/api/subscription");
           const data = await response.json();
           setSubscriptions(data);
         }

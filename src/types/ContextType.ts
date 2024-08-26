@@ -1,11 +1,11 @@
 import { Tcategory } from "./Category";
 import { TaddCategories } from "./AddCategories";
-import { TaddFaq } from "./AddCategories";
-import { TaddSubscriptions } from "./AddCategories";
-import { TaddFlowers } from "./AddCategories";
+import { Tsubscriptions } from "./AddCategories";
+import { Tflowers } from "./AddCategories";
 import { TflowersCategory } from "./AddCategories";
-import { TaddUsers } from "./AddCategories";
+import { Tusers } from "./AddCategories";
 import { TsingleCategory } from "./SingleCategoryType";
+import { TFaqs } from "./AddCategories";
 
 export interface TcontextType {
   burgerToShow: boolean;
@@ -28,16 +28,16 @@ export interface TcontextType {
   cartshow: boolean;
   addCategories: TaddCategories;
   setAddCategories: React.Dispatch<React.SetStateAction<TaddCategories>>;
-  addFaq: TaddFaq;
-  setAddFaq: React.Dispatch<React.SetStateAction<TaddFaq>>;
-  addSubscriptions: TaddSubscriptions;
-  setAddSubscriptions: React.Dispatch<React.SetStateAction<TaddSubscriptions>>;
-  addFlowers: TaddFlowers;
-  setAddFlowers: React.Dispatch<React.SetStateAction<TaddFlowers>>;
+  faqs: TFaqs[];
+  setFaqs: React.Dispatch<React.SetStateAction<TFaqs[]>>;
+  subscriptions: Tsubscriptions[];
+  setSubscriptions: React.Dispatch<React.SetStateAction<Tsubscriptions[]>>;
+  flowers: Tflowers[];
+  setFlowers: React.Dispatch<React.SetStateAction<Tflowers[]>>;
   flowersCategory: TflowersCategory;
   setFlowersCategory: React.Dispatch<React.SetStateAction<TflowersCategory>>;
-  addUsers: TaddUsers;
-  setAddUsers: React.Dispatch<React.SetStateAction<TaddUsers>>;
+  users: Tusers[];
+  setUsers: React.Dispatch<React.SetStateAction<Tusers[]>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;
   setSingleCategoryState: React.Dispatch<

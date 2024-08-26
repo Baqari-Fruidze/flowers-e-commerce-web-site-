@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
+import { Context } from "../../App";
 
 export default function Faq(){
     const [isAnswer, setIsAnswer] = useState(null)
-    const [faqs, setFaqs] = useState([{
-        id: 1,
-        question: "",
-        answer: ""
-    }])
+
+    const { faqs, setFaqs } = useContext(Context);
     
     useEffect(() => {
         async function fetchFaq() {
-          const response = await fetch("http://164.90.184.221:8000/api/faq");
+          const response = await fetch("http://134.122.71.97:8000/api/faq");
           const data = await response.json();
           setFaqs(data);
         }
         fetchFaq();
       },[]);
-    console.log(faqs)
+   
    
     return (
         <>
