@@ -16,7 +16,7 @@ export default function SingleCategory() {
   useEffect(() => {
     async function fetchSingleCategories(id: number | undefined) {
       const response = await fetch(
-        `http://164.90.184.221:8000/api/product?category=${id}`
+        `http://134.122.71.97:8000/api/product?category=${id}`
       );
       const data = await response.json();
       setSingleCategoryState(data);

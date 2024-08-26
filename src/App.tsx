@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -121,9 +121,25 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setSingleCategoryState: () => {},
+  dataToMap: [
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ],
 });
 
 function App() {
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const data = await response.json();
+      setCategory(data);
+    }
+    fetchCategories();
+  }, []);
+
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
@@ -140,6 +156,9 @@ function App() {
       image: "",
     },
   ]);
+  const categoryRef = useRef(category);
+  const dataToMap = categoryRef.current;
+  console.log(dataToMap);
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
@@ -289,6 +308,7 @@ function App() {
         setRecoverUsername,
         singleCategoryState,
         setSingleCategoryState,
+        dataToMap: { dataToMap },
       }}
     >
       <BrowserRouter>
