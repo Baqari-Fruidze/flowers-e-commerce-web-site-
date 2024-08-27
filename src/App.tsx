@@ -150,6 +150,8 @@ export const Context = createContext<TcontextType>({
   setSingleProductState: () => {},
   tokenChecker: false,
   setTockenChecker: () => {},
+  quantity: 0,
+  setQuantity: () => {},
 });
 
 function App() {
@@ -163,6 +165,7 @@ function App() {
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
   const [tokenChecker, setTockenChecker] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState<Tcategory[]>([
     {
       id: 1,
@@ -328,6 +331,8 @@ function App() {
         singlePorudctState,
         tokenChecker,
         setTockenChecker,
+        setQuantity,
+        quantity,
       }}
     >
       <BrowserRouter>

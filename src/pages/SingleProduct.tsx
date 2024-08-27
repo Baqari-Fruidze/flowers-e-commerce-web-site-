@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
@@ -21,6 +21,25 @@ export default function SingleProduct() {
     }
     fetchSingleProduct(singleProduct);
   }, []);
+
+  async function foo() {
+    let token = localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+      const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.access}`,
+        },
+        body: JSON.stringify({
+          product_id: singleProduct,
+          quantity: quantity,
+        }),
+      });
+      const cartProduct = await res.json();
+    }
+  }
 
   return (
     <Parent>
