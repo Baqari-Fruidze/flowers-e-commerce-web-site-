@@ -22,11 +22,12 @@ export interface Tsubscriptions {
 }
 
 export interface Tproducts {
+  id: number,
   name: string;
   price: number;
   description: string;
   inStock: number;
-  src: string;
+  image: string;
   category: {
     name: string;
     id: number;

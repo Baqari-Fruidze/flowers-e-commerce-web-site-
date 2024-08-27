@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../../App"; 
 
 export default function() {
     const {adminCategories, setAdminCategories } = useContext(Context);
-    const {adminFlowers, setAdminFlowers} = useContext(Context);
+    const {adminProducts, setAdminProducts} = useContext(Context);
     const {adminUsers, setAdminUsers} = useContext(Context);
     const {adminSubscriptions, setAdminSubscriptions} = useContext(Context);
     const {adminFaq, setAdminFaq} = useContext(Context);
@@ -15,36 +15,36 @@ export default function() {
            <ol>
                 <ul onClick={(()=>{ 
                     setAdminCategories(adminCategories == false ? true : false);
-                    setAdminFlowers(false)
+                    setAdminProducts(false)
                     setAdminUsers(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
                     })} >Categories</ul>
                 <ul onClick={(()=>{ 
-                    setAdminFlowers(adminFlowers == false ? true : false) 
+                    setAdminProducts(adminProducts == false ? true : false) 
                     setAdminCategories(false)
                     setAdminUsers(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
-                    })} >Flowers</ul>
+                    })} >Products</ul>
                 <ul onClick={(()=>{ 
                     setAdminUsers(adminUsers == false ? true : false) 
                     setAdminCategories(false)
-                    setAdminFlowers(false)
+                    setAdminProducts(false)
                     setAdminSubscriptions(false)
                     setAdminFaq(false)
                     })} >Users</ul>
                 <ul onClick={(()=>{ 
                     setAdminSubscriptions(adminSubscriptions == false ? true : false) 
                     setAdminCategories(false)
-                    setAdminFlowers(false)
+                    setAdminProducts(false)
                     setAdminUsers(false)
                     setAdminFaq(false)
                     })} >Subscriptions</ul>
                 <ul onClick={(()=>{ 
                     setAdminFaq(adminFaq == false ? true : false) 
                     setAdminCategories(false)
-                    setAdminFlowers(false)
+                    setAdminProducts(false)
                     setAdminUsers(false)
                     setAdminSubscriptions(false)
                     })} >FAQ</ul>
