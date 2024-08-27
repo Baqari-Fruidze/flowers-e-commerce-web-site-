@@ -50,6 +50,7 @@ export default function Header() {
   );
 }
 const Parent = styled.div`
+  z-index: 89;
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);

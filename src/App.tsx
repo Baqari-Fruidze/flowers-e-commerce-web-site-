@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { createContext, SetStateAction, useState } from "react";
+
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,7 +20,9 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
+
 import { TFaqs, Tproducts, Tusers, Tsubscriptions, Tcategories } from "./types/AddCategories";
+
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -46,8 +50,8 @@ export const Context = createContext<TcontextType>({
   subscribe: false,
   setSubscribe: () => { },
   cartshow: false,
-  setCartshow: () => { },
 
+  setCartshow: () => { },
   categories: [{ id: 1, name: "", image: "" }],
   setCategories: () => { },
 
@@ -115,25 +119,51 @@ export const Context = createContext<TcontextType>({
       },
     ],
   }],
+
   setUsers: () => { },
+
 
   recoverUsername: "",
   setRecoverUsername: () => { },
   singleCategoryState: [
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ],
-  setSingleCategoryState: () => { },
+
+  setSingleCategoryState: () => {},
+  dataToMap: [
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ],
+  singlePorudctState: {
+    id: 1,
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 0,
+      image: "",
+    },
+    description: "",
+    inStock: 0,
+    image: "",
+  },
+  setSingleProductState: () => {},
+
 });
 
 function App() {
@@ -153,20 +183,22 @@ function App() {
       image: "",
     },
   ]);
+
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
@@ -176,8 +208,8 @@ function App() {
     id: 1,
     name: "",
     image: "",
-  }]);
 
+  }]);
 
   const [faqs, setFaqs] = useState<
   TFaqs[]
@@ -186,10 +218,10 @@ function App() {
     question: "",
     answer: ""
 }])
+
   const [products, setProducts] = useState<
   Tproducts[]
   >
-  ([{
     name: "",
     price: 0,
     description: "",
@@ -197,8 +229,10 @@ function App() {
     src: "",
     category: {
       name: "",
-      id: 1,
-      bg_picture: ""
+
+      id: 0,
+      image: "",
+
     },
   }]);
 
@@ -251,7 +285,26 @@ function App() {
         ],
       },
     ],
+
+  });
+  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
+    {
+      id: 1,
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        image: "",
+      },
+      description: "",
+      inStock: 0,
+      image: "",
+    }
+  );
+
   }]);;
+
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -308,6 +361,8 @@ function App() {
         setRecoverUsername,
         singleCategoryState,
         setSingleCategoryState,
+        setSingleProductState,
+        singlePorudctState,
       }}
     >
       <BrowserRouter>
