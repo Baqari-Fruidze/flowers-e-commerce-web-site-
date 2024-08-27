@@ -9,7 +9,8 @@ import { Context } from "../App";
 
 export default function SingleProduct() {
   const { singleProduct } = useParams();
-  const { singlePorudctState, setSingleProductState } = useContext(Context);
+  const { singlePorudctState, setSingleProductState, quantity } =
+    useContext(Context);
 
   useEffect(() => {
     async function fetchSingleProduct(id: string | undefined) {

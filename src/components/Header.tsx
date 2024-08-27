@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import { Context } from "../App";
@@ -6,32 +6,8 @@ import Burger from "./Burger";
 import Cart from "./Cart";
 
 export default function Header() {
-  const {
-    setBurgerToShow,
-    burgerToShow,
-    cartshow,
-    setCartshow,
-    setTockenChecker,
-  } = useContext(Context);
-  useEffect(() => {
-    const tokenChecker = async () => {
-      let token = localStorage.getItem("token");
-      if (token) {
-        token = JSON.parse(token);
-        const res = await fetch("http://134.122.71.97:8000/auth/signup", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer  ${token.access}`,
-          },
-        });
-        if (res.ok) {
-          setTockenChecker(true);
-        }
-      }
-    };
-    tokenChecker();
-  }, []);
+  const { setBurgerToShow, burgerToShow, cartshow, setCartshow } =
+    useContext(Context);
 
   return (
     <>
