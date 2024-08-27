@@ -1,4 +1,4 @@
-import React, { useState, useContext,  useEffect, } from "react";
+import { useContext,  useEffect, } from "react";
 import styled from "styled-components";
 import { Context } from "../../App"
 
@@ -14,7 +14,7 @@ export default function Users(){
         fetchUsers();
       },[]);
 
-      async function deleteUser(user: any){
+      async function deleteUser(userId: any){
         const responce = await fetch(`http://134.122.71.97:8000/api/faq/${userId}`, {
             method: "DELETE", 
             },)
