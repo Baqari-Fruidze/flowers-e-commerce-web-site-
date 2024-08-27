@@ -44,4 +44,6 @@ export interface TcontextType {
     React.SetStateAction<TsingleCategory[]>
   >;
   singleCategoryState: TsingleCategory[];
+  setSingleProductState: React.Dispatch<React.SetStateAction<TsingleCategory>>;
+  singlePorudctState: TsingleCategory;
 }

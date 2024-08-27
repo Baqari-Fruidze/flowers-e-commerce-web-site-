@@ -1,12 +1,13 @@
 export interface TsingleCategory {
+  id: number;
   name: string;
   price: number;
   category: {
     name: string;
     id: number;
-    bg_picture: string;
+    image: string;
   };
   description: string;
   inStock: number;
-  src: string;
+  image: string;
 }

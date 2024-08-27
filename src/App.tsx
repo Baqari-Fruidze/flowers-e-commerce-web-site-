@@ -48,10 +48,6 @@ export const Context = createContext<TcontextType>({
   setSubscribe: () => {},
   cartshow: false,
   setCartshow: () => {},
-
-  addCategories: { id: 1, name: "", image: "" }, 
-  setAddCategories: () => {},
-  
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => {},
   
@@ -114,25 +110,48 @@ export const Context = createContext<TcontextType>({
       },
     ],
   }],
+
   setUsers: () => {},
 
   recoverUsername: "",
   setRecoverUsername: () => {},
   singleCategoryState: [
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ],
   setSingleCategoryState: () => {},
+  dataToMap: [
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ],
+  singlePorudctState: {
+    id: 1,
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 0,
+      image: "",
+    },
+    description: "",
+    inStock: 0,
+    image: "",
+  },
+  setSingleProductState: () => {},
 });
 
 function App() {
@@ -152,20 +171,22 @@ function App() {
       image: "",
     },
   ]);
+
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
     {
+      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
         id: 0,
-        bg_picture: "",
+        image: "",
       },
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
@@ -174,8 +195,6 @@ function App() {
     name: "",
     image: "",
   });
-
-
   const [faqs, setFaqs] = useState<
   TFaqs[]
   >([{
@@ -183,23 +202,84 @@ function App() {
     question: "",
     answer: ""
 }])
-
   const [flowersCategory, setFlowersCategory] = useState({
     name: "",
     id: 1,
     bg_picture: "",
   });
 
-  const [flowers, setFlowers] = useState<
-  Tflowers[]
-  >
-  ([{
+  const [flowers, setFlowers] = useState<Tflowers[]>([
+    {
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 1,
+        bg_picture: "",
+      },
+      description: "",
+      inStock: 0,
+      src: "",
+    },
+  ]);
+
+  const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
+    {
+      id: 1,
+      image: "",
+      category: "",
+      price: 0,
+      delivery: "",
+      theBest: "",
+      firstDelivery: "",
+      firstDelivery2: "",
+      saveUp: 0,
+    },
+  ]);
+
+  const [users, setUsers] = useState<Tusers[]>([
+    {
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+      orders: [
+        {
+          RecipientsName: "",
+          Recipients_Phone_number: "",
+          DataofDelivery: "",
+          Delivery_Time: "",
+          street: "",
+          houseNumber: "",
+          total: 0,
+          items: [
+            {
+              product: {
+                image: "",
+                name: "",
+                price: 0,
+                category: "",
+                description: "",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+  const [singlePorudctState, setSingleProductState] = useState({
+    id: 1,
     name: "",
     price: 0,
     category: {
       name: "",
-      id: 1,
-      bg_picture: "",
+      id: 0,
+      image: "",
     },
     description: "",
     inStock: 0,
@@ -255,6 +335,7 @@ function App() {
       },
     ],
   }]);;
+
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -313,6 +394,8 @@ function App() {
         setRecoverUsername,
         singleCategoryState,
         setSingleCategoryState,
+        setSingleProductState,
+        singlePorudctState,
       }}
     >
       <BrowserRouter>
