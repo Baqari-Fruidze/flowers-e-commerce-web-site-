@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,8 +18,11 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
+
+
 import { TFaqs, Tflowers, Tusers } from "./types/AddCategories";
 import { Tsubscriptions } from "./types/AddCategories";
+
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -334,6 +337,24 @@ function App() {
         ],
       },
     ],
+
+  });
+  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
+    {
+      id: 1,
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        image: "",
+      },
+      description: "",
+      inStock: 0,
+      image: "",
+    }
+  );
+
   }]);;
 
 
