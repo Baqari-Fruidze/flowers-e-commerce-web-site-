@@ -7,6 +7,7 @@ export default function Products(){
     const { categories, setCategories} = useContext(Context)
     const { products, setProducts } = useContext(Context)
     const [ addProduct, setAddProduct] = useState({
+        id: 0,
         name: "",
         price: 0,
         category: {name: "", id: 0, bg_picture: ""},
@@ -28,6 +29,7 @@ export default function Products(){
         }
         fetchCategory();
       },[]);
+      
       useEffect(() => {
         async function fetchProducts() {
           const response = await fetch("http://134.122.71.97:8000/api/product");
@@ -86,6 +88,7 @@ export default function Products(){
          console.log(newProduct)
           setProducts([...products, newProduct]);
           setAddProduct({ 
+            id: 0,
             name: "",
             price: 0,
             category: {name: "", id: 0, bg_picture: "" },
@@ -93,7 +96,7 @@ export default function Products(){
             inStock: 0,
             image: "",
                 });
-            }
+      }
             console.log(categoryName)
             console.log(addProduct)
             console.log(products)
@@ -167,14 +170,6 @@ export default function Products(){
             
         ))}
     </select>
-        {/* <input 
-        placeholder="Add Product's Category"
-        className="inputProduct" 
-        // type="section" 
-        name="category"
-        value={addProduct.category.name}
-        onChange={addProducts}
-        /> */}
         <input 
         placeholder="Add Product's Description"
         className="inputProduct" 

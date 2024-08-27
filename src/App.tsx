@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { createContext, useState } from "react";
-
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -343,6 +341,8 @@ function App() {
         setSingleCategoryState,
         setSingleProductState,
         singlePorudctState,
+        products,
+        setProducts
       }}
     >
       <BrowserRouter>
