@@ -19,12 +19,6 @@ import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
-import {
-  TFaqs,
-  Tusers,
-  Tsubscriptions,
-  Tcategories,
-} from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
 
 
@@ -397,7 +391,7 @@ function App() {
         setSingleProductState,
         singlePorudctState,
         products,
-        setProducts
+        setProducts,
         tokenChecker,
         setTockenChecker,
         setQuantity,
