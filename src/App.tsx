@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { createContext, SetStateAction, useState } from "react";
-
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -20,8 +18,7 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
-
-import { TFaqs, Tproducts, Tusers, Tsubscriptions, Tcategories } from "./types/AddCategories";
+import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
 
 
 export const Context = createContext<TcontextType>({
@@ -38,26 +35,22 @@ export const Context = createContext<TcontextType>({
 
   adminCategories: false,
   setAdminCategories: () => { },
-  adminFlowers: false,
-  setAdminFlowers: () => { },
+  adminProducts: false,
+  setAdminProducts: () => { },
   adminUsers: false,
   setAdminUsers: () => { },
   adminSubscriptions: false,
   setAdminSubscriptions: () => { },
   adminFaq: false,
   setAdminFaq: () => { },
-
   subscribe: false,
   setSubscribe: () => { },
   cartshow: false,
-
   setCartshow: () => { },
   categories: [{ id: 1, name: "", image: "" }],
   setCategories: () => { },
-
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => { },
-
   subscriptions: [
     {
       id: 1,
@@ -72,14 +65,14 @@ export const Context = createContext<TcontextType>({
     }
   ],
   setSubscriptions: () => { },
-
   products: [
     {
+      id: 0,
       name: "",
       price: 0,
       description: "",
       inStock: 0,
-      src: "",
+      image: "",
       category: { name: "", id: 1, bg_picture: "" },
     }
   ],
@@ -119,10 +112,7 @@ export const Context = createContext<TcontextType>({
       },
     ],
   }],
-
   setUsers: () => { },
-
-
   recoverUsername: "",
   setRecoverUsername: () => { },
   singleCategoryState: [
@@ -140,15 +130,7 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
-
   setSingleCategoryState: () => {},
-  dataToMap: [
-    {
-      id: 1,
-      name: "",
-      image: "",
-    },
-  ],
   singlePorudctState: {
     id: 1,
     name: "",
@@ -163,7 +145,6 @@ export const Context = createContext<TcontextType>({
     image: "",
   },
   setSingleProductState: () => {},
-
 });
 
 function App() {
@@ -172,7 +153,7 @@ function App() {
   const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
-  const [adminFlowers, setAdminFlowers] = useState(false);
+  const [adminProducts, setAdminProducts] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
@@ -210,32 +191,13 @@ function App() {
     image: "",
 
   }]);
-
   const [faqs, setFaqs] = useState<
   TFaqs[]
   >([{
     id: 1,
     question: "",
     answer: ""
-}])
-
-  const [products, setProducts] = useState<
-  Tproducts[]
-  >
-    name: "",
-    price: 0,
-    description: "",
-    inStock: 0,
-    src: "",
-    category: {
-      name: "",
-
-      id: 0,
-      image: "",
-
-    },
-  }]);
-
+  }])
   const [subscriptions, setSubscriptions] = useState<
   Tsubscriptions[]
   >([{
@@ -248,7 +210,19 @@ function App() {
     firstDelivery: "",
     firstDelivery2: "",
     saveUp: 0,
-  }]);
+  }]); 
+
+  const [products, setProducts] = useState<
+  Tproducts[]
+  >([{
+    id: 0,
+    name: "",
+    price: 0,
+    description: "",
+    inStock: 0,
+    image: "",
+    category: { name: "", id: 1, bg_picture: "" },
+  }])
 
   const [users, setUsers] = useState<
   Tusers[]
@@ -285,8 +259,7 @@ function App() {
         ],
       },
     ],
-
-  });
+  }]);
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
       id: 1,
@@ -303,7 +276,7 @@ function App() {
     }
   );
 
-  }]);;
+
 
 
   const FooterChanger = () => {
@@ -337,8 +310,8 @@ function App() {
         setCategory,
         adminCategories,
         setAdminCategories,
-        adminFlowers,
-        setAdminFlowers,
+        adminProducts,
+        setAdminProducts,
         adminUsers,
         setAdminUsers,
         adminSubscriptions,

@@ -12,8 +12,8 @@ export interface TcontextType {
   category: Tcategory[];
   adminCategories: boolean;
   setAdminCategories: React.Dispatch<React.SetStateAction<boolean>>;
-  adminFlowers: boolean;
-  setAdminFlowers: React.Dispatch<React.SetStateAction<boolean>>;
+  adminProducts: boolean;
+  setAdminProducts: React.Dispatch<React.SetStateAction<boolean>>;
   adminUsers: boolean;
   setAdminUsers: React.Dispatch<React.SetStateAction<boolean>>;
   adminSubscriptions: boolean;
