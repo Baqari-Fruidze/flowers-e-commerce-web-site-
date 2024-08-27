@@ -4,14 +4,29 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpScema } from "../Scema/SignUpYup";
 import { TSignUp } from "../types/SignUp";
 import loginBg from "/image/loginBg.jpg";
+import { tUserRegisterType } from "../types/UserTypesInRegister";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(signUpScema) });
   const inputHandler: SubmitHandler<TSignUp> = (data) => console.log(data);
+  async function RegisterUser(inputsdata: tUserRegisterType) {
+    const res = await fetch("http://134.122.71.97:8000/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputsdata),
+    });
+    if (res.ok) {
+      navigate("/login");
+    }
+  }
   return (
     <Parent>
       <form

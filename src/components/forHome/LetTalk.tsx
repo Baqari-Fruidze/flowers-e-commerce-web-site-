@@ -2,7 +2,6 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import shop1 from "/image/shop1.png";
 import shop2 from "/image/shop2.png"
 
 export default function LetTalk(){

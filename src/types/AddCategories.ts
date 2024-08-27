@@ -3,11 +3,13 @@ export interface TaddCategories {
   name: string;
   image: File;
 }
-export interface TaddFaq {
+export interface TFaqs {
+  id: number;
   question: string;
   answer: string;
 }
-export interface TaddSubscriptions {
+export interface Tsubscriptions {
+  id: number;
   image: string;
   category: string;
   price: number;
@@ -18,7 +20,7 @@ export interface TaddSubscriptions {
   saveUp: number;
 }
 
-export interface TaddFlowers {
+export interface Tflowers {
   name: string;
   price: number;
   category: {
@@ -37,7 +39,7 @@ export interface TflowersCategory {
   bg_picture: string;
 }
 
-export type TaddUsers = {
+export type Tusers = {
   review: string;
   username: string;
   email: string;

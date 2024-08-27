@@ -13,19 +13,25 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schemaLogin) });
-  const inputsData: SubmitHandler<Tlogin> = (data) => loginUser(data);
-  async function loginUser(userinfo) {
-    const res = await fetch("http://164.90.184.221:8000/auth/login/", {
+  const inputsData: SubmitHandler<Tlogin> = (data) => {
+    loginUser(data);
+  };
+
+  async function loginUser(userinfo: { username: string; password: string }) {
+    const res = await fetch("http://134.122.71.97:8000/auth/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NDMzNDc0LCJpYXQiOjE3MjQ0M",
+        // Authorization:
+        //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NDMzNDc0LCJpYXQiOjE3MjQ0M",
       },
       body: JSON.stringify(userinfo),
     });
     const info = await res.json();
     console.log(info);
+    if (res.ok) {
+      navigate("/");
+    }
   }
 
   return (

@@ -13,9 +13,9 @@ export default function Cart() {
 
 const Parent = styled.div`
   background-color: #fff;
+  max-width: 30rem;
 `;
 const Cover = styled.div`
-  z-index: 89;
   top: 0;
   position: fixed;
   width: 100%;

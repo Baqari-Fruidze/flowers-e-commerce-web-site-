@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,24 +18,12 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
-import { number } from "yup";
+import { TFaqs, Tflowers, Tusers } from "./types/AddCategories";
+import { Tsubscriptions } from "./types/AddCategories";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
-  adminCategories: false,
-  adminFlowers: false,
-  adminUsers: false,
-  adminSubscriptions: false,
-  adminFaq: false,
   setBurgerToShow: () => {},
-  setCategory: () => {},
-  subscribe: false,
-  setSubscribe: () => {},
-  setAdminCategories: () => {},
-  setAdminFlowers: () => {},
-  setAdminUsers: () => {},
-  setAdminSubscriptions: () => {},
-  setAdminFaq: () => {},
   category: [
     {
       id: 1,
@@ -43,68 +31,94 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
+  setCategory: () => {},
+
+  adminCategories: false,
+  setAdminCategories: () => {},
+  adminFlowers: false,
+  setAdminFlowers: () => {},
+  adminUsers: false,
+  setAdminUsers: () => {},
+  adminSubscriptions: false,
+  setAdminSubscriptions: () => {},
+  adminFaq: false,
+  setAdminFaq: () => {},
+
+  subscribe: false,
+  setSubscribe: () => {},
   cartshow: false,
   setCartshow: () => {},
+
   addCategories: { id: 1, name: "", image: "" },
   setAddCategories: () => {},
-  addFaq: { question: "", answer: "" },
-  setAddFaq: () => {},
-  addSubscriptions: {
-    image: "",
-    category: "",
-    price: 0,
-    delivery: "",
-    theBest: "",
-    firstDelivery: "",
-    firstDelivery2: "",
-    saveUp: 0,
-  },
-  setAddSubscriptions: () => {},
-  addFlowers: {
-    name: "",
-    price: 0,
-    category: { name: "", id: 1, bg_picture: "" },
-    description: "",
-    inStock: 0,
-    src: "",
-  },
-  setAddFlowers: () => {},
-  flowersCategory: { name: "", id: 1, bg_picture: "" },
-  setFlowersCategory: () => {},
-  addUsers: {
-    review: "",
-    username: "",
-    email: "",
-    last_name: "",
-    first_name: "",
-    password: "",
-    profilePicture: "",
-    phoneNumber: "",
-    is_superuser: false,
-    orders: [
-      {
-        RecipientsName: "",
-        Recipients_Phone_number: "",
-        DataofDelivery: "",
-        Delivery_Time: "",
-        street: "",
-        houseNumber: "",
-        total: 0,
-        items: [
-          {
-            product: {
-              image: "",
-              name: "",
-              price: 0,
-              category: "",
-              description: "",
+
+  faqs: [{ id: 1, question: "", answer: "" }],
+  setFaqs: () => {},
+
+  subscriptions: [
+    {
+      id: 1,
+      image: "",
+      category: "",
+      price: 0,
+      delivery: "",
+      theBest: "",
+      firstDelivery: "",
+      firstDelivery2: "",
+      saveUp: 0,
+    },
+  ],
+  setSubscriptions: () => {},
+
+  flowers: [
+    {
+      name: "",
+      price: 0,
+      category: { name: "", id: 1, bg_picture: "" },
+      description: "",
+      inStock: 0,
+      src: "",
+    },
+  ],
+  setFlowers: () => {},
+
+  users: [
+    {
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+      orders: [
+        {
+          RecipientsName: "",
+          Recipients_Phone_number: "",
+          DataofDelivery: "",
+          Delivery_Time: "",
+          street: "",
+          houseNumber: "",
+          total: 0,
+          items: [
+            {
+              product: {
+                image: "",
+                name: "",
+                price: 0,
+                category: "",
+                description: "",
+              },
             },
-          },
-        ],
-      },
-    ],
-  },
-  setAddUsers: () => {},
+          ],
+        },
+      ],
+    },
+  ],
+  setUsers: () => {},
+
   recoverUsername: "",
   setRecoverUsername: () => {},
   singleCategoryState: [
@@ -188,10 +202,13 @@ function App() {
     image: "",
   });
 
-  const [addFaq, setAddFaq] = useState({
-    question: "",
-    answer: "",
-  });
+  const [faqs, setFaqs] = useState<TFaqs[]>([
+    {
+      id: 1,
+      question: "",
+      answer: "",
+    },
+  ]);
 
   const [flowersCategory, setFlowersCategory] = useState({
     name: "",
@@ -199,78 +216,83 @@ function App() {
     bg_picture: "",
   });
 
-  const [addFlowers, setAddFlowers] = useState({
-    name: "",
-    price: 0,
-    category: {
-      name: "",
-      id: 1,
-      bg_picture: "",
-    },
-    description: "",
-    inStock: 0,
-    src: "",
-  });
-
-  const [addSubscriptions, setAddSubscriptions] = useState({
-    image: "",
-    category: "",
-    price: 0,
-    delivery: "",
-    theBest: "",
-    firstDelivery: "",
-    firstDelivery2: "",
-    saveUp: 0,
-  });
-
-  const [addUsers, setAddUsers] = useState({
-    review: "",
-    username: "",
-    email: "",
-    last_name: "",
-    first_name: "",
-    password: "",
-    profilePicture: "",
-    phoneNumber: "",
-    is_superuser: false,
-    orders: [
-      {
-        RecipientsName: "",
-        Recipients_Phone_number: "",
-        DataofDelivery: "",
-        Delivery_Time: "",
-        street: "",
-        houseNumber: "",
-        total: 0,
-        items: [
-          {
-            product: {
-              image: "",
-              name: "",
-              price: 0,
-              category: "",
-              description: "",
-            },
-          },
-        ],
-      },
-    ],
-  });
-  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
+  const [flowers, setFlowers] = useState<Tflowers[]>([
     {
-      id: 1,
       name: "",
       price: 0,
       category: {
         name: "",
-        id: 0,
-        image: "",
+        id: 1,
+        bg_picture: "",
       },
       description: "",
       inStock: 0,
+      src: "",
+    },
+  ]);
+
+  const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
+    {
+      id: 1,
       image: "",
-    }
-  );
+      category: "",
+      price: 0,
+      delivery: "",
+      theBest: "",
+      firstDelivery: "",
+      firstDelivery2: "",
+      saveUp: 0,
+    },
+  ]);
+
+  const [users, setUsers] = useState<Tusers[]>([
+    {
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+      orders: [
+        {
+          RecipientsName: "",
+          Recipients_Phone_number: "",
+          DataofDelivery: "",
+          Delivery_Time: "",
+          street: "",
+          houseNumber: "",
+          total: 0,
+          items: [
+            {
+              product: {
+                image: "",
+                name: "",
+                price: 0,
+                category: "",
+                description: "",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+  const [singlePorudctState, setSingleProductState] = useState({
+    id: 1,
+    name: "",
+    price: 0,
+    category: {
+      name: "",
+      id: 0,
+      image: "",
+    },
+    description: "",
+    inStock: 0,
+    image: "",
+  });
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -315,16 +337,16 @@ function App() {
         setAdminFaq,
         addCategories,
         setAddCategories,
-        addFaq,
-        setAddFaq,
-        addSubscriptions,
-        setAddSubscriptions,
-        addFlowers,
-        setAddFlowers,
+        faqs,
+        setFaqs,
+        subscriptions,
+        setSubscriptions,
+        flowers,
+        setFlowers,
         flowersCategory,
         setFlowersCategory,
-        addUsers,
-        setAddUsers,
+        users,
+        setUsers,
         recoverUsername,
         setRecoverUsername,
         singleCategoryState,
