@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { createContext, useState } from "react";
-
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -21,6 +19,13 @@ import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
+import {
+  TFaqs,
+  Tusers,
+  Tsubscriptions,
+  Tcategories,
+} from "./types/AddCategories";
+import { TCartType } from "./types/CartType";
 
 
 export const Context = createContext<TcontextType>({
@@ -84,8 +89,6 @@ export const Context = createContext<TcontextType>({
     }
   ],
   setProducts: () => { },
-
-
   users: [
     {
       id: 0,
@@ -156,6 +159,34 @@ export const Context = createContext<TcontextType>({
     image: "",
   },
   setSingleProductState: () => {},
+  tokenChecker: false,
+  setTockenChecker: () => {},
+  quantity: 0,
+  setQuantity: () => {},
+  cartItemsState: {
+    id: 1,
+    user: 1,
+    items: [
+      {
+        product: {
+          id: 1,
+          name: "",
+          price: 1,
+          category: {
+            name: "",
+            id: 1,
+            bg_picture: "",
+          },
+          description: "",
+          inStock: 1,
+          src: "",
+        },
+        quantity: 1,
+      },
+    ],
+  },
+
+  setCartItemsState: () => {},
 });
 
 function App() {
@@ -168,6 +199,30 @@ function App() {
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
+  const [tokenChecker, setTockenChecker] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [cartItemsState, setCartItemsState] = useState<TCartType>({
+    id: 1,
+    user: 1,
+    items: [
+      {
+        product: {
+          id: 1,
+          name: "",
+          price: 1,
+          category: {
+            name: "",
+            id: 1,
+            bg_picture: "",
+          },
+          description: "",
+          inStock: 1,
+          src: "",
+        },
+        quantity: 1,
+      },
+    ],
+  });
   const [category, setCategory] = useState<Tcategory[]>([
     {
       id: 1,
@@ -221,7 +276,6 @@ function App() {
     firstDelivery2: "",
     saveUp: 0,
   }]); 
-
   const [products, setProducts] = useState<
   Tproducts[]
   >([{
@@ -233,7 +287,6 @@ function App() {
     image: "",
     category: { name: "", id: 1, bg_picture: "" },
   }])
-
   const [users, setUsers] = useState<Tusers[]>([
     {
       id: 0,
@@ -343,6 +396,12 @@ function App() {
         setSingleCategoryState,
         setSingleProductState,
         singlePorudctState,
+        tokenChecker,
+        setTockenChecker,
+        setQuantity,
+        quantity,
+        cartItemsState,
+        setCartItemsState,
       }}
     >
       <BrowserRouter>
