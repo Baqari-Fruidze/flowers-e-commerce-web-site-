@@ -5,6 +5,7 @@ import { schemaLogin } from "../Scema/LoginYup";
 import { Tlogin } from "../types/Login";
 import loginBg from "/image/loginBg.jpg";
 import { useNavigate } from "react-router-dom";
+import { error } from "@splidejs/splide/src/js/utils";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -31,6 +32,8 @@ export default function Login() {
     console.log(info);
     if (res.ok) {
       navigate("/");
+    } else {
+      throw new Error("incorect password or username");
     }
   }
 
