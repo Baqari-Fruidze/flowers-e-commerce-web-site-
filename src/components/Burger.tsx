@@ -1,12 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import data from "../data.json";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
 
 export default function Burger() {
-  const { category } = useContext(Context);
+  const { category, setTockenChecker, tokenChecker } = useContext(Context);
   const navigate = useNavigate();
+  useEffect(() => {
+    const tokenChecker = async () => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        token = JSON.parse(token);
+        const res = await fetch("http://134.122.71.97:8000/auth/signup", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer  ${token.access}`,
+          },
+        });
+        if (res.ok) {
+          setTockenChecker(true);
+        }
+      }
+    };
+    tokenChecker();
+  }, []);
   return (
     <BlackBackground>
       <Cover>
@@ -22,9 +41,13 @@ export default function Burger() {
         <TexstCon>
           <ForgotAndRestoreCon>
             <ForgotPassworsSpan>Have Acount ?</ForgotPassworsSpan>
-            <RestorePasswordSpan onClick={() => navigate("/login")}>
-              Sign In
-            </RestorePasswordSpan>
+            {!tokenChecker ? (
+              <RestorePasswordSpan onClick={() => navigate("/login")}>
+                Sign In
+              </RestorePasswordSpan>
+            ) : (
+              <RestorePasswordSpan>profile</RestorePasswordSpan>
+            )}
           </ForgotAndRestoreCon>
           <DonotHaveAcountCon>
             <DonotHaveAcountP>Do not have an account?</DonotHaveAcountP>

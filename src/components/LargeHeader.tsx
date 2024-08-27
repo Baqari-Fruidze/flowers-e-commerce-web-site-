@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import Cart from "./Cart";
@@ -7,6 +7,29 @@ import { Context } from "../App";
 
 export default function LargeHeader() {
   const { cartshow, setCartshow } = useContext(Context);
+  const navigate = useNavigate();
+  const { tokenChecker, setTockenChecker } = useContext(Context);
+
+  useEffect(() => {
+    const tokenChecker = async () => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        token = JSON.parse(token);
+        const res = await fetch("http://134.122.71.97:8000/auth/signup", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer  ${token.access}`,
+          },
+        });
+        if (res.ok) {
+          setTockenChecker(true);
+        }
+      }
+    };
+    tokenChecker();
+  }, []);
+
   return (
     <Parent>
       <HomeCon>
@@ -29,7 +52,13 @@ export default function LargeHeader() {
       <SignInCon>
         <Link to={"/login"}>
           <AnimDiv>
-            <p className="anim">Sign In</p>
+            {!tokenChecker ? (
+              <p className="anim" onClick={() => navigate("/login")}>
+                Sign In
+              </p>
+            ) : (
+              <p>profile</p>
+            )}
           </AnimDiv>
         </Link>
       </SignInCon>
