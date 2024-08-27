@@ -23,7 +23,7 @@ export default function SingleProduct() {
     fetchSingleProduct(singleProduct);
   }, []);
 
-  async function foo() {
+  async function getingCartItems() {
     let token = localStorage.getItem("token");
     if (token) {
       token = JSON.parse(token);
