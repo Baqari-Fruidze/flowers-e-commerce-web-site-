@@ -5,11 +5,15 @@ import { Context } from "../../App";
 export default function Flowers(){
 
 
-    const { flowers, setFlowers } = useContext(Context)
-    const [ addFlower, setAddFlower] = useState({
+    const { products, setProducts } = useContext(Context)
+    const [ addproduct, setAddProduct] = useState({
         name: "",
         price: 0,
-        category: "",
+        category: {
+            name: "",
+            id: 1,
+            bg_picture: ""
+          },
         description: "",
         inStock: 0,
         src: "",
@@ -88,9 +92,7 @@ export default function Flowers(){
         <div className="editDelete">
             <button
             onClick={() => {
-                const updatedFlowers = flowers.filter((_, i) => i !== index);
-                setFlowers(updatedFlowers);
-                console.log(flowers)
+                
               }}
             >Delete</button>
         </div>      

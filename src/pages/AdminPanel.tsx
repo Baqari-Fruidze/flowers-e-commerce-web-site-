@@ -17,7 +17,6 @@ export default function AdminPanel() {
     const {adminSubscriptions} = useContext(Context);
     const {adminFaq} = useContext(Context);
     
-    console.log(adminCategories)
     return(
         <>
         <HeaderAdminPanel />

@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useEffect, useRef, useState } from "react";
+
+import { createContext, SetStateAction, useState } from "react";
+
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -19,14 +21,12 @@ import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 
-
-import { TFaqs, Tflowers, Tusers } from "./types/AddCategories";
-import { Tsubscriptions } from "./types/AddCategories";
+import { TFaqs, Tproducts, Tusers, Tsubscriptions, Tcategories } from "./types/AddCategories";
 
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
-  setBurgerToShow: () => {},
+  setBurgerToShow: () => { },
   category: [
     {
       id: 1,
@@ -34,53 +34,59 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
-  setCategory: () => {},
+  setCategory: () => { },
 
   adminCategories: false,
-  setAdminCategories: () => {},
+  setAdminCategories: () => { },
   adminFlowers: false,
-  setAdminFlowers: () => {},
+  setAdminFlowers: () => { },
   adminUsers: false,
-  setAdminUsers: () => {},
+  setAdminUsers: () => { },
   adminSubscriptions: false,
-  setAdminSubscriptions: () => {},
+  setAdminSubscriptions: () => { },
   adminFaq: false,
-  setAdminFaq: () => {},
+  setAdminFaq: () => { },
 
   subscribe: false,
-  setSubscribe: () => {},
+  setSubscribe: () => { },
   cartshow: false,
-  setCartshow: () => {},
-  faqs: [{ id: 1, question: "", answer: "" }],
-  setFaqs: () => {},
-  
-  subscriptions: 
-  [
-    {
-    id: 1,
-    image: "",
-    category: "",
-    price: 0,
-    delivery: "",
-    theBest: "",
-    firstDelivery: "",
-    firstDelivery2: "",
-    saveUp: 0
-  }], 
-  setSubscriptions: () => {},
 
-  flowers: [
-  {
-    name: "",
-    price: 0,
-    category: { name: "", id: 1, bg_picture: "" },
-    description: "",
-    inStock: 0,
-    src: "", }
+  setCartshow: () => { },
+  categories: [{ id: 1, name: "", image: "" }],
+  setCategories: () => { },
+
+  faqs: [{ id: 1, question: "", answer: "" }],
+  setFaqs: () => { },
+
+  subscriptions: [
+    {
+      id: 1,
+      image: "",
+      category: "",
+      price: 0,
+      delivery: "",
+      theBest: "",
+      firstDelivery: "",
+      firstDelivery2: "",
+      saveUp: 0
+    }
   ],
-  setFlowers: () => {},
-  
+  setSubscriptions: () => { },
+
+  products: [
+    {
+      name: "",
+      price: 0,
+      description: "",
+      inStock: 0,
+      src: "",
+      category: { name: "", id: 1, bg_picture: "" },
+    }
+  ],
+  setProducts: () => { },
+
   users: [{
+    id: 0,
     review: "",
     username: "",
     email: "",
@@ -114,10 +120,11 @@ export const Context = createContext<TcontextType>({
     ],
   }],
 
-  setUsers: () => {},
+  setUsers: () => { },
+
 
   recoverUsername: "",
-  setRecoverUsername: () => {},
+  setRecoverUsername: () => { },
   singleCategoryState: [
     {
       id: 1,
@@ -133,6 +140,7 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
+
   setSingleCategoryState: () => {},
   dataToMap: [
     {
@@ -155,6 +163,7 @@ export const Context = createContext<TcontextType>({
     image: "",
   },
   setSingleProductState: () => {},
+
 });
 
 function App() {
@@ -193,11 +202,15 @@ function App() {
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
-  const [addCategories, setAddCategories] = useState({
+  const [categories, setCategories] = useState
+  <Tcategories[]>
+  ([{
     id: 1,
     name: "",
     image: "",
-  });
+
+  }]);
+
   const [faqs, setFaqs] = useState<
   TFaqs[]
   >([{
@@ -205,88 +218,22 @@ function App() {
     question: "",
     answer: ""
 }])
-  const [flowersCategory, setFlowersCategory] = useState({
-    name: "",
-    id: 1,
-    bg_picture: "",
-  });
 
-  const [flowers, setFlowers] = useState<Tflowers[]>([
-    {
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 1,
-        bg_picture: "",
-      },
-      description: "",
-      inStock: 0,
-      src: "",
-    },
-  ]);
-
-  const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
-    {
-      id: 1,
-      image: "",
-      category: "",
-      price: 0,
-      delivery: "",
-      theBest: "",
-      firstDelivery: "",
-      firstDelivery2: "",
-      saveUp: 0,
-    },
-  ]);
-
-  const [users, setUsers] = useState<Tusers[]>([
-    {
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ]);
-  const [singlePorudctState, setSingleProductState] = useState({
-    id: 1,
+  const [products, setProducts] = useState<
+  Tproducts[]
+  >
     name: "",
     price: 0,
-    category: {
-      name: "",
-      id: 0,
-      image: "",
-    },
     description: "",
     inStock: 0,
     src: "",
+    category: {
+      name: "",
+
+      id: 0,
+      image: "",
+
+    },
   }]);
 
   const [subscriptions, setSubscriptions] = useState<
@@ -306,6 +253,7 @@ function App() {
   const [users, setUsers] = useState<
   Tusers[]
   >([{
+    id: 0,
     review: "",
     username: "",
     email: "",
@@ -399,16 +347,14 @@ function App() {
         setCartshow,
         adminFaq,
         setAdminFaq,
-        addCategories,
-        setAddCategories,
+        categories,
+        setCategories,
         faqs,
         setFaqs,
         subscriptions,
         setSubscriptions,
-        flowers,
-        setFlowers,
-        flowersCategory,
-        setFlowersCategory,
+        products,
+        setProducts,
         users,
         setUsers,
         recoverUsername,

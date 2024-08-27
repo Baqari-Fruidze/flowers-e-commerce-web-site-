@@ -4,15 +4,6 @@ import { Context } from "../../App"
 
 export default function Users(){
     const {users, setUsers}=useContext(Context)
-    const [addUser, setAddUser] = useState({
-        username: "",
-        email: "",
-        last_name: "",
-        first_name: "",
-        password: "",
-        profilePicture: "",
-        phoneNumber: "",
-      })
 
       useEffect(() => {
         async function fetchUsers() {
@@ -22,41 +13,13 @@ export default function Users(){
         }
         fetchUsers();
       },[]);
-    
-    
-      const AddUser = (event: any) => {
-        event.preventDefault();
-        const { name, value } = event.target;
-        setAddUser({
-          ...addUser,
-          [name]: value,
-        });
-      };
-    
-      async function addNewUser(event: any) {
-        event.preventDefault();
-        const responce = await fetch (
-          "http://134.122.71.97:8000/api/user",
-        {method: "POST",
-         headers: {
-          "Content-Type": "application/json",
-         },
-         body: JSON.stringify(addUser),
-        });
-         const newUser = await responce.json();
-        
-          setUsers([...users, newUser]);  
-          setAddUser({ 
-            username: "",
-        email: "",
-        last_name: "",
-        first_name: "",
-        password: "",
-        profilePicture: "",
-        phoneNumber: "",
-           });
-        }
 
+      async function deleteUser(user: any){
+        const responce = await fetch(`http://134.122.71.97:8000/api/faq/${userId}`, {
+            method: "DELETE", 
+            },)
+        }
+    
     return(
 <>       
 <MainCategories>
@@ -88,76 +51,14 @@ export default function Users(){
         <div className="editDelete">
             <button
              onClick={() => {
-                const updatedUsers = users.filter((_, i) => i !== index);
-                setUsers(updatedUsers);
-                console.log(users)
+                deleteUser(item.id)
               }}
             >Delete</button>
         </div>      
       </div>
      ))}
   </div>
-  <form 
-  className="addContainer">
-    <h2>Add Users</h2>
-    <div className="field">
-        <input 
-        placeholder="Add user's name"
-        className="inputUsers" 
-        type="text" 
-        name="username"
-        value={addUser.username}
-        onChange={AddUser}
-        />
-        <input 
-        placeholder="Add user's e-mail"
-        className="inputUsers" 
-        type="text" 
-        name="email"
-        value={addUser.email}
-        onChange={AddUser}
-        />
-        <input 
-        placeholder="Add user's last_name"
-        className="inputUsers" 
-        type="text" 
-        name="last_name"
-        value={addUser.last_name}
-        onChange={AddUser}
-        />
-        <input 
-        placeholder="Add user's first_name"
-        className="inputUsers" 
-        type="text" 
-        name="first_name"
-        value={addUser.first_name}
-        onChange={AddUser}
-        />
-        <input 
-        placeholder="Add user's password"
-        className="inputUsers" 
-        type="text" 
-        name="password"
-        value={addUser.password}
-        onChange={AddUser}
-        />
-        <input 
-        placeholder="Add user's phoneNumber"
-        className="inputUsers" 
-        type="text" 
-        name="phoneNumber"
-        value={addUser.phoneNumber}
-        onChange={AddUser}
-        />
-        <input 
-        className="chooseFile" 
-        type="file"
-        value={addUser.profilePicture} />
-    </div>
-    <button 
-    onClick={addNewUser}
-    className="addBt">Add</button>
-  </form> 
+  
 </MainCategories>
 </>
     )
