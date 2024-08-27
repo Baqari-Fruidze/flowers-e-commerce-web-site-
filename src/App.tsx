@@ -48,75 +48,69 @@ export const Context = createContext<TcontextType>({
   setSubscribe: () => {},
   cartshow: false,
   setCartshow: () => {},
-
-  addCategories: { id: 1, name: "", image: "" },
-  setAddCategories: () => {},
-
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => {},
-
-  subscriptions: [
+  
+  subscriptions: 
+  [
     {
-      id: 1,
-      image: "",
-      category: "",
-      price: 0,
-      delivery: "",
-      theBest: "",
-      firstDelivery: "",
-      firstDelivery2: "",
-      saveUp: 0,
-    },
-  ],
+    id: 1,
+    image: "",
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0
+  }], 
   setSubscriptions: () => {},
 
   flowers: [
-    {
-      name: "",
-      price: 0,
-      category: { name: "", id: 1, bg_picture: "" },
-      description: "",
-      inStock: 0,
-      src: "",
-    },
+  {
+    name: "",
+    price: 0,
+    category: { name: "", id: 1, bg_picture: "" },
+    description: "",
+    inStock: 0,
+    src: "", }
   ],
   setFlowers: () => {},
-
-  users: [
-    {
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
+  
+  users: [{
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: {
+              image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: "",
             },
-          ],
-        },
-      ],
-    },
-  ],
+          },
+        ],
+      },
+    ],
+  }],
+
   setUsers: () => {},
 
   recoverUsername: "",
@@ -201,15 +195,13 @@ function App() {
     name: "",
     image: "",
   });
-
-  const [faqs, setFaqs] = useState<TFaqs[]>([
-    {
-      id: 1,
-      question: "",
-      answer: "",
-    },
-  ]);
-
+  const [faqs, setFaqs] = useState<
+  TFaqs[]
+  >([{
+    id: 1,
+    question: "",
+    answer: ""
+}])
   const [flowersCategory, setFlowersCategory] = useState({
     name: "",
     id: 1,
@@ -291,8 +283,59 @@ function App() {
     },
     description: "",
     inStock: 0,
+    src: "",
+  }]);
+
+  const [subscriptions, setSubscriptions] = useState<
+  Tsubscriptions[]
+  >([{
+    id: 1,
     image: "",
-  });
+    category: "",
+    price: 0,
+    delivery: "",
+    theBest: "",
+    firstDelivery: "",
+    firstDelivery2: "",
+    saveUp: 0,
+  }]);
+
+  const [users, setUsers] = useState<
+  Tusers[]
+  >([{
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+    orders: [
+      {
+        RecipientsName: "",
+        Recipients_Phone_number: "",
+        DataofDelivery: "",
+        Delivery_Time: "",
+        street: "",
+        houseNumber: "",
+        total: 0,
+        items: [
+          {
+            product: {
+              image: "",
+              name: "",
+              price: 0,
+              category: "",
+              description: "",
+            },
+          },
+        ],
+      },
+    ],
+  }]);;
+
 
   const FooterChanger = () => {
     const location = useLocation();
