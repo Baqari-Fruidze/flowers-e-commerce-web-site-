@@ -40,4 +40,6 @@ export interface TcontextType {
   singleCategoryState: TsingleCategory[];
   setSingleProductState: React.Dispatch<React.SetStateAction<TsingleCategory>>;
   singlePorudctState: TsingleCategory;
+  tokenChecker: boolean;
+  setTockenChecker: React.Dispatch<React.SetStateAction<boolean>>;
 }

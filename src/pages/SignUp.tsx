@@ -6,25 +6,41 @@ import { TSignUp } from "../types/SignUp";
 import loginBg from "/image/loginBg.jpg";
 import { tUserRegisterType } from "../types/UserTypesInRegister";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function SignUp() {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(signUpScema) });
-  const inputHandler: SubmitHandler<TSignUp> = (data) => console.log(data);
-  async function RegisterUser(inputsdata: tUserRegisterType) {
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    setValue("profilePicture", file);
+  };
+  const inputHandler: SubmitHandler<TSignUp> = (data) => {
+    registerUser(data);
+    console.log(data);
+  };
+
+  async function registerUser(inputsdata: TSignUp) {
+    const formData = new FormData();
+    Object.entries(inputsdata).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
     const res = await fetch("http://134.122.71.97:8000/auth/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputsdata),
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
+      body: formData,
     });
     if (res.ok) {
       navigate("/login");
+    } else {
+      throw alert("ooops something went wrong");
     }
   }
   return (
@@ -68,7 +84,11 @@ export default function SignUp() {
           {errors.password ? (
             <PaswordSpan>{errors.password.message}</PaswordSpan>
           ) : null}
-          <InputStyles type="file" {...register("profilePicture")} />
+          <InputStyles
+            type="file"
+            // {...register("profilePicture")}
+            onChange={handleFileChange}
+          />
           <Btn>Register</Btn>
         </InputsCon>
       </form>

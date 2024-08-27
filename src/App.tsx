@@ -76,19 +76,6 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setSubscriptions: () => {},
-
-  // products: [
-  //   {
-  //     name: "",
-  //     price: 0,
-  //     description: "",
-  //     inStock: 0,
-  //     src: "",
-  //     category: { name: "", id: 1, bg_picture: "" },
-  //   },
-  // ],
-  // setProducts: () => {},
-
   users: [
     {
       id: 0,
@@ -161,6 +148,8 @@ export const Context = createContext<TcontextType>({
     image: "",
   },
   setSingleProductState: () => {},
+  tokenChecker: false,
+  setTockenChecker: () => {},
 });
 
 function App() {
@@ -173,6 +162,7 @@ function App() {
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
+  const [tokenChecker, setTockenChecker] = useState(false);
   const [category, setCategory] = useState<Tcategory[]>([
     {
       id: 1,
@@ -214,23 +204,6 @@ function App() {
       answer: "",
     },
   ]);
-
-  // const [products, setProducts] = useState<
-  // Tproducts[]
-  // >
-  //   name: "",
-  //   price: 0,
-  //   description: "",
-  //   inStock: 0,
-  //   src: "",
-  //   category: {
-  //     name: "",
-
-  //     id: 0,
-  //     image: "",
-
-  //   },
-  // }]);
 
   const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
     {
@@ -353,6 +326,8 @@ function App() {
         setSingleCategoryState,
         setSingleProductState,
         singlePorudctState,
+        tokenChecker,
+        setTockenChecker,
       }}
     >
       <BrowserRouter>

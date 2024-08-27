@@ -5,7 +5,6 @@ import { schemaLogin } from "../Scema/LoginYup";
 import { Tlogin } from "../types/Login";
 import loginBg from "/image/loginBg.jpg";
 import { useNavigate } from "react-router-dom";
-import { error } from "@splidejs/splide/src/js/utils";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,11 +28,11 @@ export default function Login() {
       body: JSON.stringify(userinfo),
     });
     const info = await res.json();
-    console.log(info);
+    localStorage.setItem("token", JSON.stringify(info));
     if (res.ok) {
       navigate("/");
     } else {
-      throw new Error("incorect password or username");
+      throw alert("incorect password or username");
     }
   }
 
