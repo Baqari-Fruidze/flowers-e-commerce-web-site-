@@ -1,5 +1,5 @@
 import { Tcategory } from "./Category";
-import { Tcategories } from "./AddCategories";
+import { Tcategories, Tproducts } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
 import { TsingleCategory } from "./SingleCategoryType";
@@ -27,6 +27,8 @@ export interface TcontextType {
   cartshow: boolean;
   categories: Tcategories[];
   setCategories: React.Dispatch<React.SetStateAction<Tcategories[]>>;
+  products: Tproducts[];
+  setProducts: React.Dispatch<React.SetStateAction<Tproducts[]>>;
   faqs: TFaqs[];
   setFaqs: React.Dispatch<React.SetStateAction<TFaqs[]>>;
   subscriptions: Tsubscriptions[];

@@ -396,12 +396,15 @@ function App() {
         setSingleCategoryState,
         setSingleProductState,
         singlePorudctState,
+        products,
+        setProducts
         tokenChecker,
         setTockenChecker,
         setQuantity,
         quantity,
         cartItemsState,
         setCartItemsState,
+
       }}
     >
       <BrowserRouter>
