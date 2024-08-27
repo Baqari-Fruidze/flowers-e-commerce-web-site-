@@ -1,8 +1,9 @@
-export interface TaddCategories {
+export interface Tcategories {
   id: number;
   name: string;
-  image: File;
+  image: "";
 }
+
 export interface TFaqs {
   id: number;
   question: string;
@@ -20,18 +21,19 @@ export interface Tsubscriptions {
   saveUp: number;
 }
 
-export interface Tflowers {
+export interface Tproducts {
   name: string;
   price: number;
+  description: string;
+  inStock: number;
+  src: string;
   category: {
     name: string;
     id: number;
     bg_picture: string;
   };
-  description: string;
-  inStock: number;
-  src: string;
 }
+  
 
 export interface TflowersCategory {
   name: string;
@@ -40,6 +42,7 @@ export interface TflowersCategory {
 }
 
 export type Tusers = {
+  id: number,
   review: string;
   username: string;
   email: string;

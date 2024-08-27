@@ -44,6 +44,14 @@ export default function FAQ() {
       setAddFaq({ question: "", answer: "" });
     }
 
+    async function deleteFaq(faqId: any){
+      const responce = await fetch(`http://134.122.71.97:8000/api/faq/${faqId}`, {
+          method: "DELETE", 
+          },)
+      }
+      
+      
+
 
   return (
     <>
@@ -72,11 +80,7 @@ export default function FAQ() {
               </div>
               <div className="editDelete">
                 <button
-                  onClick={() => {
-                    const updatedFaqs = faqs.filter((_, i) => i !== index);
-                    setFaqs(updatedFaqs);
-                    console.log(faqs)
-                  }}
+                  onClick={()=>deleteFaq(item.id)}
                 >
                   Delete
                 </button>

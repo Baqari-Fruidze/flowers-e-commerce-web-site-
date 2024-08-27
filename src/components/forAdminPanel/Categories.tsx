@@ -1,46 +1,70 @@
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import data from "../../data.json"
-import { Context } from "../../App"
+import { Context } from "../../App";
 
 export default function Categories(){
+    const {categories, setCategories} = useContext(Context);
+    const [addCategory, setAddCategory] = useState({
+        id: 0,
+        name: "",
+        image: ""
+    })
 
-    const {addCategories, setAddCategories} = useContext(Context);
-    const dataCategories = data.datas[0].categories
+    useEffect(() => {
+        async function fetchCategories() {
+          const response = await fetch("http://134.122.71.97:8000/api/category");
+          const data = await response.json();
+          setCategories(data);
+        }
+        fetchCategories();
+      },[]);
+      console.log(addCategory)
     
-    console.log(data.datas[0].categories)
+      const addCateg = (event: any) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setAddCategory({
+          ...addCategory,
+          [name]: value,
+        });
+      };
+      console.log(addCategory)
 
+      const handleFileChange = (e: any) => {
+        const file = e.target.files[0];
+        setAddCategory({
+            ...addCategory,
+            image: file
+        });
+    };
+    console.log(addCategory)
 
-    function add(event: any) {
-
-        event.preventDefault()
-        dataCategories.push(addCategories)
-        dataCategories({
-            "name": "",
-            "image": ""
-    })}
-
-    const addCategory = (event: any)=>{
-        const formData = new FormData()
-        formData.append(
-            "name", addCategories.name
-        )
-        if (addCategories.files.length > 0) {
-                // Get the first file (assuming single file upload)
-                const imageFile = addCategories.image.files[0];
-            
-                // Append the image file to the FormData object
-                formData.append('image', imageFile, imageFile.name);
-            }
-        
-    event.preventDefault()
-    const {name, value} = event.target;
-    dataCategories({
-        ...addCategories,
-        [name]: value,
-    })}
-
-   
+      async function addNewCategory(event: any) {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('name', addCategory.name);
+        formData.append('image', addCategory.image);
+        const response = await fetch (
+          "http://134.122.71.97:8000/api/category",
+        {method: "POST",
+         headers: {
+          
+         },
+         body: formData,
+        });
+         const newCategory = await response.json();
+          setCategories([...categories, newCategory]);  
+          console.log(categories)
+          setAddCategory({ id: 0, name: "", image: ""});
+        }
+        console.log(addCategory)
+        console.log(categories)
+    
+        async function deleteCategory(categoryId: any){
+        const responce = await fetch(`http://134.122.71.97:8000/api/category/${categoryId}`, {
+              method: "DELETE", 
+              },)
+          }
     return(
 <>       
 <MainCategories>
@@ -52,46 +76,40 @@ export default function Categories(){
         </div>     
       </div>
   <div className="listCategories">
-     {dataCategories?.map((item, index)=>(
+     {categories?.map((item, index)=>(
       <div className="container" key={index}>
         <div className="descr">
-            <img className="CatImg" src={item.image} alt="" />
+            <img className="CatImg" src={item.image}/>
             <p className="CatName">{item.name}</p> 
         </div>
         <div className="editDelete">
             {/* <button>Edit</button> */}
-            <button
-            onClick={()=>{
-                dataCategories.splice(index, 1)
-                setAddCategories({...addCategories})
-                }}
-            >Delete</button>
+            <button onClick={()=>deleteCategory(item.id)}>Delete</button>
         </div>      
       </div>
      ))}
   </div>
   <form 
   className="addContainer">
-    <h2>Add category</h2>
+    <h2>Add new category</h2>
     <div className="field">
         <input 
         placeholder="Add Category"
         className="inputCateg" 
         type="text" 
         name="name"
-        value={addCategories.name}
-        onChange={addCategory}
+        value={addCategory.name}
+        onChange={addCateg}
         />
         <input 
         className="chooseFile" 
         type="file"
-        name= "image"
-        value={addCategories.image} 
-        onChange={addCategory}
+        onChange={handleFileChange}
         />
     </div>
     <button 
-    onClick={add}
+    type="submit"
+    onClick={addNewCategory}
     className="addBt">Add</button>
   </form> 
 </MainCategories>

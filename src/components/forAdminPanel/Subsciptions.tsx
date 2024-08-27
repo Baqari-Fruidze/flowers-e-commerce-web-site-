@@ -15,7 +15,7 @@ export default function Subscriptions(){
         firstDelivery2: "",
         saveUp: 0
     })
-    console.log(addSubscription)
+    
     useEffect(() => {
         async function fetchSubscriptions() {
           const response = await fetch("http://134.122.71.97:8000/api/subscription");
@@ -24,7 +24,7 @@ export default function Subscriptions(){
         }
         fetchSubscriptions();
       },[]);
-      console.log(subscriptions)
+      
 
       const addSubscr = (event:any) => {
         event.preventDefault();
@@ -34,22 +34,38 @@ export default function Subscriptions(){
           [name]: value,
         });
       };
-      console.log(addSubscription)
 
-      async function addNewubSubscription(event: any) {
+      const handleFileChange = (e: any) => {
+        const file = e.target.files[0];
+        setAddSubscription({
+            ...addSubscription,
+            image: file
+        });
+    };
+
+    
+      async function addNewSubscription(event: any) {
         event.preventDefault();
-        const responce = await fetch (
+        const formData = new FormData();
+        formData.append('image', addSubscription.image);
+        formData.append('category', addSubscription.category);
+        formData.append('price', addSubscription.price.toString());
+        formData.append('delivery', addSubscription.delivery);
+        formData.append('theBest', addSubscription.theBest);
+        formData.append('firstDelivery', addSubscription.firstDelivery);
+        formData.append('firstDelivery2', addSubscription.firstDelivery2);
+        formData.append('saveUp', addSubscription.saveUp.toString());
+
+        const response = await fetch (
           "http://134.122.71.97:8000/api/subscription",
         {method: "POST",
          headers: {
-          "Content-Type": "application/json",
+          
          },
-         body: JSON.stringify(addSubscription),
+         body: formData,
         });
-         const newSubscriptions = await responce.json();
-         console.log(newSubscriptions)
-         setSubscriptions([...subscriptions, newSubscriptions]);  
-         console.log(newSubscriptions)
+         const newSubscriptions = await response.json();
+         setSubscriptions([...subscriptions, newSubscriptions]);
          setAddSubscription({ 
             id: 0,
             image: "",
@@ -62,7 +78,14 @@ export default function Subscriptions(){
             saveUp: 0
         });
         }
-        console.log(subscriptions)
+
+        async function deleteSubscr (subscrId : any){
+            const responce = await fetch(`http://134.122.71.97:8000/api/subscription/${subscrId}`, {
+                method: "DELETE",
+            },)
+            }
+    
+    
 
     return(
 <>       
@@ -84,7 +107,7 @@ export default function Subscriptions(){
      {subscriptions?.map((item, index)=>(
       <div className="container" key={index}>
         <div className="descr">
-            <img className="userImg" src={item.image} alt="" />
+            <img className="userImg" src={item.image}/>
             <p style={{width: "60px"}} className="userName">{item.category}</p> 
             <p style={{width: "30px"}} className="userName">{item.price}</p> 
             <p style={{width: "70px"}} className="userName">{item.theBest}</p>
@@ -92,14 +115,7 @@ export default function Subscriptions(){
             <p style={{width: "70px"}} className="userName">{item.firstDelivery2}</p>
             <p style={{width: "70px"}} className="userName">{item.saveUp}</p>
         </div>
-            <button
-                onClick={() => {
-            const updatedSubscr = subscriptions.filter((_, i) => i !== index);
-            setSubscriptions(updatedSubscr);
-            console.log(subscriptions)
-                }}
-            >
-                Delete
+            <button onClick={()=>deleteSubscr(item.id)}>Delete
             </button>
       </div>
      ))}
@@ -159,11 +175,13 @@ export default function Subscriptions(){
         <input 
         className="chooseFile" 
         type="file"
-        value={addSubscription.image} />
+        onChange={handleFileChange}
+        />
+        
     </div>
     <button 
     type = "submit"
-    onClick={addNewubSubscription}
+    onClick={addNewSubscription}
     className="addBt">Add</button>
   </form> 
 </MainCategories>
