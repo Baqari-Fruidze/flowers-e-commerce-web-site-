@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { createContext, useState } from "react";
+
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,7 +25,7 @@ import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/A
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
-  setBurgerToShow: () => { },
+  setBurgerToShow: () => {},
   category: [
     {
       id: 1,
@@ -31,26 +33,31 @@ export const Context = createContext<TcontextType>({
       image: "",
     },
   ],
-  setCategory: () => { },
+  setCategory: () => {},
 
   adminCategories: false,
+
   setAdminCategories: () => { },
   adminProducts: false,
   setAdminProducts: () => { },
+
   adminUsers: false,
-  setAdminUsers: () => { },
+  setAdminUsers: () => {},
   adminSubscriptions: false,
-  setAdminSubscriptions: () => { },
+  setAdminSubscriptions: () => {},
   adminFaq: false,
   setAdminFaq: () => { },
+
   subscribe: false,
-  setSubscribe: () => { },
+  setSubscribe: () => {},
   cartshow: false,
+
   setCartshow: () => { },
   categories: [{ id: 1, name: "", image: "" }],
   setCategories: () => { },
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => { },
+
   subscriptions: [
     {
       id: 1,
@@ -61,8 +68,8 @@ export const Context = createContext<TcontextType>({
       theBest: "",
       firstDelivery: "",
       firstDelivery2: "",
-      saveUp: 0
-    }
+      saveUp: 0,
+    },
   ],
   setSubscriptions: () => { },
   products: [
@@ -78,43 +85,47 @@ export const Context = createContext<TcontextType>({
   ],
   setProducts: () => { },
 
-  users: [{
-    id: 0,
-    review: "",
-    username: "",
-    email: "",
-    last_name: "",
-    first_name: "",
-    password: "",
-    profilePicture: "",
-    phoneNumber: "",
-    is_superuser: false,
-    orders: [
-      {
-        RecipientsName: "",
-        Recipients_Phone_number: "",
-        DataofDelivery: "",
-        Delivery_Time: "",
-        street: "",
-        houseNumber: "",
-        total: 0,
-        items: [
-          {
-            product: {
-              image: "",
-              name: "",
-              price: 0,
-              category: "",
-              description: "",
+
+  users: [
+    {
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+      orders: [
+        {
+          RecipientsName: "",
+          Recipients_Phone_number: "",
+          DataofDelivery: "",
+          Delivery_Time: "",
+          street: "",
+          houseNumber: "",
+          total: 0,
+          items: [
+            {
+              product: {
+                image: "",
+                name: "",
+                price: 0,
+                category: "",
+                description: "",
+              },
             },
-          },
-        ],
-      },
-    ],
-  }],
-  setUsers: () => { },
+          ],
+        },
+      ],
+    },
+  ],
+
+  setUsers: () => {},
   recoverUsername: "",
-  setRecoverUsername: () => { },
+  setRecoverUsername: () => {},
   singleCategoryState: [
     {
       id: 1,
@@ -183,14 +194,13 @@ function App() {
     },
   ]);
   const [cartshow, setCartshow] = useState(false);
-  const [categories, setCategories] = useState
-  <Tcategories[]>
-  ([{
-    id: 1,
-    name: "",
-    image: "",
-
-  }]);
+  const [categories, setCategories] = useState<Tcategories[]>([
+    {
+      id: 1,
+      name: "",
+      image: "",
+    },
+  ]);
   const [faqs, setFaqs] = useState<
   TFaqs[]
   >([{
@@ -224,42 +234,44 @@ function App() {
     category: { name: "", id: 1, bg_picture: "" },
   }])
 
-  const [users, setUsers] = useState<
-  Tusers[]
-  >([{
-    id: 0,
-    review: "",
-    username: "",
-    email: "",
-    last_name: "",
-    first_name: "",
-    password: "",
-    profilePicture: "",
-    phoneNumber: "",
-    is_superuser: false,
-    orders: [
-      {
-        RecipientsName: "",
-        Recipients_Phone_number: "",
-        DataofDelivery: "",
-        Delivery_Time: "",
-        street: "",
-        houseNumber: "",
-        total: 0,
-        items: [
-          {
-            product: {
-              image: "",
-              name: "",
-              price: 0,
-              category: "",
-              description: "",
+  const [users, setUsers] = useState<Tusers[]>([
+    {
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+      orders: [
+        {
+          RecipientsName: "",
+          Recipients_Phone_number: "",
+          DataofDelivery: "",
+          Delivery_Time: "",
+          street: "",
+          houseNumber: "",
+          total: 0,
+          items: [
+            {
+              product: {
+                image: "",
+                name: "",
+                price: 0,
+                category: "",
+                description: "",
+              },
             },
-          },
-        ],
-      },
-    ],
-  }]);
+
+          ],
+        },
+      ],
+    },
+  ]);
+
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
       id: 1,
@@ -275,9 +287,6 @@ function App() {
       image: "",
     }
   );
-
-
-
 
   const FooterChanger = () => {
     const location = useLocation();
@@ -326,8 +335,6 @@ function App() {
         setFaqs,
         subscriptions,
         setSubscriptions,
-        products,
-        setProducts,
         users,
         setUsers,
         recoverUsername,

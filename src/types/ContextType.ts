@@ -1,5 +1,5 @@
 import { Tcategory } from "./Category";
-import { Tcategories, Tproducts } from "./AddCategories";
+import { Tcategories } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
 import { TsingleCategory } from "./SingleCategoryType";
@@ -30,8 +30,6 @@ export interface TcontextType {
   setFaqs: React.Dispatch<React.SetStateAction<TFaqs[]>>;
   subscriptions: Tsubscriptions[];
   setSubscriptions: React.Dispatch<React.SetStateAction<Tsubscriptions[]>>;
-  products: Tproducts[];
-  setProducts: React.Dispatch<React.SetStateAction<Tproducts[]>>;
   users: Tusers[];
   setUsers: React.Dispatch<React.SetStateAction<Tusers[]>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
