@@ -18,15 +18,8 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
-import {
-  TFaqs,
-  Tusers,
-  Tsubscriptions,
-  Tcategories,
-  Tproducts,
-} from "./types/AddCategories";
+import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
-
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
