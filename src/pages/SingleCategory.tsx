@@ -15,23 +15,17 @@ export default function SingleCategory() {
       const response = await fetch(
         `http://134.122.71.97:8000/api/product?category=${id}`
       );
-      const data = await response.json();
-      setSingleCategoryState(data);
+      if (response.ok) {
+        const data = await response.json();
+        setSingleCategoryState(data);
+      }
     }
     fetchSingleCategories(CategoryId);
-  }, []);
+  }, [CategoryId, setSingleCategoryState]);
 
-  // const dataToMap = data.datas[1].flowers?.filter(
-  //   (item) => item.category.name === singleCategory
-  // );
-
-  // let backgroundImage;
-  // if (dataToMap) {
-  //   backgroundImage = dataToMap[0]?.category.bg_picture;
-  // }
   return (
     <Parent>
-      <BackGroundImageCon backImage={singleCategoryState[0].category.image}>
+      <BackGroundImageCon backImage={singleCategoryState[0]?.category.image}>
         <ImageCategoryNameSpan>{singleCategory}</ImageCategoryNameSpan>
       </BackGroundImageCon>
       <GridedCon>

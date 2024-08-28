@@ -14,13 +14,16 @@ export default function AllCategory() {
   const { users, setUsers } = useContext(Context);
   useEffect(() => {
     const tokenChecker = async () => {
-      let token = localStorage.getItem("token");
+      let token: string | { access: string; refresh: string } | null =
+        localStorage.getItem("token");
       if (token) {
-        token = JSON.parse(token);
+        token = JSON.parse(token as string);
         const res = await fetch("http://134.122.71.97:8000/auth/users", {
           method: "GET",
           headers: {
-            Authorization: `Bearer  ${token.access}`,
+            Authorization: `Bearer  ${
+              (token as { access: string; refresh: string }).access
+            }`,
           },
         });
         const usersInfo = await res.json();
@@ -29,6 +32,7 @@ export default function AllCategory() {
     };
     tokenChecker();
   }, []);
+  // console.log(users);
   return (
     <>
       <HomeDiv>

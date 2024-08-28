@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -359,6 +359,14 @@ function App() {
       <LargeHeader />
     );
   };
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const data = await response.json();
+      setCategory(data);
+    }
+    fetchCategories();
+  }, []);
   return (
     <Context.Provider
       value={{
