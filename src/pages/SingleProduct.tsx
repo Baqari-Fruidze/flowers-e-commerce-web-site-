@@ -38,7 +38,7 @@ export default function SingleProduct() {
           quantity: quantity,
         }),
       });
-      const cartProduct = await res.json();
+      // სტატუსის შემოწმება res.ok მჭირდება აქ
     }
   }
 

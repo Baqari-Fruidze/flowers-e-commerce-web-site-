@@ -1,7 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 
 export default function Cart() {
+  // const cartrequest = () => {
+  //   const res = await fetch("http://134.122.71.97:8000/api/cart");
+  // };
   return (
     <Cover>
       <Parent>

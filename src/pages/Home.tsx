@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Reacte, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import AllCategoryforHome from "../components/forHome/AllCategoriesForHome";
 import AboutUsforHome from "../components/forHome/AboutUsforHome";
 import WhyChooseUs from "../components/forHome/WhyChoosUs";
@@ -17,7 +17,7 @@ export default function AllCategory() {
       let token = localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token);
-        const res = await fetch("http://134.122.71.97:8000/auth/signup", {
+        const res = await fetch("http://134.122.71.97:8000/auth/users", {
           method: "GET",
           headers: {
             Authorization: `Bearer  ${token.access}`,
