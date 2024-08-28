@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 export default function Categories() {
   const { setCategory, category } = useContext(Context);
-  
   useEffect(() => {
     async function fetchCategories() {
       const response = await fetch("http://134.122.71.97:8000/api/category");
@@ -17,12 +16,12 @@ export default function Categories() {
     }
     fetchCategories();
   }, []);
-
   const navigate = useNavigate();
 
   AOS.init({
     duration: 1000,
   });
+
   return (
     <>
       <MainCont>
