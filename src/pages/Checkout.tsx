@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import BillingDetails from "../components/forCheckout/BillingDetails";
+import ShipingInfo from "../components/forCheckout/ShipingInfo";
 
 export default function Checkout() {
   return (
     <Parent>
       <Hone>CHECKOUT</Hone>
       <BillingDetails />
+      <ShipingInfo />
     </Parent>
   );
 }

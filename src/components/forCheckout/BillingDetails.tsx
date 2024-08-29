@@ -27,8 +27,10 @@ const HOne = styled.h1`
 const Input = styled.input`
   padding: 1.5rem 0 1.5rem 1.5rem;
   border: none;
+  border-radius: 8px;
   font-size: 15px;
   color: #121212;
+  outline: none;
   &::placeholder {
     font-size: 18px;
     color: #121212;
