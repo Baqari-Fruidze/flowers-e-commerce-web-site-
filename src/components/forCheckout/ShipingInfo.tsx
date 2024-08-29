@@ -1,6 +1,11 @@
+import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
 export default function ShipingInfo() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <Parent>
       <Hone>Shipping Info</Hone>
@@ -8,21 +13,41 @@ export default function ShipingInfo() {
         <DatesCon>
           <DeliveryDateCon>
             <LabelStyled htmlFor="date">Delivery Date</LabelStyled>
-            <Input type="text" id="date" placeholder=" Date of Delivery" />
+            <Input
+              type="text"
+              id="date"
+              placeholder=" Date of Delivery"
+              {...register("dateOfDelivery")}
+            />
           </DeliveryDateCon>
           <DeliveryTimeCoon>
             <LabelStyled htmlFor="time">Delivery Time</LabelStyled>
-            <Input type="text" id="time" placeholder="Delivery Time" />
+            <Input
+              type="text"
+              id="time"
+              placeholder="Delivery Time"
+              {...register("deliveryTime")}
+            />
           </DeliveryTimeCoon>
         </DatesCon>
         <AdressCon>
           <StreetCon>
             <LabelStyled htmlFor="street"> Street Name</LabelStyled>
-            <Input type="text" placeholder="Street Name" id="street" />
+            <Input
+              type="text"
+              placeholder="Street Name"
+              id="street"
+              {...register("street")}
+            />
           </StreetCon>
           <HouseNumberCon>
             <LabelStyled htmlFor="house">House Number</LabelStyled>
-            <Input type="text" placeholder="House Number" id="house" />
+            <Input
+              type="text"
+              placeholder="House Number"
+              id="house"
+              {...register("houseNumber")}
+            />
           </HouseNumberCon>
         </AdressCon>
       </InputsConParent>

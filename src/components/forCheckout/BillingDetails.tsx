@@ -1,18 +1,33 @@
 import React from "react";
+import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
 export default function BillingDetails() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <Parent>
       <HOne>Billing Details</HOne>
       <InputsConParent>
         <InputsCon>
           <LabelStyled htmlFor="name">Recipient Name</LabelStyled>
-          <Input type="text" placeholder=" recipient Name" id="name" />
+          <Input
+            type="text"
+            placeholder=" recipient Name"
+            id="name"
+            {...register("recipientName")}
+          />
         </InputsCon>
         <InputsCon>
           <LabelStyled htmlFor="number">Recipient PhoneNumber </LabelStyled>
-          <Input type="text" id="number" placeholder="recipient PhoneNumber " />
+          <Input
+            type="text"
+            id="number"
+            placeholder="recipient PhoneNumber "
+            {...register("recipientPhoneNumber")}
+          />
         </InputsCon>
       </InputsConParent>
     </Parent>
