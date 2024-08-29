@@ -106,11 +106,12 @@ const ProductsCon = styled.div`
   @media (min-width: 768px) {
     width: 100%;
     border: 1px solid #121212;
+    /* height: fit-content; */
   }
   @media (min-width: 1440px) {
     width: 100%;
     border: 1px solid #121212;
-    height: fit-content;
+    /* height: fit-content; */
   }
 `;
 const ImageCategoryNameSpan = styled.h1`

@@ -2,9 +2,52 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../App";
 import Circle from "./Circle";
+import { useNavigate } from "react-router-dom";
 
-export default function PriceOptions({ price }: { price: number }) {
-  const { setSubscribe, subscribe } = useContext(Context);
+export default function PriceOptions({
+  price,
+  singleProduct,
+}: {
+  price: number;
+  singleProduct: string | undefined;
+}) {
+  const {
+    setSubscribe,
+    subscribe,
+    quantity,
+    cartItemsState,
+    setCartItemsState,
+  } = useContext(Context);
+  const navigate = useNavigate();
+  async function getingCartItems() {
+    let token = localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+      const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.access}`,
+        },
+        body: JSON.stringify({
+          product_id: singleProduct,
+          quantity: quantity,
+        }),
+      });
+
+      if (res.status === 401) {
+        navigate("/login");
+      } else if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        setCartItemsState((prev) => ({
+          ...prev,
+          items: [...prev.items, data],
+        }));
+      }
+    }
+  }
+  console.log(cartItemsState);
   return (
     <Parent>
       <TextsCon>
@@ -18,7 +61,7 @@ export default function PriceOptions({ price }: { price: number }) {
           <SubscribeP>Subscribe now, and save 25% on this order. </SubscribeP>
         </CircleCon>
       </TextsCon>
-      <Btn>Add to basket</Btn>
+      <Btn onClick={() => getingCartItems()}>Add to basket</Btn>
     </Parent>
   );
 }
