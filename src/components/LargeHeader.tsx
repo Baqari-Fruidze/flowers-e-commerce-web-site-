@@ -1,15 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import Cart from "./Cart";
 import { Context } from "../App";
+import MyProfilePop from "./MyProlile/MyProfilePop";
+
 
 export default function LargeHeader() {
-  const { cartshow, setCartshow } = useContext(Context);
+  const { cartshow, setCartshow, isMyProfile, setIsMyProfile  } = useContext(Context);
   const navigate = useNavigate();
   const { tokenChecker, setTockenChecker } = useContext(Context);
-
+console.log(isMyProfile)
   useEffect(() => {
     const tokenChecker = async () => {
       let token = localStorage.getItem("token");
@@ -28,10 +30,13 @@ export default function LargeHeader() {
       }
     };
     tokenChecker();
+
   }, []);
 
   return (
+    
     <Parent>
+      {isMyProfile ? <MyProfilePop /> : null}
       <HomeCon>
         <Link to={"/"}>
           <AnimDiv>
@@ -39,12 +44,14 @@ export default function LargeHeader() {
           </AnimDiv>
         </Link>
       </HomeCon>
-      <ContactCon>
-        <Link>
+      <ContactCon
+      onClick = {()=>{setIsMyProfile(!isMyProfile) }}
+      >
+        {/* <Link > */}
           <AnimDiv>
             <p className="anim">Contact</p>
           </AnimDiv>
-        </Link>
+        {/* </Link> */}
       </ContactCon>
       <InputCon>
         <input type="text" placeholder="what are you loocking for ?" />

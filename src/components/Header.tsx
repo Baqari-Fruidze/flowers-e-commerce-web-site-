@@ -8,7 +8,7 @@ import Cart from "./Cart";
 export default function Header() {
   const { setBurgerToShow, burgerToShow, cartshow, setCartshow } =
     useContext(Context);
-
+    
   return (
     <>
       <Parent>

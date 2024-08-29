@@ -39,16 +39,23 @@ export default function Categories(){
     };
     console.log(addCategory)
 
+
+
       async function addNewCategory(event: any) {
         event.preventDefault();
         const formData = new FormData();
         formData.append('name', addCategory.name);
         formData.append('image', addCategory.image);
+
+        let token=localStorage.getItem("token")
+        if (token) {
+            token = JSON.parse(token)
+        }
         const response = await fetch (
           "http://134.122.71.97:8000/api/category",
         {method: "POST",
          headers: {
-          
+          Authorization: `Bearer ${token.access}`
          },
          body: formData,
         });
@@ -168,7 +175,8 @@ const MainCategories = styled.div`
     }
     
     .CatName{
-        color: #121212
+        color: #121212;
+        font-size: 16px;
     }
     .CatImg{
         width: 50px;
