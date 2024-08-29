@@ -6,12 +6,11 @@ import Cart from "./Cart";
 import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
 
-
 export default function LargeHeader() {
-  const { cartshow, setCartshow, isMyProfile, setIsMyProfile  } = useContext(Context);
+  const { cartshow, setCartshow, isMyProfile, setIsMyProfile, users } =
+    useContext(Context);
   const navigate = useNavigate();
   const { tokenChecker, setTockenChecker } = useContext(Context);
-console.log(isMyProfile)
   useEffect(() => {
     const tokenChecker = async () => {
       let token = localStorage.getItem("token");
@@ -30,11 +29,9 @@ console.log(isMyProfile)
       }
     };
     tokenChecker();
-
   }, []);
-
+  console.log(users);
   return (
-    
     <Parent>
       {isMyProfile ? <MyProfilePop /> : null}
       <HomeCon>
@@ -45,12 +42,14 @@ console.log(isMyProfile)
         </Link>
       </HomeCon>
       <ContactCon
-      onClick = {()=>{setIsMyProfile(!isMyProfile) }}
+        onClick={() => {
+          setIsMyProfile(!isMyProfile);
+        }}
       >
         {/* <Link > */}
-          <AnimDiv>
-            <p className="anim">Contact</p>
-          </AnimDiv>
+        <AnimDiv>
+          <p className="anim">Contact</p>
+        </AnimDiv>
         {/* </Link> */}
       </ContactCon>
       <InputCon>
@@ -63,6 +62,8 @@ console.log(isMyProfile)
               <p className="anim" onClick={() => navigate("/login")}>
                 Sign In
               </p>
+            ) : users[0].is_superuser === true ? (
+              <p>go to admin</p>
             ) : (
               <p>profile</p>
             )}
