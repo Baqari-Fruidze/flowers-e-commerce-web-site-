@@ -6,6 +6,7 @@ export default function ShipingInfo() {
     register,
     formState: { errors },
   } = useFormContext();
+  console.log(errors.city);
   return (
     <Parent>
       <Hone>Shipping Info</Hone>

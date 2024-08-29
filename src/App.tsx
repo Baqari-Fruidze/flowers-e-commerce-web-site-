@@ -204,24 +204,7 @@ function App() {
   const [cartItemsState, setCartItemsState] = useState<TCartType>({
     id: 1,
     user: 1,
-    items: [
-      {
-        product: {
-          id: 1,
-          name: "",
-          price: 1,
-          category: {
-            name: "",
-            id: 1,
-            bg_picture: "",
-          },
-          description: "",
-          inStock: 1,
-          src: "",
-        },
-        quantity: 1,
-      },
-    ],
+    items: [],
   });
   const [category, setCategory] = useState<Tcategory[]>([
     {
