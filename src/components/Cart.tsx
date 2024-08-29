@@ -26,7 +26,6 @@ export default function Cart() {
       cartrequest();
     }
   }, []);
-  console.log(cartItemsState);
 
   return (
     <Cover>
