@@ -42,24 +42,19 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setCategory: () => {},
-
   adminCategories: false,
-
   setAdminCategories: () => {},
   adminProducts: false,
   setAdminProducts: () => {},
-
   adminUsers: false,
   setAdminUsers: () => {},
   adminSubscriptions: false,
   setAdminSubscriptions: () => {},
   adminFaq: false,
   setAdminFaq: () => {},
-
   subscribe: false,
   setSubscribe: () => {},
   cartshow: false,
-
   setCartshow: () => {},
   categories: [{ id: 1, name: "", image: "" }],
   setCategories: () => {},
@@ -92,42 +87,18 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setProducts: () => {},
-  users: [
-    {
-      id: 0,
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  users: {
+    id: 0,
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+  },
 
   setUsers: () => {},
   recoverUsername: "",
@@ -276,42 +247,18 @@ function App() {
       category: { name: "", id: 1, bg_picture: "" },
     },
   ]);
-  const [users, setUsers] = useState<Tusers[]>([
-    {
-      id: 0,
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [users, setUsers] = useState<Tusers>({
+    id: 0,
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+  });
 
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {

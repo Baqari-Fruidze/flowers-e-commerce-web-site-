@@ -62,7 +62,7 @@ export default function LargeHeader() {
               <p className="anim" onClick={() => navigate("/login")}>
                 Sign In
               </p>
-            ) : users[0].is_superuser === true ? (
+            ) : users.is_superuser === true ? (
               <p>go to admin</p>
             ) : (
               <p>profile</p>
