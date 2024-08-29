@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,13 +18,19 @@ import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
 import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
-import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
+import {
+  TFaqs,
+  Tusers,
+  Tsubscriptions,
+  Tcategories,
+  Tproducts,
+} from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
+import Checkout from "./pages/Checkout";
 import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
 import MyOrder from "./components/MyProlile/MyOrder";
 import MySetting from "./components/MyProlile/MySetting";
-
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -80,42 +86,18 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setProducts: () => {},
-  users: [
-    {
-      id: 0,
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  users: {
+    id: 0,
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+  },
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
@@ -152,7 +134,7 @@ export const Context = createContext<TcontextType>({
   tokenChecker: false,
   setTockenChecker: () => {},
   isMyProfile: false,
-  setIsMyProfile: ()=>{},
+  setIsMyProfile: () => {},
   quantity: 0,
   setQuantity: () => {},
   cartItemsState: {
@@ -182,7 +164,7 @@ export const Context = createContext<TcontextType>({
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
-  const [isMyProfile, setIsMyProfile] = useState(false)
+  const [isMyProfile, setIsMyProfile] = useState(false);
   const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
@@ -196,24 +178,7 @@ function App() {
   const [cartItemsState, setCartItemsState] = useState<TCartType>({
     id: 1,
     user: 1,
-    items: [
-      {
-        product: {
-          id: 1,
-          name: "",
-          price: 1,
-          category: {
-            name: "",
-            id: 1,
-            bg_picture: "",
-          },
-          description: "",
-          inStock: 1,
-          src: "",
-        },
-        quantity: 1,
-      },
-    ],
+    items: [],
   });
   const [category, setCategory] = useState<Tcategory[]>([
     {
@@ -278,42 +243,18 @@ function App() {
       category: { name: "", id: 1, bg_picture: "" },
     },
   ]);
-  const [users, setUsers] = useState<Tusers[]>([
-    {
-      id: 0,
-      review: "",
-      username: "",
-      email: "",
-      last_name: "",
-      first_name: "",
-      password: "",
-      profilePicture: "",
-      phoneNumber: "",
-      is_superuser: false,
-      orders: [
-        {
-          RecipientsName: "",
-          Recipients_Phone_number: "",
-          DataofDelivery: "",
-          Delivery_Time: "",
-          street: "",
-          houseNumber: "",
-          total: 0,
-          items: [
-            {
-              product: {
-                image: "",
-                name: "",
-                price: 0,
-                category: "",
-                description: "",
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [users, setUsers] = useState<Tusers>({
+    id: 0,
+    review: "",
+    username: "",
+    email: "",
+    last_name: "",
+    first_name: "",
+    password: "",
+    profilePicture: "",
+    phoneNumber: "",
+    is_superuser: false,
+  });
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
       id: 1,
@@ -334,7 +275,8 @@ function App() {
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
       location.pathname === "/admin-panel" ||
-      location.pathname === "/restore" ? null : (
+      location.pathname === "/restore" ||
+      location.pathname === "/checkout" ? null : (
       <Footer />
     );
   };
@@ -343,20 +285,14 @@ function App() {
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
       location.pathname === "/admin-panel" ||
-      location.pathname === "/restore" ? null : isSmallDevice ? (
+      location.pathname === "/restore" ||
+      location.pathname === "/checkout" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
     );
   };
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
-      const data = await response.json();
-      setCategory(data);
-    }
-    fetchCategories();
-  }, []);
+
   return (
     <Context.Provider
       value={{
@@ -401,10 +337,9 @@ function App() {
         cartItemsState,
         setCartItemsState,
         isMyProfile,
-        setIsMyProfile
+        setIsMyProfile,
       }}
     >
-       
       <BrowserRouter>
         <HeaderChanger />
         <Routes>
@@ -421,10 +356,13 @@ function App() {
           />
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/restore" element={<Restore />} />
-          <Route path="/My-address" element={<MyAddress/>} />
-          <Route path="/My-setting" element={<MySetting/>} />
-          <Route path="/My-likes" element={<MyLikes/>} />
-          <Route path="/My-order" element={<MyOrder/>} />
+
+          <Route path="/checkout" element={<Checkout />} />
+
+          <Route path="/My-address" element={<MyAddress />} />
+          <Route path="/My-setting" element={<MySetting />} />
+          <Route path="/My-likes" element={<MyLikes />} />
+          <Route path="/My-order" element={<MyOrder />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>

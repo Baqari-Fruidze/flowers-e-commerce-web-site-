@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
@@ -9,8 +9,7 @@ import { Context } from "../App";
 
 export default function SingleProduct() {
   const { singleProduct } = useParams();
-  const { singlePorudctState, setSingleProductState, quantity } =
-    useContext(Context);
+  const { singlePorudctState, setSingleProductState } = useContext(Context);
 
   useEffect(() => {
     async function fetchSingleProduct(id: string | undefined) {
@@ -21,26 +20,28 @@ export default function SingleProduct() {
       setSingleProductState(data);
     }
     fetchSingleProduct(singleProduct);
-  }, []);
+  }, [setSingleProductState, singleProduct]);
 
-  async function getingCartItems() {
-    let token = localStorage.getItem("token");
-    if (token) {
-      token = JSON.parse(token);
-      const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token.access}`,
-        },
-        body: JSON.stringify({
-          product_id: singleProduct,
-          quantity: quantity,
-        }),
-      });
-      // სტატუსის შემოწმება res.ok მჭირდება აქ
-    }
-  }
+  // async function getingCartItems() {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     token = JSON.parse(token);
+  //     const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token.access}`,
+  //       },
+  //       body: JSON.stringify({
+  //         product_id: singleProduct,
+  //         quantity: quantity,
+  //       }),
+  //     });
+  //     if (res.ok) {
+  //       console.log("Da");
+  //     }
+  //   }
+  // }
 
   return (
     <Parent>
@@ -62,7 +63,10 @@ export default function SingleProduct() {
           <DescriptionP>{singlePorudctState.description}</DescriptionP>
           <Quantity />
           <Carusel />
-          <PriceOptions price={singlePorudctState.price} />
+          <PriceOptions
+            price={singlePorudctState.price}
+            singleProduct={singleProduct}
+          />
         </TextSCon>
       </SingleProductCon>
 
@@ -129,6 +133,7 @@ const TextSCon = styled.div`
   @media (min-width: 1200px) {
     padding: 4rem;
     gap: 3.2rem;
+    width: 50%;
   }
 `;
 const SingleProductCon = styled.div`
@@ -158,6 +163,7 @@ const ImageCon = styled.div`
   }
   @media (min-width: 1200px) {
     min-height: 100vh;
+    width: 50%;
   }
 `;
 const Parent = styled.div`

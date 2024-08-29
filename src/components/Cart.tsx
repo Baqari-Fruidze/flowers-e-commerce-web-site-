@@ -1,12 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Context } from "../App";
 
 export default function Cart() {
   const { cartItemsState, setCartItemsState } = useContext(Context);
-  // const cartrequest = () => {
-  //   const res = await fetch("http://134.122.71.97:8000/api/cart");
-  // };
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+      const cartrequest = async () => {
+        const res = await fetch("http://134.122.71.97:8000/api/cart", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token.access}`,
+          },
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setCartItemsState(data);
+        } else {
+          localStorage.clear();
+        }
+      };
+      cartrequest();
+    }
+  }, []);
+
   return (
     <Cover>
       <Parent>
