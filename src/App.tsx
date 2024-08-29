@@ -60,7 +60,6 @@ export const Context = createContext<TcontextType>({
   setCategories: () => {},
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => {},
-
   subscriptions: [
     {
       id: 1,
@@ -99,7 +98,6 @@ export const Context = createContext<TcontextType>({
     phoneNumber: "",
     is_superuser: false,
   },
-
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
@@ -161,7 +159,6 @@ export const Context = createContext<TcontextType>({
       },
     ],
   },
-
   setCartItemsState: () => {},
 });
 
@@ -190,7 +187,6 @@ function App() {
       image: "",
     },
   ]);
-
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
@@ -259,7 +255,6 @@ function App() {
     phoneNumber: "",
     is_superuser: false,
   });
-
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
       id: 1,
@@ -275,7 +270,6 @@ function App() {
       image: "",
     }
   );
-
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
