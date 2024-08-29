@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled from "styled-components";
 import craftedBouquets from "/image/4.jpg";
 import gifts from "/image/2.webp";
@@ -13,7 +13,7 @@ export default function OurFounderPassion() {
       })
     return(
         <>
-            <MainCont>
+            <MainCont >
                 <Found  data-aos="fade-up">
                     <p>ABOUT US</p>
                     <h1>Our Founder's Passion</h1>

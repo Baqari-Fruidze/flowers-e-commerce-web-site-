@@ -10,16 +10,17 @@ export default function Products(){
         id: 0,
         name: "",
         price: 0,
-        category: {name: "", id: 0, bg_picture: ""},
+        category_id: "",
+        // {name: "", id: 0, bg_picture: ""},
         description: "",
         inStock: 0,
         image: "",
     })
-    const [ categoryName, setCategoryName] = useState({
-        name: "",
-        id: 0,
-        bg_picture: ""
-    })
+    // const [ categoryName, setCategoryName] = useState({
+    //     name: "",
+    //     id: 0,
+    //     bg_picture: ""
+    // })
 
     useEffect(() => {
         async function fetchCategory() {
@@ -56,7 +57,7 @@ export default function Products(){
             image: file
         });
       };
-        console.log(categoryName)
+        
         console.log(addProduct)
    
       async function addNewProduct(event: any) {
@@ -65,22 +66,27 @@ export default function Products(){
         setAddProduct({
             ...addProduct,
             [name]: value,
-            category: categoryName
+            
         })
         console.log(addProduct)
         const formData = new FormData()
         formData.append("name", addProduct.name)
         formData.append("price", addProduct.price.toString())
-        formData.append("category", addProduct.category.name)
+        formData.append("category_id", addProduct.category_id)
         formData.append("image", addProduct.image)
         formData.append("inStock", addProduct.inStock.toString())
         formData.append("description", addProduct.description)
+
+        let token=localStorage.getItem("token")
+        if (token) {
+            token = JSON.parse(token)
+        }
         
         const responce = await fetch (
           "http://134.122.71.97:8000/api/product",
         {method: "POST",
-         headers: {
-         
+          headers: {
+          Authorization: `Bearer ${token.access}`
          },
          body: formData,
         });
@@ -91,13 +97,13 @@ export default function Products(){
             id: 0,
             name: "",
             price: 0,
-            category: {name: "", id: 0, bg_picture: "" },
+            category_id: "",
             description: "",
             inStock: 0,
             image: "",
                 });
       }
-            console.log(categoryName)
+            // console.log(categoryName)
             console.log(addProduct)
             console.log(products)
 
@@ -150,20 +156,14 @@ export default function Products(){
         onChange={addProducts}
         />
     <select 
-    name="category"
+    name="category_id"
     className="inputProduct"
     onChange={addProducts}
-    onClick={(event: any)=>{
-    setCategoryName({
-        ...categoryName,
-         name: event.target.value
- })
-}}
     >
         {categories?.map((item, index)=>(
             <option 
             key={index} 
-            value={item.name}
+            value={item.id}
             >
             {item.name}
             </option>

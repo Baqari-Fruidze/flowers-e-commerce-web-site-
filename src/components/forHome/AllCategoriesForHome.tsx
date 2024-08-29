@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Reacte from "react";
 import Categories from "./Categories"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -8,14 +7,11 @@ export default function AllCategory(){
   AOS.init({
     duration: 1200,
   })
+ 
    return(
 <>
-<MainCont>
-
-
-
-  
-    <Greating>
+<MainCont >
+    <Greating >
           <ShopName>
             <p className="shopName" data-aos="fade-down-right" >Flowers Luxurious Bouquets<span>®</span></p>
             <p className="shopGreating">Discover Uniquely Crafted Bouquets and Gifts for Any Occasion: Spread Joy with Our Online Flower Delivery Service</p>
