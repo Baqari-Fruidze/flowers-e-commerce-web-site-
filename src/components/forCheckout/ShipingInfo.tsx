@@ -14,7 +14,7 @@ export default function ShipingInfo() {
           <DeliveryDateCon>
             <LabelStyled htmlFor="date">Delivery Date</LabelStyled>
             <Input
-              type="text"
+              type="date"
               id="date"
               placeholder=" Date of Delivery"
               {...register("dateOfDelivery")}
@@ -23,7 +23,7 @@ export default function ShipingInfo() {
           <DeliveryTimeCoon>
             <LabelStyled htmlFor="time">Delivery Time</LabelStyled>
             <Input
-              type="text"
+              type="time"
               id="time"
               placeholder="Delivery Time"
               {...register("deliveryTime")}
@@ -31,6 +31,15 @@ export default function ShipingInfo() {
           </DeliveryTimeCoon>
         </DatesCon>
         <AdressCon>
+          <CityCon>
+            <LabelStyled htmlFor="city">City</LabelStyled>
+            <Input
+              type="text"
+              id="city"
+              placeholder="city"
+              {...register("city")}
+            />
+          </CityCon>
           <StreetCon>
             <LabelStyled htmlFor="street"> Street Name</LabelStyled>
             <Input
@@ -55,6 +64,11 @@ export default function ShipingInfo() {
   );
 }
 
+const CityCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+`;
 const LabelStyled = styled.label`
   font-size: 16px;
   color: #121212;

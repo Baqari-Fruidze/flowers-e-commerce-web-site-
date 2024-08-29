@@ -7,6 +7,7 @@ export default function BillingDetails() {
     register,
     formState: { errors },
   } = useFormContext();
+  // console.log(errors);
   return (
     <Parent>
       <HOne>Billing Details</HOne>
@@ -21,7 +22,7 @@ export default function BillingDetails() {
           />
         </InputsCon>
         <InputsCon>
-          <LabelStyled htmlFor="number">Recipient PhoneNumber </LabelStyled>
+          <LabelStyled htmlFor="number">Recipient PhoneNumber</LabelStyled>
           <Input
             type="text"
             id="number"
@@ -33,6 +34,14 @@ export default function BillingDetails() {
     </Parent>
   );
 }
+const ErorSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+`;
 const HOne = styled.h1`
   font-size: 18px;
   font-weight: 500;
@@ -58,6 +67,7 @@ const LabelStyled = styled.label`
   font-weight: 600;
 `;
 const InputsCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;

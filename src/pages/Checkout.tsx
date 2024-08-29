@@ -4,9 +4,10 @@ import ShipingInfo from "../components/forCheckout/ShipingInfo";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
+import { TcheckoutTypes } from "../types/CheckoutTypes";
 
 export default function Checkout() {
-  const inputsData = (data) => console.log(data);
+  const inputsData: SubmitHandler<TcheckoutTypes> = (data) => console.log(data);
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
   const {
     handleSubmit,
