@@ -35,7 +35,7 @@ export interface TcontextType {
   setFaqs: React.Dispatch<React.SetStateAction<TFaqs[]>>;
   subscriptions: Tsubscriptions[];
   setSubscriptions: React.Dispatch<React.SetStateAction<Tsubscriptions[]>>;
-  users: Tusers[];
+  users: Tusers;
   setUsers: React.Dispatch<React.SetStateAction<Tusers[]>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;

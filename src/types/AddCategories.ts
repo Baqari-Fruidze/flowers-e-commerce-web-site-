@@ -22,7 +22,7 @@ export interface Tsubscriptions {
 }
 
 export interface Tproducts {
-  id: number,
+  id: number;
   name: string;
   price: number;
   description: string;
@@ -34,7 +34,6 @@ export interface Tproducts {
     bg_picture: string;
   };
 }
-  
 
 export interface TflowersCategory {
   name: string;
@@ -43,7 +42,7 @@ export interface TflowersCategory {
 }
 
 export type Tusers = {
-  id: number,
+  id: number;
   review: string;
   username: string;
   email: string;
@@ -53,22 +52,22 @@ export type Tusers = {
   profilePicture: string;
   phoneNumber: string;
   is_superuser: boolean;
-  orders: {
-    RecipientsName: string;
-    Recipients_Phone_number: string;
-    DataofDelivery: string;
-    Delivery_Time: string;
-    street: string;
-    houseNumber: string;
-    total: number;
-    items: {
-      product: {
-        image: string;
-        name: string;
-        price: number;
-        category: string;
-        description: string;
-      };
-    }[];
-  }[];
+  // orders: {
+  //   RecipientsName: string;
+  //   Recipients_Phone_number: string;
+  //   DataofDelivery: string;
+  //   Delivery_Time: string;
+  //   street: string;
+  //   houseNumber: string;
+  //   total: number;
+  //   items: {
+  //     product: {
+  //       image: string;
+  //       name: string;
+  //       price: number;
+  //       category: string;
+  //       description: string;
+  //     };
+  //   }[];
+  // }[];
 };
