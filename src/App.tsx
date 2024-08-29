@@ -20,8 +20,6 @@ import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
-
-import Cart from "./components/Cart";
 import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
 import MyOrder from "./components/MyProlile/MyOrder";
@@ -38,30 +36,24 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setCategory: () => {},
-
   adminCategories: false,
-
   setAdminCategories: () => {},
   adminProducts: false,
   setAdminProducts: () => {},
-
   adminUsers: false,
   setAdminUsers: () => {},
   adminSubscriptions: false,
   setAdminSubscriptions: () => {},
   adminFaq: false,
   setAdminFaq: () => {},
-
   subscribe: false,
   setSubscribe: () => {},
   cartshow: false,
-
   setCartshow: () => {},
   categories: [{ id: 1, name: "", image: "" }],
   setCategories: () => {},
   faqs: [{ id: 1, question: "", answer: "" }],
   setFaqs: () => {},
-
   subscriptions: [
     {
       id: 1,
@@ -124,7 +116,6 @@ export const Context = createContext<TcontextType>({
       ],
     },
   ],
-
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
@@ -186,11 +177,8 @@ export const Context = createContext<TcontextType>({
       },
     ],
   },
-
   setCartItemsState: () => {},
 });
-
-
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
@@ -234,7 +222,6 @@ function App() {
       image: "",
     },
   ]);
-
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
@@ -327,7 +314,6 @@ function App() {
       ],
     },
   ]);
-
   const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
     {
       id: 1,
@@ -343,7 +329,6 @@ function App() {
       image: "",
     }
   );
- 
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
