@@ -21,9 +21,9 @@ export default function Carusel() {
             intervall: 1000,
           }}
         >
-          {data.datas[7].carusel?.map((item) => {
+          {data.datas[7].carusel?.map((item, index) => {
             return (
-              <SplideSlide>
+              <SplideSlide key={index}>
                 <SingleItemCon>
                   <Link
                     style={{ textDecorationLine: "none" }}

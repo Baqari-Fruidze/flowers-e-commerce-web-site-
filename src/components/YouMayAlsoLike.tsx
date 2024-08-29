@@ -7,9 +7,9 @@ export default function YouMayAlsoLike() {
     <Parent>
       <Hone>You may also like…</Hone>
       <GridedCon>
-        {data.datas[5]["you may also like"]?.map((item) => {
+        {data.datas[5]["you may also like"]?.map((item, index) => {
           return (
-            <ImageAndTextCon>
+            <ImageAndTextCon key={index}>
               <Image src={item.src} alt="" />
               <TextCon>
                 <NameP>{item.name}</NameP>

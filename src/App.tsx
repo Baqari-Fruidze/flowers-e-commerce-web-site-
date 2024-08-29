@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -20,6 +20,7 @@ import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 import { TFaqs, Tusers, Tsubscriptions, Tcategories, Tproducts } from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
+
 import Cart from "./components/Cart";
 import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
@@ -40,26 +41,26 @@ export const Context = createContext<TcontextType>({
 
   adminCategories: false,
 
-  setAdminCategories: () => { },
+  setAdminCategories: () => {},
   adminProducts: false,
-  setAdminProducts: () => { },
+  setAdminProducts: () => {},
 
   adminUsers: false,
   setAdminUsers: () => {},
   adminSubscriptions: false,
   setAdminSubscriptions: () => {},
   adminFaq: false,
-  setAdminFaq: () => { },
+  setAdminFaq: () => {},
 
   subscribe: false,
   setSubscribe: () => {},
   cartshow: false,
 
-  setCartshow: () => { },
+  setCartshow: () => {},
   categories: [{ id: 1, name: "", image: "" }],
-  setCategories: () => { },
+  setCategories: () => {},
   faqs: [{ id: 1, question: "", answer: "" }],
-  setFaqs: () => { },
+  setFaqs: () => {},
 
   subscriptions: [
     {
@@ -74,7 +75,7 @@ export const Context = createContext<TcontextType>({
       saveUp: 0,
     },
   ],
-  setSubscriptions: () => { },
+  setSubscriptions: () => {},
   products: [
     {
       id: 0,
@@ -84,9 +85,9 @@ export const Context = createContext<TcontextType>({
       inStock: 0,
       image: "",
       category: { name: "", id: 1, bg_picture: "" },
-    }
+    },
   ],
-  setProducts: () => { },
+  setProducts: () => {},
   users: [
     {
       id: 0,
@@ -259,37 +260,37 @@ function App() {
       image: "",
     },
   ]);
-  const [faqs, setFaqs] = useState<
-  TFaqs[]
-  >([{
-    id: 1,
-    question: "",
-    answer: ""
-  }])
-  const [subscriptions, setSubscriptions] = useState<
-  Tsubscriptions[]
-  >([{
-    id: 1,
-    image: "",
-    category: "",
-    price: 0,
-    delivery: "",
-    theBest: "",
-    firstDelivery: "",
-    firstDelivery2: "",
-    saveUp: 0,
-  }]); 
-  const [products, setProducts] = useState<
-  Tproducts[]
-  >([{
-    id: 0,
-    name: "",
-    price: 0,
-    description: "",
-    inStock: 0,
-    image: "",
-    category: { name: "", id: 1, bg_picture: "" },
-  }])
+  const [faqs, setFaqs] = useState<TFaqs[]>([
+    {
+      id: 1,
+      question: "",
+      answer: "",
+    },
+  ]);
+  const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
+    {
+      id: 1,
+      image: "",
+      category: "",
+      price: 0,
+      delivery: "",
+      theBest: "",
+      firstDelivery: "",
+      firstDelivery2: "",
+      saveUp: 0,
+    },
+  ]);
+  const [products, setProducts] = useState<Tproducts[]>([
+    {
+      id: 0,
+      name: "",
+      price: 0,
+      description: "",
+      inStock: 0,
+      image: "",
+      category: { name: "", id: 1, bg_picture: "" },
+    },
+  ]);
   const [users, setUsers] = useState<Tusers[]>([
     {
       id: 0,
@@ -321,7 +322,6 @@ function App() {
                 description: "",
               },
             },
-
           ],
         },
       ],
@@ -364,6 +364,14 @@ function App() {
       <LargeHeader />
     );
   };
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const data = await response.json();
+      setCategory(data);
+    }
+    fetchCategories();
+  }, []);
   return (
     <Context.Provider
       value={{
