@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -26,6 +26,7 @@ import {
   Tproducts,
 } from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
+import Checkout from "./pages/Checkout";
 
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
@@ -344,7 +345,8 @@ function App() {
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
       location.pathname === "/admin-panel" ||
-      location.pathname === "/restore" ? null : (
+      location.pathname === "/restore" ||
+      location.pathname === "/checkout" ? null : (
       <Footer />
     );
   };
@@ -353,20 +355,14 @@ function App() {
     return location.pathname === "/login" ||
       location.pathname === "/signUp" ||
       location.pathname === "/admin-panel" ||
-      location.pathname === "/restore" ? null : isSmallDevice ? (
+      location.pathname === "/restore" ||
+      location.pathname === "/checkout" ? null : isSmallDevice ? (
       <Header />
     ) : (
       <LargeHeader />
     );
   };
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
-      const data = await response.json();
-      setCategory(data);
-    }
-    fetchCategories();
-  }, []);
+
   return (
     <Context.Provider
       value={{
@@ -428,6 +424,7 @@ function App() {
           />
           <Route path="admin-panel" element={<AdminPanel />} />
           <Route path="/restore" element={<Restore />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>
