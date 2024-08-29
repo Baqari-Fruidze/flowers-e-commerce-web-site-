@@ -7,6 +7,8 @@ import { TFaqs } from "./AddCategories";
 import { TCartType } from "./CartType";
 
 export interface TcontextType {
+  isMyProfile: boolean;
+  setIsMyProfile: React.Dispatch<React.SetStateAction<boolean>>;
   burgerToShow: boolean;
   setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
   setCategory: React.Dispatch<React.SetStateAction<Tcategory[]>>;

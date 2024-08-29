@@ -60,6 +60,14 @@ export default function LetTalk(){
                         <p className="phoneAdressDecsr, openAdress">N 223 Chavchavadze Avenue, Telavi</p>
                     </div>
                 </div>
+
+                {/* <div className="phoneAdress"  id="phoneAdressTitle" >
+                    <p className="phoneAdressTitle">Address</p>
+                    <div>
+                    <iframe src="https://www.google.com/maps/place/%E1%83%93%E1%83%98%E1%83%93%E1%83%98+%E1%83%AD%E1%83%90%E1%83%93%E1%83%90%E1%83%A0%E1%83%98/@41.9173572,45.4762562,18.14z/data=!4m6!3m5!1s0x404432c50c9096c7:0x2bda3bf26488effc!8m2!3d41.9167395!4d45.4782147!16s%2Fg%2F11dzzf1frz?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"></iframe>
+                        <p className="phoneAdressDecsr, openAdress">N 223 Chavchavadze Avenue, Telavi</p>
+                    </div>
+                </div> */}
             </PhoneAdress>
         </Contact>
 
@@ -244,6 +252,12 @@ const PhoneAdress=styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         text-align: center;
+        Iframe {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 200px;
+        }
     }
 
     #phoneAdressTitle{

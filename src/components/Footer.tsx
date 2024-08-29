@@ -20,7 +20,7 @@ export default function Footer() {
       <FooterDiv>
         <FooterBox>
           <p id="remind">
-            Remember to offer beautiful flowers from Kyiv LuxeBouquets
+            Remember to offer beautiful flowers from Telavi LuxeBouquets
             Valentines Day, Mothers Day, Christmas... Reminds you 7 days before.
             No spam or sharing your address
           </p>

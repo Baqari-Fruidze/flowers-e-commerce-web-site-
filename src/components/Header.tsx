@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const { setBurgerToShow, burgerToShow, cartshow, setCartshow } =
     useContext(Context);
-
   const navigate = useNavigate();
+
   return (
     <>
       <Parent>

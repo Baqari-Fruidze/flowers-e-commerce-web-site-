@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import floverVideoBg from "/image/loginBg.jpg";
 import { Context } from "../App";
 import HeaderAdminPanel from "../components/forAdminPanel/HeaderAdminPanel"
 import NavBar from "../components/forAdminPanel/NavBar";
@@ -36,6 +37,17 @@ export default function AdminPanel() {
 const MainCont=styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
+    border-bottom: 1px solid #121212;
+    border-right: 1px solid #121212;
     height: 90vh;
-    /* background-color: #90f190 */
+    width: 100%;
+    background-image: url(${floverVideoBg});
+    background-repeat: no-repeat;
+    background-size: 500vh;
+    @media (min-width: 768px){
+        background-size: 200vh;
+    }
+    @media (min-width: 1440px){
+        background-size: 100%;
+    }
 `

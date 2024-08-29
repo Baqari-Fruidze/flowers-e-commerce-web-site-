@@ -1,10 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 export const Global = createGlobalStyle`
 
+
 @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
 @import url('https://fonts.cdnfonts.com/css/zapfino');
 
-                
+ 
 
 *{
     padding: 0;
@@ -22,6 +23,7 @@ html{
 body{
   background-color: #f5f5f7;
   font-family: Gilroy;
+  position: relative
   }
 
     .slide-up-text {

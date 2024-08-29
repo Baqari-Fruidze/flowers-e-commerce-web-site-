@@ -55,21 +55,13 @@ export default function() {
 }
 
 const NavBar = styled.div`
-    background-color: #f5f5f7;
-    padding: 40px 16px 0;
-    font-size: 14px;
+    padding: 160px 16px 0;
+    font-size: 20px;
     color: #121212;
     border-right: 1px solid #121212;
     border-left: 1px solid #121212;
-    @media (min-width: 768px){
-        font-size: 16px;
-    }
-
-    @media (min-width: 1440px){
-        font-size: 18px;
-    }
-
-    ul{
+    text-align: center;  
+      ul{
         padding: 20px 0;
         cursor: pointer;
     }

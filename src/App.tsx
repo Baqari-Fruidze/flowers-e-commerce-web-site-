@@ -27,7 +27,11 @@ import {
 } from "./types/AddCategories";
 import { TCartType } from "./types/CartType";
 import Checkout from "./pages/Checkout";
-
+import Cart from "./components/Cart";
+import MyAddress from "./components/MyProlile/MyAddress";
+import MyLikes from "./components/MyProlile/MyLikes";
+import MyOrder from "./components/MyProlile/MyOrder";
+import MySetting from "./components/MyProlile/MySetting";
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -161,6 +165,8 @@ export const Context = createContext<TcontextType>({
   setSingleProductState: () => {},
   tokenChecker: false,
   setTockenChecker: () => {},
+  isMyProfile: false,
+  setIsMyProfile: ()=>{},
   quantity: 0,
   setQuantity: () => {},
   cartItemsState: {
@@ -189,8 +195,11 @@ export const Context = createContext<TcontextType>({
   setCartItemsState: () => {},
 });
 
+
+
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [isMyProfile, setIsMyProfile] = useState(false)
   const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
@@ -322,7 +331,7 @@ function App() {
       image: "",
     }
   );
-
+ 
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
@@ -389,8 +398,11 @@ function App() {
         quantity,
         cartItemsState,
         setCartItemsState,
+        isMyProfile,
+        setIsMyProfile
       }}
     >
+       
       <BrowserRouter>
         <HeaderChanger />
         <Routes>
@@ -405,9 +417,16 @@ function App() {
             path="/:singleCategory/:singleProduct"
             element={<SingleProduct />}
           />
-          <Route path="admin-panel" element={<AdminPanel />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/restore" element={<Restore />} />
+
           <Route path="/checkout" element={<Checkout />} />
+
+          <Route path="/My-address" element={<MyAddress/>} />
+          <Route path="/My-setting" element={<MySetting/>} />
+          <Route path="/My-likes" element={<MyLikes/>} />
+          <Route path="/My-order" element={<MyOrder/>} />
+
         </Routes>
         <FooterChanger />
       </BrowserRouter>
