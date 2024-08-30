@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
@@ -12,7 +13,7 @@ export default function ShipingInfo() {
       <Hone>Shipping Info</Hone>
       <InputsConParent>
         <DatesCon>
-          <DeliveryDateCon>
+          <DeliveryTimeCoon>
             <LabelStyled htmlFor="date">Delivery Date</LabelStyled>
             <DeliveryDateInput
               type="date"
@@ -20,7 +21,12 @@ export default function ShipingInfo() {
               placeholder=" Date of Delivery"
               {...register("dateOfDelivery")}
             />
-          </DeliveryDateCon>
+            {errors.dateOfDelivery ? (
+              <ErorSpan>
+                {errors?.dateOfDelivery?.message as ReactNode}
+              </ErorSpan>
+            ) : null}
+          </DeliveryTimeCoon>
           <DeliveryTimeCoon>
             <LabelStyled htmlFor="time">Delivery Time</LabelStyled>
             <DeliveryTimeInput
@@ -29,6 +35,9 @@ export default function ShipingInfo() {
               placeholder="Delivery Time"
               {...register("deliveryTime")}
             />
+            {errors.deliveryTime ? (
+              <ErorSpan>{errors?.deliveryTime?.message as ReactNode}</ErorSpan>
+            ) : null}
           </DeliveryTimeCoon>
         </DatesCon>
         <AdressCon>
@@ -40,6 +49,9 @@ export default function ShipingInfo() {
               placeholder="city"
               {...register("city")}
             />
+            {errors.city ? (
+              <ErorSpan>{errors?.city?.message as ReactNode}</ErorSpan>
+            ) : null}
           </CityCon>
           <StreetCon>
             <LabelStyled htmlFor="street"> Street Name</LabelStyled>
@@ -49,6 +61,9 @@ export default function ShipingInfo() {
               id="street"
               {...register("street")}
             />
+            {errors.street ? (
+              <ErorSpan>{errors?.street?.message as ReactNode}</ErorSpan>
+            ) : null}
           </StreetCon>
           <HouseNumberCon>
             <LabelStyled htmlFor="house">House Number</LabelStyled>
@@ -58,6 +73,9 @@ export default function ShipingInfo() {
               id="house"
               {...register("houseNumber")}
             />
+            {errors.houseNumber ? (
+              <ErorSpan>{errors?.houseNumber?.message as ReactNode}</ErorSpan>
+            ) : null}
           </HouseNumberCon>
         </AdressCon>
       </InputsConParent>
@@ -65,7 +83,21 @@ export default function ShipingInfo() {
   );
 }
 
+const ErorSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  right: 3rem;
+  top: 4rem;
+  @media (min-width: 768px) {
+    top: 5rem;
+    font-size: 16px;
+    right: 3rem;
+  }
+`;
 const CityCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -178,6 +210,7 @@ const HouseNumberInput = styled.input`
   }
 `;
 const HouseNumberCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -187,6 +220,7 @@ const HouseNumberCon = styled.div`
   }
 `;
 const StreetCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -205,6 +239,7 @@ const AdressCon = styled.div`
   }
 `;
 const DeliveryTimeCoon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -213,15 +248,15 @@ const DeliveryTimeCoon = styled.div`
     gap: 1.2rem;
   }
 `;
-const DeliveryDateCon = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  @media (min-width: 768px) {
-    width: 50%;
-    gap: 1.2rem;
-  }
-`;
+// const DeliveryDateCon = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.8rem;
+//   @media (min-width: 768px) {
+//     width: 50%;
+//     gap: 1.2rem;
+//   }
+// `;
 const DatesCon = styled.div`
   display: flex;
   flex-direction: column;

@@ -4,6 +4,6 @@ export interface TcheckoutTypes {
   deliveryTime: string;
   dateOfDelivery: string;
   street: string;
-  houseNumber: number;
+  houseNumber: string;
   city: string;
 }
