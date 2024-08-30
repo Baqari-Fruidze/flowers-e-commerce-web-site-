@@ -11,16 +11,10 @@ export default function Products(){
         name: "",
         price: 0,
         category_id: "",
-        // {name: "", id: 0, bg_picture: ""},
         description: "",
         inStock: 0,
         image: "",
     })
-    // const [ categoryName, setCategoryName] = useState({
-    //     name: "",
-    //     id: 0,
-    //     bg_picture: ""
-    // })
 
     useEffect(() => {
         async function fetchCategory() {

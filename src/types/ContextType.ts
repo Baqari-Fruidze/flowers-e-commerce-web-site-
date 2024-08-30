@@ -7,6 +7,8 @@ import { TFaqs } from "./AddCategories";
 import { TCartType } from "./CartType";
 
 export interface TcontextType {
+  isAcount: boolean;
+  setIsAcount: React.Dispatch<React.SetStateAction<boolean>>;
   isMyProfile: boolean;
   setIsMyProfile: React.Dispatch<React.SetStateAction<boolean>>;
   burgerToShow: boolean;
@@ -36,7 +38,7 @@ export interface TcontextType {
   subscriptions: Tsubscriptions[];
   setSubscriptions: React.Dispatch<React.SetStateAction<Tsubscriptions[]>>;
   users: Tusers;
-  setUsers: React.Dispatch<React.SetStateAction<Tusers[]>>;
+  setUsers: React.Dispatch<React.SetStateAction<Tusers>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;
   setSingleCategoryState: React.Dispatch<
