@@ -69,6 +69,9 @@ const CityCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
 const LabelStyled = styled.label`
   font-size: 16px;
@@ -92,11 +95,17 @@ const HouseNumberCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
 const StreetCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
 const AdressCon = styled.div`
   display: flex;
@@ -104,17 +113,24 @@ const AdressCon = styled.div`
   gap: 2.4rem;
   @media (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 const DeliveryTimeCoon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 const DeliveryDateCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 const DatesCon = styled.div`
   display: flex;
@@ -139,4 +155,6 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  @media (min-width: 768px) {
+  }
 `;

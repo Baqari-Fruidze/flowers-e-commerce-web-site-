@@ -14,7 +14,7 @@ export default function BillingDetails() {
       <InputsConParent>
         <InputsCon>
           <LabelStyled htmlFor="name">Recipient Name</LabelStyled>
-          <Input
+          <NameInput
             type="text"
             placeholder=" recipient Name"
             id="name"
@@ -23,10 +23,10 @@ export default function BillingDetails() {
         </InputsCon>
         <InputsCon>
           <LabelStyled htmlFor="number">Recipient PhoneNumber</LabelStyled>
-          <Input
+          <PhoneNumberInput
             type="text"
             id="number"
-            placeholder="recipient PhoneNumber "
+            placeholder="Recipient PhoneNumber "
             {...register("recipientPhoneNumber")}
           />
         </InputsCon>
@@ -48,37 +48,75 @@ const HOne = styled.h1`
   letter-spacing: 1px;
   color: #d87d4a;
 `;
-const Input = styled.input`
+const PhoneNumberInput = styled.input`
   padding: 1.5rem 0 1.5rem 1.5rem;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   color: #121212;
   outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
   &::placeholder {
     font-size: 18px;
     color: #121212;
     opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+const NameInput = styled.input`
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    font-size: 18px;
+    color: #121212;
+    opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
   }
 `;
 const LabelStyled = styled.label`
   font-size: 16px;
   color: #121212;
   font-weight: 600;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 const InputsCon = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (min-width: 768px) {
+    width: 50%;
+    gap: 1.2rem;
+  }
 `;
 const InputsConParent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  margin-bottom: 2.4rem;
+  @media (min-width: 768px) {
+  }
 `;

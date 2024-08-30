@@ -49,4 +49,6 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  @media (min-width: 768px) {
+  }
 `;
