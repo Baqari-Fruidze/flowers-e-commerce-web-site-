@@ -26,7 +26,7 @@ export default function Cart() {
       cartrequest();
     }
   }, []);
-
+  console.log(cartItemsState);
   return (
     <Cover>
       <Parent>
@@ -34,7 +34,20 @@ export default function Cart() {
           <CartSpan>Cart</CartSpan>
           <RemoveAllSpan>Remove All</RemoveAllSpan>
         </TextCon>
-        <CartItemsCon>cart items</CartItemsCon>
+        <CartItemsConParent>
+          {cartItemsState.items.map((item, index) => {
+            return (
+              <CartItemsCon key={index}>
+                <ItemImage src={item.product.src} alt="" />
+                <ItemsNameSpan>{item.product.name} </ItemsNameSpan>
+                <ItemsPriceSpan>
+                  ${item.product.price}
+                  <ItemQuantitySpan> ({item.quantity} x)</ItemQuantitySpan>
+                </ItemsPriceSpan>
+              </CartItemsCon>
+            );
+          })}
+        </CartItemsConParent>
         <TotalCon>
           <TotalSpan>Total</TotalSpan>
           <MoneyAmountSpan>$</MoneyAmountSpan>
@@ -44,6 +57,29 @@ export default function Cart() {
     </Cover>
   );
 }
+const ItemQuantitySpan = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+`;
+const ItemsPriceSpan = styled.span`
+  font-size: 14px;
+  opacity: 0.5;
+  color: #121212;
+`;
+const ItemsNameSpan = styled.span`
+  font-size: 15px;
+  font-weight: 700;
+  color: #121212;
+`;
+const ItemImage = styled.img`
+  width: 6rem;
+  height: 6rem;
+`;
+const CartItemsCon = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const Btn = styled.button`
   padding: 1.5rem;
   background-color: #121212;
@@ -72,8 +108,10 @@ const TotalCon = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const CartItemsCon = styled.div`
+const CartItemsConParent = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 const RemoveAllSpan = styled.span`
   color: #121212;
@@ -85,7 +123,7 @@ const RemoveAllSpan = styled.span`
 const CartSpan = styled.span`
   color: #121212;
   font-size: 18px;
-  font-size: 500;
+  font-size: 700;
 `;
 const TextCon = styled.div`
   display: flex;
@@ -93,6 +131,7 @@ const TextCon = styled.div`
   align-items: center;
 `;
 const Parent = styled.div`
+  border-radius: 8px;
   background-color: #fff;
   padding: 2.4rem;
   width: 100%;
@@ -100,8 +139,12 @@ const Parent = styled.div`
   flex-direction: column;
   gap: 2.4rem;
   max-width: 40rem;
+  height: 70rem;
+  overflow-y: auto;
 `;
 const Cover = styled.div`
+  overflow-y: auto;
+  z-index: 89;
   top: 0;
   position: fixed;
   width: 100%;
