@@ -7,7 +7,9 @@ import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
 
 export default function Checkout() {
-  const inputsData: SubmitHandler<TcheckoutTypes> = (data) => console.log(data);
+  const inputsData: SubmitHandler<TcheckoutTypes> = (data) => {
+    data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
+  };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
   const {
     handleSubmit,

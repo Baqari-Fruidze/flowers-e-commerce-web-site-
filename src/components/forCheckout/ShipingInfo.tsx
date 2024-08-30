@@ -7,7 +7,6 @@ export default function ShipingInfo() {
     register,
     formState: { errors },
   } = useFormContext();
-  console.log(errors.city);
   return (
     <Parent>
       <Hone>Shipping Info</Hone>
@@ -68,7 +67,7 @@ export default function ShipingInfo() {
           <HouseNumberCon>
             <LabelStyled htmlFor="house">House Number</LabelStyled>
             <HouseNumberInput
-              type="text"
+              type="number"
               placeholder="House Number"
               id="house"
               {...register("houseNumber")}

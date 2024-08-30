@@ -1,9 +1,9 @@
 export interface TcheckoutTypes {
   recipientName: string;
-  recipientPhoneNumber: string | undefined;
+  recipientPhoneNumber: number;
   deliveryTime: string;
   dateOfDelivery: string;
   street: string;
-  houseNumber: string;
+  houseNumber: number;
   city: string;
 }

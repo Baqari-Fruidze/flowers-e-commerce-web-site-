@@ -27,7 +27,7 @@ export default function BillingDetails() {
         <InputsCon>
           <LabelStyled htmlFor="number">Recipient PhoneNumber</LabelStyled>
           <PhoneNumberInput
-            type="text"
+            type="number"
             id="number"
             placeholder="Recipient PhoneNumber "
             {...register("recipientPhoneNumber")}
