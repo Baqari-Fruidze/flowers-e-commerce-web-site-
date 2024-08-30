@@ -14,7 +14,7 @@ export default function ShipingInfo() {
         <DatesCon>
           <DeliveryDateCon>
             <LabelStyled htmlFor="date">Delivery Date</LabelStyled>
-            <Input
+            <DeliveryDateInput
               type="date"
               id="date"
               placeholder=" Date of Delivery"
@@ -23,7 +23,7 @@ export default function ShipingInfo() {
           </DeliveryDateCon>
           <DeliveryTimeCoon>
             <LabelStyled htmlFor="time">Delivery Time</LabelStyled>
-            <Input
+            <DeliveryTimeInput
               type="time"
               id="time"
               placeholder="Delivery Time"
@@ -34,7 +34,7 @@ export default function ShipingInfo() {
         <AdressCon>
           <CityCon>
             <LabelStyled htmlFor="city">City</LabelStyled>
-            <Input
+            <CityInput
               type="text"
               id="city"
               placeholder="city"
@@ -43,7 +43,7 @@ export default function ShipingInfo() {
           </CityCon>
           <StreetCon>
             <LabelStyled htmlFor="street"> Street Name</LabelStyled>
-            <Input
+            <StreetNameInput
               type="text"
               placeholder="Street Name"
               id="street"
@@ -52,7 +52,7 @@ export default function ShipingInfo() {
           </StreetCon>
           <HouseNumberCon>
             <LabelStyled htmlFor="house">House Number</LabelStyled>
-            <Input
+            <HouseNumberInput
               type="text"
               placeholder="House Number"
               id="house"
@@ -71,24 +71,110 @@ const CityCon = styled.div`
   gap: 0.8rem;
   @media (min-width: 768px) {
     width: 100%;
+    gap: 1.2rem;
   }
 `;
 const LabelStyled = styled.label`
   font-size: 16px;
   color: #121212;
   font-weight: 600;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
-const Input = styled.input`
+const DeliveryDateInput = styled.input`
   padding: 1.5rem 0 1.5rem 1.5rem;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   color: #121212;
   outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
   &::placeholder {
     font-size: 18px;
     color: #121212;
     opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+const DeliveryTimeInput = styled.input`
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    font-size: 18px;
+    color: #121212;
+    opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+const CityInput = styled.input`
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    font-size: 18px;
+    color: #121212;
+    opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+const StreetNameInput = styled.input`
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    font-size: 18px;
+    color: #121212;
+    opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+`;
+const HouseNumberInput = styled.input`
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  &::placeholder {
+    font-size: 18px;
+    color: #121212;
+    opacity: 0.5;
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
   }
 `;
 const HouseNumberCon = styled.div`
@@ -97,6 +183,7 @@ const HouseNumberCon = styled.div`
   gap: 0.8rem;
   @media (min-width: 768px) {
     width: 100%;
+    gap: 1.2rem;
   }
 `;
 const StreetCon = styled.div`
@@ -105,6 +192,7 @@ const StreetCon = styled.div`
   gap: 0.8rem;
   @media (min-width: 768px) {
     width: 100%;
+    gap: 1.2rem;
   }
 `;
 const AdressCon = styled.div`
@@ -122,6 +210,7 @@ const DeliveryTimeCoon = styled.div`
   gap: 0.8rem;
   @media (min-width: 768px) {
     width: 50%;
+    gap: 1.2rem;
   }
 `;
 const DeliveryDateCon = styled.div`
@@ -130,6 +219,7 @@ const DeliveryDateCon = styled.div`
   gap: 0.8rem;
   @media (min-width: 768px) {
     width: 50%;
+    gap: 1.2rem;
   }
 `;
 const DatesCon = styled.div`

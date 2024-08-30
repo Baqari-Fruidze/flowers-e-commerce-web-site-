@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ export default function BillingDetails() {
     register,
     formState: { errors },
   } = useFormContext();
-  // console.log(errors);
+
   return (
     <Parent>
       <HOne>Billing Details</HOne>
@@ -20,6 +20,9 @@ export default function BillingDetails() {
             id="name"
             {...register("recipientName")}
           />
+          {errors.recipientName ? (
+            <ErorSpan>{errors?.recipientName?.message as ReactNode} </ErorSpan>
+          ) : null}
         </InputsCon>
         <InputsCon>
           <LabelStyled htmlFor="number">Recipient PhoneNumber</LabelStyled>
@@ -29,6 +32,11 @@ export default function BillingDetails() {
             placeholder="Recipient PhoneNumber "
             {...register("recipientPhoneNumber")}
           />
+          {errors.recipientPhoneNumber ? (
+            <ErorSpan>
+              {errors?.recipientPhoneNumber?.message as ReactNode}
+            </ErorSpan>
+          ) : null}
         </InputsCon>
       </InputsConParent>
     </Parent>
@@ -39,8 +47,12 @@ const ErorSpan = styled.span`
   font-size: 14px;
   font-weight: 500;
   position: absolute;
-  right: 4rem;
+  right: 2rem;
   top: 4rem;
+  @media (min-width: 768px) {
+    top: 5rem;
+    font-size: 16px;
+  }
 `;
 const HOne = styled.h1`
   font-size: 18px;
