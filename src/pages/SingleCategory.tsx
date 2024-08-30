@@ -21,7 +21,7 @@ export default function SingleCategory() {
       }
     }
     fetchSingleCategories(CategoryId);
-  }, [CategoryId, setSingleCategoryState]);
+  }, []);
 
   return (
     <Parent>
