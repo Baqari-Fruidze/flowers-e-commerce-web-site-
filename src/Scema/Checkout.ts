@@ -11,7 +11,7 @@ export const schemaCheckout = yup.object({
   street: yup.string().min(1, "can't be empty").required(),
   houseNumber: yup
     .number()
-    .typeError(" must be a number")
+    .typeError("only number")
     .required("only numbers")
     .min(9, "can't be empty"),
   city: yup.string().min(1, "can't be empty").required(),

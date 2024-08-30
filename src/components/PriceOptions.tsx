@@ -39,7 +39,6 @@ export default function PriceOptions({
         navigate("/login");
       } else if (res.ok) {
         const data = await res.json();
-        console.log(data);
         setCartItemsState((prev) => ({
           ...prev,
           items: [...prev.items, data],
@@ -47,7 +46,6 @@ export default function PriceOptions({
       }
     }
   }
-  console.log(cartItemsState);
   return (
     <Parent>
       <TextsCon>
