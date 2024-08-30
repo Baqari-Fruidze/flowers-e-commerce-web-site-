@@ -47,34 +47,30 @@ export default function LargeHeader() {
           </AnimDiv>
         </Link>
       </HomeCon>
-      <ContactCon
-        onClick={() => {
-          setIsMyProfile(!isMyProfile);
-        }}
-      >
-        <Link>
-          <AnimDiv>
-            <p className="anim">Contact</p>
-          </AnimDiv>
-        </Link>
+      <ContactCon>
+        <AnimDiv>
+          <p className="anim">Contact</p>
+        </AnimDiv>
+
       </ContactCon>
       <InputCon>
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        <Link to={"/login"}>
-          <AnimDiv>
+         
             {!tokenChecker ? (
-              <p className="anim" onClick={() => navigate("/login")}>
+              <AnimDiv><p className="anim" onClick={() => navigate("/login")}>
                 Sign In
-              </p>
+              </p></AnimDiv>
             ) : users.is_superuser === true ? (
-              <p>go to admin</p>
+              <AnimDiv><p className="anim">go to admin</p></AnimDiv>
             ) : (
-              <p>profile</p>
+              <AnimDiv onClick={() => {
+                setIsMyProfile(true);
+              }}
+              ><p className="anim">profile</p></AnimDiv>
             )}
-          </AnimDiv>
-        </Link>
+          
       </SignInCon>
       <CartCon>
         <svg
@@ -171,6 +167,7 @@ const SignInCon = styled.div`
   align-items: center;
   justify-content: center;
   grid-column: 5/6;
+  font-size: 18px;
 `;
 const CartCon = styled.div`
   z-index: 999;

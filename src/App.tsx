@@ -135,6 +135,8 @@ export const Context = createContext<TcontextType>({
   setTockenChecker: () => {},
   isMyProfile: false,
   setIsMyProfile: () => {},
+  isAcount: false,
+  setIsAcount: () => {},
   quantity: 0,
   setQuantity: () => {},
   cartItemsState: {
@@ -164,6 +166,7 @@ export const Context = createContext<TcontextType>({
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const [isAcount, setIsAcount] = useState(false)
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [recoverUsername, setRecoverUsername] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
@@ -338,6 +341,8 @@ function App() {
         setCartItemsState,
         isMyProfile,
         setIsMyProfile,
+        isAcount,
+        setIsAcount
       }}
     >
       <BrowserRouter>

@@ -35,10 +35,9 @@ export default function Faq(){
                                 ? {transform: "rotate(270deg)"}
                                 : null
                             }
-                            />
-
-                            
+                            />   
                         </div>
+                        
                         <div 
                         style={isAnswer !== index
                             ? {display: "none"}
