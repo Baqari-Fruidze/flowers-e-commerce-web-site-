@@ -7,10 +7,16 @@ import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
 
 export default function LargeHeader() {
-  const { cartshow, setCartshow, isMyProfile, setIsMyProfile, users } =
-    useContext(Context);
+  const {
+    cartshow,
+    setCartshow,
+    isMyProfile,
+    setIsMyProfile,
+    users,
+    tokenChecker,
+    setTockenChecker,
+  } = useContext(Context);
   const navigate = useNavigate();
-  const { tokenChecker, setTockenChecker } = useContext(Context);
   useEffect(() => {
     const tokenChecker = async () => {
       let token = localStorage.getItem("token");
@@ -20,7 +26,7 @@ export default function LargeHeader() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer  ${token.access}`,
+            Authorization: `Bearer  ${token?.access}`,
           },
         });
         if (res.ok) {
@@ -30,7 +36,7 @@ export default function LargeHeader() {
     };
     tokenChecker();
   }, []);
-  console.log(users);
+  console.log("test");
   return (
     <Parent>
       {isMyProfile ? <MyProfilePop /> : null}
@@ -46,11 +52,11 @@ export default function LargeHeader() {
           setIsMyProfile(!isMyProfile);
         }}
       >
-        {/* <Link > */}
-        <AnimDiv>
-          <p className="anim">Contact</p>
-        </AnimDiv>
-        {/* </Link> */}
+        <Link>
+          <AnimDiv>
+            <p className="anim">Contact</p>
+          </AnimDiv>
+        </Link>
       </ContactCon>
       <InputCon>
         <input type="text" placeholder="what are you loocking for ?" />

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import AllCategoryforHome from "../components/forHome/AllCategoriesForHome";
 import AboutUsforHome from "../components/forHome/AboutUsforHome";
 import WhyChooseUs from "../components/forHome/WhyChoosUs";
@@ -36,9 +36,7 @@ export default function AllCategory() {
 
   return (
     <>
-      <HomeDiv 
-      style = {isMyProfile ? {opacity: "0.3"} : {opacity: "1"}}
-      >
+      <HomeDiv style={isMyProfile ? { opacity: "0.3" } : { opacity: "1" }}>
         <iframe src="https://player.vimeo.com/video/917253515"></iframe>
         <AllCategoryforHome />
         <AboutUsforHome />
@@ -64,6 +62,5 @@ const HomeDiv = styled.div`
     @media (min-vidth: 758px) {
       height: 70vh;
     }
-  
   }
 `;
