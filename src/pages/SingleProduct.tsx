@@ -20,7 +20,7 @@ export default function SingleProduct() {
       setSingleProductState(data);
     }
     fetchSingleProduct(singleProduct);
-  }, [setSingleProductState, singleProduct]);
+  }, []);
 
   // async function getingCartItems() {
   //   let token = localStorage.getItem("token");
