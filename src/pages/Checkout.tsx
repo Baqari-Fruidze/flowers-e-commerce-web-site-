@@ -5,12 +5,13 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
-import { useEffect, useState } from "react";
-import { json } from "react-router-dom";
+import { CartItem, TCartType } from "../types/CartType";
 
 export default function Checkout() {
-  const data = localStorage.getItem("cart");
-  const state = JSON.parse(data);
+  let data: string | null = localStorage.getItem("cart");
+  if (data) {
+    data = JSON.parse(data);
+  }
 
   const inputsData: SubmitHandler<TcheckoutTypes> = (data) => {
     data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
@@ -27,12 +28,16 @@ export default function Checkout() {
           <Btn> Continue And Pay</Btn>
         </form>
         <div>
-          {state.items.map((item) => {
+          {data?.items.map((item: CartItem) => {
             return (
-              <div>
-                <h1 style={{ color: "red" }}>{item?.name}</h1>
-                <p>{item?.id}</p>
-              </div>
+              <Test>
+                <Honee>{item.product.name}</Honee>
+                {<p>{item?.id}</p>}
+                <p style={{ fontSize: "22px" }}>{item?.product.name}</p>
+                <p style={{ color: "#fff" }}>{item.product.description}</p>
+                <p style={{ color: "#fff" }}>teeeeeeeeeeeeeeeeeeeest</p>
+                <p>{item.quantity}</p>
+              </Test>
             );
           })}
         </div>
@@ -40,6 +45,17 @@ export default function Checkout() {
     </FormProvider>
   );
 }
+
+const Honee = styled.h1`
+  color: #fff;
+  font-size: 25px;
+`;
+const Test = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  height: 2rem;
+`;
 const Btn = styled.button`
   letter-spacing: 1px;
   margin-top: 2.4rem;
