@@ -4,7 +4,7 @@ interface Category {
   bg_picture: string;
 }
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
@@ -12,16 +12,4 @@ interface Product {
   description: string;
   inStock: number;
   src: string;
-}
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-  id: number;
-}
-
-export interface TCartType {
-  id: number;
-  user: number;
-  items: CartItem[];
 }
