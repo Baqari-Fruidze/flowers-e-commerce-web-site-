@@ -6,7 +6,6 @@ export default function FlowerSubsc() {
     const handleClick = () => {
         window.scrollTo({ top: 1600, left: 0, behavior: 'smooth' });
       };
-
     //scroll down
     
     return(

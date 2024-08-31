@@ -5,8 +5,26 @@ import searchIcon from "/assets/icon-search.svg";
 import Cart from "./Cart";
 import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
+import ScrollToFix from "../units/ScrollToFix";
 
-export default function LargeHeader() {
+
+
+
+
+export default function LargeHeader(
+  isSmallDeviceofscroll: boolean,
+) {
+
+ //scroll down
+ function handleClick(){
+  {!isSmallDeviceofscroll ?
+  window.scrollTo({ top: 2000, left: 0, behavior: 'smooth',  }) :
+  window.scrollTo({ top: 20, left: 0, behavior: 'smooth',  })
+}
+  
+};
+//scroll down
+
   const {
     cartshow,
     setCartshow,
@@ -37,7 +55,11 @@ export default function LargeHeader() {
     tokenCheckerr();
   }, []);
 
+  
+  
   return (
+    <>
+    <ScrollToFix />
     <Parent>
       {isMyProfile ? <MyProfilePop /> : null}
       <HomeCon>
@@ -49,7 +71,9 @@ export default function LargeHeader() {
       </HomeCon>
       <ContactCon>
         <AnimDiv>
-          <p className="anim">Contact</p>
+          <p 
+          onClick={handleClick}
+          className="anim">Contact</p>
         </AnimDiv>
       </ContactCon>
       <InputCon>
@@ -96,6 +120,7 @@ export default function LargeHeader() {
       </CartCon>
       {cartshow ? <Cart /> : null}
     </Parent>
+    </>
   );
 }
 

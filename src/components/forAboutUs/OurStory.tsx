@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import about from "/image/about.jpg"
 import AOS from 'aos';
@@ -35,7 +34,6 @@ export default function OurStory() {
 }
 
 const MainCont = styled.div`
-    color: red;
     font-size: 100px;
     display: flex;
     flex-direction: column;
@@ -57,6 +55,7 @@ const Story = styled.div`
     text-align: center;
     padding: 40px 16px;
     color: #121212;
+    background-color: #fff;
     @media (min-width: 1440px){
         padding: 80px 80px 0;
     }

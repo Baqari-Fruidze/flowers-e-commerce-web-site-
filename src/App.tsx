@@ -180,7 +180,6 @@ function App() {
   const [adminFaq, setAdminFaq] = useState(false);
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
   const [category, setCategory] = useState<Tcategory[]>([
     {
       id: 1,
@@ -358,9 +357,7 @@ function App() {
           />
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/restore" element={<Restore />} />
-
           <Route path="/checkout" element={<Checkout />} />
-
           <Route path="/My-address" element={<MyAddress />} />
           <Route path="/My-setting" element={<MySetting />} />
           <Route path="/My-likes" element={<MyLikes />} />

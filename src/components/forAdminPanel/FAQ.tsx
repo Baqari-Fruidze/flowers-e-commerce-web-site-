@@ -19,7 +19,6 @@ export default function FAQ() {
     fetchFaq();
   },[]);
 
-
   const addFAQ = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;

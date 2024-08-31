@@ -97,9 +97,16 @@ export default function Products(){
             image: "",
                 });
       }
-            // console.log(categoryName)
-            console.log(addProduct)
-            console.log(products)
+
+      async function deleteProduct(productId: any){
+        const responce = await fetch(`http://134.122.71.97:8000/api/product/${productId}`, {
+            method: "DELETE", 
+            headers: {
+              Authorization: `Bearer ${token.access}`
+             },
+            },)
+        }
+
 
     return(
 <>       
@@ -129,9 +136,7 @@ export default function Products(){
         </div>
         <div className="editDelete">
             <button
-            onClick={() => {
-                
-              }}
+            onClick={deleteProduct}
             >Delete</button>
         </div>      
       </div>

@@ -1,10 +1,13 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import shop2 from "/image/shop2.png"
 
+ 
+
 export default function LetTalk(){
+
+   
     AOS.init({
         duration: 1200,
       })

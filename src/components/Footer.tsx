@@ -14,10 +14,6 @@ export default function Footer() {
     transitionDelay: `${index * 0.02}s`,
   });
 
-  const handleClick = () => {
-    window.scrollTo({ top: -1600, left: 0, behavior: 'smooth' });
-  };
-
   return (
     <>
       <FooterDiv>

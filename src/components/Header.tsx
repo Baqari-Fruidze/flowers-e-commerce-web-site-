@@ -51,8 +51,8 @@ export default function Header() {
             />
           </svg>
         </CartCon>
-        {/* {burgerToShow ? <Burger /> : null} */}
-        {/* {cartshow ? <Cart /> : null} */}
+        {burgerToShow ? <Burger /> : null}
+        {cartshow ? <Cart /> : null}
       </Parent>
     </>
   );
