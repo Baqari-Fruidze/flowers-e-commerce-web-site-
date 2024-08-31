@@ -7,7 +7,7 @@ export default function Users(){
 
       useEffect(() => {
         async function fetchUsers() {
-          const response = await fetch("http://134.122.71.97:8000/api/user");
+          const response = await fetch("http://134.122.71.97:8000/api/signup");
           const data = await response.json();
           setUsers(data);
         }
@@ -15,7 +15,7 @@ export default function Users(){
       },[]);
 
       async function deleteUser(userId: any){
-        const responce = await fetch(`http://134.122.71.97:8000/api/faq/${userId}`, {
+        const responce = await fetch(`http://134.122.71.97:8000/api/signup/${userId}`, {
             method: "DELETE", 
             },)
         }

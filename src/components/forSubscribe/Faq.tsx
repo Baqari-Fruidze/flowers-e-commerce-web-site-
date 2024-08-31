@@ -1,26 +1,28 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
 import { Context } from "../../App";
-export default function Faq() {
+export default function Faq() 
+{
   const [isAnswer, setIsAnswer] = useState<boolean | null | number>(null);
   const { faqs } = useContext(Context);
 
-  // useEffect(() => {
-  //     async function fetchFaq() {
-  //       const response = await fetch("http://134.122.71.97:8000/api/faq");
-  //       const data = await response.json();
-  //       setFaqs(data);
-  //     }
-  //     fetchFaq();
-  //   },[]);
+
+  useEffect(() => {
+      async function fetchFaq() {
+        const response = await fetch("http://134.122.71.97:8000/api/faq");
+        const data = await response.json();
+        setFaqs(data);
+      }
+      fetchFaq();
+    },[]);
 
   return (
     <>
       <MainCont>
         <h2 className="title">Subscription FAQ</h2>
         <FaqCont>
-          {faqs.map((item, index) => (
+          {faqs.map((item, index: number) => (
             <Qa key={index}>
               <div className="question">
                 <p
@@ -33,9 +35,8 @@ export default function Faq() {
                 <img
                   src={arrowRightDown}
                   style={{
-                    transform:
-                      isAnswer === index ? "rotate(270deg)" : "rotate(0deg)",
-                    transition: "transform 0.3s ease",
+                    transform: isAnswer === index ? 'rotate(270deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease',
                   }}
                 />
               </div>

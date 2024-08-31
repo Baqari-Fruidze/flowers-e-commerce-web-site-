@@ -75,37 +75,39 @@ export default function OurStory() {
 }
 
 const MainCont = styled.div`
-  color: red;
-  font-size: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  @media (min-width: 1440px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0px;
-  }
-
-  img {
-    width: 100%;
-  }
-`;
+    font-size: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media (min-width: 1440px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+    } 
+   
+    img{
+        width: 100%;
+    }
+`
 const Story = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 40px 16px;
-  color: #121212;
-  @media (min-width: 1440px) {
-    padding: 80px 80px 0;
-  }
-  & > h1 {
-    font-size: 34px;
-    font-weight: 600;
-    line-height: 1.2;
-    @media (min-width: 1440px) {
-      font-size: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 16px;
+    color: #121212;
+    background-color: #fff;
+    @media (min-width: 1440px){
+        padding: 80px 80px 0;
+    }
+    & > h1{
+        font-size: 34px;
+        font-weight: 600;
+        line-height: 1.2;
+        @media (min-width: 1440px){
+            font-size: 48px;
+    }                               
+
     }
   }
 

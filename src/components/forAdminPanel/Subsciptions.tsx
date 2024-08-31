@@ -84,9 +84,6 @@ export default function Subscriptions(){
                 method: "DELETE",
             },)
             }
-    
-    
-
     return(
 <>       
 <MainCategories>

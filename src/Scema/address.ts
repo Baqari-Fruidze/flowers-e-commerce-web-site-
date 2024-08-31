@@ -12,5 +12,9 @@ export const schemaAddress = yup.object({
     city: yup
     .string()
     .min(1, "can't be empty")
+    .required(),
+    note: yup
+    .string()
+    .min(1, "can't be empty")
     .required()
 })

@@ -62,7 +62,42 @@ export default function Products() {
     });
   };
 
-  console.log(addProduct);
+        let token=localStorage.getItem("token")
+        if (token) {
+            token = JSON.parse(token)
+        }
+        
+        const responce = await fetch (
+          "http://134.122.71.97:8000/api/product",
+        {method: "POST",
+          headers: {
+          Authorization: `Bearer ${token.access}`
+         },
+         body: formData,
+        });
+         const newProduct = await responce.json();
+         console.log(newProduct)
+          setProducts([...products, newProduct]);
+          setAddProduct({ 
+            id: 0,
+            name: "",
+            price: 0,
+            category_id: "",
+            description: "",
+            inStock: 0,
+            image: "",
+                });
+      }
+
+      async function deleteProduct(productId: any){
+        const responce = await fetch(`http://134.122.71.97:8000/api/product/${productId}`, {
+            method: "DELETE", 
+            headers: {
+              Authorization: `Bearer ${token.access}`
+             },
+            },)
+        }
+
 
   async function addNewProduct(event: any) {
     event.preventDefault();
@@ -159,21 +194,36 @@ export default function Products() {
             </div>
           ))}
         </div>
-        <form className="addContainer">
-          <h2>Add Product</h2>
-          <div className="field">
-            <input
-              placeholder="Add Product's Name"
-              className="inputProduct"
-              type="text"
-              name="name"
-              value={addProduct.name}
-              onChange={addProducts}
-            />
-            <select
-              name="category_id"
-              className="inputProduct"
-              onChange={addProducts}
+        <div className="editDelete">
+            <button
+            onClick={deleteProduct}
+            >Delete</button>
+        </div>      
+      </div>
+     ))}
+  </div>
+  <form 
+  className="addContainer">
+    <h2>Add Product</h2>
+    <div className="field">
+        <input 
+        placeholder="Add Product's Name"
+        className="inputProduct" 
+        type="text" 
+        name="name"
+        value={addProduct.name}
+        onChange={addProducts}
+        />
+    <select 
+    name="category_id"
+    className="inputProduct"
+    onChange={addProducts}
+    >
+        {categories?.map((item, index)=>(
+            <option 
+            key={index} 
+            value={item.id}
+
             >
               {categories?.map((item, index) => (
                 <option key={index} value={item.id}>
