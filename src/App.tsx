@@ -31,8 +31,6 @@ import MySetting from "./components/MyProlile/MySetting";
 import ScrollToTop from "./units/SqrollToTop";
 
 export const Context = createContext<TcontextType>({
-  burgerToShow: false,
-  setBurgerToShow: () => {},
   adminCategories: false,
   setAdminCategories: () => {},
   adminProducts: false,
@@ -65,18 +63,6 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setSubscriptions: () => {},
-  products: [
-    {
-      id: 0,
-      name: "",
-      price: 0,
-      description: "",
-      inStock: 0,
-      image: "",
-      category: { name: "", id: 1, bg_picture: "" },
-    },
-  ],
-  setProducts: () => {},
   users: {
     id: 0,
     review: "",
@@ -92,22 +78,6 @@ export const Context = createContext<TcontextType>({
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
-  singleCategoryState: [
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    },
-  ],
-  setSingleCategoryState: () => {},
   singlePorudctState: {
     id: 1,
     name: "",
@@ -137,7 +107,6 @@ function App() {
   const [isAcount, setIsAcount] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [recoverUsername, setRecoverUsername] = useState("");
-  const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminProducts, setAdminProducts] = useState(false);
@@ -147,23 +116,6 @@ function App() {
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  const [singleCategoryState, setSingleCategoryState] = useState<
-    TsingleCategory[]
-  >([
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    },
-  ]);
   const [cartshow, setCartshow] = useState(false);
   const [categories, setCategories] = useState<Tcategories[]>([
     {
@@ -192,17 +144,7 @@ function App() {
       saveUp: 0,
     },
   ]);
-  const [products, setProducts] = useState<Tproducts[]>([
-    {
-      id: 0,
-      name: "",
-      price: 0,
-      description: "",
-      inStock: 0,
-      image: "",
-      category: { name: "", id: 1, bg_picture: "" },
-    },
-  ]);
+
   const [users, setUsers] = useState<Tusers>({
     id: 0,
     review: "",
@@ -258,8 +200,6 @@ function App() {
       value={{
         subscribe,
         setSubscribe,
-        burgerToShow,
-        setBurgerToShow,
         adminCategories,
         setAdminCategories,
         adminProducts,
@@ -282,12 +222,8 @@ function App() {
         setUsers,
         recoverUsername,
         setRecoverUsername,
-        singleCategoryState,
-        setSingleCategoryState,
         setSingleProductState,
         singlePorudctState,
-        products,
-        setProducts,
         tokenChecker,
         setTockenChecker,
         setQuantity,

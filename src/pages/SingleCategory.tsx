@@ -1,14 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
+import { TsingleCategory } from "../types/SingleCategoryType";
 
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
-  const { categories, singleCategoryState, setSingleCategoryState } =
-    useContext(Context);
+  const [singleCategoryState, setSingleCategoryState] = useState<
+    TsingleCategory[]
+  >([
+    {
+      id: 1,
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        image: "",
+      },
+      description: "",
+      inStock: 0,
+      image: "",
+    },
+  ]);
+  const { categories } = useContext(Context);
   const CategoryId = categories.find(
     (item) => item.name === singleCategory
   )?.id;
