@@ -2,18 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
 import { Context } from "../../App";
+export default function Faq() 
+{
+  const [isAnswer, setIsAnswer] = useState<boolean | null | number>(null);
+  const { faqs } = useContext(Context);
 
-export default function Faq() {
-  const [isAnswer, setIsAnswer] = useState<boolean | number | null>(null);
-
-  interface FaqItem {
-    question: string;
-    answer: string;
-  }
-  
-  
-
-  const { faqs, setFaqs } = useContext(Context);
 
   useEffect(() => {
       async function fetchFaq() {

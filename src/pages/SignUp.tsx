@@ -20,7 +20,6 @@ export default function SignUp() {
   };
   const inputHandler: SubmitHandler<TSignUp> = (data) => {
     registerUser(data);
-    console.log(data);
   };
 
   async function registerUser(inputsdata: TSignUp) {

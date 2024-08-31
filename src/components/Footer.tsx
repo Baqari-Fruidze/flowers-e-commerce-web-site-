@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import SplitStringUsingRegex from "../units/SplitStringUsingRegex";
@@ -13,7 +12,6 @@ export default function Footer() {
     transform: `translateY(${isMouseEntered ? "-100%" : "0%"})`,
     transitionDelay: `${index * 0.02}s`,
   });
-
   return (
     <>
       <FooterDiv>

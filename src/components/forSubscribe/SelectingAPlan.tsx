@@ -21,7 +21,7 @@ export default function SelectingAPlan() {
     }
     fetchSubscriptions();
   }, []);
- 
+
   const deliveryFrequency = [
     {
       frequency: "MONTHLY",
@@ -33,7 +33,6 @@ export default function SelectingAPlan() {
       frequency: "WEEKLY",
     },
   ];
-
   return (
     <>
       <Main>

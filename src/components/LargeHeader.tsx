@@ -37,14 +37,17 @@ export default function LargeHeader(
   const navigate = useNavigate();
   useEffect(() => {
     const tokenCheckerr = async () => {
-      let token = localStorage.getItem("token");
+      let token: string | { access: string; refresh: string } | null =
+        localStorage.getItem("token");
       if (token) {
-        token = JSON.parse(token);
+        token = JSON.parse(token as string);
         const res = await fetch("http://134.122.71.97:8000/auth/users", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer  ${token?.access}`,
+            Authorization: `Bearer  ${
+              (token as { access: string; refresh: string }).access
+            }`,
           },
         });
         if (res.ok) {
@@ -80,21 +83,29 @@ export default function LargeHeader(
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        
-            {!tokenChecker ? (
-              <AnimDiv><p className="anim" onClick={() => navigate("/login")}>
-                Sign In
-              </p></AnimDiv>
-            ) : users.is_superuser === true ? (
-              <AnimDiv 
-              onClick={() => { navigate("/admin-panel")}}          
-              ><p className="anim">go to admin</p></AnimDiv>
-            ) : (
-              <AnimDiv onClick={() => {
-                setIsMyProfile(true);
-              }}
-              ><p className="anim">profile</p></AnimDiv>
-            )}
+        {!tokenChecker ? (
+          <AnimDiv>
+            <p className="anim" onClick={() => navigate("/login")}>
+              Sign In
+            </p>
+          </AnimDiv>
+        ) : users.is_superuser === true ? (
+          <AnimDiv
+            onClick={() => {
+              navigate("/admin-panel");
+            }}
+          >
+            <p className="anim">go to admin</p>
+          </AnimDiv>
+        ) : (
+          <AnimDiv
+            onClick={() => {
+              setIsMyProfile(true);
+            }}
+          >
+            <p className="anim">profile</p>
+          </AnimDiv>
+        )}
       </SignInCon>
       <CartCon>
         <svg
