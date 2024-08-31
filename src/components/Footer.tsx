@@ -1,16 +1,12 @@
-
-
-
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import SplitStringUsingRegex from "../units/SplitStringUsingRegex";
 import { Link } from "react-router-dom";
-import data from "../data.json"
+import data from "../data.json";
 
 export default function Footer() {
   const [isMouseEntered, setIsMouseEntered] = useState(false);
-
   const onMouseEnter = () => setIsMouseEntered(true);
   const onMouseLeave = () => setIsMouseEntered(false);
   const getTransformStyles = (isMouseEntered: boolean, index: number) => ({
@@ -117,16 +113,15 @@ export default function Footer() {
               </AnimDiv>
             </Link>
 
-            
-              {data.datas[0].categories?.map((item, index) => {
-                return (
-              <Link id="link" to={`/${item.name}`} key={index}>
-                <AnimDiv>
-                  <p className="anim">{item.name}</p>
-                </AnimDiv>
-              </Link>
-                );
-              })}
+            {data.datas[0].categories?.map((item, index) => {
+              return (
+                <Link id="link" to={`/${item.name}`} key={index}>
+                  <AnimDiv>
+                    <p className="anim">{item.name}</p>
+                  </AnimDiv>
+                </Link>
+              );
+            })}
           </div>
           <span className="title">Service</span>
           <div className="shop">

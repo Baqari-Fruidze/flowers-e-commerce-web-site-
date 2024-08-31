@@ -18,7 +18,7 @@ export default function LargeHeader() {
   } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
-    const tokenChecker = async () => {
+    const tokenCheckerr = async () => {
       let token = localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token);
@@ -34,9 +34,9 @@ export default function LargeHeader() {
         }
       }
     };
-    tokenChecker();
+    tokenCheckerr();
   }, []);
-  console.log("test");
+
   return (
     <Parent>
       {isMyProfile ? <MyProfilePop /> : null}
@@ -51,26 +51,30 @@ export default function LargeHeader() {
         <AnimDiv>
           <p className="anim">Contact</p>
         </AnimDiv>
-
       </ContactCon>
       <InputCon>
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-         
-            {!tokenChecker ? (
-              <AnimDiv><p className="anim" onClick={() => navigate("/login")}>
-                Sign In
-              </p></AnimDiv>
-            ) : users.is_superuser === true ? (
-              <AnimDiv><p className="anim">go to admin</p></AnimDiv>
-            ) : (
-              <AnimDiv onClick={() => {
-                setIsMyProfile(true);
-              }}
-              ><p className="anim">profile</p></AnimDiv>
-            )}
-          
+        {!tokenChecker ? (
+          <AnimDiv>
+            <p className="anim" onClick={() => navigate("/login")}>
+              Sign In
+            </p>
+          </AnimDiv>
+        ) : users.is_superuser === true ? (
+          <AnimDiv>
+            <p className="anim">go to admin</p>
+          </AnimDiv>
+        ) : (
+          <AnimDiv
+            onClick={() => {
+              setIsMyProfile(true);
+            }}
+          >
+            <p className="anim">profile</p>
+          </AnimDiv>
+        )}
       </SignInCon>
       <CartCon>
         <svg

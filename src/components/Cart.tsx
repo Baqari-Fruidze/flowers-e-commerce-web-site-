@@ -1,9 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Context } from "../App";
+
+import { TCartType } from "../types/CartType";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const { cartItemsState, setCartItemsState } = useContext(Context);
+  const navigate = useNavigate();
+
+  const [cartItemsState, setCartItemsState] = useState<TCartType>({
+    id: 1,
+    user: 1,
+    items: [],
+  });
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -24,9 +32,10 @@ export default function Cart() {
         }
       };
       cartrequest();
+      console.log("useefect in cart");
     }
   }, []);
-  console.log(cartItemsState);
+
   return (
     <Cover>
       <Parent>
@@ -52,7 +61,13 @@ export default function Cart() {
           <TotalSpan>Total</TotalSpan>
           <MoneyAmountSpan>$</MoneyAmountSpan>
         </TotalCon>
-        <Btn>Check Out</Btn>
+        <Btn
+          onClick={() => {
+            navigate("/checkout");
+          }}
+        >
+          Check Out
+        </Btn>
       </Parent>
     </Cover>
   );

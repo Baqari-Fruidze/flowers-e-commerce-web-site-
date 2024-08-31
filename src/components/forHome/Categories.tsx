@@ -15,6 +15,7 @@ export default function Categories() {
       setCategory(data);
     }
     fetchCategories();
+    console.log("fetchincategory");
   }, []);
   const navigate = useNavigate();
 
