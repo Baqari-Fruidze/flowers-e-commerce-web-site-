@@ -7,9 +7,11 @@ import { Context } from "../App";
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();
-  const { category, singleCategoryState, setSingleCategoryState } =
+  const { categories, singleCategoryState, setSingleCategoryState } =
     useContext(Context);
-  const CategoryId = category.find((item) => item.name === singleCategory)?.id;
+  const CategoryId = categories.find(
+    (item) => item.name === singleCategory
+  )?.id;
   useEffect(() => {
     async function fetchSingleCategories(id: number | undefined) {
       const response = await fetch(

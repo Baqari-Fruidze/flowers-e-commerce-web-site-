@@ -1,10 +1,10 @@
-import { Tcategory } from "./Category";
 import { Tcategories, Tproducts } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
 import { TsingleCategory } from "./SingleCategoryType";
 import { TFaqs } from "./AddCategories";
 import { TCartType } from "./CartType";
+import { Cart } from "./FinalCartItemsType";
 
 export interface TcontextType {
   isAcount: boolean;
@@ -13,8 +13,6 @@ export interface TcontextType {
   setIsMyProfile: React.Dispatch<React.SetStateAction<boolean>>;
   burgerToShow: boolean;
   setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
-  setCategory: React.Dispatch<React.SetStateAction<Tcategory[]>>;
-  category: Tcategory[];
   adminCategories: boolean;
   setAdminCategories: React.Dispatch<React.SetStateAction<boolean>>;
   adminProducts: boolean;

@@ -11,7 +11,7 @@ interface Product {
   category: Category;
   description: string;
   inStock: number;
-  src: string;
+  image: string;
 }
 
 export interface CartItem {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../App";
 import Circle from "./Circle";
@@ -11,13 +11,7 @@ export default function PriceOptions({
   price: number;
   singleProduct: string | undefined;
 }) {
-  const {
-    setSubscribe,
-    subscribe,
-    quantity,
-    cartItemsState,
-    setCartItemsState,
-  } = useContext(Context);
+  const { setSubscribe, subscribe, quantity } = useContext(Context);
   const navigate = useNavigate();
   async function getingCartItems() {
     let token = localStorage.getItem("token");
@@ -38,11 +32,7 @@ export default function PriceOptions({
       if (res.status === 401) {
         navigate("/login");
       } else if (res.ok) {
-        const data = await res.json();
-        setCartItemsState((prev) => ({
-          ...prev,
-          items: [...prev.items, data],
-        }));
+        localStorage.getItem("cart");
       }
     }
   }
