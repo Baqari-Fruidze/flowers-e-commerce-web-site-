@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
 
+
 export default function Categories(){
     const {categories, setCategories} = useContext(Context);
     const [addCategory, setAddCategory] = useState({
@@ -78,145 +79,139 @@ export default function Categories(){
 <h2>List of Categories</h2>
 <div className="titleContainer">
         <div className="descr">
+
             <p className="CatName">Picture</p>
-            <p className="CatName">names</p> 
-        </div>     
-      </div>
-  <div className="listCategories">
-     {categories?.map((item, index)=>(
-      <div className="container" key={index}>
-        <div className="descr">
-            <img className="CatImg" src={item.image}/>
-            <p className="CatName">{item.name}</p> 
+            <p className="CatName">names</p>
+          </div>
         </div>
-        <div className="editDelete"
-        >
-            <button 
-                onClick={()=>deleteCategory(item.id)}
-            >Delete</button>
-        </div>      
-      </div>
-     ))}
-  </div>
-  <form 
-  className="addContainer">
-    <h2>Add new category</h2>
-    <div className="field">
-        <input 
-        placeholder="Add Category"
-        className="inputCateg" 
-        type="text" 
-        name="name"
-        value={addCategory.name}
-        onChange={addCateg}
-        />
-        <input 
-        className="chooseFile" 
-        type="file"
-        onChange={handleFileChange}
-        />
-    </div>
-    <button 
-    type="submit"
-    onClick={addNewCategory}
-    className="addBt">Add</button>
-  </form> 
-</MainCategories>
-</>
-        )
-    }
+        <div className="listCategories">
+          {categories?.map((item, index) => (
+            <div className="container" key={index}>
+              <div className="descr">
+                <img className="CatImg" src={item.image} />
+                <p className="CatName">{item.name}</p>
+              </div>
+              <div className="editDelete">
+                {/* <button>Edit</button> */}
+                <button onClick={() => deleteCategory(item.id)}>Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <form className="addContainer">
+          <h2>Add new category</h2>
+          <div className="field">
+            <input
+              placeholder="Add Category"
+              className="inputCateg"
+              type="text"
+              name="name"
+              value={addCategory.name}
+              onChange={addCateg}
+            />
+            <input
+              className="chooseFile"
+              type="file"
+              onChange={handleFileChange}
+            />
+          </div>
+          <button type="submit" onClick={addNewCategory} className="addBt">
+            Add
+          </button>
+        </form>
+      </MainCategories>
+    </>
+  );
+}
+
 
 const MainCategories = styled.div`
-    background-color: #eaf07740;
-    padding: 20px 0 20px 24px;
+  background-color: #eaf07740;
+  padding: 20px 0 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+
+  .listCategories {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    height: 50vh;
+    overflow-y: scroll;
+  }
+
+  .container,
+  .editDelete {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 20px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+
+  .titleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid #121212;
     font-size: 20px;
-
-    .listCategories{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        height: 50vh;
-        overflow-y: scroll;
+    font-weight: 600;
+    p {
+      font-size: 20px;
     }
+  }
 
-    .container, .editDelete{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        border-radius: 8px;
-        margin-right: 20px;
-    }
+  .container {
+    border-bottom: 1px solid #121212;
+  }
+  .descr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
 
-    .titleContainer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        border-bottom: 1px solid #121212;
-        font-size: 20px;
-        font-weight: 600;
-        p{
-            font-size: 20px;
-            }
-        }
+  .CatName {
+    color: #121212;
+    font-size: 16px;
+  }
+  .CatImg {
+    width: 50px;
+    height: 50px;
+  }
 
-    .container{
-        border-bottom: 1px solid #121212;
-    }
-    .descr{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
-    }
-    
-    .CatName{
-        color: #121212;
-        font-size: 16px;
-    }
-    .CatImg{
-        width: 50px;
-        height: 50px;
+  .addContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    }
+  .field {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
 
-    .addContainer{
-        display: flex;
-        flex-direction: column;
-        gap: 10px
-    }
+  button {
+    width: 100px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #121212;
+    cursor: pointer;
+  }
 
-    .field{
-        display: flex;
-        flex-direction: row;
-        gap: 10px
-    }
+  .chooseFile {
+    padding: 4px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 
-    button{
-        width: 100px;
-        padding: 10px 15px;
-        border-radius: 8px;
-        border: 1px solid #121212;
-        cursor: pointer;
-    }
-
-    .chooseFile{
-        padding: 4px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    .inputCateg{
-        padding: 5px 15px;
-    }
-
-`
-
-
-
+  .inputCateg {
+    padding: 5px 15px;
+  }
+`;
