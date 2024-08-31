@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
 import { TCartType } from "../types/CartType";
 import { useNavigate } from "react-router-dom";
 
@@ -14,25 +13,35 @@ export default function Cart() {
   });
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token");
+
     if (token) {
-      token = JSON.parse(token);
+      token = JSON.parse(token as string);
       const cartrequest = async () => {
-        const res = await fetch("http://134.122.71.97:8000/api/cart", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token.access}`,
-          },
-        });
-        if (res.ok) {
-          const data = await res.json();
-          setCartItemsState(data);
+        const cart = localStorage.getItem("cart");
+        if (!cart) {
+          const res = await fetch("http://134.122.71.97:8000/api/cart", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            },
+          });
+          if (res.ok) {
+            const data = await res.json();
+            setCartItemsState(data);
+            localStorage.setItem("cart", JSON.stringify(data));
+          } else {
+            localStorage.clear();
+          }
         } else {
-          localStorage.clear();
+          setCartItemsState(JSON.parse(cart));
         }
       };
+
       cartrequest();
-      console.log("useefect in cart");
     }
   }, []);
 
@@ -47,7 +56,7 @@ export default function Cart() {
           {cartItemsState.items.map((item, index) => {
             return (
               <CartItemsCon key={index}>
-                <ItemImage src={item.product.src} alt="" />
+                <ItemImage src={item.product.image} alt="" />
                 <ItemsNameSpan>{item.product.name} </ItemsNameSpan>
                 <ItemsPriceSpan>
                   ${item.product.price}

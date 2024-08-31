@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
-
 export default function BillingDetails() {
   const {
     register,

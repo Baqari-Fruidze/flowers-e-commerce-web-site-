@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { createContext, useState} from "react";
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,16 +15,12 @@ import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
-import { Tcategory } from "./types/Category";
-import { TsingleCategory } from "./types/SingleCategoryType";
 import {
   TFaqs,
   Tusers,
   Tsubscriptions,
   Tcategories,
-  Tproducts,
 } from "./types/AddCategories";
-import { TCartType } from "./types/CartType";
 import Checkout from "./pages/Checkout";
 import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
@@ -33,16 +29,6 @@ import MySetting from "./components/MyProlile/MySetting";
 import ScrollToTop from "./units/SqrollToTop";
 
 export const Context = createContext<TcontextType>({
-  burgerToShow: false,
-  setBurgerToShow: () => {},
-  category: [
-    {
-      id: 1,
-      name: "",
-      image: "",
-    },
-  ],
-  setCategory: () => {},
   adminCategories: false,
   setAdminCategories: () => {},
   adminProducts: false,
@@ -75,18 +61,6 @@ export const Context = createContext<TcontextType>({
     },
   ],
   setSubscriptions: () => {},
-  products: [
-    {
-      id: 0,
-      name: "",
-      price: 0,
-      description: "",
-      inStock: 0,
-      image: "",
-      category: { name: "", id: 1, bg_picture: "" },
-    },
-  ],
-  setProducts: () => {},
   users: {
     id: 0,
     review: "",
@@ -102,36 +76,6 @@ export const Context = createContext<TcontextType>({
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
-  singleCategoryState: [
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    },
-  ],
-  setSingleCategoryState: () => {},
-  singlePorudctState: {
-    id: 1,
-    name: "",
-    price: 0,
-    category: {
-      name: "",
-      id: 0,
-      image: "",
-    },
-    description: "",
-    inStock: 0,
-    image: "",
-  },
-  setSingleProductState: () => {},
   tokenChecker: false,
   setTockenChecker: () => {},
   isMyProfile: false,
@@ -140,16 +84,13 @@ export const Context = createContext<TcontextType>({
   setIsAcount: () => {},
   quantity: 0,
   setQuantity: () => {},
-
 });
-
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [isAcount, setIsAcount] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [recoverUsername, setRecoverUsername] = useState("");
-  const [burgerToShow, setBurgerToShow] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminProducts, setAdminProducts] = useState(false);
@@ -158,30 +99,6 @@ function App() {
   const [adminFaq, setAdminFaq] = useState(false);
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [category, setCategory] = useState<Tcategory[]>([
-    {
-      id: 1,
-      name: "",
-      image: "",
-    },
-  ]);
-  const [singleCategoryState, setSingleCategoryState] = useState<
-    TsingleCategory[]
-  >([
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    },
-  ]);
   const [cartshow, setCartshow] = useState(false);
   const [categories, setCategories] = useState<Tcategories[]>([
     {
@@ -210,17 +127,7 @@ function App() {
       saveUp: 0,
     },
   ]);
-  const [products, setProducts] = useState<Tproducts[]>([
-    {
-      id: 0,
-      name: "",
-      price: 0,
-      description: "",
-      inStock: 0,
-      image: "",
-      category: { name: "", id: 1, bg_picture: "" },
-    },
-  ]);
+
   const [users, setUsers] = useState<Tusers>({
     id: 0,
     review: "",
@@ -233,21 +140,6 @@ function App() {
     phoneNumber: "",
     is_superuser: false,
   });
-  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    }
-  );
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
@@ -270,16 +162,12 @@ function App() {
       <LargeHeader />
     );
   };
-   
+
   return (
     <Context.Provider
       value={{
         subscribe,
         setSubscribe,
-        burgerToShow,
-        setBurgerToShow,
-        category,
-        setCategory,
         adminCategories,
         setAdminCategories,
         adminProducts,
@@ -302,12 +190,6 @@ function App() {
         setUsers,
         recoverUsername,
         setRecoverUsername,
-        singleCategoryState,
-        setSingleCategoryState,
-        setSingleProductState,
-        singlePorudctState,
-        products,
-        setProducts,
         tokenChecker,
         setTockenChecker,
         setQuantity,

@@ -1,27 +1,30 @@
-interface Category {
+// Type for the Category
+type Category = {
   id: number;
   name: string;
   bg_picture: string;
-}
+};
 
-interface Product {
+// Type for the Product
+type Product = {
   id: number;
   name: string;
   price: number;
   category: Category;
   description: string;
   inStock: number;
-  image: string;
-}
+  src: string;
+};
 
-export interface CartItem {
+// Type for the CartItem
+type CartItem = {
   product: Product;
   quantity: number;
-  id: number;
-}
+};
 
-export interface TCartType {
+// Type for the overall structure
+export type Cart = {
   id: number;
   user: number;
   items: CartItem[];
-}
+};

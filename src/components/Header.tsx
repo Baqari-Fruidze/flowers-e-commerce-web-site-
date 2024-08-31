@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
 import { Context } from "../App";
@@ -7,8 +7,8 @@ import Cart from "./Cart";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const { setBurgerToShow, burgerToShow, cartshow, setCartshow } =
-    useContext(Context);
+  const { cartshow, setCartshow } = useContext(Context);
+  const [burgerToShow, setBurgerToShow] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -42,7 +42,7 @@ export default function Header() {
               if (!tokenCheck) {
                 navigate("/login");
               }
-              // setCartshow((prev) => !prev);
+              setCartshow((prev) => !prev);
             }}
           >
             <path

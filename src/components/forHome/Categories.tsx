@@ -7,12 +7,12 @@ import { Context } from "../../App";
 import { useEffect } from "react";
 
 export default function Categories() {
-  const { setCategory, category } = useContext(Context);
+  const { categories, setCategories } = useContext(Context);
   useEffect(() => {
     async function fetchCategories() {
       const response = await fetch("http://134.122.71.97:8000/api/category");
       const data = await response.json();
-      setCategory(data);
+      setCategories(data);
     }
     fetchCategories();
     console.log("fetchincategory");
@@ -26,7 +26,7 @@ export default function Categories() {
   return (
     <>
       <MainCont>
-        {category.map((item, index) =>
+        {categories.map((item, index) =>
           index % 2 == 0 ? (
             <Category key={index}>
               <TitleCategory style={{ borderRight: "solid 1px #121212" }}>
@@ -101,14 +101,14 @@ const arrowMove = keyframes`
   }
 `;
 
-const imgZoom = keyframes`
-20% {
-  transform: scale(1.05);
-}
-30% {
-    transform: scale(1);
-}
-`;
+// const imgZoom = keyframes`
+// 20% {
+//   transform: scale(1.05);
+// }
+// 30% {
+//     transform: scale(1);
+// }
+// `;
 
 const MainCont = styled.div`
   display: grid;

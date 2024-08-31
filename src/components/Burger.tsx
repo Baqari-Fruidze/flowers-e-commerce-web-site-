@@ -1,37 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
 
 export default function Burger() {
-  const { category, setTockenChecker, tokenChecker } = useContext(Context);
+  const { tokenChecker, categories } = useContext(Context);
   const navigate = useNavigate();
-  useEffect(() => {
-    const tokenCheckerr = async () => {
-      let token = localStorage.getItem("token");
-      if (token) {
-        token = JSON.parse(token);
-        const res = await fetch("http://134.122.71.97:8000/auth/users", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer  ${token.access}`,
-          },
-        });
-        if (res.ok) {
-          setTockenChecker(true);
-        }
-      }
-    };
-    tokenCheckerr();
-    console.log("burger useefect");
-  }, []);
 
   return (
     <BlackBackground>
       <Cover>
         <Parent>
-          {category.map((item, index) => {
+          {categories.map((item, index) => {
             return (
               <Link to={`/${item.name}`} key={index}>
                 {item.name}

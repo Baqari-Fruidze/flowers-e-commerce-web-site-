@@ -1,15 +1,28 @@
-import { useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Quantity from "../components/Quantity";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
 import Carusel from "../components/Carusel";
 import PriceOptions from "../components/PriceOptions";
-import { Context } from "../App";
-
+import { TsingleCategory } from "../types/SingleCategoryType";
 export default function SingleProduct() {
   const { singleProduct } = useParams();
-  const { singlePorudctState, setSingleProductState } = useContext(Context);
+  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
+    {
+      id: 1,
+      name: "",
+      price: 0,
+      category: {
+        name: "",
+        id: 0,
+        image: "",
+      },
+      description: "",
+      inStock: 0,
+      image: "",
+    }
+  );
 
   useEffect(() => {
     async function fetchSingleProduct(id: string | undefined) {
