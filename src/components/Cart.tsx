@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
 import { TCartType } from "../types/CartType";
 import { useNavigate } from "react-router-dom";
 
@@ -15,24 +14,31 @@ export default function Cart() {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
+
     if (token) {
       token = JSON.parse(token);
       const cartrequest = async () => {
-        const res = await fetch("http://134.122.71.97:8000/api/cart", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token.access}`,
-          },
-        });
-        if (res.ok) {
-          const data = await res.json();
-          setCartItemsState(data);
+        const cart = localStorage.getItem("cart");
+        if (!cart) {
+          const res = await fetch("http://134.122.71.97:8000/api/cart", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token.access}`,
+            },
+          });
+          if (res.ok) {
+            const data = await res.json();
+            setCartItemsState(data);
+            localStorage.setItem("cart", JSON.stringify(data));
+          } else {
+            localStorage.clear();
+          }
         } else {
-          localStorage.clear();
+          setCartItemsState(JSON.parse(cart));
         }
       };
+
       cartrequest();
-      console.log("useefect in cart");
     }
   }, []);
 

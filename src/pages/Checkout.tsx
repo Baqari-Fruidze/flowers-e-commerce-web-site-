@@ -5,12 +5,13 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
-import Cart from "../components/Cart";
-import { useContext } from "react";
-import { Context } from "../App";
+import { useEffect, useState } from "react";
+import { json } from "react-router-dom";
 
 export default function Checkout() {
-  const { setCartshow } = useContext(Context);
+  const data = localStorage.getItem("cart");
+  const state = JSON.parse(data);
+
   const inputsData: SubmitHandler<TcheckoutTypes> = (data) => {
     data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
   };
@@ -25,6 +26,16 @@ export default function Checkout() {
           <ShipingInfo />
           <Btn> Continue And Pay</Btn>
         </form>
+        <div>
+          {state.items.map((item) => {
+            return (
+              <div>
+                <h1 style={{ color: "red" }}>{item?.name}</h1>
+                <p>{item?.id}</p>
+              </div>
+            );
+          })}
+        </div>
       </Parent>
     </FormProvider>
   );
