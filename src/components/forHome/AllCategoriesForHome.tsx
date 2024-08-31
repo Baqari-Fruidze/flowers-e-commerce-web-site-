@@ -7,7 +7,6 @@ export default function AllCategory(){
   AOS.init({
     duration: 1200,
   })
- 
    return(
 <>
 <MainCont >

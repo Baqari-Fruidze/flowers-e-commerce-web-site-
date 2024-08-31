@@ -2,13 +2,21 @@ import styled, { keyframes } from "styled-components";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from "react-router-dom";
+import ScrollToTop from "../../units/SqrollToTop";
+import { useEffect } from "react";
 
 export default function AboutUsforHome(){
-    AOS.init({
-        duration: 1200,
-      })
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1200,
+        });
+      }, []);
+
    return(
+    <>
     <MainCont >
+        
         <p data-aos="zoom-in">About us</p>
         <Description>
             <p className = "ourStory" >OUR STORY</p>
@@ -19,6 +27,7 @@ export default function AboutUsforHome(){
             </Link>
         </Description>
     </MainCont>
+    </>
    )
 
 }

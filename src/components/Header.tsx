@@ -42,7 +42,7 @@ export default function Header() {
               if (!tokenCheck) {
                 navigate("/login");
               }
-              setCartshow((prev) => !prev);
+              // setCartshow((prev) => !prev);
             }}
           >
             <path
@@ -51,8 +51,8 @@ export default function Header() {
             />
           </svg>
         </CartCon>
-        {burgerToShow ? <Burger /> : null}
-        {cartshow ? <Cart /> : null}
+        {/* {burgerToShow ? <Burger /> : null} */}
+        {/* {cartshow ? <Cart /> : null} */}
       </Parent>
     </>
   );

@@ -63,7 +63,9 @@ export default function LargeHeader() {
                 Sign In
               </p></AnimDiv>
             ) : users.is_superuser === true ? (
-              <AnimDiv><p className="anim">go to admin</p></AnimDiv>
+              <AnimDiv 
+              onClick={() => { navigate("/admin-panel")}}          
+              ><p className="anim">go to admin</p></AnimDiv>
             ) : (
               <AnimDiv onClick={() => {
                 setIsMyProfile(true);

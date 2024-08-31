@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { adminCategories, setAdminCategories } = useContext(Context);
@@ -8,6 +9,8 @@ export default function Navbar() {
   const { adminUsers, setAdminUsers } = useContext(Context);
   const { adminSubscriptions, setAdminSubscriptions } = useContext(Context);
   const { adminFaq, setAdminFaq } = useContext(Context);
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -67,6 +70,14 @@ export default function Navbar() {
             }}
           >
             FAQ
+          </ul>
+          <ul
+            onClick={() => {
+              localStorage.clear()
+              navigate("/")
+            }}
+          >
+            Log Out
           </ul>
         </ol>
       </NavBar>

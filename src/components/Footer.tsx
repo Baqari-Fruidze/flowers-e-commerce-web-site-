@@ -18,6 +18,10 @@ export default function Footer() {
     transitionDelay: `${index * 0.02}s`,
   });
 
+  const handleClick = () => {
+    window.scrollTo({ top: -1600, left: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <FooterDiv>
@@ -146,7 +150,7 @@ export default function Footer() {
         <FooterBox>
           <span className="title">About Us</span>
           <div className="shop">
-            <Link id="link" to={"/bout-us"}>
+            <Link id="link" to={"/about-us"}>
               <AnimDiv>
                 <p className="anim">Our story</p>
               </AnimDiv>

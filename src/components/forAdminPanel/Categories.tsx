@@ -61,17 +61,17 @@ export default function Categories(){
         });
          const newCategory = await response.json();
           setCategories([...categories, newCategory]);  
-          console.log(categories)
+          console.log(newCategory)
           setAddCategory({ id: 0, name: "", image: ""});
+          console.log(addCategory)
         }
-        console.log(addCategory)
-        console.log(categories)
     
-        async function deleteCategory(categoryId: any){
-        const responce = await fetch(`http://134.122.71.97:8000/api/category/${categoryId}`, {
-              method: "DELETE", 
-              },)
-          }
+        async function deleteCategory(categoriesId: any){
+            const responce = await fetch(`http://134.122.71.97:8000/api/faq/${categoriesId}`, {
+                method: "DELETE", 
+                },)
+            }
+         
     return(
 <>       
 <MainCategories>
@@ -89,9 +89,11 @@ export default function Categories(){
             <img className="CatImg" src={item.image}/>
             <p className="CatName">{item.name}</p> 
         </div>
-        <div className="editDelete">
-            {/* <button>Edit</button> */}
-            <button onClick={()=>deleteCategory(item.id)}>Delete</button>
+        <div className="editDelete"
+        >
+            <button 
+                onClick={()=>deleteCategory(item.id)}
+            >Delete</button>
         </div>      
       </div>
      ))}
