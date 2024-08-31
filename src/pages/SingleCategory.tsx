@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
 import { TsingleCategory } from "../types/SingleCategoryType";
-
 export default function SingleCategory() {
   const navigate = useNavigate();
   const { singleCategory } = useParams();

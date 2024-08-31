@@ -1,32 +1,26 @@
 import styled from "styled-components";
-import { useEffect } from "react";
-import data from "../data.json";
-import { Link } from "react-router-dom";
-import Categories from "../components/forHome/Categories"
+import Categories from "../components/forHome/Categories";
 
 export default function AllCategory() {
-
   return (
     <>
       <MainCont>
         <Choose>Choose a Category</Choose>
         <Categories />
       </MainCont>
-
-      
     </>
   );
 }
 
 const MainCont = styled.div`
   display: flex;
-   flex-direction: column;
-   border-bottom: 1px solid #121212;
-    @media (min-width: 1440px) {
-      display: grid;
-       grid-template-columns: 1fr 1fr;
-       height: 764px;
-   }
+  flex-direction: column;
+  border-bottom: 1px solid #121212;
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 764px;
+  }
 `;
 
 const Choose = styled.div`
@@ -44,6 +38,4 @@ const Choose = styled.div`
     font-size: 67px;
     border-right: solid 1px #121212;
   }
-
-  
 `;

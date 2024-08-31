@@ -15,13 +15,11 @@ import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
-import { TsingleCategory } from "./types/SingleCategoryType";
 import {
   TFaqs,
   Tusers,
   Tsubscriptions,
   Tcategories,
-  Tproducts,
 } from "./types/AddCategories";
 import Checkout from "./pages/Checkout";
 import MyAddress from "./components/MyProlile/MyAddress";
@@ -78,20 +76,6 @@ export const Context = createContext<TcontextType>({
   setUsers: () => {},
   recoverUsername: "",
   setRecoverUsername: () => {},
-  singlePorudctState: {
-    id: 1,
-    name: "",
-    price: 0,
-    category: {
-      name: "",
-      id: 0,
-      image: "",
-    },
-    description: "",
-    inStock: 0,
-    image: "",
-  },
-  setSingleProductState: () => {},
   tokenChecker: false,
   setTockenChecker: () => {},
   isMyProfile: false,
@@ -157,21 +141,6 @@ function App() {
     phoneNumber: "",
     is_superuser: false,
   });
-  const [singlePorudctState, setSingleProductState] = useState<TsingleCategory>(
-    {
-      id: 1,
-      name: "",
-      price: 0,
-      category: {
-        name: "",
-        id: 0,
-        image: "",
-      },
-      description: "",
-      inStock: 0,
-      image: "",
-    }
-  );
   const FooterChanger = () => {
     const location = useLocation();
     return location.pathname === "/login" ||
@@ -222,8 +191,6 @@ function App() {
         setUsers,
         recoverUsername,
         setRecoverUsername,
-        setSingleProductState,
-        singlePorudctState,
         tokenChecker,
         setTockenChecker,
         setQuantity,

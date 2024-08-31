@@ -1,7 +1,6 @@
-import { Tcategories, Tproducts } from "./AddCategories";
+import { Tcategories } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
-import { TsingleCategory } from "./SingleCategoryType";
 import { TFaqs } from "./AddCategories";
 
 export interface TcontextType {
@@ -33,8 +32,6 @@ export interface TcontextType {
   setUsers: React.Dispatch<React.SetStateAction<Tusers>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;
-  singlePorudctState: TsingleCategory;
-  setSingleProductState: React.Dispatch<React.SetStateAction<TsingleCategory>>;
   tokenChecker: boolean;
   setTockenChecker: React.Dispatch<React.SetStateAction<boolean>>;
   quantity: number;
