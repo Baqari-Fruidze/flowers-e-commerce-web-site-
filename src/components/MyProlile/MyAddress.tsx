@@ -11,7 +11,7 @@ export default function MyAddress() {
   const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context);
   const [isAddressList, setIsAddressList] = useState(false);
   const [list, setList] = useState(false);
-  const [address, setAddress] = useState({
+  const [address] = useState({
     city: "",
     street: "",
     houseNumber: "",

@@ -101,14 +101,14 @@ const arrowMove = keyframes`
   }
 `;
 
-const imgZoom = keyframes`
-20% {
-  transform: scale(1.05);
-}
-30% {
-    transform: scale(1);
-}
-`;
+// const imgZoom = keyframes`
+// 20% {
+//   transform: scale(1.05);
+// }
+// 30% {
+//     transform: scale(1);
+// }
+// `;
 
 const MainCont = styled.div`
   display: grid;
