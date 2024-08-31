@@ -2,10 +2,8 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
 import { Context } from "../../App";
-
 export default function Faq() {
-  const [isAnswer, setIsAnswer] = useState(null);
-
+  const [isAnswer, setIsAnswer] = useState<boolean | null | number>(null);
   const { faqs } = useContext(Context);
 
   // useEffect(() => {
@@ -34,9 +32,11 @@ export default function Faq() {
                 </p>
                 <img
                   src={arrowRightDown}
-                  style={
-                    isAnswer == index ? { transform: "rotate(270deg)" } : null
-                  }
+                  style={{
+                    transform:
+                      isAnswer === index ? "rotate(270deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s ease",
+                  }}
                 />
               </div>
 

@@ -5,7 +5,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
-import { CartItem, TCartType } from "../types/CartType";
+import { CartItem } from "../types/CartType";
 
 export default function Checkout() {
   let data: string | null = localStorage.getItem("cart");

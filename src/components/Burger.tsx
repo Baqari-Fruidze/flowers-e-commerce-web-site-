@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
 
 export default function Burger() {
-  const { category, setTockenChecker, tokenChecker } = useContext(Context);
+  const { setTockenChecker, tokenChecker, categories } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
     const tokenCheckerr = async () => {
@@ -31,7 +31,7 @@ export default function Burger() {
     <BlackBackground>
       <Cover>
         <Parent>
-          {category.map((item, index) => {
+          {categories.map((item, index) => {
             return (
               <Link to={`/${item.name}`} key={index}>
                 {item.name}

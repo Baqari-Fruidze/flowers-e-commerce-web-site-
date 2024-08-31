@@ -1,4 +1,3 @@
-import React from "react";
 import data from "../data.json";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";

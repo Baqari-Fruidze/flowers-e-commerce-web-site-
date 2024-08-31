@@ -1,18 +1,13 @@
-import { Tcategories, Tproducts } from "./AddCategories";
+import { Tcategories } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
-import { TsingleCategory } from "./SingleCategoryType";
 import { TFaqs } from "./AddCategories";
-import { TCartType } from "./CartType";
-import { Cart } from "./FinalCartItemsType";
 
 export interface TcontextType {
   isAcount: boolean;
   setIsAcount: React.Dispatch<React.SetStateAction<boolean>>;
   isMyProfile: boolean;
   setIsMyProfile: React.Dispatch<React.SetStateAction<boolean>>;
-  burgerToShow: boolean;
-  setBurgerToShow: React.Dispatch<React.SetStateAction<boolean>>;
   adminCategories: boolean;
   setAdminCategories: React.Dispatch<React.SetStateAction<boolean>>;
   adminProducts: boolean;
@@ -29,8 +24,6 @@ export interface TcontextType {
   cartshow: boolean;
   categories: Tcategories[];
   setCategories: React.Dispatch<React.SetStateAction<Tcategories[]>>;
-  products: Tproducts[];
-  setProducts: React.Dispatch<React.SetStateAction<Tproducts[]>>;
   faqs: TFaqs[];
   setFaqs: React.Dispatch<React.SetStateAction<TFaqs[]>>;
   subscriptions: Tsubscriptions[];
@@ -39,12 +32,6 @@ export interface TcontextType {
   setUsers: React.Dispatch<React.SetStateAction<Tusers>>;
   setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
   recoverUsername: string;
-  setSingleCategoryState: React.Dispatch<
-    React.SetStateAction<TsingleCategory[]>
-  >;
-  singleCategoryState: TsingleCategory[];
-  setSingleProductState: React.Dispatch<React.SetStateAction<TsingleCategory>>;
-  singlePorudctState: TsingleCategory;
   tokenChecker: boolean;
   setTockenChecker: React.Dispatch<React.SetStateAction<boolean>>;
   quantity: number;

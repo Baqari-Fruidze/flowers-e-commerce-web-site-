@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Context } from "../App";
 import Circle from "./Circle";
 import { useNavigate } from "react-router-dom";
-
 export default function PriceOptions({
   price,
   singleProduct,
@@ -14,14 +13,17 @@ export default function PriceOptions({
   const { setSubscribe, subscribe, quantity } = useContext(Context);
   const navigate = useNavigate();
   async function getingCartItems() {
-    let token = localStorage.getItem("token");
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token");
     if (token) {
-      token = JSON.parse(token);
+      token = JSON.parse(token as string);
       const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token.access}`,
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
         },
         body: JSON.stringify({
           product_id: singleProduct,

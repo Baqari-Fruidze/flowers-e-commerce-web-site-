@@ -4,9 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpScema } from "../Scema/SignUpYup";
 import { TSignUp } from "../types/SignUp";
 import loginBg from "/image/loginBg.jpg";
-import { tUserRegisterType } from "../types/UserTypesInRegister";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -22,7 +20,6 @@ export default function SignUp() {
   };
   const inputHandler: SubmitHandler<TSignUp> = (data) => {
     registerUser(data);
-    console.log(data);
   };
 
   async function registerUser(inputsdata: TSignUp) {

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../App";
-
 export default function Quantity() {
   const { setQuantity, quantity } = useContext(Context);
   return (
