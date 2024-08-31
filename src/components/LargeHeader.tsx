@@ -12,18 +12,10 @@ import ScrollToFix from "../units/ScrollToFix";
 
 
 export default function LargeHeader(
-  isSmallDeviceofscroll: boolean,
+  
 ) {
 
- //scroll down
- function handleClick(){
-  {!isSmallDeviceofscroll ?
-  window.scrollTo({ top: 2000, left: 0, behavior: 'smooth',  }) :
-  window.scrollTo({ top: 20, left: 0, behavior: 'smooth',  })
-}
-  
-};
-//scroll down
+ 
 
   const {
     cartshow,
