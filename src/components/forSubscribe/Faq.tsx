@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
 import { Context } from "../../App";
@@ -6,7 +6,7 @@ import { Context } from "../../App";
 export default function Faq() {
   const [isAnswer, setIsAnswer] = useState(null);
 
-  const { faqs, setFaqs } = useContext(Context);
+  const { faqs } = useContext(Context);
 
   // useEffect(() => {
   //     async function fetchFaq() {

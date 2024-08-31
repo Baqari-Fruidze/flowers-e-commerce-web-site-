@@ -53,7 +53,7 @@ export default function Cart() {
           {cartItemsState.items.map((item, index) => {
             return (
               <CartItemsCon key={index}>
-                <ItemImage src={item.product.src} alt="" />
+                <ItemImage src={item.product.image} alt="" />
                 <ItemsNameSpan>{item.product.name} </ItemsNameSpan>
                 <ItemsPriceSpan>
                   ${item.product.price}

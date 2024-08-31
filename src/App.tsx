@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { createContext, useState} from "react";
+import { createContext, useState } from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,7 +15,6 @@ import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
 import AdminPanel from "./pages/AdminPanel";
 import Restore from "./pages/Restore";
-import { Tcategory } from "./types/Category";
 import { TsingleCategory } from "./types/SingleCategoryType";
 import {
   TFaqs,
@@ -24,7 +23,6 @@ import {
   Tcategories,
   Tproducts,
 } from "./types/AddCategories";
-import { TCartType } from "./types/CartType";
 import Checkout from "./pages/Checkout";
 import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
@@ -35,14 +33,6 @@ import ScrollToTop from "./units/SqrollToTop";
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
-  category: [
-    {
-      id: 1,
-      name: "",
-      image: "",
-    },
-  ],
-  setCategory: () => {},
   adminCategories: false,
   setAdminCategories: () => {},
   adminProducts: false,
@@ -140,31 +130,7 @@ export const Context = createContext<TcontextType>({
   setIsAcount: () => {},
   quantity: 0,
   setQuantity: () => {},
-  cartItemsState: {
-    id: 1,
-    user: 1,
-    items: [
-      {
-        product: {
-          id: 1,
-          name: "",
-          price: 1,
-          category: {
-            name: "",
-            id: 1,
-            bg_picture: "",
-          },
-          description: "",
-          inStock: 1,
-          src: "",
-        },
-        quantity: 1,
-      },
-    ],
-  },
-  setCartItemsState: () => {},
 });
-
 
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
@@ -181,13 +147,6 @@ function App() {
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  const [category, setCategory] = useState<Tcategory[]>([
-    {
-      id: 1,
-      name: "",
-      image: "",
-    },
-  ]);
   const [singleCategoryState, setSingleCategoryState] = useState<
     TsingleCategory[]
   >([
@@ -293,7 +252,7 @@ function App() {
       <LargeHeader />
     );
   };
-   
+
   return (
     <Context.Provider
       value={{
@@ -301,8 +260,6 @@ function App() {
         setSubscribe,
         burgerToShow,
         setBurgerToShow,
-        category,
-        setCategory,
         adminCategories,
         setAdminCategories,
         adminProducts,
