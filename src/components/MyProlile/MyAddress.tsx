@@ -37,14 +37,14 @@ export default function MyAddress() {
     setList(true);
   };
 
-  // const addUserAddress = (event: any)=>{
-  //     event.preventDefault()
-  //     const {name, value} = event.target;
-  //     setAddress({
-  //         ...address,
-  //         [name]: value
-  //     })
-  // }
+    // const addUserAddress = (event: any)=>{
+    //     event.preventDefault()
+    //     const {name, value} = event.target;
+    //     setAddress({
+    //         ...address,
+    //         [name]: value
+    //     })
+    // }
 
   return (
     <>
