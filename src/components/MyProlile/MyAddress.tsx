@@ -20,12 +20,19 @@ export default function MyAddress()
         note: ""
     })
     const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(schemaAddress)})
+    
     const foo = ((data: any)=>{
-        
         console.log({errors})
-        console.log(data)
-        // console.log({eroors})
+        setAddress(data)
+        FormData = {
+            ...data,
+            city: "",
+            street: "",
+            houseNumber: 0, 
+            note: ""
+        }
         setIsAddressList(!isAddressList); setList(true)
+
 
     }) 
 
@@ -52,10 +59,10 @@ export default function MyAddress()
             >add address</button>
          </div>) :
         (<div className="userAddress">
-            <p>CITY: {address.city}</p>
-            <p>STREET: {address.street}</p>
-            <p>N:{address.houseNumber}</p>
-            <p>NOTE: {address.note}</p>
+            <p>CITY: <span>{address.city}</span></p>
+            <p>STREET: <span>{address.street}</span></p>
+            <p>N:<span>{address.houseNumber}</span></p>
+            <p>NOTE: <span>{address.note}</span></p>
             <button
             onClick={()=>{setIsAddressList(!isAddressList)}}
         >edit address</button>
@@ -117,15 +124,20 @@ export default function MyAddress()
                     ) : null}
                     </InputCont>
 
-                   
+                    <InputCont>
                 <input
                     placeholder="note for courier"
                     className="note"
-                    name= "note"
-                    value = {address.note}
-                    type="text" 
-                    onChange={addUserAddress} />
-
+                    type="text"
+                    {...register ("note")}
+                    />
+                    {errors.houseNumber ? (
+                        <ErrorMessage>
+                            {errors?.note?.message as ReactNode}
+                        </ErrorMessage>
+                    ) : null}
+                    </InputCont>
+                    
                 <div className="saveBack">
                     <button type="submit" className="save" >save</button>
                 </div>
@@ -214,11 +226,17 @@ const AddressList = styled.div`
         align-items: center;
         justify-content: left;
         gap: 10px;
-        
     }
     img{
         width: 120px;
         height: 140px;
+    }
+    p {
+        padding: 0 20px;
+        font-weight: bold;
+        span{
+            font-weight: normal;
+        }
     }
     
 `
