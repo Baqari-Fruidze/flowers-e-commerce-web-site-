@@ -2,20 +2,18 @@ import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import arrowRightDown from "/image/arrowrightdown.svg";
 import { Context } from "../../App";
-export default function Faq() 
-{
+export default function Faq() {
   const [isAnswer, setIsAnswer] = useState<boolean | null | number>(null);
-  const { faqs } = useContext(Context);
-
+  const { faqs, setFaqs } = useContext(Context);
 
   useEffect(() => {
-      async function fetchFaq() {
-        const response = await fetch("http://134.122.71.97:8000/api/faq");
-        const data = await response.json();
-        setFaqs(data);
-      }
-      fetchFaq();
-    },[]);
+    async function fetchFaq() {
+      const response = await fetch("http://134.122.71.97:8000/api/faq");
+      const data = await response.json();
+      setFaqs(data);
+    }
+    fetchFaq();
+  }, []);
 
   return (
     <>
@@ -35,8 +33,9 @@ export default function Faq()
                 <img
                   src={arrowRightDown}
                   style={{
-                    transform: isAnswer === index ? 'rotate(270deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.3s ease',
+                    transform:
+                      isAnswer === index ? "rotate(270deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s ease",
                   }}
                 />
               </div>
