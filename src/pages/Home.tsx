@@ -14,7 +14,7 @@ import { style } from "@splidejs/splide/src/js/utils";
 export default function AllCategory() {
   const { users, setUsers, isMyProfile } = useContext(Context);
   useEffect(() => {
-    const tokenChecker = async () => {
+    const tokenCheckerr = async () => {
       let token: string | { access: string; refresh: string } | null =
         localStorage.getItem("token");
       if (token) {
@@ -31,7 +31,7 @@ export default function AllCategory() {
         setUsers(usersInfo);
       }
     };
-    tokenChecker();
+    tokenCheckerr();
   }, []);
 
   return (

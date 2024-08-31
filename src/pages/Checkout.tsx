@@ -5,16 +5,17 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
+import Cart from "../components/Cart";
+import { useContext } from "react";
+import { Context } from "../App";
 
 export default function Checkout() {
+  const { setCartshow } = useContext(Context);
   const inputsData: SubmitHandler<TcheckoutTypes> = (data) => {
     data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
   };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit } = methods;
   return (
     <FormProvider {...methods}>
       <Parent>

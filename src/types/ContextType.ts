@@ -51,6 +51,4 @@ export interface TcontextType {
   setTockenChecker: React.Dispatch<React.SetStateAction<boolean>>;
   quantity: number;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
-  cartItemsState: TCartType;
-  setCartItemsState: React.Dispatch<React.SetStateAction<TCartType>>;
 }

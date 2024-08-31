@@ -7,7 +7,7 @@ export default function Burger() {
   const { category, setTockenChecker, tokenChecker } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
-    const tokenChecker = async () => {
+    const tokenCheckerr = async () => {
       let token = localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token);
@@ -23,7 +23,8 @@ export default function Burger() {
         }
       }
     };
-    tokenChecker();
+    tokenCheckerr();
+    console.log("burger useefect");
   }, []);
 
   return (
