@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import floverVideoBg from "/image/loginBg.jpg";
 import pin from "/image/pin.png"
-import { useContext, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { Context } from "../../App";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -20,8 +20,13 @@ export default function MyAddress()
         note: ""
     })
     const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(schemaAddress)})
-    const foo = ((data)=>{
+    const foo = ((data: any)=>{
+        
+        console.log({errors})
         console.log(data)
+        // console.log({eroors})
+        setIsAddressList(!isAddressList); setList(true)
+
     }) 
 
     const addUserAddress = (event: any)=>{
@@ -32,6 +37,7 @@ export default function MyAddress()
             [name]: value
         })
     }
+
     
     return(
     <>
@@ -77,6 +83,12 @@ export default function MyAddress()
                     type="text"
                     {...register ("city")}
                     />
+                {errors.city ? (
+                    <ErrorMessage>
+                        {errors?.city?.message as ReactNode}
+                    </ErrorMessage>
+                ) : null}
+                
                 </InputCont>
 
                 <InputCont>
@@ -85,15 +97,25 @@ export default function MyAddress()
                     type="text" 
                     {...register ("street")}
                     />
+                    {errors.street ? (
+                    <ErrorMessage>
+                        {errors?.street?.message as ReactNode}
+                    </ErrorMessage>
+                    ) : null }
                     </InputCont>
 
                     <InputCont>
                 <input
                     placeholder="Add House Number"
-                    type="text"
+                    type="number"
                     {...register ("houseNumber")}
                     />
-                    </InputCont>..
+                    {errors.houseNumber ? (
+                        <ErrorMessage>
+                            {errors?.houseNumber?.message as ReactNode}
+                        </ErrorMessage>
+                    ) : null}
+                    </InputCont>
 
                    
                 <input
@@ -103,16 +125,12 @@ export default function MyAddress()
                     value = {address.note}
                     type="text" 
                     onChange={addUserAddress} />
-            
 
-            <div className="saveClear">
-                <button
-                    className="save"
-                    onClick={() => { setIsAddressList(!isAddressList); setList(true)} }
-                    >save</button>
-                <button className="clear" onClick = {()=> setIsAddressList(!isAddressList)}>back</button>
-            </div>
+                <div className="saveBack">
+                    <button type="submit" className="save" >save</button>
+                </div>
             </form>
+            <button className="back" onClick = {()=> setIsAddressList(!isAddressList)}>back</button>
         </AddAddress>
         </>
         ) : null }
@@ -129,6 +147,17 @@ export default function MyAddress()
 const InputCont = styled.div`
     width: 100%;
     position: relative;
+    input{
+        width: 100%;
+    }
+`
+const ErrorMessage = styled.span`
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    text-align: right;
+    position: absolute;
+    margin: 10px -102%;
 `
 
 const TitleIconBack = styled.div<{isMyProfile?: boolean}>`
@@ -189,17 +218,16 @@ const AddressList = styled.div`
     }
     img{
         width: 120px;
-        height: 150px;
+        height: 140px;
     }
     
 `
 const AddAddress = styled.div`
     width: 100%;
     height: 70vh;
-    padding: 20px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 2%;
     background-color: #f5f5f7;
     @media (min-width: 768px){
         width: 50%;
@@ -210,7 +238,7 @@ const AddAddress = styled.div`
         width: 100%;
         height: 150px;
         @media (min-width: 768px){
-            height: 200px;
+            height: 150px;
         }
     }
     .add{
@@ -220,15 +248,8 @@ const AddAddress = styled.div`
         input{
             padding: 10px; 
         }
-     
     }
-    .saveClear{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 10px;
-        }
- 
+    
     .save{
         padding: 10px;
         width: 30%;
@@ -237,13 +258,19 @@ const AddAddress = styled.div`
         cursor: pointer;
         background-color: black;
         color: #f5f5f7;
+        margin-top: 18px;
         }
         
-        .clear{
-            padding: 10px;
-            width: 30%;
-            box-shadow: 0 0 2px 2px #BBBB;
-            font-size: 14px;
-            cursor: pointer;
+    .back{
+        padding: 10px;
+        width: 30%;
+        box-shadow: 0 0 2px 2px #BBBB;
+        font-size: 14px;
+        cursor: pointer;
+        margin: -39px 70%;  
+        
+        @media (min-width: 768px){
+            margin: -75px 70%;
         }
+    }
 `
