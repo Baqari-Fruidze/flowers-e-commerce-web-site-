@@ -9,10 +9,9 @@ import Wedding from "../components/forHome/Wedding";
 import OurClientSey from "../components/forHome/OurClientSay";
 import floverVideoBg from "/image/loginBg.jpg";
 import { Context } from "../App";
-import { style } from "@splidejs/splide/src/js/utils";
 
 export default function AllCategory() {
-  const { users, setUsers, isMyProfile } = useContext(Context);
+  const {setUsers, isMyProfile } = useContext(Context);
   useEffect(() => {
     const tokenCheckerr = async () => {
       let token: string | { access: string; refresh: string } | null =

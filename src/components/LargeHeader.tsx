@@ -56,25 +56,21 @@ export default function LargeHeader() {
         <input type="text" placeholder="what are you loocking for ?" />
       </InputCon>
       <SignInCon>
-        {!tokenChecker ? (
-          <AnimDiv>
-            <p className="anim" onClick={() => navigate("/login")}>
-              Sign In
-            </p>
-          </AnimDiv>
-        ) : users.is_superuser === true ? (
-          <AnimDiv>
-            <p className="anim">go to admin</p>
-          </AnimDiv>
-        ) : (
-          <AnimDiv
-            onClick={() => {
-              setIsMyProfile(true);
-            }}
-          >
-            <p className="anim">profile</p>
-          </AnimDiv>
-        )}
+        
+            {!tokenChecker ? (
+              <AnimDiv><p className="anim" onClick={() => navigate("/login")}>
+                Sign In
+              </p></AnimDiv>
+            ) : users.is_superuser === true ? (
+              <AnimDiv 
+              onClick={() => { navigate("/admin-panel")}}          
+              ><p className="anim">go to admin</p></AnimDiv>
+            ) : (
+              <AnimDiv onClick={() => {
+                setIsMyProfile(true);
+              }}
+              ><p className="anim">profile</p></AnimDiv>
+            )}
       </SignInCon>
       <CartCon>
         <svg

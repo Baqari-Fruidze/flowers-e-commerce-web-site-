@@ -7,24 +7,24 @@ import { Context } from "../../App";
 export default function MyOrder(){
     
     const { users, setUsers, isMyProfile, setIsMyProfile, isAcount, setIsAcount} = useContext(Context);
-    const [showOrder, setShowOrder] = useState(false)
-        const [order, setOrder] = useState([{
-            "RecipientsName": "",
+    const [showOrder, setShowOrder] = useState<boolean>(false)
+        const [order, setOrder] = useState<order[]>([{
+              "RecipientsName": "",
               "Recipients_Phone_number": "",
               "DataofDelivery": "",
               "Delivery_Time": "",
               "city": "",
               "street": "",
               "houseNumber": "",
-              "total": 256,
+              "total": 0,
               "items": [
                 {
                   "product": {
                     "image": "",
-                    "name": "Blue Harmony",
-                    "price": 55,
-                    "category": "fresh",
-                    "description": "The bohemian spirit and undeniable beauty of Blue Harmony are hard to resist. Hints of blue, coupled with ivory and lavender, make it a harmonious choice that is both calming and balancing. It’s the obvious choice for adding some soft sweetness and tranquility to your space."
+                    "name": "",
+                    "price": 0,
+                    "category": "",
+                    "description": ""
                 
                   },
                   "quantity": 0
@@ -43,26 +43,31 @@ export default function MyOrder(){
             { method: "GET",
                 headers: {Authorization: `Bearer ${token.access}`}}
           );
-          const data = await response.json();
-          setOrder(data);
+        //   if (response.ok) {
+            const data = await response.json();
+            setOrder(data);
+        //   }
+          
+          console.log(order)
         }
         fetchSubscriptions();
       },[]);
-
       console.log(order)
-      console.log(isAcount)
+
+    //   console.log(order)
+    //   console.log(isAcount)
     return(
 <>
 {isAcount ? (<Parent>
     <MainCont>
          
         <Orders>
-        {order.map((item, index) => (
+        {order.map((item, index: number) => (
             <Order key = {index}>
                 <OrderNumber>
                     <p
                     onClick={(() => {setShowOrder (showOrder !== index ? order.indexOf(item) : null) })}
-                    >Order Number N</p>
+                    >Order Number N {index+1}</p>
                 </OrderNumber>
                 <OrderCont
                 style={showOrder !== index
@@ -98,18 +103,18 @@ export default function MyOrder(){
                         <p>price</p>
                     </Title>
 
-                    {order[0].items.map((prod, index) =>(
+                    {item.items.map((prod, index) =>(
                     <>
                         <Product>
                             <p>{index+1}</p>
-                            <p>{prod.product.image}</p>
+                            <img src={prod.product.image} />
                             <p>{prod.product.category}</p>
                             <p>{prod.product.name}</p>
                             <p>{prod.product.description}</p>
                             <p>{prod.quantity}</p>
                             <p>{prod.product.price}</p>
                         </Product>
-                        <p className="total">Total:  <span>{prod.product.price} EUR</span></p>
+                        <p className="total">Total:  <span>{item.total} EUR</span></p>
                     </>
                     ))}
                 </Products>
@@ -214,9 +219,6 @@ export default function MyOrder(){
         margin-top: 10px;
         background-color: #c7cdc7;
         padding: 5px;
-        /* flex-direction: row; */
-        /* justify-content: space-around; */
-        /* gap: 10px; */
     `
     const Product = styled.div`
         display: grid;

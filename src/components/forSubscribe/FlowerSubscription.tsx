@@ -1,9 +1,17 @@
-import React from "react";
 import styled from "styled-components";
+import ScrollToFix from "../../units/ScrollToFix";
 
 export default function FlowerSubsc() {
+    //scroll down
+    const handleClick = () => {
+        window.scrollTo({ top: 1600, left: 0, behavior: 'smooth' });
+      };
+
+    //scroll down
+    
     return(
         <>
+        <ScrollToFix />
         <FlowerSubscriptionDiv>
             <img src={"https://uploads-ssl.webflow.com/6400d82951450021c2d1eb7b/6436a36c9d977d7032eb51ee_happiness-image-placeholder_lx1a04.webp"} alt="" />
             <FlowerSubscription>
@@ -15,7 +23,7 @@ export default function FlowerSubsc() {
                 <p className="title">For Business</p>
                 <li>Is a great way to create a pleasant atmosphere and leave a good impression on your guests and customers. Fresh floral arrangements will improve the aesthetic image of your business, and our service guarantees timely replacement without extra care or effort on your part.</li>
 
-                <button>EXPLORE PLANS</button>
+                <button onClick={handleClick}>EXPLORE PLANS</button>
             </FlowerSubscription>
         </FlowerSubscriptionDiv>
       

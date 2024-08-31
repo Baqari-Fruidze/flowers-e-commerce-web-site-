@@ -2,79 +2,84 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
 
-export default function Categories() {
-  const { categories, setCategories } = useContext(Context);
-  const [addCategory, setAddCategory] = useState({
-    id: 0,
-    name: "",
-    image: "",
-  });
 
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
-      const data = await response.json();
-      setCategories(data);
-    }
-    fetchCategories();
-    console.log("for admin categoriies");
-  }, []);
-  console.log(addCategory);
+export default function Categories(){
+    const {categories, setCategories} = useContext(Context);
+    const [addCategory, setAddCategory] = useState({
+        id: 0,
+        name: "",
+        image: ""
+    })
 
-  const addCateg = (event: any) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    setAddCategory({
-      ...addCategory,
-      [name]: value,
-    });
-  };
+    useEffect(() => {
+        async function fetchCategories() {
+          const response = await fetch("http://134.122.71.97:8000/api/category");
+          const data = await response.json();
+          setCategories(data);
+        }
+        fetchCategories();
+      },[]);
+      console.log(addCategory)
+    
+      const addCateg = (event: any) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setAddCategory({
+          ...addCategory,
+          [name]: value,
+        });
+      };
+      console.log(addCategory)
 
-  const handleFileChange = (e: any) => {
-    const file = e.target.files[0];
-    setAddCategory({
-      ...addCategory,
-      image: file,
-    });
-  };
+      const handleFileChange = (e: any) => {
+        const file = e.target.files[0];
+        setAddCategory({
+            ...addCategory,
+            image: file
+        });
+    };
+    console.log(addCategory)
 
-  async function addNewCategory(event: any) {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", addCategory.name);
-    formData.append("image", addCategory.image);
 
-    let token = localStorage.getItem("token");
-    if (token) {
-      token = JSON.parse(token);
-    }
-    const response = await fetch("http://134.122.71.97:8000/api/category", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token.access}`,
-      },
-      body: formData,
-    });
-    const newCategory = await response.json();
-    setCategories([...categories, newCategory]);
-    setAddCategory({ id: 0, name: "", image: "" });
-    console.log("addnewcategori in for admin");
-  }
 
-  async function deleteCategory(categoryId: any) {
-    const responce = await fetch(
-      `http://134.122.71.97:8000/api/category/${categoryId}`,
-      {
-        method: "DELETE",
-      }
-    );
-  }
-  return (
-    <>
-      <MainCategories>
-        <h2>List of Categories</h2>
-        <div className="titleContainer">
-          <div className="descr">
+      async function addNewCategory(event: any) {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('name', addCategory.name);
+        formData.append('image', addCategory.image);
+
+        let token=localStorage.getItem("token")
+        if (token) {
+            token = JSON.parse(token)
+        }
+        const response = await fetch (
+          "http://134.122.71.97:8000/api/category",
+        {method: "POST",
+         headers: {
+          Authorization: `Bearer ${token.access}`
+         },
+         body: formData,
+        });
+         const newCategory = await response.json();
+          setCategories([...categories, newCategory]);  
+          console.log(newCategory)
+          setAddCategory({ id: 0, name: "", image: ""});
+          console.log(addCategory)
+        }
+    
+        async function deleteCategory(categoriesId: any){
+            const responce = await fetch(`http://134.122.71.97:8000/api/faq/${categoriesId}`, {
+                method: "DELETE", 
+                },)
+            }
+         
+    return(
+<>       
+<MainCategories>
+<h2>List of Categories</h2>
+<div className="titleContainer">
+        <div className="descr">
+
             <p className="CatName">Picture</p>
             <p className="CatName">names</p>
           </div>
@@ -118,6 +123,7 @@ export default function Categories() {
     </>
   );
 }
+
 
 const MainCategories = styled.div`
   background-color: #eaf07740;

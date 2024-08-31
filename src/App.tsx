@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { createContext, useState} from "react";
 import { TcontextType } from "./types/ContextType";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -10,7 +10,6 @@ import SingleCategory from "./pages/SingleCategory";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import { useLocation } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import SingleProduct from "./pages/SingleProduct";
 import Subscribe from "./pages/Subscribe";
@@ -31,6 +30,8 @@ import MyAddress from "./components/MyProlile/MyAddress";
 import MyLikes from "./components/MyProlile/MyLikes";
 import MyOrder from "./components/MyProlile/MyOrder";
 import MySetting from "./components/MyProlile/MySetting";
+import ScrollToTop from "./units/SqrollToTop";
+
 export const Context = createContext<TcontextType>({
   burgerToShow: false,
   setBurgerToShow: () => {},
@@ -164,6 +165,7 @@ export const Context = createContext<TcontextType>({
   setCartItemsState: () => {},
 });
 
+
 function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [isAcount, setIsAcount] = useState(false);
@@ -291,7 +293,7 @@ function App() {
       <LargeHeader />
     );
   };
-
+   
   return (
     <Context.Provider
       value={{
@@ -341,6 +343,7 @@ function App() {
     >
       <BrowserRouter>
         <HeaderChanger />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />

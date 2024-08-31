@@ -21,8 +21,7 @@ export default function SelectingAPlan() {
     }
     fetchSubscriptions();
   }, []);
-  console.log(subscriptions);
-
+ 
   const deliveryFrequency = [
     {
       frequency: "MONTHLY",
@@ -34,6 +33,10 @@ export default function SelectingAPlan() {
       frequency: "WEEKLY",
     },
   ];
+
+  const handleClick = () => {
+    window.scrollTo({ top: 800, left: 0, behavior: 'smooth' });
+  }; 
 
   return (
     <>

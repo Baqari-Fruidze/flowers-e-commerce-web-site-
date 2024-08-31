@@ -3,10 +3,14 @@ import floverVideoBg from "/image/loginBg.jpg";
 import pin from "/image/pin.png"
 import { useContext, useState } from "react";
 import { Context } from "../../App";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaAddress } from "../../Scema/address";
+
 
 export default function MyAddress()
 {
-    const { isMyProfile, setIsMyProfile, isAcount, setIsAcount} = useContext(Context)
+    const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context)
     const [isAddressList, setIsAddressList] = useState(false)
     const [list, setList] = useState(false)
     const [address, setAddress] = useState({
@@ -15,6 +19,10 @@ export default function MyAddress()
         houseNumber: "",
         note: ""
     })
+    const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(schemaAddress)})
+    const foo = ((data)=>{
+        console.log(data)
+    }) 
 
     const addUserAddress = (event: any)=>{
         event.preventDefault()
@@ -59,25 +67,35 @@ export default function MyAddress()
     {isAddressList ? (
         <>
         <AddAddress>
-            <div className="add">
+            <form 
+            onSubmit={handleSubmit(foo)}
+            className="add">
+                <InputCont>
                 <input
+
                     placeholder="Add City"
-                    name= "city"
-                    value = {address.city}
                     type="text"
-                    onChange={addUserAddress} />
+                    {...register ("city")}
+                    />
+                </InputCont>
+
+                <InputCont>
                 <input
                     placeholder="Add Street"
-                    name= "street"
-                    value = {address.street}
                     type="text" 
-                    onChange={addUserAddress} />
+                    {...register ("street")}
+                    />
+                    </InputCont>
+
+                    <InputCont>
                 <input
                     placeholder="Add House Number"
-                    name= "houseNumber"
-                    value = {address.houseNumber}
                     type="text"
-                    onChange={addUserAddress} />
+                    {...register ("houseNumber")}
+                    />
+                    </InputCont>..
+
+                   
                 <input
                     placeholder="note for courier"
                     className="note"
@@ -85,7 +103,7 @@ export default function MyAddress()
                     value = {address.note}
                     type="text" 
                     onChange={addUserAddress} />
-            </div>
+            
 
             <div className="saveClear">
                 <button
@@ -94,6 +112,7 @@ export default function MyAddress()
                     >save</button>
                 <button className="clear" onClick = {()=> setIsAddressList(!isAddressList)}>back</button>
             </div>
+            </form>
         </AddAddress>
         </>
         ) : null }
@@ -106,6 +125,11 @@ export default function MyAddress()
     )
 
 }
+
+const InputCont = styled.div`
+    width: 100%;
+    position: relative;
+`
 
 const TitleIconBack = styled.div<{isMyProfile?: boolean}>`
     display: flex;
@@ -183,6 +207,7 @@ const AddAddress = styled.div`
         gap: 10%;
     }
     .note{
+        width: 100%;
         height: 150px;
         @media (min-width: 768px){
             height: 200px;
