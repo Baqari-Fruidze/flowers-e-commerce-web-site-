@@ -54,7 +54,7 @@ export default function Login() {
               <UsernameErorSpan>{errors.username?.message}</UsernameErorSpan>
             ) : null}
             <PasswordInput
-              type="text"
+              type="password"
               placeholder="password"
               {...register("password")}
               eror={errors.password?.message}

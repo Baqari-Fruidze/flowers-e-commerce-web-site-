@@ -10,6 +10,11 @@ export default function Header() {
   const { cartshow, setCartshow } = useContext(Context);
   const [burgerToShow, setBurgerToShow] = useState(false);
   const navigate = useNavigate();
+  let data: string | null = localStorage.getItem("cart");
+  if (data) {
+    data = JSON.parse(data);
+  }
+  const length = data?.items.length;
 
   return (
     <>
@@ -50,6 +55,7 @@ export default function Header() {
               fill="#121212"
             />
           </svg>
+          <AmountSpan> ({length}x)</AmountSpan>
         </CartCon>
         {burgerToShow ? <Burger /> : null}
         {cartshow ? <Cart /> : null}
@@ -57,6 +63,12 @@ export default function Header() {
     </>
   );
 }
+
+const AmountSpan = styled.span`
+  font-size: 15px;
+  font-weight: 400;
+  color: #121212;
+`;
 const Parent = styled.div`
   z-index: 89;
   position: relative;
