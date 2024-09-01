@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Context } from "../../App";
 
 export default function MyProfilePop() {
-  const { setIsMyProfile, setIsAcount } = useContext(Context);
+  const { setIsMyProfile, setIsAcount, setUsers } = useContext(Context);
   const navigate = useNavigate();
   return (
     <>
@@ -158,6 +158,18 @@ export default function MyProfilePop() {
             onClick={() => {
               setIsMyProfile(false);
               navigate("/");
+              setUsers({
+                id: 0,
+                review: "",
+                username: "",
+                email: "",
+                last_name: "",
+                first_name: "",
+                password: "",
+                profilePicture: "",
+                phoneNumber: "",
+                is_superuser: false,
+              });
               localStorage.clear();
             }}
           >

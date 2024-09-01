@@ -57,9 +57,10 @@ export default function Products() {
       image: file,
     });
   };
-  let token = localStorage.getItem("token");
+  let token: string | { access: string; refresh: string } | null =
+    localStorage.getItem("token");
   if (token) {
-    token = JSON.parse(token);
+    token = JSON.parse(token as string);
   }
   async function addNewProduct(event: any) {
     event.preventDefault();
@@ -70,15 +71,13 @@ export default function Products() {
     formData.append("image", addProduct.image);
     formData.append("inStock", addProduct.inStock.toString());
     formData.append("description", addProduct.description);
-    let token = localStorage.getItem("token");
-    if (token) {
-      token = JSON.parse(token);
-    }
 
     const responce = await fetch("http://134.122.71.97:8000/api/product", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token.access}`,
+        Authorization: `Bearer ${
+          (token as { access: string; refresh: string }).access
+        }`,
       },
       body: formData,
     });
@@ -95,13 +94,15 @@ export default function Products() {
     });
   }
 
-  async function deleteProduct(productId: any) {
+  async function deleteProduct(productId: number) {
     const responce = await fetch(
       `http://134.122.71.97:8000/api/product/${productId}`,
       {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token.access}`,
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
         },
       }
     );

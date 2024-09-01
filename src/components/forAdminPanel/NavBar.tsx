@@ -8,9 +8,9 @@ export default function Navbar() {
   const { adminProducts, setAdminProducts } = useContext(Context);
   const { adminUsers, setAdminUsers } = useContext(Context);
   const { adminSubscriptions, setAdminSubscriptions } = useContext(Context);
-  const { adminFaq, setAdminFaq } = useContext(Context);
+  const { adminFaq, setAdminFaq, setUsers } = useContext(Context);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
@@ -73,8 +73,20 @@ export default function Navbar() {
           </ul>
           <ul
             onClick={() => {
-              localStorage.clear()
-              navigate("/")
+              localStorage.clear();
+              setUsers({
+                id: 0,
+                review: "",
+                username: "",
+                email: "",
+                last_name: "",
+                first_name: "",
+                password: "",
+                profilePicture: "",
+                phoneNumber: "",
+                is_superuser: false,
+              });
+              navigate("/");
             }}
           >
             Log Out
