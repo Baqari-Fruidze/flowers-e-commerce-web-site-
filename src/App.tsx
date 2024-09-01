@@ -39,6 +39,8 @@ export const Context = createContext<TcontextType>({
   setAdminSubscriptions: () => {},
   adminFaq: false,
   setAdminFaq: () => {},
+  adminReview: false,
+  setAdminReview: () => {},
   subscribe: false,
   setSubscribe: () => {},
   cartshow: false,
@@ -97,6 +99,7 @@ function App() {
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
+  const [adminReview, setAdminReview] = useState(false)
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [cartshow, setCartshow] = useState(false);
@@ -114,6 +117,7 @@ function App() {
       answer: "",
     },
   ]);
+ 
   const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
     {
       id: 1,
@@ -180,6 +184,8 @@ function App() {
         setCartshow,
         adminFaq,
         setAdminFaq,
+        adminReview,
+        setAdminReview,
         categories,
         setCategories,
         faqs,
