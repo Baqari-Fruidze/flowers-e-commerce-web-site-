@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { adminCategories, setAdminCategories } = useContext(Context);
@@ -9,6 +9,7 @@ export default function Navbar() {
   const { adminUsers, setAdminUsers } = useContext(Context);
   const { adminSubscriptions, setAdminSubscriptions } = useContext(Context);
   const { adminFaq, setAdminFaq, setUsers } = useContext(Context);
+  const { adminReview, setAdminReview } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ export default function Navbar() {
               setAdminUsers(false);
               setAdminSubscriptions(false);
               setAdminFaq(false);
+              setAdminReview(false);
             }}
           >
             Categories
@@ -34,6 +36,7 @@ export default function Navbar() {
               setAdminUsers(false);
               setAdminSubscriptions(false);
               setAdminFaq(false);
+              setAdminReview(false);
             }}
           >
             Products
@@ -45,6 +48,7 @@ export default function Navbar() {
               setAdminProducts(false);
               setAdminSubscriptions(false);
               setAdminFaq(false);
+              setAdminReview(false);
             }}
           >
             Users
@@ -56,6 +60,7 @@ export default function Navbar() {
               setAdminProducts(false);
               setAdminUsers(false);
               setAdminFaq(false);
+              setAdminReview(false);
             }}
           >
             Subscriptions
@@ -67,9 +72,22 @@ export default function Navbar() {
               setAdminProducts(false);
               setAdminUsers(false);
               setAdminSubscriptions(false);
+              setAdminReview(false);
             }}
           >
             FAQ
+          </ul>
+          <ul
+            onClick={() => {
+              setAdminReview(adminReview == false ? true : false);
+              setAdminProducts(false);
+              setAdminUsers(false);
+              setAdminSubscriptions(false);
+              setAdminFaq(false);
+              setAdminCategories(false);
+            }}
+          >
+            Reviews
           </ul>
           <ul
             onClick={() => {

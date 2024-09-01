@@ -9,14 +9,12 @@ import Users from "../components/forAdminPanel/Users";
 import Categories from "../components/forAdminPanel/Categories";
 import Subscriptions from "../components/forAdminPanel/Subsciptions";
 import FAQ from "../components/forAdminPanel/FAQ";
+import Reviews from "../components/forAdminPanel/Reviews";
 
 
 export default function AdminPanel() {
-    const {adminCategories} = useContext(Context);
-    const {adminProducts} = useContext(Context);
-    const {adminUsers} = useContext(Context);
-    const {adminSubscriptions} = useContext(Context);
-    const {adminFaq} = useContext(Context);
+    const {adminCategories, adminProducts, adminUsers, adminSubscriptions, adminFaq, adminReview} = useContext(Context);
+   
     
     return(
         <>
@@ -28,6 +26,7 @@ export default function AdminPanel() {
             {adminUsers ?  <Users /> : null}
             {adminSubscriptions ?  <Subscriptions /> : null}
             {adminFaq ?  <FAQ /> : null}
+            {adminReview ?  <Reviews /> : null}
         </MainCont>
         
         </>

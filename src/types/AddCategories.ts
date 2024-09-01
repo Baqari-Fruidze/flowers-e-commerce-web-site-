@@ -9,6 +9,8 @@ export interface TFaqs {
   question: string;
   answer: string;
 }
+
+
 export interface Tsubscriptions {
   id: number;
   image: string;

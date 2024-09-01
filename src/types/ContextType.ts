@@ -2,6 +2,8 @@ import { Tcategories } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
 import { TFaqs } from "./AddCategories";
+import { TReviews } from "./AddCategories"; 
+
 
 export interface TcontextType {
   isAcount: boolean;
@@ -18,6 +20,8 @@ export interface TcontextType {
   setAdminSubscriptions: React.Dispatch<React.SetStateAction<boolean>>;
   adminFaq: boolean;
   setAdminFaq: React.Dispatch<React.SetStateAction<boolean>>;
+  adminReview: boolean;
+  setAdminReview: React.Dispatch<React.SetStateAction<boolean>>;
   subscribe: boolean;
   setSubscribe: React.Dispatch<React.SetStateAction<boolean>>;
   setCartshow: React.Dispatch<React.SetStateAction<boolean>>;
