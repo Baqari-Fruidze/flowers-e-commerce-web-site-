@@ -37,11 +37,18 @@ export default function Cart() {
         },
       });
       if (res.ok) {
-        setCartItemsState({
-          ...cartItemsState,
-          items: cartItemsState.items.filter((item) => item.id !== id),
+        setCartItemsState((prev) => {
+          const updatedState = {
+            ...prev,
+            items: prev.items.filter((item) => item.id !== id),
+          };
+          localStorage.setItem("cart", JSON.stringify(updatedState));
+          return updatedState;
         });
-        localStorage.setItem("cart", JSON.stringify(cartItemsState));
+      } else if (res.status === 401) {
+        clear();
+      } else {
+        throw alert("something went wrong");
       }
     }
   }
@@ -73,7 +80,7 @@ export default function Cart() {
             setCartItemsState(data);
             localStorage.setItem("cart", JSON.stringify(data));
           } else {
-            localStorage.clear();
+            clear();
           }
         } else {
           setCartItemsState(JSON.parse(cart));
@@ -84,12 +91,42 @@ export default function Cart() {
     }
   }, []);
 
+  async function deleteAllInCart() {
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+      const res = await fetch("http://134.122.71.97:8000/api/cart", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+      });
+      if (res.ok) {
+        setCartItemsState((prev) => {
+          const updatedState = {
+            ...prev,
+            items: [],
+          };
+          localStorage.setItem("cart", JSON.stringify(updatedState));
+          return updatedState;
+        });
+      } else {
+        navigate("/login");
+      }
+    }
+  }
+
   return (
     <Cover>
       <Parent>
         <TextCon>
           <CartSpan>Cart</CartSpan>
-          <RemoveAllSpan>Remove All</RemoveAllSpan>
+          <RemoveAllSpan onClick={() => deleteAllInCart}>
+            Remove All
+          </RemoveAllSpan>
         </TextCon>
         <CartItemsConParent>
           {cartItemsState.items.map((item, index) => {
@@ -114,7 +151,11 @@ export default function Cart() {
         </TotalCon>
         <Btn
           onClick={() => {
-            navigate("/checkout");
+            if (cartItemsState.items.length === 0) {
+              throw alert("empty cart");
+            } else {
+              navigate("/checkout");
+            }
           }}
         >
           Check Out

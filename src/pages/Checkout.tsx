@@ -18,43 +18,116 @@ export default function Checkout() {
   };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
   const { handleSubmit } = methods;
+  const count = data?.items.reduce(
+    (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
+    0
+  );
   return (
     <FormProvider {...methods}>
       <Parent>
-        <Hone>CHECKOUT</Hone>
-        <form onSubmit={handleSubmit(inputsData)}>
-          <BillingDetails />
-          <ShipingInfo />
-          <Btn> Continue And Pay</Btn>
-        </form>
-        <div>
-          {data?.items.map((item: CartItem) => {
-            return (
-              <Test>
-                <Honee>{item.product.name}</Honee>
-                {<p>{item?.id}</p>}
-                <p style={{ fontSize: "22px" }}>{item?.product.name}</p>
-                <p style={{ color: "#fff" }}>{item.product.description}</p>
-                <p style={{ color: "#fff" }}>teeeeeeeeeeeeeeeeeeeest</p>
-                <p>{item.quantity}</p>
-              </Test>
-            );
-          })}
-        </div>
+        <CheckOutCon>
+          <Hone>CHECKOUT</Hone>
+          <form onSubmit={handleSubmit(inputsData)}>
+            <BillingDetails />
+            <ShipingInfo />
+            <Btn> Continue And Pay</Btn>
+          </form>
+        </CheckOutCon>
+        <Cover>
+          <CartCon>
+            {data?.items.map((item: CartItem) => {
+              return (
+                <SingleItemCon>
+                  <Image src={item.product.image} alt="" />
+                  <Honee>{item.product.name}</Honee>
+                  {
+                    <Para>
+                      <Span>{item.product.category.name} </Span>
+                    </Para>
+                  }
+                  <Para>
+                    Quantity <Span>{item.quantity} x</Span>
+                  </Para>
+                  <Para>$ {item.product.price}</Para>
+                </SingleItemCon>
+              );
+            })}
+          </CartCon>
+          <Con>
+            <TotalSpan>Total</TotalSpan>
+            <MoneyAmoint>{count}$</MoneyAmoint>
+          </Con>
+        </Cover>
       </Parent>
     </FormProvider>
   );
 }
-
-const Honee = styled.h1`
-  color: #fff;
-  font-size: 25px;
-`;
-const Test = styled.div`
+const Con = styled.div`
+  padding: 2.4rem;
   display: flex;
   justify-content: space-between;
-  background-color: black;
-  height: 2rem;
+`;
+const MoneyAmoint = styled.span`
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.5;
+`;
+const TotalSpan = styled.span`
+  font-size: 20px;
+  font-weight: 600;
+`;
+const Cover = styled.div`
+  border-radius: 8px;
+  background-color: #fff;
+  width: 100%;
+  @media (min-width: 1200px) {
+    width: 40%;
+  }
+`;
+const Span = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.5;
+`;
+const Para = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
+`;
+const Image = styled.img`
+  width: 6rem;
+  height: 6rem;
+`;
+const CartCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background-color: #fff;
+  padding: 2.4rem;
+  border-radius: 8px;
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+`;
+const CheckOutCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+`;
+const Honee = styled.h1`
+  color: #121212;
+  font-size: 18px;
+  font-weight: 600;
+  @media (min-width: 1200px) {
+    font-weight: 500;
+  }
+`;
+const SingleItemCon = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 const Btn = styled.button`
   letter-spacing: 1px;
@@ -80,5 +153,8 @@ const Parent = styled.div`
   flex-direction: column;
   gap: 2.4rem;
   @media (min-width: 768px) {
+  }
+  @media (min-width: 1200px) {
+    flex-direction: row;
   }
 `;

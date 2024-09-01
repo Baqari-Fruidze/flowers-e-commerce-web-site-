@@ -7,6 +7,11 @@ import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
 
 export default function LargeHeader() {
+  let data: string | null = localStorage.getItem("cart");
+  if (data) {
+    data = JSON.parse(data);
+  }
+  const length = data?.items.length;
   const {
     cartshow,
     setCartshow,
@@ -91,13 +96,18 @@ export default function LargeHeader() {
               fill="#121212"
             />
           </svg>
+          <AmountSpan> ({length}x)</AmountSpan>
         </CartCon>
         {cartshow ? <Cart /> : null}
       </Parent>
     </>
   );
 }
-
+const AmountSpan = styled.span`
+  font-size: 18px;
+  font-weight: 400;
+  color: #121212;
+`;
 const Parent = styled.div`
   position: relative;
   display: grid;
