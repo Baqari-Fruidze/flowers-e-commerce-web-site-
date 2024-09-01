@@ -13,11 +13,24 @@ export default function Checkout() {
     data = JSON.parse(data);
   }
 
-  const inputsData: SubmitHandler<TcheckoutTypes> = (data) => {
+  const inputsData: SubmitHandler<TcheckoutTypes> = async (data) => {
     data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
+    if (!errors) {
+      const res = await fetch("http://134.122.71.97:8000/api/order/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data}`,
+        },
+        body: JSON.stringify(data),
+      });
+    }
   };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
-  const { handleSubmit } = methods;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
   const count = data?.items.reduce(
     (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
     0
