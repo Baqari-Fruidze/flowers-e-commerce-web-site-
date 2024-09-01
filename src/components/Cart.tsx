@@ -1,10 +1,50 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { TCartType } from "../types/CartType";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../App";
 
 export default function Cart() {
+  const { setUsers } = useContext(Context);
+  function clear() {
+    setUsers({
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+    });
+    localStorage.clear();
+    navigate("/login");
+  }
+  let token: string | { access: string; refresh: string } | null =
+    localStorage.getItem("token");
   const navigate = useNavigate();
+  async function deleteCartItem(id: number) {
+    if (token) {
+      token = JSON.parse(token as string);
+      const res = await fetch(`http://134.122.71.97:8000/api/cart-item/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+      });
+      if (res.ok) {
+        setCartItemsState({
+          ...cartItemsState,
+          items: cartItemsState.items.filter((item) => item.id !== id),
+        });
+        localStorage.setItem("cart", JSON.stringify(cartItemsState));
+      }
+    }
+  }
 
   const [cartItemsState, setCartItemsState] = useState<TCartType>({
     id: 1,
@@ -15,7 +55,6 @@ export default function Cart() {
   useEffect(() => {
     let token: string | { access: string; refresh: string } | null =
       localStorage.getItem("token");
-
     if (token) {
       token = JSON.parse(token as string);
       const cartrequest = async () => {
@@ -61,6 +100,9 @@ export default function Cart() {
                 <ItemsPriceSpan>
                   ${item.product.price}
                   <ItemQuantitySpan> ({item.quantity} x)</ItemQuantitySpan>
+                </ItemsPriceSpan>
+                <ItemsPriceSpan onClick={() => deleteCartItem(item.id)}>
+                  Remove
                 </ItemsPriceSpan>
               </CartItemsCon>
             );

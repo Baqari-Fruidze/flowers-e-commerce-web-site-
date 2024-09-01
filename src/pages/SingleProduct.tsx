@@ -55,7 +55,7 @@ export default function SingleProduct() {
   //     }
   //   }
   // }
-
+  console.log(singlePorudctState);
   return (
     <Parent>
       <SingleProductCon>

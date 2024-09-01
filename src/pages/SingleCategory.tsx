@@ -53,15 +53,18 @@ export default function SingleCategory() {
               <ImageCon
                 backImg={item.image}
                 onClick={() => navigate(`/${item.category.name}/${item.id}`)}
-              ></ImageCon>
-              <TextCon>
-                <ItemNameSpan
-                  onClick={() => navigate(`/${item.category.name}/${item.id}`)}
-                >
-                  {item.name}
-                </ItemNameSpan>
-                <PriceSpan> price ${item.price}</PriceSpan>
-              </TextCon>
+              >
+                <TextCon>
+                  <ItemNameSpan
+                    onClick={() =>
+                      navigate(`/${item.category.name}/${item.id}`)
+                    }
+                  >
+                    {item.name}
+                  </ItemNameSpan>
+                  <PriceSpan> price ${item.price}</PriceSpan>
+                </TextCon>
+              </ImageCon>
             </ProductsCon>
           );
         })}
@@ -73,7 +76,6 @@ const GridedCon = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   overflow-y: auto;
-  
   &::-webkit-scrollbar {
     display: none;
   }
@@ -105,12 +107,17 @@ const PriceSpan = styled.span`
   line-height: 120%;
 `;
 const TextCon = styled.div`
+  right: 37%;
+  bottom: 5rem;
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  height: 2rem;
+  width: 13rem;
 `;
 const ImageCon = styled.div<{ backImg: string }>`
-  height: 33rem;
+  height: 48rem;
   background-image: url(${(props) => props.backImg});
   background-repeat: no-repeat;
   background-position: center;
@@ -120,10 +127,10 @@ const ImageCon = styled.div<{ backImg: string }>`
 `;
 
 const ProductsCon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  padding-bottom: 2rem;
   border-bottom: 1px solid #121212;
 
   @media (min-width: 768px) {
