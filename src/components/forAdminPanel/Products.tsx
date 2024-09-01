@@ -34,7 +34,6 @@ export default function Products() {
     }
     fetchCategory();
   }, []);
-
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch("http://134.122.71.97:8000/api/product");
@@ -43,7 +42,7 @@ export default function Products() {
     }
     fetchProducts();
   }, []);
-
+  console.log(products)
   const addProducts = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -52,8 +51,6 @@ export default function Products() {
       [name]: value,
     });
   };
-
-  console.log(addProduct);
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
     setAddProduct({
@@ -61,52 +58,14 @@ export default function Products() {
       image: file,
     });
   };
-
         let token=localStorage.getItem("token")
         if (token) {
             token = JSON.parse(token)
         }
-        
-        const responce = await fetch (
-          "http://134.122.71.97:8000/api/product",
-        {method: "POST",
-          headers: {
-          Authorization: `Bearer ${token.access}`
-         },
-         body: formData,
-        });
-         const newProduct = await responce.json();
-         console.log(newProduct)
-          setProducts([...products, newProduct]);
-          setAddProduct({ 
-            id: 0,
-            name: "",
-            price: 0,
-            category_id: "",
-            description: "",
-            inStock: 0,
-            image: "",
-                });
-      }
-
-      async function deleteProduct(productId: any){
-        const responce = await fetch(`http://134.122.71.97:8000/api/product/${productId}`, {
-            method: "DELETE", 
-            headers: {
-              Authorization: `Bearer ${token.access}`
-             },
-            },)
-        }
-
 
   async function addNewProduct(event: any) {
     event.preventDefault();
-    const { name, value } = event.target;
-    setAddProduct({
-      ...addProduct,
-      [name]: value,
-    });
-    console.log(addProduct);
+   
     const formData = new FormData();
     formData.append("name", addProduct.name);
     formData.append("price", addProduct.price.toString());
@@ -114,6 +73,7 @@ export default function Products() {
     formData.append("image", addProduct.image);
     formData.append("inStock", addProduct.inStock.toString());
     formData.append("description", addProduct.description);
+    
 
     let token = localStorage.getItem("token");
     if (token) {
@@ -128,7 +88,6 @@ export default function Products() {
       body: formData,
     });
     const newProduct = await responce.json();
-    console.log(newProduct);
     setProducts([...products, newProduct]);
     setAddProduct({
       id: 0,
@@ -140,36 +99,31 @@ export default function Products() {
       image: "",
     });
   }
-  // console.log(categoryName)
-  console.log(addProduct);
-  console.log(products);
 
+  async function deleteProduct(productId: any){
+    const responce = await fetch(`http://134.122.71.97:8000/api/product/${productId}`, {
+        method: "DELETE", 
+        headers: {
+          Authorization: `Bearer ${token.access}`
+         },
+        },)
+    }
+console.log(addProduct)
   return (
     <>
       <MainCategories>
         <h2>List of Products</h2>
         <div className="titleContainer">
           <div className="descr">
-            <p style={{ width: "45px" }} className="productName">
-              {" "}
-              Picture
-            </p>
-            <p style={{ width: "50px" }} className="productName">
-              Name
-            </p>
-            <p style={{ width: "50px" }} className="productName">
-              Category
-            </p>
-            <p style={{ width: "260px" }} className="productName">
-              Description
-            </p>
-            <p style={{ width: "20px" }} className="productName">
-              Price
-            </p>
+            <p style={{ width: "45px" }} className="productName"> Picture </p>
+            <p style={{ width: "50px" }} className="productName"> Name </p>
+            <p style={{ width: "50px" }} className="productName"> Category </p>
+            <p style={{ width: "260px" }} className="productName"> Description </p>
+            <p style={{ width: "20px" }} className="productName"> Price </p>
             <p className="productName">InStock</p>
           </div>
         </div>
-        <div className="listproduct">
+        <div className="listProduct">
           {products?.map((item, index) => (
             <div className="container" key={index}>
               <div className="descr">
@@ -189,80 +143,69 @@ export default function Products() {
                 <p className="productName">{item.inStock}</p>
               </div>
               <div className="editDelete">
-                <button onClick={() => {}}>Delete</button>
+                <button onClick={(()=>deleteProduct(item.id))}>Delete</button>
               </div>
             </div>
           ))}
         </div>
-        <div className="editDelete">
-            <button
-            onClick={deleteProduct}
-            >Delete</button>
-        </div>      
-      </div>
-     ))}
-  </div>
   <form 
   className="addContainer">
     <h2>Add Product</h2>
     <div className="field">
-        <input 
-        placeholder="Add Product's Name"
-        className="inputProduct" 
-        type="text" 
-        name="name"
-        value={addProduct.name}
-        onChange={addProducts}
-        />
-    <select 
-    name="category_id"
-    className="inputProduct"
-    onChange={addProducts}
-    >
-        {categories?.map((item, index)=>(
-            <option 
-            key={index} 
-            value={item.id}
 
-            >
-              {categories?.map((item, index) => (
-                <option key={index} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-            <input
-              placeholder="Add Product's Description"
-              className="inputProduct"
-              type="text"
-              name="description"
-              value={addProduct.description}
-              onChange={addProducts}
-            />
-            <input
-              placeholder="Add Product's Price"
-              className="inputProduct"
-              type="text"
-              name="price"
-              value={addProduct.price}
-              onChange={addProducts}
-            />
-            <input
-              placeholder="Add Productr's QTY InStock"
-              className="inputProduct"
-              type="text"
-              name="inStock"
-              value={addProduct.inStock}
-              onChange={addProducts}
-            />
-            <input
-              className="chooseFile"
-              type="file"
-              onChange={handleFileChange}
-            />
+              <input 
+                placeholder="Add Product's Name"
+                className="inputProduct" 
+                type="text" 
+                name="name"
+                value={addProduct.name}
+                onChange={addProducts} />
+
+              <select 
+                name="category_id"
+                className="inputProduct"
+                onChange={addProducts} >
+                  <option value={""}>
+                      {""}
+                    </option>
+    {categories?.map((item, index)=>(
+                    <option key={index} value={item.id}>
+                      {item.name}
+                    </option>
+                      ))}
+                </select>
+            
+              <input
+                placeholder="Add Product's Description"
+                className="inputProduct"
+                type="text"
+                name="description"
+                value={addProduct.description}
+                onChange={addProducts} />
+              <input
+                placeholder="Add Product's Price"
+                className="inputProduct"
+                type="text"
+                name="price"
+                value={addProduct.price}
+                onChange={addProducts} />
+              <input
+                placeholder="Add Productr's QTY InStock"
+                className="inputProduct"
+                type="text"
+                name="inStock"
+                value={addProduct.inStock}
+                onChange={addProducts} />
+              <input
+                className="chooseFile"
+                type="file"
+                onChange={handleFileChange} />
           </div>
-          <button type="submit" onClick={addNewProduct} className="addBt">
-            Add
+          <button 
+            type="submit" 
+            onClick={addNewProduct} 
+              className="addBt"
+              >Add
           </button>
         </form>
       </MainCategories>
@@ -275,17 +218,20 @@ const MainCategories = styled.div`
   padding: 20px 0 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   font-size: 20px;
 
   .listProduct {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 28vh;
-    overflow-y: scroll;
+    height: 30vh;
+    /* overflow-y: scroll; */
+    overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
   }
-
+  }
   .container,
   .editDelete {
     display: flex;
@@ -361,4 +307,7 @@ const MainCategories = styled.div`
   .inputProduct {
     padding: 5px 15px;
   }
-`;
+`
+
+
+

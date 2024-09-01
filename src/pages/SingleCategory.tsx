@@ -73,6 +73,9 @@ const GridedCon = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   height: 100vh;
   @media (min-width: 768px) {
     display: grid;

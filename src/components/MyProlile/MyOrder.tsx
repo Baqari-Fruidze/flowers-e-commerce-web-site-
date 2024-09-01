@@ -2,12 +2,14 @@ import styled from "styled-components";
 import floverVideoBg from "/image/loginBg.jpg";
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../../App";
-import { Order } from "../../types/Order";
+// import { Order } from "../../types/Order";
 
 export default function MyOrder() {
   const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context);
   const [showOrder, setShowOrder] = useState<boolean | null | number>(false);
-  const [order, setOrder] = useState<Order[]>([
+  const [order, setOrder] = useState
+  // <Order[]>
+  ([
     {
       recipientsName: "",
       recipientsPhoneNumber: "",
