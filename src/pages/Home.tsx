@@ -11,12 +11,12 @@ import floverVideoBg from "/image/loginBg.jpg";
 import { Context } from "../App";
 
 export default function AllCategory() {
-  const {setUsers, isMyProfile } = useContext(Context);
+  const { setUsers, isMyProfile, users } = useContext(Context);
   useEffect(() => {
     const tokenCheckerr = async () => {
       let token: string | { access: string; refresh: string } | null =
         localStorage.getItem("token");
-      if (token) {
+      if (users.id === 0 && token) {
         token = JSON.parse(token as string);
         const res = await fetch("http://134.122.71.97:8000/auth/users", {
           method: "GET",
@@ -26,8 +26,12 @@ export default function AllCategory() {
             }`,
           },
         });
-        const usersInfo = await res.json();
-        setUsers(usersInfo);
+        if (res.ok) {
+          const usersInfo = await res.json();
+          setUsers(usersInfo);
+        } else if (res.status === 401) {
+          localStorage.clear();
+        }
       }
     };
     tokenCheckerr();

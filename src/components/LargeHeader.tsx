@@ -18,26 +18,12 @@ export default function LargeHeader() {
   } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
-    const tokenCheckerr = async () => {
-      let token: string | { access: string; refresh: string } | null =
-        localStorage.getItem("token");
-      if (token) {
-        token = JSON.parse(token as string);
-        const res = await fetch("http://134.122.71.97:8000/auth/users", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer  ${
-              (token as { access: string; refresh: string }).access
-            }`,
-          },
-        });
-        if (res.ok) {
-          setTockenChecker(true);
-        }
-      }
-    };
-    tokenCheckerr();
+    const token = localStorage.getItem("token");
+    if (token) {
+      setTockenChecker(true);
+    } else {
+      setTockenChecker(false);
+    }
   }, []);
 
   return (

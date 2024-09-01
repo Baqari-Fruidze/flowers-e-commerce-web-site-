@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
 import { Tproducts } from "../../types/AddCategories";
-
 export default function Products() {
   const { categories, setCategories } = useContext(Context);
   const [products, setProducts] = useState<Tproducts[]>([
@@ -42,7 +41,7 @@ export default function Products() {
     }
     fetchProducts();
   }, []);
-  console.log(products)
+
   const addProducts = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -58,13 +57,13 @@ export default function Products() {
       image: file,
     });
   };
-        let token=localStorage.getItem("token")
-        if (token) {
-            token = JSON.parse(token)
-        }
+  let token: string | { access: string; refresh: string } | null =
+    localStorage.getItem("token");
+  if (token) {
+    token = JSON.parse(token as string);
+  }
   async function addNewProduct(event: any) {
     event.preventDefault();
-   
     const formData = new FormData();
     formData.append("name", addProduct.name);
     formData.append("price", addProduct.price.toString());
@@ -72,17 +71,13 @@ export default function Products() {
     formData.append("image", addProduct.image);
     formData.append("inStock", addProduct.inStock.toString());
     formData.append("description", addProduct.description);
-    
-
-    let token = localStorage.getItem("token");
-    if (token) {
-      token = JSON.parse(token);
-    }
 
     const responce = await fetch("http://134.122.71.97:8000/api/product", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token.access}`,
+        Authorization: `Bearer ${
+          (token as { access: string; refresh: string }).access
+        }`,
       },
       body: formData,
     });
@@ -99,26 +94,45 @@ export default function Products() {
     });
   }
 
-  async function deleteProduct(productId: any){
-    const responce = await fetch(`http://134.122.71.97:8000/api/product/${productId}`, {
-        method: "DELETE", 
+  async function deleteProduct(productId: number) {
+    const responce = await fetch(
+      `http://134.122.71.97:8000/api/product/${productId}`,
+      {
+        method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token.access}`
-         },
-        },)
-    }
-console.log(addProduct)
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+      }
+    );
+  }
   return (
     <>
       <MainCategories>
         <h2>List of Products</h2>
         <div className="titleContainer">
           <div className="descr">
-            <p style={{ width: "45px" }} className="productName"> Picture </p>
-            <p style={{ width: "50px" }} className="productName"> Name </p>
-            <p style={{ width: "50px" }} className="productName"> Category </p>
-            <p style={{ width: "260px" }} className="productName"> Description </p>
-            <p style={{ width: "20px" }} className="productName"> Price </p>
+            <p style={{ width: "45px" }} className="productName">
+              {" "}
+              Picture{" "}
+            </p>
+            <p style={{ width: "50px" }} className="productName">
+              {" "}
+              Name{" "}
+            </p>
+            <p style={{ width: "50px" }} className="productName">
+              {" "}
+              Category{" "}
+            </p>
+            <p style={{ width: "260px" }} className="productName">
+              {" "}
+              Description{" "}
+            </p>
+            <p style={{ width: "20px" }} className="productName">
+              {" "}
+              Price{" "}
+            </p>
             <p className="productName">InStock</p>
           </div>
         </div>
@@ -142,69 +156,68 @@ console.log(addProduct)
                 <p className="productName">{item.inStock}</p>
               </div>
               <div className="editDelete">
-                <button onClick={(()=>deleteProduct(item.id))}>Delete</button>
+                <button onClick={() => deleteProduct(item.id)}>Delete</button>
               </div>
             </div>
           ))}
         </div>
-  <form 
-  className="addContainer">
-    <h2>Add Product</h2>
-    <div className="field">
+        <form className="addContainer">
+          <h2>Add Product</h2>
+          <div className="field">
+            <input
+              placeholder="Add Product's Name"
+              className="inputProduct"
+              type="text"
+              name="name"
+              value={addProduct.name}
+              onChange={addProducts}
+            />
 
-              <input 
-                placeholder="Add Product's Name"
-                className="inputProduct" 
-                type="text" 
-                name="name"
-                value={addProduct.name}
-                onChange={addProducts} />
+            <select
+              name="category_id"
+              className="inputProduct"
+              onChange={addProducts}
+            >
+              <option value={""}>{""}</option>
+              {categories?.map((item, index) => (
+                <option key={index} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
 
-              <select 
-                name="category_id"
-                className="inputProduct"
-                onChange={addProducts} >
-                  <option value={""}>
-                      {""}
-                    </option>
-    {categories?.map((item, index)=>(
-                    <option key={index} value={item.id}>
-                      {item.name}
-                    </option>
-                      ))}
-                </select>
-            
-              <input
-                placeholder="Add Product's Description"
-                className="inputProduct"
-                type="text"
-                name="description"
-                value={addProduct.description}
-                onChange={addProducts} />
-              <input
-                placeholder="Add Product's Price"
-                className="inputProduct"
-                type="text"
-                name="price"
-                value={addProduct.price}
-                onChange={addProducts} />
-              <input
-                placeholder="Add Productr's QTY InStock"
-                className="inputProduct"
-                type="text"
-                name="inStock"
-                value={addProduct.inStock}
-                onChange={addProducts} />
-              <input
-                className="chooseFile"
-                type="file"
-                onChange={handleFileChange} />
+            <input
+              placeholder="Add Product's Description"
+              className="inputProduct"
+              type="text"
+              name="description"
+              value={addProduct.description}
+              onChange={addProducts}
+            />
+            <input
+              placeholder="Add Product's Price"
+              className="inputProduct"
+              type="text"
+              name="price"
+              value={addProduct.price}
+              onChange={addProducts}
+            />
+            <input
+              placeholder="Add Productr's QTY InStock"
+              className="inputProduct"
+              type="text"
+              name="inStock"
+              value={addProduct.inStock}
+              onChange={addProducts}
+            />
+            <input
+              className="chooseFile"
+              type="file"
+              onChange={handleFileChange}
+            />
           </div>
-          <button 
-            type="submit" 
-            onClick={addNewProduct} 
-              className="addBt"
-              >Add
+          <button type="submit" onClick={addNewProduct} className="addBt">
+            Add
           </button>
         </form>
       </MainCategories>
@@ -228,9 +241,9 @@ const MainCategories = styled.div`
     height: 30vh;
     /* overflow-y: scroll; */
     overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .container,
   .editDelete {
@@ -307,7 +320,4 @@ const MainCategories = styled.div`
   .inputProduct {
     padding: 5px 15px;
   }
-`
-
-
-
+`;
