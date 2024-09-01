@@ -220,6 +220,7 @@ const MainCategories = styled.div`
   flex-direction: column;
   gap: 20px;
   font-size: 20px;
+  height: 90vh;
 
   .listProduct {
     display: flex;

@@ -73,6 +73,7 @@ const GridedCon = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   overflow-y: auto;
+  
   &::-webkit-scrollbar {
     display: none;
   }
@@ -115,6 +116,7 @@ const ImageCon = styled.div<{ backImg: string }>`
   background-position: center;
   background-size: cover;
   background-size: 100% 100%;
+  cursor: pointer;
 `;
 
 const ProductsCon = styled.div`
