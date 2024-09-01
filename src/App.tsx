@@ -27,6 +27,7 @@ import MyLikes from "./components/MyProlile/MyLikes";
 import MyOrder from "./components/MyProlile/MyOrder";
 import MySetting from "./components/MyProlile/MySetting";
 import ScrollToTop from "./units/SqrollToTop";
+import Search from "./pages/Search";
 
 export const Context = createContext<TcontextType>({
   adminCategories: false,
@@ -222,6 +223,7 @@ function App() {
           <Route path="/My-setting" element={<MySetting />} />
           <Route path="/My-likes" element={<MyLikes />} />
           <Route path="/My-order" element={<MyOrder />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
         <FooterChanger />
       </BrowserRouter>

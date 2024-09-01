@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const { cartshow, setCartshow } = useContext(Context);
+  const [valuee, setValuee] = useState("");
+  if (valuee.length > 0) {
+    localStorage.setItem("searchValue", valuee);
+  }
   const [burgerToShow, setBurgerToShow] = useState(false);
   const navigate = useNavigate();
   let data: string | null = localStorage.getItem("cart");
@@ -33,7 +37,15 @@ export default function Header() {
         </BurgerSvgCon>
 
         <InputCon>
-          <Input type="text" placeholder="what are you loocking for ?" />
+          <Input
+            type="text"
+            placeholder="what are you loocking for ?"
+            value={valuee}
+            onChange={(e) => {
+              e.preventDefault();
+              setValuee(e.target.value);
+            }}
+          />
         </InputCon>
         <CartCon>
           <svg

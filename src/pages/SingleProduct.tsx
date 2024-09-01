@@ -33,7 +33,7 @@ export default function SingleProduct() {
       setSingleProductState(data);
     }
     fetchSingleProduct(singleProduct);
-  }, []);
+  }, [singleProduct]);
 
   // async function getingCartItems() {
   //   let token = localStorage.getItem("token");
