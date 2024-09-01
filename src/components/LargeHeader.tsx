@@ -5,22 +5,8 @@ import searchIcon from "/assets/icon-search.svg";
 import Cart from "./Cart";
 import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
-import ScrollToFix from "../units/ScrollToFix";
-<<<<<<< HEAD
 
-
-
-
-
-export default function LargeHeader(
-  
-) {
-
- 
-
-=======
 export default function LargeHeader() {
->>>>>>> bb782f77a9c0c1660dd188132be36f32f9d609bd
   const {
     cartshow,
     setCartshow,
@@ -56,7 +42,6 @@ export default function LargeHeader() {
 
   return (
     <>
-      <ScrollToFix />
       <Parent>
         {isMyProfile ? <MyProfilePop /> : null}
         <HomeCon>

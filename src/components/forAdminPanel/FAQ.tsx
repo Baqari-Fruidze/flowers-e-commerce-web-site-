@@ -134,7 +134,10 @@ const MainFaq = styled.div`
     flex-direction: column;
     gap: 10px;
     height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   }
 
   .container,
