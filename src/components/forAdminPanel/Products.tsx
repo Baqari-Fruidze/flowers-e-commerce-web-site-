@@ -76,7 +76,6 @@ export default function Products() {
          body: formData,
         });
          const newProduct = await responce.json();
-         console.log(newProduct)
           setProducts([...products, newProduct]);
           setAddProduct({ 
             id: 0,
