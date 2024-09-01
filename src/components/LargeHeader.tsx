@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
@@ -7,6 +7,12 @@ import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
 
 export default function LargeHeader() {
+  const [value, setValue] = useState("");
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setValue(e.target.value);
+  };
+
   let data: string | null = localStorage.getItem("cart");
   if (data) {
     data = JSON.parse(data);
@@ -48,7 +54,18 @@ export default function LargeHeader() {
           </AnimDiv>
         </ContactCon>
         <InputCon>
-          <input type="text" placeholder="what are you loocking for ?" />
+          <input
+            type="text"
+            placeholder="what are you loocking for ?"
+            value={value}
+            onChange={inputHandler}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && value.length >= 3) {
+                localStorage.setItem("searchValue", JSON.stringify(value));
+                navigate("/search");
+              }
+            }}
+          />
         </InputCon>
         <SignInCon>
           {!tokenChecker ? (

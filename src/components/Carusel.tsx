@@ -1,9 +1,24 @@
-import data from "../data.json";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { Link } from "react-router-dom";
-
+import { Tproducts } from "../types/AddCategories";
+import { useEffect, useState } from "react";
 export default function Carusel() {
+  const [popItems, setPopItems] = useState<Tproducts[]>();
+  useEffect(() => {
+    const fetchPopular = async () => {
+      const response = await fetch(
+        "http://134.122.71.97:8000/api/popular-with"
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setPopItems(data);
+      }
+    };
+
+    fetchPopular();
+  }, []);
+
   return (
     <Parent>
       <Title>Excellent Combination with:</Title>
@@ -20,15 +35,15 @@ export default function Carusel() {
             intervall: 1000,
           }}
         >
-          {data.datas[7].carusel?.map((item, index) => {
+          {popItems?.map((item, index) => {
             return (
               <SplideSlide key={index}>
                 <SingleItemCon>
                   <Link
                     style={{ textDecorationLine: "none" }}
-                    to={`/${item.category.name}/${item.name}`}
+                    to={`/${item.category.name}/${item.id}`}
                   >
-                    <Image src={item.src} alt="" />
+                    <Image src={item.image} alt="" />
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <NameP>{item.name}</NameP>
                       <PriceP>${item.price}</PriceP>
