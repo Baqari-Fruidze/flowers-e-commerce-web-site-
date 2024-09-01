@@ -42,7 +42,7 @@ export default function Products() {
     }
     fetchProducts();
   }, []);
-  console.log(products)
+ 
   const addProducts = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -108,7 +108,9 @@ export default function Products() {
          },
         },)
     }
+    console.log(categories)
 console.log(addProduct)
+console.log(products)
   return (
     <>
       <MainCategories>

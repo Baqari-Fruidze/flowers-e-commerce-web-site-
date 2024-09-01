@@ -4,13 +4,20 @@ import { Context } from "../../App"
 
 export default function Users(){
     const {users, setUsers}=useContext(Context)
-
+    let token = localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+    }
       useEffect(() => {
         async function fetchUsers() {
-          const response = await fetch("http://134.122.71.97:8000/api/signup");
-          const data = await response.json();
-          setUsers(data);
-        }
+          const response = await fetch("http://134.122.71.97:8000/signup/signup");
+          
+            Authorization: `Bearer ${token.access}`
+           
+           setUsers(data);
+          }
+          
+        
         fetchUsers();
       },[]);
 
