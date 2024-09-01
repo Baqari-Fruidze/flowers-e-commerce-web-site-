@@ -1,17 +1,37 @@
 import styled from "styled-components";
 import floverVideoBg from "/image/loginBg.jpg";
 import pin from "/image/pin.png";
-import { ReactNode, useContext, useState } from "react";
+import { ReactNode, useContext, useState, useEffect } from "react";
 import { Context } from "../../App";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaAddress } from "../../Scema/address";
+import { useNavigate } from "react-router-dom";
 
 export default function MyAddress() {
+  const { setUsers } = useContext(Context);
+  function clear() {
+    setUsers({
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+    });
+    localStorage.clear();
+    navigate("/login");
+  }
   const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context);
   const [isAddressList, setIsAddressList] = useState(false);
   const [list, setList] = useState(false);
+  const navigate = useNavigate()
   const [address, setAddress] = useState({
+    id: 0,
     city: "",
     street: "",
     houseNumber: "",
@@ -23,19 +43,38 @@ export default function MyAddress() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schemaAddress) });
 
-  const foo = (data: any) => {
-    console.log({ errors });
-    setAddress(data);
-    FormData = {
-      ...data,
-      city: "",
-      street: "",
-      houseNumber: 0,
-      note: "",
-    };
+  const foo = async (data: any) => {
+    let token: string | { access: string; refresh: string } | null  = 
+    localStorage.getItem("token" as string)
+    
+    if (token) {
+      token = JSON.parse(token as string)
     setIsAddressList(!isAddressList);
     setList(true);
+    const responce = await fetch (
+      `http://134.122.71.97:8000/api/address/${address.id}`,
+    {method: "PUT",
+     headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${
+        (token as { access: string; refresh: string }).access
+      }`,
+     },
+     body: JSON.stringify(data),
+    });
+    console.log(responce)
+    if (responce.ok) {
+   
+      const newAddress = await responce.json();
+      setAddress(newAddress)
+    } else if (responce.status == 401) {
+      clear()
+    }
+    else {throw alert ("Ops, something went wrong")}
+
+  }
   };
+
 
     // const addUserAddress = (event: any)=>{
     //     event.preventDefault()
@@ -46,6 +85,37 @@ export default function MyAddress() {
     //     })
     // }
 
+    
+    useEffect(() => {
+      let token: string | { access: string; refresh: string } | null  = 
+    localStorage.getItem("token")
+      async function fetchAddress() {
+        if (token) {
+          token = JSON.parse(token as string)
+        
+        const response = await fetch("http://134.122.71.97:8000/api/address", 
+          {
+            headers : {
+              Authorization: `Bearer ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            }
+          }
+        );
+          if (response.ok){
+          const data = await response.json();
+        
+          setAddress(data);
+          setList(true)
+        } else if (response.status == 401) {
+          clear()
+          // throw alert ("Ops, something went wrong")
+        }
+      }
+      }
+      fetchAddress();
+    },[]);
+// console.log(address)
   return (
     <>
       {isAcount ? (
@@ -67,10 +137,10 @@ export default function MyAddress() {
               ) : (
                 <div className="userAddress">
                   <p>
-                    CITY: <span>{address.city}</span>
+                    CITY: {address.city}
                   </p>
                   <p>
-                    STREET: <span>{address.street}</span>
+                    STREET: {address.street}
                   </p>
                   <p>
                     N:<span>{address.houseNumber}</span>

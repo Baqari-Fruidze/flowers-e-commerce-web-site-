@@ -2,6 +2,7 @@ import styled from "styled-components";
 import floverVideoBg from "/image/loginBg.jpg";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../../App";
+import MyReview from "./MyReview";
 
 export default function MySetting() {
   const [changepass, setChangepass] = useState(true);
@@ -164,13 +165,43 @@ export default function MySetting() {
               </div>
             </TitleIconBack>
           </SettingCont>
+
+          {isreview ? (
+          <AddReview>
+            <p>You have no review</p>
+            <h2>Add Your Review</h2>
+            <input 
+            type="text"
+            className="addReview"
+             />
+          </AddReview>
+
+          ) : null}
         </Parent>
       ) : null}
     </>
   );
 }
 
+const AddReview = styled.div`
+width: 50%;
+height: 400px;
+position: absolute;
+background-color: beige;
+margin: 50px 25%;
+border-radius: 10px;
+box-shadow: 0 0 10px 10px #cbc9c9;
+.addReview{
+  width: 60%;
+  height: 200px;
+  margin: 100px 16%;
+  border: 8px;
+
+}
+`
+
 const Parent = styled.div`
+position: relative;
   display: flex;
   padding: 20px;
   @media (min-width: 768px) {

@@ -209,7 +209,7 @@ export default function MyProfilePop() {
         <TitleIconBack>
               <h2
                 onClick={() => {
-                  setIsMyProfile(true), setIsAcount(false);
+                  setIsMyProfile(false), setIsAcount(false);
                 }}
               >
                 back
