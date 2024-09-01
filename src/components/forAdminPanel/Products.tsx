@@ -62,7 +62,6 @@ export default function Products() {
         if (token) {
             token = JSON.parse(token)
         }
-
   async function addNewProduct(event: any) {
     event.preventDefault();
    

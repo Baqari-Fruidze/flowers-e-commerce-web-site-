@@ -11,7 +11,7 @@ interface OrderItem {
   quantity: number;
 }
 
-export interface Order {
+export interface TOrder {
   recipientsName: string;
   recipientsPhoneNumber: string;
   dateOfDelivery: string;
