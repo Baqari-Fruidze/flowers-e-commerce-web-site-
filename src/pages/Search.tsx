@@ -5,15 +5,15 @@ import { Tproducts } from "../types/AddCategories";
 export default function SingleCategory() {
   const navigate = useNavigate();
   const [check, setCheck] = useState(false);
+  let inputValue: string | null = localStorage.getItem("searchValue");
+  if (inputValue) {
+    inputValue = JSON.parse(inputValue);
+  }
 
   useEffect(() => {
-    let inputValue: string | null = localStorage.getItem("searchValue");
-    if (inputValue) {
-      inputValue = JSON.parse(inputValue);
-    }
     async function foo(id: string | null) {
       const res = await fetch(
-        `http://134.122.71.97:8000/api/product?search=${id}`
+        `http://134.122.71.97:8000/api/product?name=${id}`
       );
 
       if (res.ok) {
@@ -23,7 +23,7 @@ export default function SingleCategory() {
       }
     }
     foo(inputValue);
-  }, []);
+  }, [inputValue]);
   const [searched, setSearched] = useState<Tproducts[]>([
     {
       id: 0,
@@ -79,8 +79,9 @@ export default function SingleCategory() {
 }
 
 const LoadingCon = styled.div`
+  margin: 0 auto;
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border-top: 16px solid #121212; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -167,33 +168,6 @@ const ProductsCon = styled.div`
     /* height: fit-content; */
   }
 `;
-// const ImageCategoryNameSpan = styled.h1`
-//   font-weight: 600;
-//   font-size: 38px;
-//   letter-spacing: 1px;
-//   color: #fff;
-// `;
-// const BackGroundImageCon = styled.div<{ backImage: string | undefined }>`
-//   height: 40rem;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-image: url(${(props) => props.backImage});
-//   background-color: rgba(0, 0, 0, 0.3);
-//   background-blend-mode: multiply;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: cover;
-//   @media (min-width: 768px) {
-//     height: 56rem;
-//   }
-//   @media (min-width: 1440px) {
-//     width: 50%;
-//     /* height: 83.6rem; */
-//     height: 100vh;
-//   }
-// `;
 const Parent = styled.div`
   display: flex;
   flex-direction: column;
