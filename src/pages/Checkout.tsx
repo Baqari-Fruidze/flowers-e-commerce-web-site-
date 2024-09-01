@@ -6,24 +6,44 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
 import { CartItem } from "../types/CartType";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
+  const navigate = useNavigate();
   let data: string | null = localStorage.getItem("cart");
   if (data) {
     data = JSON.parse(data);
   }
-
-  const inputsData: SubmitHandler<TcheckoutTypes> = async (data) => {
-    data.recipientPhoneNumber = Number(data.recipientPhoneNumber);
-    if (!errors) {
-      const res = await fetch("http://134.122.71.97:8000/api/order/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data}`,
-        },
-        body: JSON.stringify(data),
-      });
+  const count = data?.items.reduce(
+    (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
+    0
+  );
+  const inputsData: SubmitHandler<TcheckoutTypes> = async (InputsData) => {
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token);
+      if (data) {
+        if (data?.items.length > 0) {
+          inputsData.items = data?.items;
+          inputsData.total = count;
+          const res = await fetch("http://134.122.71.97:8000/api/order", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            },
+            body: JSON.stringify(InputsData),
+          });
+          if (res.ok) {
+            localStorage.removeItem("cart");
+            navigate("/My-order");
+            console.log("succes");
+          }
+        }
+      }
     }
   };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
@@ -31,14 +51,12 @@ export default function Checkout() {
     handleSubmit,
     formState: { errors },
   } = methods;
-  const count = data?.items.reduce(
-    (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
-    0
-  );
+
   return (
     <FormProvider {...methods}>
       <Parent>
         <CheckOutCon>
+          <GoBack onClick={() => navigate("-1")}>Go Back</GoBack>
           <Hone>CHECKOUT</Hone>
           <form onSubmit={handleSubmit(inputsData)}>
             <BillingDetails />
@@ -48,9 +66,9 @@ export default function Checkout() {
         </CheckOutCon>
         <Cover>
           <CartCon>
-            {data?.items.map((item: CartItem) => {
+            {data?.items.map((item: CartItem, index: number) => {
               return (
-                <SingleItemCon>
+                <SingleItemCon key={index}>
                   <Image src={item.product.image} alt="" />
                   <Honee>{item.product.name}</Honee>
                   {
@@ -75,6 +93,12 @@ export default function Checkout() {
     </FormProvider>
   );
 }
+
+const GoBack = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.5;
+`;
 const Con = styled.div`
   padding: 2.4rem;
   display: flex;
