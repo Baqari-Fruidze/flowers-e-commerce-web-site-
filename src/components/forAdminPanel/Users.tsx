@@ -18,7 +18,6 @@ export default function Users() {
       is_superuser: false,
     },
   ]);
-
   useEffect(() => {
     async function fetchUsers() {
       let token: string | { access: string; refresh: string } | null =
@@ -43,7 +42,6 @@ export default function Users() {
     }
     fetchUsers();
   }, []);
-
   async function deleteUser(userId: number) {
     let token: string | { access: string; refresh: string } | null =
       localStorage.getItem("token");

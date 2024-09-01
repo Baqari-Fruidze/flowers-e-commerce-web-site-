@@ -153,7 +153,7 @@ export default function MyProfilePop() {
             </Link>
           </TitleIcon>
         </ProfileCont>
-        <TitleIconBack>
+        <TitleIconlogOut>
           <h2
             onClick={() => {
               setIsMyProfile(false);
@@ -204,6 +204,16 @@ export default function MyProfilePop() {
               stroke-linejoin="round"
             ></path>
           </svg>
+        </TitleIconlogOut>
+
+        <TitleIconBack>
+              <h2
+                onClick={() => {
+                  setIsMyProfile(true), setIsAcount(false);
+                }}
+              >
+                back
+              </h2>
         </TitleIconBack>
       </MainPop>
     </>
@@ -289,7 +299,7 @@ const TitleIcon = styled.div`
     font-weight: bold;
   }
 `;
-const TitleIconBack = styled.div`
+const TitleIconlogOut = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -308,3 +318,14 @@ const TitleIconBack = styled.div`
     text-shadow: 1px 2px #121212;
   }
 `;
+
+const TitleIconBack = styled.div`
+  font-size: 30px;
+  cursor: pointer;
+  margin: -6% 80%;
+  :hover {
+    color: #3ab561;
+    font-size: 32px;
+    text-shadow: 1px 2px #121212;
+  }
+`

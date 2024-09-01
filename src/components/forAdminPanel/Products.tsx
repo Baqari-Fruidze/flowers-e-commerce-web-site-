@@ -41,7 +41,6 @@ export default function Products() {
     }
     fetchProducts();
   }, []);
-
   const addProducts = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;
