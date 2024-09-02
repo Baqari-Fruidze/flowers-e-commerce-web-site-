@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
 
 export default function Cart() {
-  const { setUsers } = useContext(Context);
+  const { setUsers, setCartshow } = useContext(Context);
   function clear() {
     setUsers({
       id: 0,
@@ -158,6 +158,7 @@ export default function Cart() {
               throw alert("empty cart");
             } else {
               navigate("/checkout");
+              setCartshow(false);
             }
           }}
         >

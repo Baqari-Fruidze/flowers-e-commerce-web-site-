@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { Link } from "react-router-dom";
 import { Tproducts } from "../types/AddCategories";

@@ -77,8 +77,6 @@ export const Context = createContext<TcontextType>({
     is_superuser: false,
   },
   setUsers: () => {},
-  recoverUsername: "",
-  setRecoverUsername: () => {},
   tokenChecker: false,
   setTockenChecker: () => {},
   isMyProfile: false,
@@ -93,14 +91,13 @@ function App() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [isAcount, setIsAcount] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
-  const [recoverUsername, setRecoverUsername] = useState("");
   const [subscribe, setSubscribe] = useState(true);
   const [adminCategories, setAdminCategories] = useState(false);
   const [adminProducts, setAdminProducts] = useState(false);
   const [adminUsers, setAdminUsers] = useState(false);
   const [adminSubscriptions, setAdminSubscriptions] = useState(false);
   const [adminFaq, setAdminFaq] = useState(false);
-  const [adminReview, setAdminReview] = useState(false)
+  const [adminReview, setAdminReview] = useState(false);
   const [tokenChecker, setTockenChecker] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [cartshow, setCartshow] = useState(false);
@@ -118,7 +115,7 @@ function App() {
       answer: "",
     },
   ]);
- 
+
   const [subscriptions, setSubscriptions] = useState<Tsubscriptions[]>([
     {
       id: 1,
@@ -195,8 +192,6 @@ function App() {
         setSubscriptions,
         users,
         setUsers,
-        recoverUsername,
-        setRecoverUsername,
         tokenChecker,
         setTockenChecker,
         setQuantity,

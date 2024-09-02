@@ -31,8 +31,6 @@ export interface TcontextType {
   setSubscriptions: React.Dispatch<React.SetStateAction<Tsubscriptions[]>>;
   users: Tusers;
   setUsers: React.Dispatch<React.SetStateAction<Tusers>>;
-  setRecoverUsername: React.Dispatch<React.SetStateAction<string>>;
-  recoverUsername: string;
   tokenChecker: boolean;
   setTockenChecker: React.Dispatch<React.SetStateAction<boolean>>;
   quantity: number;
