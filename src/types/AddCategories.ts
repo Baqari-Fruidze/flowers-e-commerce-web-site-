@@ -10,7 +10,6 @@ export interface TFaqs {
   answer: string;
 }
 
-
 export interface Tsubscriptions {
   id: number;
   image: string;
@@ -54,22 +53,9 @@ export type Tusers = {
   profilePicture: string;
   phoneNumber: string;
   is_superuser: boolean;
-  // orders: {
-  //   RecipientsName: string;
-  //   Recipients_Phone_number: string;
-  //   DataofDelivery: string;
-  //   Delivery_Time: string;
-  //   street: string;
-  //   houseNumber: string;
-  //   total: number;
-  //   items: {
-  //     product: {
-  //       image: string;
-  //       name: string;
-  //       price: number;
-  //       category: string;
-  //       description: string;
-  //     };
-  //   }[];
-  // }[];
 };
+export interface TReviews {
+  id: 0;
+  user: "";
+  review: "";
+}

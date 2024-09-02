@@ -39,8 +39,7 @@ export default function SignUp() {
       navigate("/login");
     } else {
       const data = await res.json();
-
-      throw alert("ooops something went wrong");
+      throw alert(`${data}`);
     }
   }
   return (

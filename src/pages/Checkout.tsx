@@ -5,16 +5,19 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
-import { CartItem } from "../types/CartType";
+import { CartItem, TCartType } from "../types/CartType";
 import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  let data: string | null = localStorage.getItem("cart");
+
+  const data: string | null = localStorage.getItem("cart");
+  let cart: TCartType | null = null;
   if (data) {
-    data = JSON.parse(data);
+    cart = JSON.parse(data);
   }
-  const count = data?.items.reduce(
+
+  const count = cart?.items.reduce(
     (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
     0
   );
@@ -23,10 +26,13 @@ export default function Checkout() {
       localStorage.getItem("token");
     if (token) {
       token = JSON.parse(token);
-      if (data) {
-        if (data?.items.length > 0) {
-          inputsData.items = data?.items;
-          inputsData.total = count;
+      const orderItems = cart?.items.map((item: CartItem) => {
+        return { product_id: item.product.id, quantity: item.quantity };
+      });
+      if (cart) {
+        if (cart?.items.length > 0) {
+          InputsData.items = orderItems;
+          InputsData.total = count;
           const res = await fetch("http://134.122.71.97:8000/api/order", {
             method: "POST",
             headers: {
@@ -47,10 +53,7 @@ export default function Checkout() {
     }
   };
   const methods = useForm({ resolver: yupResolver(schemaCheckout) });
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit } = methods;
 
   return (
     <FormProvider {...methods}>
@@ -66,7 +69,7 @@ export default function Checkout() {
         </CheckOutCon>
         <Cover>
           <CartCon>
-            {data?.items.map((item: CartItem, index: number) => {
+            {cart?.items.map((item: CartItem, index: number) => {
               return (
                 <SingleItemCon key={index}>
                   <Image src={item.product.image} alt="" />

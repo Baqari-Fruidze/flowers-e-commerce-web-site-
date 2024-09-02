@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Context } from "../App";
 import Circle from "./Circle";
 import { useNavigate } from "react-router-dom";
+import { TCartType } from "../types/CartType";
 export default function PriceOptions({
   price,
   singleProduct,
@@ -35,9 +36,14 @@ export default function PriceOptions({
         clear();
       } else if (res.ok) {
         const item = await res.json();
-        let cart = localStorage.getItem("cart");
+        const cart = localStorage.getItem("cart");
         if (cart) {
-          cart = JSON.parse(cart);
+          const data: string | null = localStorage.getItem("cart");
+          let cart: TCartType | null = null;
+
+          if (data) {
+            cart = JSON.parse(data) as TCartType;
+          }
           cart?.items?.push(item);
           localStorage.setItem("cart", JSON.stringify(cart));
           console.log("Added");

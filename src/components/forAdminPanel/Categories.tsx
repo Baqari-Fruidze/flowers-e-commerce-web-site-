@@ -1,85 +1,100 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
+import { useNavigate } from "react-router-dom";
 
+export default function Categories() {
+  const { categories, setCategories } = useContext(Context);
+  const navigate = useNavigate();
+  const [addCategory, setAddCategory] = useState({
+    id: 0,
+    name: "",
+    image: "",
+  });
 
-export default function Categories(){
-    const {categories, setCategories} = useContext(Context);
-    const [addCategory, setAddCategory] = useState({
-        id: 0,
-        name: "",
-        image: ""
-    })
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const data = await response.json();
+      setCategories(data);
+    }
+    fetchCategories();
+  }, []);
 
-    useEffect(() => {
-        async function fetchCategories() {
-          const response = await fetch("http://134.122.71.97:8000/api/category");
-          const data = await response.json();
-          setCategories(data);
-        }
-        fetchCategories();
-      },[]);
-    
-      const addCateg = (event: any) => {
-        event.preventDefault();
-        const { name, value } = event.target;
-        setAddCategory({
-          ...addCategory,
-          [name]: value,
-        });
-      };
+  const addCateg = (event: any) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    setAddCategory({
+      ...addCategory,
+      [name]: value,
+    });
+  };
 
-      const handleFileChange = (e: any ) => {
-        const file = e.target.files[0];
-        setAddCategory({
-            ...addCategory,
-            image: file
-        });
-    };
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    setAddCategory({
+      ...addCategory,
+      image: file,
+    });
+  };
 
-    let token=localStorage.getItem("token")
-        if (token) {
-            token = JSON.parse(token)
-        }
+  let token: string | { access: string; refresh: string } | null =
+    localStorage.getItem("token");
+  if (token) {
+    token = JSON.parse(token as string);
+  }
 
-      async function addNewCategory(event: any) {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('name', addCategory.name);
-        formData.append('image', addCategory.image);
+  async function addNewCategory(event: any) {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("name", addCategory.name);
+    formData.append("image", addCategory.image);
 
-        
-        const response = await fetch (
-          "http://134.122.71.97:8000/api/category",
-        {method: "POST",
-         headers: {
-          Authorization: `Bearer ${token.access}`
-         },
-         body: formData,
-        });
-         const newCategory = await response.json();
-          setCategories([...categories, newCategory]);  
-          setAddCategory({ 
-            id: 0, name: "", image: ""
-          });
-        }
-    
-        async function deleteCategory(categoriesId: any){
-            const responce = await fetch(`http://134.122.71.97:8000/api/category/${categoriesId}`, {
-                method: "DELETE", 
-                headers: {
-                  Authorization: `Bearer ${token.access}`
-                 },
-                },)
-                console.log(`${categoriesId}`)
-            }
-    return(
-<>       
-<MainCategories>
-<h2>List of Categories</h2>
-<div className="titleContainer">
-        <div className="descr">
+    const response = await fetch("http://134.122.71.97:8000/api/category", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${
+          (token as { access: string; refresh: string }).access
+        }`,
+      },
+      body: formData,
+    });
+    const newCategory = await response.json();
+    setCategories([...categories, newCategory]);
+    setAddCategory({
+      id: 0,
+      name: "",
+      image: "",
+    });
+  }
 
+  async function deleteCategory(categoriesId: number) {
+    const responce = await fetch(
+      `http://134.122.71.97:8000/api/category/${categoriesId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+      }
+    );
+    if (responce.ok) {
+      setCategories(categories.filter((item) => item.id !== categoriesId));
+      throw alert("successfyly removed");
+    } else if (responce.status === 401) {
+      navigate("/login");
+    } else {
+      throw alert("something went wrong");
+    }
+  }
+  return (
+    <>
+      <MainCategories>
+        <h2>List of Categories</h2>
+        <div className="titleContainer">
+          <div className="descr">
             <p className="CatName">Picture</p>
             <p className="CatName">names</p>
           </div>
@@ -123,7 +138,6 @@ export default function Categories(){
   );
 }
 
-
 const MainCategories = styled.div`
   background-color: #eaf07740;
   padding: 20px 0 20px 24px;
@@ -138,9 +152,9 @@ const MainCategories = styled.div`
     gap: 10px;
     height: 50vh;
     overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .container,

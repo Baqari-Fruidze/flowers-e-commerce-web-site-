@@ -5,6 +5,7 @@ import searchIcon from "/assets/icon-search.svg";
 import Cart from "./Cart";
 import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
+import { TCartType } from "../types/CartType";
 
 export default function LargeHeader() {
   const [value, setValue] = useState("");
@@ -13,11 +14,14 @@ export default function LargeHeader() {
     setValue(e.target.value);
   };
 
-  let data: string | null = localStorage.getItem("cart");
+  const data: string | null = localStorage.getItem("cart");
+  let cart: TCartType | null = null;
+
   if (data) {
-    data = JSON.parse(data);
+    cart = JSON.parse(data) as TCartType;
   }
-  const length = data?.items.length;
+
+  const length = cart?.items.length;
   const {
     cartshow,
     setCartshow,

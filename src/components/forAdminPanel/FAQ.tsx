@@ -1,14 +1,15 @@
-
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 export default function FAQ() {
   const { faqs, setFaqs } = useContext(Context);
+  const navigate = useNavigate();
   const [addFaq, setAddFaq] = useState({
     question: "",
-    answer: ""
-  })
+    answer: "",
+  });
 
   useEffect(() => {
     async function fetchFaq() {
@@ -17,7 +18,7 @@ export default function FAQ() {
       setFaqs(data);
     }
     fetchFaq();
-  },[]);
+  }, []);
 
   const addFAQ = (event: any) => {
     event.preventDefault();
@@ -30,28 +31,31 @@ export default function FAQ() {
 
   async function addNewFaq(event: any) {
     event.preventDefault();
-    const responce = await fetch (
-      "http://134.122.71.97:8000/api/faq",
-    {method: "POST",
-     headers: {
-      "Content-Type": "application/json",
-     },
-     body: JSON.stringify(addFaq),
+    const responce = await fetch("http://134.122.71.97:8000/api/faq", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addFaq),
     });
-     const newFaq = await responce.json();
-     console.log(newFaq)
-      setFaqs([...faqs, newFaq]);  
-      setAddFaq({ question: "", answer: "" });
+    const newFaq = await responce.json();
+    setFaqs([...faqs, newFaq]);
+    setAddFaq({ question: "", answer: "" });
+  }
+
+  async function deleteFaq(faqId: any) {
+    const responce = await fetch(`http://134.122.71.97:8000/api/faq/${faqId}`, {
+      method: "DELETE",
+    });
+    if (responce.ok) {
+      setFaqs(faqs.filter((item) => item.id !== faqId));
+      throw alert("successfyly removed");
+    } else if (responce.status === 401) {
+      navigate("/login");
+    } else {
+      throw alert("something went wrong");
     }
-
-    async function deleteFaq(faqId: any){
-      const responce = await fetch(`http://134.122.71.97:8000/api/faq/${faqId}`, {
-          method: "DELETE", 
-          },)
-      }
-      
-      
-
+  }
 
   return (
     <>
@@ -79,11 +83,7 @@ export default function FAQ() {
                 </p>
               </div>
               <div className="editDelete">
-                <button
-                  onClick={()=>deleteFaq(item.id)}
-                >
-                  Delete
-                </button>
+                <button onClick={() => deleteFaq(item.id)}>Delete</button>
               </div>
             </div>
           ))}
@@ -108,11 +108,7 @@ export default function FAQ() {
               onChange={addFAQ}
             />
           </div>
-          <button 
-            type = "submit"
-            onClick={addNewFaq}  
-            className="addBt"
-            >
+          <button type="submit" onClick={addNewFaq} className="addBt">
             Add
           </button>
         </form>
@@ -135,9 +131,9 @@ const MainFaq = styled.div`
     gap: 10px;
     height: 50vh;
     overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .container,
