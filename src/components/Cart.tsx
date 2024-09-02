@@ -91,12 +91,12 @@ export default function Cart() {
     }
   }, []);
 
-  async function deleteAllInCart() {
+  async function deleteAllInCart(id: number) {
     let token: string | { access: string; refresh: string } | null =
       localStorage.getItem("token");
     if (token) {
       token = JSON.parse(token);
-      const res = await fetch("http://134.122.71.97:8000/api/cart", {
+      const res = await fetch(`http://134.122.71.97:8000/api/cart/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${
@@ -104,6 +104,7 @@ export default function Cart() {
           }`,
         },
       });
+      console.log(res);
       if (res.ok) {
         setCartItemsState((prev) => {
           const updatedState = {
@@ -113,8 +114,10 @@ export default function Cart() {
           localStorage.setItem("cart", JSON.stringify(updatedState));
           return updatedState;
         });
+      } else if (res.status === 401) {
+        clear();
       } else {
-        navigate("/login");
+        throw alert("oops something went wrong");
       }
     }
   }
@@ -124,7 +127,7 @@ export default function Cart() {
       <Parent>
         <TextCon>
           <CartSpan>Cart</CartSpan>
-          <RemoveAllSpan onClick={() => deleteAllInCart}>
+          <RemoveAllSpan onClick={() => deleteAllInCart(cartItemsState.id)}>
             Remove All
           </RemoveAllSpan>
         </TextCon>
