@@ -4,8 +4,6 @@ import { useEffect, useContext, useState } from "react";
 import { Context } from "../../App";
 import { TOrder } from "../../types/Order";
 
-
-
 export default function MyOrder() {
   const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context);
   const [showOrder, setShowOrder] = useState<boolean | null | number>(false);
@@ -25,7 +23,11 @@ export default function MyOrder() {
             image: "",
             name: "",
             price: 0,
-            category: "",
+            category: {
+              id: 0,
+              image: "",
+              name: "",
+            },
             description: "",
           },
           quantity: 0,
@@ -53,11 +55,11 @@ export default function MyOrder() {
           },
         }
       );
-      console.log(response)
-        if (response.ok) {
-      const data = await response.json();
-      setOrder(data);
-        }
+      console.log(response);
+      if (response.ok) {
+        const data = await response.json();
+        setOrder(data);
+      }
 
       console.log(order);
     }
@@ -116,21 +118,24 @@ export default function MyOrder() {
                       </Title>
 
                       {item.items.map((prod, indexx: number) => (
-                        <div  key={indexx}>
+                        <div key={indexx}>
                           <Product>
                             <p>{indexx + 1}</p>
-                            <img style ={{width: "30px", height: "30px"}} src={prod.product.image} alt={prod.product.name}/>
+                            <img
+                              style={{ width: "30px", height: "30px" }}
+                              src={prod.product.image}
+                              alt={prod.product.name}
+                            />
                             <p>{prod.product.category.name}</p>
                             <p>{prod.product.name}</p>
                             <p>{prod.quantity}</p>
                             <p>{prod.product.price}</p>
                           </Product>
-                          
                         </div>
                       ))}
                       <p className="total">
-                            Total: <span>{item.total} USD</span>
-                          </p>
+                        Total: <span>{item.total} USD</span>
+                      </p>
                     </Products>
                   </OrderCont>
                 </Order>
