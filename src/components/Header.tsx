@@ -9,9 +9,6 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const { cartshow, setCartshow } = useContext(Context);
   const [valuee, setValuee] = useState("");
-  if (valuee.length > 0) {
-    localStorage.setItem("searchValue", valuee);
-  }
   const [burgerToShow, setBurgerToShow] = useState(false);
   const navigate = useNavigate();
   let data: string | null = localStorage.getItem("cart");
@@ -44,6 +41,12 @@ export default function Header() {
             onChange={(e) => {
               e.preventDefault();
               setValuee(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && valuee.length >= 3) {
+                localStorage.setItem("searchValue", JSON.stringify(valuee));
+                navigate("/search");
+              }
             }}
           />
         </InputCon>

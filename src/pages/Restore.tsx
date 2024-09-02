@@ -7,10 +7,6 @@ export default function Restore() {
   const { recoverUsername, setRecoverUsername } = useContext(Context);
   const navigate = useNavigate();
 
-  //   const checkUser = async () => {
-  //     const res = await fetch("");
-  //   };
-
   return (
     <Parent>
       <InsideCon>
