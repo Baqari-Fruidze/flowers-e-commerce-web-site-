@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import searchIcon from "/assets/icon-search.svg";
@@ -9,7 +8,7 @@ export default function LargeHeader() {
       <HomeCon>
         <Link to={"/"}>
           <AnimDiv>
-              <p className="anim">Home</p>
+            <p className="anim">Home</p>
           </AnimDiv>
         </Link>
       </HomeCon>
@@ -18,8 +17,8 @@ export default function LargeHeader() {
       </InputCon>
       <SignInCon>
         <Link to={"login"}>
-        <AnimDiv>
-              <p className="anim">Sign In</p>
+          <AnimDiv>
+            <p className="anim">Sign In</p>
           </AnimDiv>
         </Link>
       </SignInCon>
@@ -119,4 +118,3 @@ const AnimDiv = styled.div`
   }
 `;
 //Animation end
-

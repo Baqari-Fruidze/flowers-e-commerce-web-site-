@@ -3,7 +3,22 @@ import styled from "styled-components";
 import { Context } from "../../App";
 import { Tproducts } from "../../types/AddCategories";
 export default function Products() {
-  const { categories, setCategories } = useContext(Context);
+  const { categories, setCategories, setUsers } = useContext(Context);
+  function clear() {
+    setUsers({
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+    });
+    localStorage.clear();
+  }
   const [products, setProducts] = useState<Tproducts[]>([
     {
       id: 0,
@@ -105,6 +120,13 @@ export default function Products() {
         },
       }
     );
+    if (responce.ok) {
+      setProducts(() => products.filter((item) => item.id !== productId));
+    } else if (responce.status === 401) {
+      clear();
+    } else {
+      throw alert("oops something went wrong");
+    }
   }
   return (
     <>

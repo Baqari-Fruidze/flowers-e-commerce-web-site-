@@ -1,43 +1,16 @@
 import styled from "styled-components";
 import floverVideoBg from "/image/loginBg.jpg";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { Context } from "../../App";
 import { useNavigate } from "react-router-dom";
 
-
 export default function MySetting() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [changepass, setChangepass] = useState(true);
   const [isReview, setIsReview] = useState(false);
-  const [addReview, setAddReview] = useState<string >(" ")
-
-  const [review, setReview] = useState<string>(" ")
-
-  const { setTockenChecker, users, setIsMyProfile, isAcount, setIsAcount, setUsers } =
+  const [addReview, setAddReview] = useState<string>(" ");
+  const { users, setIsMyProfile, isAcount, setIsAcount, setUsers } =
     useContext(Context);
-
-  useEffect(() => {
-    const tokenCheckerr = async () => {
-      let token: string | { access: string; refresh: string } | null =
-        localStorage.getItem("token");
-      if (token) {
-        token = JSON.parse(token as string);
-        const res = await fetch("http://134.122.71.97:8000/auth/users", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer  ${
-              (token as { access: string; refresh: string }).access
-            }`,
-          },
-        });
-        if (res.ok) {
-          setTockenChecker(true);
-        } else console.log("No");
-      }
-    };
-    tokenCheckerr();
-  }, []);
 
   function clear() {
     setUsers({
@@ -60,44 +33,38 @@ export default function MySetting() {
     event.preventDefault();
     setAddReview(event.target.value);
   };
-  console.log(addReview)
-
+  console.log(addReview);
 
   async function AddNewReview() {
     let token: string | { access: string; refresh: string } | null =
-        localStorage.getItem("token");
-      if (token) {
-        token = JSON.parse(token as string); 
+      localStorage.getItem("token");
+    if (token) {
+      token = JSON.parse(token as string);
 
-        
-        const responce = await fetch (
-          "http://134.122.71.97:8000/api/reviews",
+      const responce = await fetch(
+        "http://134.122.71.97:8000/api/reviews",
 
-        {method: "POST",
-         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            (token as { access: string; refresh: string }).access
-          }`,
-         },
-         body: JSON.stringify(addReview),
-        });
-        
-        if (responce.ok) {
-
-          setAddReview("")
-          setIsReview(false)
-          throw alert ("Your review sent")
-        } else if (responce.status == 401) {
-          clear()
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${
+              (token as { access: string; refresh: string }).access
+            }`,
+          },
+          body: JSON.stringify(addReview),
         }
-         
-      } 
-     
-      }
-  
-  
+      );
 
+      if (responce.ok) {
+        setAddReview("");
+        setIsReview(false);
+        throw alert("Your review sent");
+      } else if (responce.status == 401) {
+        clear();
+      }
+    }
+  }
 
   return (
     <>
@@ -231,19 +198,21 @@ export default function MySetting() {
           </SettingCont>
 
           {isReview ? (
-          <AddReview>
-            <h1 className="noReview" >Add Your Review</h1>
+            <AddReview>
+              <h1 className="noReview">Add Your Review</h1>
 
-            <textarea 
-            className="addReview" 
-            name="review" 
-            rows={4} 
-            cols={50}
-            value={addReview}
-            onChange={addReviews}
-            /> 
+              <textarea
+                className="addReview"
+                name="review"
+                rows={4}
+                cols={50}
+                value={addReview}
+                onChange={addReviews}
+              />
 
-            <h2 className="send" onClick={(() => AddNewReview() )} >send</h2> 
+              <h2 className="send" onClick={() => AddNewReview()}>
+                send
+              </h2>
             </AddReview>
           ) : null}
         </Parent>
@@ -253,39 +222,39 @@ export default function MySetting() {
 }
 
 const AddReview = styled.div`
-width: 50%;
-height: 400px;
-position: absolute;
-background-color: beige;
-margin: 50px 25%;
-border-radius: 10px;
-box-shadow: 0 0 10px 10px #cbc9c9;
-.addReview{
-  width: 60%;
-  height: 200px;
-  margin: 20px 21%;
-  border: 8px;
-  padding: 10px;
-}
+  width: 50%;
+  height: 400px;
+  position: absolute;
+  background-color: beige;
+  margin: 50px 25%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 10px #cbc9c9;
+  .addReview {
+    width: 60%;
+    height: 200px;
+    margin: 20px 21%;
+    border: 8px;
+    padding: 10px;
+  }
 
-.noReview{
-  text-align: center;
-  margin-top: 30px; 
-}
-.send{
-  font-size: 30px;
-  cursor: pointer;
-  margin-left: 80%;
-  &:hover {
-    color: #3ab561;
+  .noReview {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .send {
     font-size: 30px;
-    text-shadow: 1px 2px #121212;
+    cursor: pointer;
+    margin-left: 80%;
+    &:hover {
+      color: #3ab561;
+      font-size: 30px;
+      text-shadow: 1px 2px #121212;
     }
-}
-`
+  }
+`;
 
 const Parent = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   padding: 20px;
   @media (min-width: 768px) {
@@ -374,9 +343,9 @@ const MainInfo = styled.div`
       background-color: #f5f5f7;
       font-size: 16px;
       :hover {
-      color: #3ab561;
-      font-size: 32px;
-    }
+        color: #3ab561;
+        font-size: 32px;
+      }
     }
   }
   .infoTitleInfo {
@@ -438,6 +407,5 @@ const TitleIconBack = styled.div<{ isMyProfile?: boolean }>`
       color: #736d6d;
       text-shadow: 1px 2px #121212;
     }
-    
   }
 `;

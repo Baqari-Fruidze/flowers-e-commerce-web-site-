@@ -5,17 +5,21 @@ import { Context } from "../App";
 import Burger from "./Burger";
 import Cart from "./Cart";
 import { useNavigate } from "react-router-dom";
+import { TCartType } from "../types/CartType";
 
 export default function Header() {
   const { cartshow, setCartshow } = useContext(Context);
   const [valuee, setValuee] = useState("");
   const [burgerToShow, setBurgerToShow] = useState(false);
   const navigate = useNavigate();
-  let data: string | null = localStorage.getItem("cart");
+  const data: string | null = localStorage.getItem("cart");
+  let cart: TCartType | null = null;
+
   if (data) {
-    data = JSON.parse(data);
+    cart = JSON.parse(data) as TCartType;
   }
-  const length = data?.items.length;
+
+  const length = cart?.items.length;
 
   return (
     <>
