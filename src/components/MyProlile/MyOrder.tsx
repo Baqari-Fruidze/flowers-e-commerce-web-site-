@@ -53,16 +53,17 @@ export default function MyOrder() {
           },
         }
       );
-      //   if (response.ok) {
+      console.log(response)
+        if (response.ok) {
       const data = await response.json();
       setOrder(data);
-      //   }
+        }
 
       console.log(order);
     }
     fetchSubscriptions();
   }, []);
-  console.log(order);
+  console.log(order[0]);
   return (
     <>
       {isAcount ? (
@@ -97,7 +98,6 @@ export default function MyOrder() {
                           <p>delivety time: {item.deliveryTime}</p>
                         </div>
                         <div>
-                          <p>city: {item.city}</p>
                           <p>street: {item.street}</p>
                           <p>house N: {item.houseNumber}</p>
                         </div>
@@ -111,27 +111,26 @@ export default function MyOrder() {
                         <p>image</p>
                         <p>category</p>
                         <p>name</p>
-                        <p>description</p>
                         <p>quantity</p>
                         <p>price</p>
                       </Title>
 
-                      {item.items.map((prod, index) => (
-                        <>
+                      {item.items.map((prod, indexx: number) => (
+                        <div  key={indexx}>
                           <Product>
-                            <p>{index + 1}</p>
-                            <img src={prod.product.image} />
-                            <p>{prod.product.category}</p>
+                            <p>{indexx + 1}</p>
+                            <img style ={{width: "30px", height: "30px"}} src={prod.product.image} alt={prod.product.name}/>
+                            <p>{prod.product.category.name}</p>
                             <p>{prod.product.name}</p>
-                            <p>{prod.product.description}</p>
                             <p>{prod.quantity}</p>
                             <p>{prod.product.price}</p>
                           </Product>
-                          <p className="total">
-                            Total: <span>{item.total} EUR</span>
-                          </p>
-                        </>
+                          
+                        </div>
                       ))}
+                      <p className="total">
+                            Total: <span>{item.total} USD</span>
+                          </p>
                     </Products>
                   </OrderCont>
                 </Order>
@@ -179,11 +178,9 @@ const Orders = styled.div`
 const Order = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
 `;
 const OrderNumber = styled.div`
   background-color: #64da88;
-  /* padding: 10px 0; */
   p {
     font-size: 20px;
     cursor: pointer;
@@ -218,7 +215,7 @@ const OrderCont = styled.div`
 const Products = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
+  justify-content: last baseline;
 `;
 
 const DeliverInfo = styled.div`
