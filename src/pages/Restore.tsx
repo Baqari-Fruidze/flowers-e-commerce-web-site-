@@ -1,7 +1,6 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { boolean } from "yup";
 
 export default function Restore() {
   const [first, setFirst] = useState<boolean>(false);
@@ -27,29 +26,37 @@ export default function Restore() {
     }
   }
   async function recoveryPassword() {
-    const res = await fetch("http://134.122.71.97:8000/auth/recover", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ recovery_code: recoverCode }),
-    });
+    const res = await fetch(
+      "http://134.122.71.97:8000/auth/recover/validate_code",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ recovery_code: recoverCode }),
+      }
+    );
     if (res.ok) {
       setFirst(false);
       setSecond(true);
     }
   }
   async function changePassword() {
-    const res = await fetch("http://134.122.71.97:8000/auth/recover", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ recovery_code: recoverCode }),
-    });
+    const res = await fetch(
+      "http://134.122.71.97:8000/auth/recover/change_password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recovery_code: recoverCode,
+          password: recoverPassword,
+        }),
+      }
+    );
     if (res.ok) {
-      setFirst(false);
-      setSecond(true);
+      navigate("/login");
     }
   }
 
@@ -65,11 +72,6 @@ export default function Restore() {
               id="username"
               onChange={(e) => setUsarname(e.target.value)}
               value={username}
-              // onKeyDown={(e) => {
-              //   if (e.key === "Enter" && username.length > 0) {
-              //     userCheck();
-              //   }
-              // }}
             />
             <Btn
               onClick={() => {
@@ -91,11 +93,6 @@ export default function Restore() {
               placeholder="6 chars"
               value={recoverCode}
               onChange={(e) => setRecoverCode(e.target.value)}
-              // onKeyDown={(e) => {
-              //   if (e.key === "Enter" && recoverCode.length === 6) {
-              //     recoveryPassword();
-              //   }
-              // }}
             />
             <Btn
               onClick={() => {
@@ -118,18 +115,9 @@ export default function Restore() {
               value={recoverPassword}
               onChange={(e) => setRecoverPassword(e.target.value)}
             />
-            <Btn
-              onClick={() => {
-                if (recoverPassword.length > 3) {
-                }
-              }}
-            >
-              Send
-            </Btn>
+            <Btn onClick={() => changePassword()}>Send</Btn>
           </SingleCon>
         ) : null}
-
-        <p>(your recovery code has been sent to your email)</p>
       </InsideCon>
     </Parent>
   );
