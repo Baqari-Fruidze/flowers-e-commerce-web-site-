@@ -6,8 +6,12 @@ import Cart from "./Cart";
 import { Context } from "../App";
 import MyProfilePop from "./MyProlile/MyProfilePop";
 import { TCartType } from "../types/CartType";
+import ScrollToFix from "../units/ScrollToFix";
 
 export default function LargeHeader() {
+  const handleClick = () => {
+    window.scrollTo({ top: 2500, left: 0, behavior: 'smooth' });
+  };
   const [value, setValue] = useState("");
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -43,6 +47,7 @@ export default function LargeHeader() {
 
   return (
     <>
+    <ScrollToFix />
       <Parent>
         {isMyProfile ? <MyProfilePop /> : null}
         <HomeCon>
@@ -54,7 +59,12 @@ export default function LargeHeader() {
         </HomeCon>
         <ContactCon>
           <AnimDiv>
-            <p className="anim">Contact</p>
+            <Link className="anim" to={"/"}>
+            <p 
+            onClick={handleClick}
+            className="anim">Contact</p>
+            </Link>
+            
           </AnimDiv>
         </ContactCon>
         <InputCon>

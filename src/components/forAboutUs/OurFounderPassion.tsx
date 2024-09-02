@@ -17,7 +17,7 @@ export default function OurFounderPassion() {
           <p className="about">
             Flowers Luxurious Bouquets was founded in 2010 by Natalia Zelinska
             with the goal of bringing unique and exquisite bouquets to the
-            people of Kyiv. Natalia has always had a passion for flowers and
+            people of Telavi. Natalia has always had a passion for flowers and
             design, and his vision was to create a local floral studio that
             would specialize in the creation and delivery of fresh, beautiful,
             and distinctive bouquets.
@@ -29,7 +29,7 @@ export default function OurFounderPassion() {
           <div>
             <h1 data-aos="fade-up">Expertly Crafted Bouquets</h1>
             <p data-aos="fade-up" className="desc">
-              At Kyiv LuxeBouquets, we take pride in our team of talented and
+              At Telavi LuxeBouquets, we take pride in our team of talented and
               experienced florists who carefully select each bloom, ensuring
               that only the freshest and most stunning flowers make it into our
               bouquets. We work directly with farms to source the highest
@@ -45,7 +45,7 @@ export default function OurFounderPassion() {
             <div>
               <h1 data-aos="fade-up">Expertly Crafted Bouquets</h1>
               <p data-aos="fade-up">
-                At Kyiv LuxeBouquets, we take pride in our team of talented and
+                At Telavi LuxeBouquets, we take pride in our team of talented and
                 experienced florists who carefully select each bloom, ensuring
                 that only the freshest and most stunning flowers make it into
                 our bouquets. We work directly with farms to source the highest
@@ -59,7 +59,7 @@ export default function OurFounderPassion() {
             <div>
               <h1 data-aos="fade-up">Expertly Crafted Bouquets</h1>
               <p data-aos="fade-up">
-                At Kyiv LuxeBouquets, we take pride in our team of talented and
+                At Telavi LuxeBouquets, we take pride in our team of talented and
                 experienced florists who carefully select each bloom, ensuring
                 that only the freshest and most stunning flowers make it into
                 our bouquets. We work directly with farms to source the highest
@@ -76,7 +76,7 @@ export default function OurFounderPassion() {
           <div>
             <h1 data-aos="fade-up">Expertly Crafted Bouquets</h1>
             <p data-aos="fade-up">
-              At Kyiv LuxeBouquets, we take pride in our team of talented and
+              At  LuxeBouquets, we take pride in our team of talented and
               experienced florists who carefully select each bloom, ensuring
               that only the freshest and most stunning flowers make it into our
               bouquets. We work directly with farms to source the highest
