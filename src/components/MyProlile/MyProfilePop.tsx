@@ -93,7 +93,7 @@ export default function MyProfilePop() {
             </Link>
           </TitleIcon>
 
-          <TitleIcon>
+          {/* <TitleIcon>
             <svg
               width="20"
               height="18"
@@ -117,7 +117,7 @@ export default function MyProfilePop() {
             >
               <p>Likes</p>
             </Link>
-          </TitleIcon>
+          </TitleIcon> */}
 
           <TitleIcon>
             <svg
@@ -322,7 +322,7 @@ const TitleIconlogOut = styled.div`
 const TitleIconBack = styled.div`
   font-size: 30px;
   cursor: pointer;
-  margin: -6% 80%;
+  margin: -50px 80%;
   :hover {
     color: #3ab561;
     font-size: 32px;

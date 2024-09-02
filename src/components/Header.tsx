@@ -29,7 +29,9 @@ export default function Header() {
             width="16"
             height="15"
             xmlns="http://www.w3.org/2000/svg"
-            onClick={() => setBurgerToShow(!burgerToShow)}
+            onClick={() => (setBurgerToShow(!burgerToShow),
+               navigate("/"))}
+            
           >
             <g fill="#000" fill-rule="evenodd">
               <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />

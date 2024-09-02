@@ -8,8 +8,10 @@ export default function MySetting() {
   const navigate = useNavigate();
   const [changepass, setChangepass] = useState(true);
   const [isReview, setIsReview] = useState(false);
+
   const [addReview, setAddReview] = useState<string>(" ");
   const { users, setIsMyProfile, isAcount, setIsAcount, setUsers } =
+
     useContext(Context);
 
   function clear() {
@@ -41,6 +43,7 @@ export default function MySetting() {
     if (token) {
       token = JSON.parse(token as string);
 
+
       const responce = await fetch(
         "http://134.122.71.97:8000/api/reviews",
 
@@ -65,6 +68,7 @@ export default function MySetting() {
       }
     }
   }
+
 
   return (
     <>
@@ -101,11 +105,11 @@ export default function MySetting() {
                   }}
                 >
                   <img src={users.profilePicture} alt="img" />
-                  <button
+                  {/* <button
                     style={{ border: "none", backgroundColor: "#f5f5f7" }}
                   >
                     Edit
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </Title>
@@ -123,7 +127,7 @@ export default function MySetting() {
                       {users.first_name} <span>{users.last_name}</span>
                     </span>
                   </div>
-                  <button>Edit</button>
+                  {/* <button>Edit</button> */}
                 </div>
 
                 <div>
@@ -131,7 +135,7 @@ export default function MySetting() {
                     <p className="infotitle">phone Number</p>
                     <p>{users.phoneNumber}</p>
                   </div>
-                  <button>Edit</button>
+                  {/* <button>Edit</button> */}
                 </div>
               </MainInfo>
             ) : null}
@@ -195,11 +199,13 @@ export default function MySetting() {
                 </svg>
               </div>
             </TitleIconBack>
+
           </SettingCont>
 
           {isReview ? (
             <AddReview>
               <h1 className="noReview">Add Your Review</h1>
+
 
               <textarea
                 className="addReview"
@@ -215,6 +221,9 @@ export default function MySetting() {
               </h2>
             </AddReview>
           ) : null}
+          </SettingCont>
+
+          
         </Parent>
       ) : null}
     </>
@@ -237,6 +246,7 @@ const AddReview = styled.div`
     padding: 10px;
   }
 
+
   .noReview {
     text-align: center;
     margin-top: 30px;
@@ -256,7 +266,7 @@ const AddReview = styled.div`
 const Parent = styled.div`
   position: relative;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   @media (min-width: 768px) {
     background-image: url(${floverVideoBg});
     padding: 40px;
@@ -330,7 +340,7 @@ const BtnPass = styled.button<{ changepass?: boolean }>`
 const MainInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 10px;
   & > div {
     display: flex;
     flex-direction: row;

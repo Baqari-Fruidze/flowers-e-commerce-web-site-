@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { TReviews } from "../../types/AddCategories";
 import { useNavigate } from "react-router-dom";
+import { TReviews } from "../../types/AddCategories";
+
 
 export default function Reviews() {
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ export default function Reviews() {
     },
   ]);
   useEffect(() => {
-    async function fetchUsers() {
+    async function fetchReview(reviewsId: number) {
       let token: string | { access: string; refresh: string } | null =
         localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token as string);
-        const response = await fetch("http://134.122.71.97:8000/api/reviews", {
+        const response = await fetch(`http://134.122.71.97:8000/api/reviews/${reviewsId}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer  ${
@@ -34,7 +35,8 @@ export default function Reviews() {
         }
       }
     }
-    fetchUsers();
+    fetchReview(reviews[0].id);
+    console.log(reviews)
   }, []);
   async function deleteReview(reviewId: number) {
     let token: string | { access: string; refresh: string } | null =
