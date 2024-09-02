@@ -2,9 +2,6 @@ import { Tcategories } from "./AddCategories";
 import { Tsubscriptions } from "./AddCategories";
 import { Tusers } from "./AddCategories";
 import { TFaqs } from "./AddCategories";
-import { TReviews } from "./AddCategories"; 
-
-
 export interface TcontextType {
   isAcount: boolean;
   setIsAcount: React.Dispatch<React.SetStateAction<boolean>>;

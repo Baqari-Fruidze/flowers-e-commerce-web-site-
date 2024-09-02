@@ -99,15 +99,6 @@ const arrowMove = keyframes`
   50% {
     transform: translateX(10%);
   }
-`
-
-const imgZoom = keyframes`
-20% {
-  transform: scale(1.05);
-}
-30% {
-    transform: scale(1);
-}
 `;
 
 const MainCont = styled.div`

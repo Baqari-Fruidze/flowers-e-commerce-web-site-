@@ -71,6 +71,7 @@ export default function SingleCategory() {
                 </ProductsCon>
               );
             })}
+            {searched.length === 0 ? <Parag>No Result</Parag> : null}
           </GridedCon>
         </Parent>
       )}
@@ -78,6 +79,12 @@ export default function SingleCategory() {
   );
 }
 
+const Parag = styled.p`
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+`;
 const LoadingCon = styled.div`
   margin: 0 auto;
   border: 16px solid #f3f3f3; /* Light grey */
@@ -156,6 +163,7 @@ const ProductsCon = styled.div`
   flex-direction: column;
   gap: 2.4rem;
   border-bottom: 1px solid #121212;
+  height: fit-content;
 
   @media (min-width: 768px) {
     width: 100%;

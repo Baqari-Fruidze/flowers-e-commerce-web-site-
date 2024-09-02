@@ -13,32 +13,6 @@ export default function PriceOptions({
 }) {
   const { setSubscribe, subscribe, quantity, setUsers } = useContext(Context);
   const navigate = useNavigate();
-  // async function getingCartItems() {
-  //   let token: string | { access: string; refresh: string } | null =
-  //     localStorage.getItem("token");
-  //   if (token) {
-  //     token = JSON.parse(token as string);
-  //     const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${
-  //           (token as { access: string; refresh: string }).access
-  //         }`,
-  //       },
-  //       body: JSON.stringify({
-  //         product_id: singleProduct,
-  //         quantity: quantity,
-  //       }),
-  //     });
-
-  //     if (res.status === 401) {
-  //       navigate("/login");
-  //     } else if (res.ok) {
-  //       localStorage.getItem("cart");
-  //     }
-  //   }
-  // }
   async function getingCartItems() {
     let token: string | { access: string; refresh: string } | null =
       localStorage.getItem("token");
@@ -62,13 +36,22 @@ export default function PriceOptions({
         clear();
       } else if (res.ok) {
         const item = await res.json();
-        let cart = localStorage.getItem("cart");
+        const cart = localStorage.getItem("cart");
         if (cart) {
-          cart = JSON.parse(cart);
+          const data: string | null = localStorage.getItem("cart");
+          let cart: TCartType | null = null;
+
+          if (data) {
+            cart = JSON.parse(data) as TCartType;
+          }
           cart?.items?.push(item);
           localStorage.setItem("cart", JSON.stringify(cart));
           console.log("Added");
         }
+      } else if (res.status === 400) {
+        throw alert("item is already in basket");
+      } else {
+        throw alert("oops something went wrong");
       }
     } else {
       clear();

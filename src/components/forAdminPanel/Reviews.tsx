@@ -1,19 +1,16 @@
-
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { TReviews } from "../../types/AddCategories";
 
 
-
 export default function Reviews() {
-
-const navigate = useNavigate();
-const [reviews, setReviews] = useState<TReviews[]>([
+  const navigate = useNavigate();
+  const [reviews, setReviews] = useState<TReviews[]>([
     {
-        id: 0,
-        user: "",
-        review: ""
+      id: 0,
+      user: "",
+      review: "",
     },
   ]);
   useEffect(() => {
@@ -74,12 +71,8 @@ const [reviews, setReviews] = useState<TReviews[]>([
         <h2>List of Reviews</h2>
         <div className="titleContainer">
           <div className="descr">
-            <p  className="userName">
-              User Name
-            </p>
-            <p  className="userName">
-              Review
-            </p>
+            <p className="userName">User Name</p>
+            <p className="userName">Review</p>
           </div>
         </div>
         <div className="listReviews">
@@ -166,8 +159,4 @@ const MainCategories = styled.div`
     font-size: 12px;
     text-align: left;
   }
-
-
 `;
-
-  
