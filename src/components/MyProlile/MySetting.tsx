@@ -11,8 +11,6 @@ export default function MySetting() {
   const [isReview, setIsReview] = useState(false);
   const [addReview, setAddReview] = useState<string >(" ")
 
-  const [review, setReview] = useState<string>(" ")
-
   const { setTockenChecker, users, setIsMyProfile, isAcount, setIsAcount, setUsers } =
     useContext(Context);
 
@@ -82,23 +80,16 @@ export default function MySetting() {
          },
          body: JSON.stringify(addReview),
         });
-        
-        if (responce.ok) {
-
           setAddReview("")
           setIsReview(false)
+          console.log(responce)
+        if (responce.ok) {
           throw alert ("Your review sent")
         } else if (responce.status == 401) {
           clear()
         }
-         
-      } 
-     
       }
-  
-  
-
-
+    }
   return (
     <>
       {isAcount ? (
@@ -134,11 +125,11 @@ export default function MySetting() {
                   }}
                 >
                   <img src={users.profilePicture} alt="img" />
-                  <button
+                  {/* <button
                     style={{ border: "none", backgroundColor: "#f5f5f7" }}
                   >
                     Edit
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </Title>
@@ -156,7 +147,7 @@ export default function MySetting() {
                       {users.first_name} <span>{users.last_name}</span>
                     </span>
                   </div>
-                  <button>Edit</button>
+                  {/* <button>Edit</button> */}
                 </div>
 
                 <div>
@@ -164,7 +155,7 @@ export default function MySetting() {
                     <p className="infotitle">phone Number</p>
                     <p>{users.phoneNumber}</p>
                   </div>
-                  <button>Edit</button>
+                  {/* <button>Edit</button> */}
                 </div>
               </MainInfo>
             ) : null}
@@ -228,9 +219,7 @@ export default function MySetting() {
                 </svg>
               </div>
             </TitleIconBack>
-          </SettingCont>
-
-          {isReview ? (
+            {isReview ? (
           <AddReview>
             <h1 className="noReview" >Add Your Review</h1>
 
@@ -246,6 +235,9 @@ export default function MySetting() {
             <h2 className="send" onClick={(() => AddNewReview() )} >send</h2> 
             </AddReview>
           ) : null}
+          </SettingCont>
+
+          
         </Parent>
       ) : null}
     </>
@@ -257,7 +249,7 @@ width: 50%;
 height: 400px;
 position: absolute;
 background-color: beige;
-margin: 50px 25%;
+margin: 0 25%;
 border-radius: 10px;
 box-shadow: 0 0 10px 10px #cbc9c9;
 .addReview{
@@ -287,7 +279,7 @@ box-shadow: 0 0 10px 10px #cbc9c9;
 const Parent = styled.div`
 position: relative;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   @media (min-width: 768px) {
     background-image: url(${floverVideoBg});
     padding: 40px;
@@ -361,7 +353,7 @@ const BtnPass = styled.button<{ changepass?: boolean }>`
 const MainInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 10px;
   & > div {
     display: flex;
     flex-direction: row;

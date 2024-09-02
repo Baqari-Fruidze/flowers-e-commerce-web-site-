@@ -10,6 +10,11 @@ export interface TFaqs {
   answer: string;
 }
 
+export interface TReviews {
+  id: number;
+  user: string;
+  review: string
+}
 
 export interface Tsubscriptions {
   id: number;

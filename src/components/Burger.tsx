@@ -6,7 +6,6 @@ import { Context } from "../App";
 export default function Burger() {
   const { tokenChecker, categories } = useContext(Context);
   const navigate = useNavigate();
-
   return (
     <BlackBackground>
       <Cover>
@@ -19,6 +18,7 @@ export default function Burger() {
             );
           })}
         </Parent>
+
         <TexstCon>
           <ForgotAndRestoreCon>
             <ForgotPassworsSpan>Have Acount ?</ForgotPassworsSpan>
@@ -27,7 +27,7 @@ export default function Burger() {
                 Sign In
               </RestorePasswordSpan>
             ) : (
-              <RestorePasswordSpan>profile</RestorePasswordSpan>
+              <RestorePasswordSpan >profile</RestorePasswordSpan>
             )}
           </ForgotAndRestoreCon>
           <DonotHaveAcountCon>

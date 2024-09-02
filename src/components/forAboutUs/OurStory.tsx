@@ -109,7 +109,6 @@ const Story = styled.div`
     }                               
 
     }
-  }
 
   & > img {
     width: 270px;
