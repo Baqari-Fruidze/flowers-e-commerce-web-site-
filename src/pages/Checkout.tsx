@@ -7,10 +7,29 @@ import { schemaCheckout } from "../Scema/Checkout";
 import { TcheckoutTypes } from "../types/CheckoutTypes";
 import { CartItem, TCartType } from "../types/CartType";
 import { useNavigate } from "react-router-dom";
+import Purchase from "../components/Purchase";
+import { useContext, useState } from "react";
+import { Context } from "../App";
 
 export default function Checkout() {
+  const { setUsers } = useContext(Context);
+  function clear() {
+    setUsers({
+      id: 0,
+      review: "",
+      username: "",
+      email: "",
+      last_name: "",
+      first_name: "",
+      password: "",
+      profilePicture: "",
+      phoneNumber: "",
+      is_superuser: false,
+    });
+    localStorage.clear();
+  }
   const navigate = useNavigate();
-
+  const [purchaseShow, setPurchaseShow] = useState<boolean>(false);
   const data: string | null = localStorage.getItem("cart");
   let cart: TCartType | null = null;
   if (data) {
@@ -44,9 +63,13 @@ export default function Checkout() {
             body: JSON.stringify(InputsData),
           });
           if (res.ok) {
-            localStorage.removeItem("cart");
-            navigate("/My-order");
-            console.log("succes");
+            cart = { ...cart, items: [] };
+            localStorage.setItem("cart", JSON.stringify(cart));
+            setPurchaseShow(true);
+          } else if (res.status === 401) {
+            clear();
+          } else {
+            throw alert("oops something went wrong");
           }
         }
       }
@@ -92,6 +115,7 @@ export default function Checkout() {
             <MoneyAmoint>{count}$</MoneyAmoint>
           </Con>
         </Cover>
+        {purchaseShow ? <Purchase /> : null}
       </Parent>
     </FormProvider>
   );
@@ -188,6 +212,7 @@ const Hone = styled.h1`
   font-weight: 700;
 `;
 const Parent = styled.div`
+  position: relative;
   padding: 2.4rem;
   display: flex;
   flex-direction: column;
