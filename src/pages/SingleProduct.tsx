@@ -27,7 +27,7 @@ export default function SingleProduct() {
   useEffect(() => {
     async function fetchSingleProduct(id: string | undefined) {
       const response = await fetch(
-        `http://134.122.71.97:8000/api/product/${id}`
+        `https://ecommerce-collab.duckdns.org/api/product/${id}`
       );
       const data = await response.json();
       setSingleProductState(data);
@@ -35,27 +35,6 @@ export default function SingleProduct() {
     fetchSingleProduct(singleProduct);
   }, [singleProduct]);
 
-  // async function getingCartItems() {
-  //   let token = localStorage.getItem("token");
-  //   if (token) {
-  //     token = JSON.parse(token);
-  //     const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token.access}`,
-  //       },
-  //       body: JSON.stringify({
-  //         product_id: singleProduct,
-  //         quantity: quantity,
-  //       }),
-  //     });
-  //     if (res.ok) {
-  //       console.log("Da");
-  //     }
-  //   }
-  // }
-  console.log(singlePorudctState);
   return (
     <Parent>
       <SingleProductCon>

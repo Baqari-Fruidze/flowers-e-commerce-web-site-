@@ -52,16 +52,19 @@ export default function Checkout() {
         if (cart?.items.length > 0) {
           InputsData.items = orderItems;
           InputsData.total = count;
-          const res = await fetch("http://134.122.71.97:8000/api/order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${
-                (token as { access: string; refresh: string }).access
-              }`,
-            },
-            body: JSON.stringify(InputsData),
-          });
+          const res = await fetch(
+            "https://ecommerce-collab.duckdns.org/api/order",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${
+                  (token as { access: string; refresh: string }).access
+                }`,
+              },
+              body: JSON.stringify(InputsData),
+            }
+          );
           if (res.ok) {
             cart = { ...cart, items: [] };
             localStorage.setItem("cart", JSON.stringify(cart));

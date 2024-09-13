@@ -25,14 +25,17 @@ export default function Users() {
         localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token as string);
-        const response = await fetch("http://134.122.71.97:8000/auth/signup", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer  ${
-              (token as { access: string; refresh: string }).access
-            }`,
-          },
-        });
+        const response = await fetch(
+          "https://ecommerce-collab.duckdns.org/auth/signup",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer  ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -49,7 +52,7 @@ export default function Users() {
     if (token) {
       token = JSON.parse(token as string);
       const responce = await fetch(
-        `http://134.122.71.97:8000/auth/signup/${userId}`,
+        `https://ecommerce-collab.duckdns.org/auth/signup/${userId}`,
         {
           method: "DELETE",
           headers: {

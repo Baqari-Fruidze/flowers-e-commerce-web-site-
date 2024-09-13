@@ -8,7 +8,9 @@ export default function Faq() {
 
   useEffect(() => {
     async function fetchFaq() {
-      const response = await fetch("http://134.122.71.97:8000/api/faq");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/faq"
+      );
       const data = await response.json();
       setFaqs(data);
     }

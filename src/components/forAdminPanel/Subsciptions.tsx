@@ -21,7 +21,7 @@ export default function Subscriptions() {
   useEffect(() => {
     async function fetchSubscriptions() {
       const response = await fetch(
-        "http://134.122.71.97:8000/api/subscription"
+        "https://ecommerce-collab.duckdns.org/api/subscription"
       );
       const data = await response.json();
       setSubscriptions(data);
@@ -58,11 +58,14 @@ export default function Subscriptions() {
     formData.append("firstDelivery2", addSubscription.firstDelivery2);
     formData.append("saveUp", addSubscription.saveUp.toString());
 
-    const response = await fetch("http://134.122.71.97:8000/api/subscription", {
-      method: "POST",
-      headers: {},
-      body: formData,
-    });
+    const response = await fetch(
+      "https://ecommerce-collab.duckdns.org/api/subscription",
+      {
+        method: "POST",
+        headers: {},
+        body: formData,
+      }
+    );
     const newSubscriptions = await response.json();
     setSubscriptions([...subscriptions, newSubscriptions]);
     setAddSubscription({
@@ -80,7 +83,7 @@ export default function Subscriptions() {
 
   async function deleteSubscr(subscrId: any) {
     const responce = await fetch(
-      `http://134.122.71.97:8000/api/subscription/${subscrId}`,
+      `https://ecommerce-collab.duckdns.org/api/subscription/${subscrId}`,
       {
         method: "DELETE",
       }
