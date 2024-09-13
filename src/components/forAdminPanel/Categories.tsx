@@ -14,7 +14,9 @@ export default function Categories() {
 
   useEffect(() => {
     async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/category"
+      );
       const data = await response.json();
       setCategories(data);
     }
@@ -50,15 +52,18 @@ export default function Categories() {
     formData.append("name", addCategory.name);
     formData.append("image", addCategory.image);
 
-    const response = await fetch("http://134.122.71.97:8000/api/category", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${
-          (token as { access: string; refresh: string }).access
-        }`,
-      },
-      body: formData,
-    });
+    const response = await fetch(
+      "https://ecommerce-collab.duckdns.org/api/category",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+        body: formData,
+      }
+    );
     const newCategory = await response.json();
     setCategories([...categories, newCategory]);
     setAddCategory({
@@ -70,7 +75,7 @@ export default function Categories() {
 
   async function deleteCategory(categoriesId: number) {
     const responce = await fetch(
-      `http://134.122.71.97:8000/api/category/${categoriesId}`,
+      `https://ecommerce-collab.duckdns.org/api/category/${categoriesId}`,
       {
         method: "DELETE",
         headers: {

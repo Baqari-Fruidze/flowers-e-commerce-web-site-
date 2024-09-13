@@ -13,7 +13,9 @@ export default function FAQ() {
 
   useEffect(() => {
     async function fetchFaq() {
-      const response = await fetch("http://134.122.71.97:8000/api/faq");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/faq"
+      );
       const data = await response.json();
       setFaqs(data);
     }
@@ -31,22 +33,28 @@ export default function FAQ() {
 
   async function addNewFaq(event: any) {
     event.preventDefault();
-    const responce = await fetch("http://134.122.71.97:8000/api/faq", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addFaq),
-    });
+    const responce = await fetch(
+      "https://ecommerce-collab.duckdns.org/api/faq",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(addFaq),
+      }
+    );
     const newFaq = await responce.json();
     setFaqs([...faqs, newFaq]);
     setAddFaq({ question: "", answer: "" });
   }
 
   async function deleteFaq(faqId: any) {
-    const responce = await fetch(`http://134.122.71.97:8000/api/faq/${faqId}`, {
-      method: "DELETE",
-    });
+    const responce = await fetch(
+      `https://ecommerce-collab.duckdns.org/api/faq/${faqId}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (responce.ok) {
       setFaqs(faqs.filter((item) => item.id !== faqId));
       throw alert("successfyly removed");

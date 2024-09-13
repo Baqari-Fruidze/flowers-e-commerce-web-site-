@@ -29,7 +29,7 @@ export default function MyAddress() {
   const { setIsMyProfile, isAcount, setIsAcount } = useContext(Context);
   const [isAddressList, setIsAddressList] = useState(false);
   const [list, setList] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [address, setAddress] = useState({
     id: 0,
     city: "",
@@ -44,78 +44,68 @@ export default function MyAddress() {
   } = useForm({ resolver: yupResolver(schemaAddress) });
 
   const foo = async (data: any) => {
-    let token: string | { access: string; refresh: string } | null  = 
-    localStorage.getItem("token" as string)
-    
-    if (token) {
-      token = JSON.parse(token as string)
-    setIsAddressList(!isAddressList);
-    setList(true);
-    const responce = await fetch (
-      `http://134.122.71.97:8000/api/address/${address.id}`,
-    {method: "PUT",
-     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${
-        (token as { access: string; refresh: string }).access
-      }`,
-     },
-     body: JSON.stringify(data),
-    });
-    console.log(responce)
-    if (responce.ok) {
-   
-      const newAddress = await responce.json();
-      setAddress(newAddress)
-    } else if (responce.status == 401) {
-      clear()
-    }
-    else {throw alert ("Ops, something went wrong")}
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token" as string);
 
-  }
+    if (token) {
+      token = JSON.parse(token as string);
+      setIsAddressList(!isAddressList);
+      setList(true);
+      const responce = await fetch(
+        `https://ecommerce-collab.duckdns.org/api/address/${address.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${
+              (token as { access: string; refresh: string }).access
+            }`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (responce.ok) {
+        const newAddress = await responce.json();
+        setAddress(newAddress);
+      } else if (responce.status == 401) {
+        clear();
+      } else {
+        throw alert("Ops, something went wrong");
+      }
+    }
   };
 
+  useEffect(() => {
+    let token: string | { access: string; refresh: string } | null =
+      localStorage.getItem("token");
+    async function fetchAddress() {
+      if (token) {
+        token = JSON.parse(token as string);
 
-    // const addUserAddress = (event: any)=>{
-    //     event.preventDefault()
-    //     const {name, value} = event.target;
-    //     setAddress({
-    //         ...address,
-    //         [name]: value
-    //     })
-    // }
-
-    
-    useEffect(() => {
-      let token: string | { access: string; refresh: string } | null  = 
-    localStorage.getItem("token")
-      async function fetchAddress() {
-        if (token) {
-          token = JSON.parse(token as string)
-        
-        const response = await fetch("http://134.122.71.97:8000/api/address", 
+        const response = await fetch(
+          "https://ecommerce-collab.duckdns.org/api/address",
           {
-            headers : {
+            headers: {
               Authorization: `Bearer ${
                 (token as { access: string; refresh: string }).access
               }`,
-            }
+            },
           }
         );
-          if (response.ok){
+        if (response.ok) {
           const data = await response.json();
-        
+
           setAddress(data);
-          setList(true)
+          setList(true);
         } else if (response.status == 401) {
-          clear()
-          // throw alert ("Ops, something went wrong")
+          clear();
         }
       }
-      }
-      fetchAddress();
-    },[]);
-// console.log(address)
+    }
+    fetchAddress();
+  }, []);
+
   return (
     <>
       {isAcount ? (
@@ -136,12 +126,8 @@ export default function MyAddress() {
                 </div>
               ) : (
                 <div className="userAddress">
-                  <p>
-                    CITY: {address.city}
-                  </p>
-                  <p>
-                    STREET: {address.street}
-                  </p>
+                  <p>CITY: {address.city}</p>
+                  <p>STREET: {address.street}</p>
                   <p>
                     N:<span>{address.houseNumber}</span>
                   </p>

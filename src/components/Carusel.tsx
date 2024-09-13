@@ -9,7 +9,7 @@ export default function Carusel() {
   useEffect(() => {
     const fetchPopular = async () => {
       const response = await fetch(
-        "http://134.122.71.97:8000/api/popular-with"
+        "https://ecommerce-collab.duckdns.org/api/popular-with"
       );
       if (response.ok) {
         const data = await response.json();

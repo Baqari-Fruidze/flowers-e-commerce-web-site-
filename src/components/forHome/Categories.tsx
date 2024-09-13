@@ -10,7 +10,9 @@ export default function Categories() {
   const { categories, setCategories } = useContext(Context);
   useEffect(() => {
     async function fetchCategories() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/category"
+      );
       const data = await response.json();
       setCategories(data);
     }

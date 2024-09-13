@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { TReviews } from "../../types/AddCategories";
 
-
 export default function Reviews() {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState<TReviews[]>([
@@ -19,14 +18,17 @@ export default function Reviews() {
         localStorage.getItem("token");
       if (token) {
         token = JSON.parse(token as string);
-        const response = await fetch(`http://134.122.71.97:8000/api/reviews/${reviewsId}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer  ${
-              (token as { access: string; refresh: string }).access
-            }`,
-          },
-        });
+        const response = await fetch(
+          `https://ecommerce-collab.duckdns.org/api/reviews/${reviewsId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer  ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -36,7 +38,7 @@ export default function Reviews() {
       }
     }
     fetchReview(reviews[0].id);
-    console.log(reviews)
+    console.log(reviews);
   }, []);
   async function deleteReview(reviewId: number) {
     let token: string | { access: string; refresh: string } | null =
@@ -44,7 +46,7 @@ export default function Reviews() {
     if (token) {
       token = JSON.parse(token as string);
       const responce = await fetch(
-        `http://134.122.71.97:8000/api/reviews/${reviewId}`,
+        `https://ecommerce-collab.duckdns.org/api/reviews/${reviewId}`,
         {
           method: "DELETE",
           headers: {

@@ -12,13 +12,16 @@ export default function Restore() {
   const navigate = useNavigate();
   async function userCheck() {
     console.log(username);
-    const res = await fetch("http://134.122.71.97:8000/auth/recover", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username: username }),
-    });
+    const res = await fetch(
+      "https://ecommerce-collab.duckdns.org/auth/recover",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username }),
+      }
+    );
 
     if (res.ok) {
       setFirst(true);
@@ -27,7 +30,7 @@ export default function Restore() {
   }
   async function recoveryPassword() {
     const res = await fetch(
-      "http://134.122.71.97:8000/auth/recover/validate_code",
+      "https://ecommerce-collab.duckdns.org/auth/recover/validate_code",
       {
         method: "POST",
         headers: {
@@ -43,7 +46,7 @@ export default function Restore() {
   }
   async function changePassword() {
     const res = await fetch(
-      "http://134.122.71.97:8000/auth/recover/change_password",
+      "https://ecommerce-collab.duckdns.org/auth/recover/change_password",
       {
         method: "POST",
         headers: {
