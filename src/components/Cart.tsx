@@ -28,14 +28,17 @@ export default function Cart() {
   async function deleteCartItem(id: number) {
     if (token) {
       token = JSON.parse(token as string);
-      const res = await fetch(`http://134.122.71.97:8000/api/cart-item/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${
-            (token as { access: string; refresh: string }).access
-          }`,
-        },
-      });
+      const res = await fetch(
+        `https://ecommerce-collab.duckdns.org/api/cart-item/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${
+              (token as { access: string; refresh: string }).access
+            }`,
+          },
+        }
+      );
       if (res.ok) {
         setCartItemsState((prev) => {
           const updatedState = {
@@ -67,14 +70,17 @@ export default function Cart() {
       const cartrequest = async () => {
         const cart = localStorage.getItem("cart");
         if (!cart) {
-          const res = await fetch("http://134.122.71.97:8000/api/cart", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${
-                (token as { access: string; refresh: string }).access
-              }`,
-            },
-          });
+          const res = await fetch(
+            "https://ecommerce-collab.duckdns.org/api/cart",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${
+                  (token as { access: string; refresh: string }).access
+                }`,
+              },
+            }
+          );
           if (res.ok) {
             const data = await res.json();
             setCartItemsState(data);
@@ -96,14 +102,17 @@ export default function Cart() {
       localStorage.getItem("token");
     if (token) {
       token = JSON.parse(token);
-      const res = await fetch(`http://134.122.71.97:8000/api/cart/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${
-            (token as { access: string; refresh: string }).access
-          }`,
-        },
-      });
+      const res = await fetch(
+        `https://ecommerce-collab.duckdns.org/api/cart/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${
+              (token as { access: string; refresh: string }).access
+            }`,
+          },
+        }
+      );
       console.log(res);
       if (res.ok) {
         setCartItemsState((prev) => {

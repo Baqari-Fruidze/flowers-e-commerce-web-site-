@@ -44,7 +44,7 @@ export default function MyOrder() {
     }
     async function fetchSubscriptions() {
       const response = await fetch(
-        "http://134.122.71.97:8000/api/order",
+        "https://ecommerce-collab.duckdns.org/api/order",
 
         {
           method: "GET",

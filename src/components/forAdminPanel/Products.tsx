@@ -42,7 +42,9 @@ export default function Products() {
 
   useEffect(() => {
     async function fetchCategory() {
-      const response = await fetch("http://134.122.71.97:8000/api/category");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/category"
+      );
       const data = await response.json();
       setCategories(data);
     }
@@ -50,7 +52,9 @@ export default function Products() {
   }, []);
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch("http://134.122.71.97:8000/api/product");
+      const response = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/product"
+      );
       const data = await response.json();
       setProducts(data);
     }
@@ -86,15 +90,18 @@ export default function Products() {
     formData.append("inStock", addProduct.inStock.toString());
     formData.append("description", addProduct.description);
 
-    const responce = await fetch("http://134.122.71.97:8000/api/product", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${
-          (token as { access: string; refresh: string }).access
-        }`,
-      },
-      body: formData,
-    });
+    const responce = await fetch(
+      "https://ecommerce-collab.duckdns.org/api/product",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${
+            (token as { access: string; refresh: string }).access
+          }`,
+        },
+        body: formData,
+      }
+    );
     const newProduct = await responce.json();
     setProducts([...products, newProduct]);
     setAddProduct({
@@ -110,7 +117,7 @@ export default function Products() {
 
   async function deleteProduct(productId: number) {
     const responce = await fetch(
-      `http://134.122.71.97:8000/api/product/${productId}`,
+      `https://ecommerce-collab.duckdns.org/api/product/${productId}`,
       {
         method: "DELETE",
         headers: {

@@ -18,14 +18,17 @@ export default function AllCategory() {
         localStorage.getItem("token");
       if (users.id === 0 && token) {
         token = JSON.parse(token as string);
-        const res = await fetch("http://134.122.71.97:8000/auth/users", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer  ${
-              (token as { access: string; refresh: string }).access
-            }`,
-          },
-        });
+        const res = await fetch(
+          "https://ecommerce-collab.duckdns.org/auth/users",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer  ${
+                (token as { access: string; refresh: string }).access
+              }`,
+            },
+          }
+        );
         if (res.ok) {
           const usersInfo = await res.json();
           setUsers(usersInfo);

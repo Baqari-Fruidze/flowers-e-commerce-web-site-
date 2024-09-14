@@ -27,13 +27,13 @@ export default function SignUp() {
     Object.entries(inputsdata).forEach(([key, value]) => {
       formData.append(key, value);
     });
-    const res = await fetch("http://134.122.71.97:8000/auth/signup", {
-      method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      body: formData,
-    });
+    const res = await fetch(
+      "https://ecommerce-collab.duckdns.org/auth/signup",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
     if (res.ok) {
       navigate("/login");

@@ -18,13 +18,18 @@ export default function Login() {
   };
 
   async function loginUser(userinfo: { username: string; password: string }) {
-    const res = await fetch("http://134.122.71.97:8000/auth/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userinfo),
-    });
+
+    const res = await fetch(
+      "https://ecommerce-collab.duckdns.org/auth/login/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userinfo),
+      }
+    );
+
     const info = await res.json();
     localStorage.setItem("token", JSON.stringify(info));
     if (res.ok) {

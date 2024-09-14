@@ -18,19 +18,22 @@ export default function PriceOptions({
       localStorage.getItem("token");
     if (token) {
       token = JSON.parse(token as string);
-      const res = await fetch("http://134.122.71.97:8000/api/cart-item", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            (token as { access: string; refresh: string }).access
-          }`,
-        },
-        body: JSON.stringify({
-          product_id: singleProduct,
-          quantity: quantity,
-        }),
-      });
+      const res = await fetch(
+        "https://ecommerce-collab.duckdns.org/api/cart-item",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${
+              (token as { access: string; refresh: string }).access
+            }`,
+          },
+          body: JSON.stringify({
+            product_id: singleProduct,
+            quantity: quantity,
+          }),
+        }
+      );
 
       if (res.status === 401) {
         clear();
