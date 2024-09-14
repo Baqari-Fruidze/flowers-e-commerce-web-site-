@@ -18,6 +18,7 @@ export default function Login() {
   };
 
   async function loginUser(userinfo: { username: string; password: string }) {
+
     const res = await fetch(
       "https://ecommerce-collab.duckdns.org/auth/login/",
       {
@@ -28,6 +29,7 @@ export default function Login() {
         body: JSON.stringify(userinfo),
       }
     );
+
     const info = await res.json();
     localStorage.setItem("token", JSON.stringify(info));
     if (res.ok) {
